@@ -65,12 +65,12 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
 
 gulp.task('run-unit-tests', function () {
     return gulp.src([
-        'libs/jquery/dist/jquery.js',
-        'libs/rx/dist/rx.all.compat.js',
-        'libs/angular/angular.js',
-        'libs/angular-route/angular-route.js',
-        'libs/angular-sanitize/angular-sanitize.js',
-        //'./dist/components.js',
+        './lib/jquery/dist/jquery.js',
+        './lib/rx/dist/rx.all.compat.js',
+        './lib/angular/angular.js',
+        './lib/angular-route/angular-route.js',
+        './lib/angular-sanitize/angular-sanitize.js',
+        './dist/components.js',
         './dist/components.spec.js'
     ])
         .pipe(karma({

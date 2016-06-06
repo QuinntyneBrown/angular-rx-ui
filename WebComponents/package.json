@@ -28,6 +28,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
     "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "rx": "^4.1.0",
