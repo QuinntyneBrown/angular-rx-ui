@@ -205,6 +205,10 @@
     <TypeScriptCompile Include="src\components\core\view-children.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\components\core\xhr-backend.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.actions.spec.ts">
+      <SubType>Code</SubType>
+      <DependentUpon>counter.actions.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\counter\counter.component.spec.ts">
       <SubType>Code</SubType>
       <DependentUpon>counter.component.ts</DependentUpon>

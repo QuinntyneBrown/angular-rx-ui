@@ -3,7 +3,8 @@
     "target": "es5",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "module": "commonjs"
   },
   "exclude": [
     "node_modules"

@@ -46,8 +46,12 @@
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
+	__webpack_require__(31);
 	var app = angular
-	    .module("components", []);
+	    .module("components", [
+	    "app.core",
+	    "app.counter"
+	]);
 
 
 /***/ },
@@ -1372,6 +1376,607 @@
 	};
 	angular.module("transformY", [])
 	    .value("transformY", exports.transformY);
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(32);
+	var counter_component_1 = __webpack_require__(54);
+	var counter_actions_1 = __webpack_require__(58);
+	var reducers = __webpack_require__(59);
+	var app = angular.module("app.counter", [
+	    "app.core"
+	]);
+	core_1.provide(app, counter_actions_1.CounterActionCreator);
+	app.component(counter_component_1.CounterComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(7));
+	__export(__webpack_require__(33));
+	__export(__webpack_require__(34));
+	__export(__webpack_require__(35));
+	__export(__webpack_require__(36));
+	__export(__webpack_require__(37));
+	__export(__webpack_require__(38));
+	__export(__webpack_require__(39));
+	exports.addOrUpdate = angular.injector(['addOrUpdate']).get("addOrUpdate");
+	__export(__webpack_require__(17));
+	__export(__webpack_require__(28));
+	__export(__webpack_require__(29));
+	__export(__webpack_require__(40));
+	__export(__webpack_require__(41));
+	__export(__webpack_require__(42));
+	__export(__webpack_require__(43));
+	__export(__webpack_require__(44));
+	__export(__webpack_require__(45));
+	__export(__webpack_require__(46));
+	__export(__webpack_require__(47));
+	__export(__webpack_require__(48));
+	__export(__webpack_require__(49));
+	__export(__webpack_require__(50));
+	__export(__webpack_require__(51));
+	__export(__webpack_require__(14));
+	__export(__webpack_require__(9));
+	__export(__webpack_require__(52));
+	__export(__webpack_require__(53));
+	__export(__webpack_require__(20));
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.createStore = function (app, intialState) {
+	    app.config(["initialStateProvider", "localStorageManagerProvider", function (initialStateProvider, localStorageManagerProvider) {
+	            var localStorageInitialState = localStorageManagerProvider.get({ name: "initialState" });
+	            if (!localStorageInitialState)
+	                localStorageManagerProvider.put({
+	                    name: "initialState", value: intialState
+	                });
+	            initialStateProvider.configure(localStorageManagerProvider.get({ name: "initialState" }));
+	        }]);
+	};
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var BaseActionCreator = (function () {
+	    function BaseActionCreator($location, service, dispatcher, guid, addOrUpdateAction, allAction, removeAction, setCurrentAction) {
+	        var _this = this;
+	        this.$location = $location;
+	        this.service = service;
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.addOrUpdateAction = addOrUpdateAction;
+	        this.allAction = allAction;
+	        this.removeAction = removeAction;
+	        this.setCurrentAction = setCurrentAction;
+	        this.getById = function (options) {
+	            var newId = _this.guid();
+	            _this.service.getById({ id: options.id }).then(function (results) {
+	                var action = new _this.addOrUpdateAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.all = function () {
+	            var newId = _this.guid();
+	            _this.service.get().then(function (results) {
+	                var action = new _this.allAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.addOrUpdate = function (options) {
+	            var newId = _this.guid();
+	            _this.service.add({ data: options.data }).then(function (results) {
+	                var action = new _this.addOrUpdateAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.remove = function (options) {
+	            var newId = _this.guid();
+	            _this.service.remove({
+	                id: options.entity.id
+	            }).then(function (results) {
+	                _this.dispatcher.dispatch(new _this.removeAction(newId, options.entity));
+	            });
+	            return newId;
+	        };
+	        this.edit = function (options) { return _this.dispatcher.dispatch(new _this.setCurrentAction(options.entity)); };
+	        this.create = function () { return _this.dispatcher.dispatch(new _this.setCurrentAction(null)); };
+	    }
+	    return BaseActionCreator;
+	}());
+	exports.BaseActionCreator = BaseActionCreator;
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Base Service for CRUD: Expects a resultful endpoint available
+	 */
+	var BaseService = (function () {
+	    function BaseService($q, apiEndpoint, fetch) {
+	        this.$q = $q;
+	        this.apiEndpoint = apiEndpoint;
+	        this.fetch = fetch;
+	    }
+	    BaseService.prototype.get = function () {
+	        var deferred = this.$q.defer();
+	        this.fetch.fromCacheOrService({ method: "GET", url: this.baseUri + "/get" })
+	            .then(function (results) { return deferred.resolve(results.data); });
+	        return deferred.promise;
+	    };
+	    ;
+	    BaseService.prototype.getById = function (options) {
+	        var deferred = this.$q.defer();
+	        this.fetch.fromService({ method: "GET", url: this.baseUri + "/getById", params: { id: options.id } })
+	            .then(function (results) { return deferred.resolve(results.data); });
+	        return deferred.promise;
+	    };
+	    ;
+	    BaseService.prototype.add = function (options) {
+	        var deferred = this.$q.defer();
+	        this.fetch.fromService({ method: "POST", url: this.baseUri + "/add", data: options.data })
+	            .then(function (results) { return deferred.resolve(results.data); });
+	        return deferred.promise;
+	    };
+	    ;
+	    BaseService.prototype.update = function (options) {
+	        var deferred = this.$q.defer();
+	        this.fetch.fromService({ method: "PUT", url: this.baseUri + "/update", data: options.data })
+	            .then(function (results) { return deferred.resolve(results.data); });
+	        return deferred.promise;
+	    };
+	    ;
+	    BaseService.prototype.remove = function (options) {
+	        var deferred = this.$q.defer();
+	        this.fetch.fromService({ method: "DELETE", url: this.baseUri + "/remove", params: { id: options.id } })
+	            .then(function (results) { return deferred.resolve(results.data); });
+	        return deferred.promise;
+	    };
+	    ;
+	    Object.defineProperty(BaseService.prototype, "baseUri", {
+	        get: function () { throw new Error("Not Implemented"); },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return BaseService;
+	}());
+	exports.BaseService = BaseService;
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.pluckOut = function (options) {
+	    for (var i = 0; i < options.items.length; i++) {
+	        if (options.value == options.items[i][options.key || "id"]) {
+	            options.items.splice(i, 1);
+	        }
+	    }
+	    return options.items;
+	};
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Describes within the change detector which strategy will be used the next time change
+	 * detection is triggered.
+	 */
+	(function (ChangeDetectionStrategy) {
+	    /**
+	     * `CheckedOnce` means that after calling detectChanges the mode of the change detector
+	     * will become `Checked`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckOnce"] = 0] = "CheckOnce";
+	    /**
+	     * `Checked` means that the change detector should be skipped until its mode changes to
+	     * `CheckOnce`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Checked"] = 1] = "Checked";
+	    /**
+	     * `CheckAlways` means that after calling detectChanges the mode of the change detector
+	     * will remain `CheckAlways`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckAlways"] = 2] = "CheckAlways";
+	    /**
+	     * `Detached` means that the change detector sub tree is not a part of the main tree and
+	     * should be skipped.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Detached"] = 3] = "Detached";
+	    /**
+	     * `OnPush` means that the change detector's mode will be set to `CheckOnce` during hydration.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 4] = "OnPush";
+	    /**
+	     * `Default` means that the change detector's mode will be set to `CheckAlways` during hydration.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 5] = "Default";
+	})(exports.ChangeDetectionStrategy || (exports.ChangeDetectionStrategy = {}));
+	var ChangeDetectionStrategy = exports.ChangeDetectionStrategy;
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Component(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        config.component = cls;
+	        cls.config = config;
+	    };
+	}
+	exports.Component = Component;
+	function CanActivate(fnDefinition) {
+	    return function (cls) {
+	        cls.prototype.canActivate = function () {
+	            return fnDefinition;
+	        };
+	    };
+	}
+	exports.CanActivate = CanActivate;
+
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Service(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        cls.serviceName = config.serviceName;
+	        cls.$inject = config.viewProviders;
+	    };
+	}
+	exports.Service = Service;
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Defines template and style encapsulation options available for Component's {@link View}.
+	 *
+	 * See {@link ViewMetadata#encapsulation}.
+	 */
+	(function (ViewEncapsulation) {
+	    /**
+	     * Emulate `Native` scoping of styles by adding an attribute containing surrogate id to the Host
+	     * Element and pre-processing the style rules provided via
+	     * {@link ViewMetadata#styles} or {@link ViewMetadata#stylesUrls}, and adding the new Host Element
+	     * attribute to all selectors.
+	     *
+	     * This is the default option.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
+	    /**
+	     * Use the native encapsulation mechanism of the renderer.
+	     *
+	     * For the DOM this means using [Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
+	     * creating a ShadowRoot for Component's Host Element.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["Native"] = 1] = "Native";
+	    /**
+	     * Don't provide any template or style encapsulation.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
+	})(exports.ViewEncapsulation || (exports.ViewEncapsulation = {}));
+	var ViewEncapsulation = exports.ViewEncapsulation;
+
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Inject() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.Inject = Inject;
+
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Injectable(noop) {
+	    if (noop === void 0) { noop = null; }
+	    return function (cls) {
+	    };
+	}
+	exports.Injectable = Injectable;
+
+
+/***/ },
+/* 43 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Input() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.Input = Input;
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Output() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.Output = Output;
+
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function HostBinding() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.HostBinding = HostBinding;
+
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function HostListener() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.HostListener = HostListener;
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function ContentChildren() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.ContentChildren = ContentChildren;
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function ContentChild() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.ContentChild = ContentChild;
+
+
+/***/ },
+/* 49 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function ViewChild() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.ViewChild = ViewChild;
+
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function ViewChildren() {
+	    return function (target, name, descriptor) {
+	    };
+	}
+	exports.ViewChildren = ViewChildren;
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Pipe(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	    };
+	}
+	exports.Pipe = Pipe;
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.provide = function (app, service) { return app.service(service.serviceName, service.$inject.concat([service])); };
+
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.provideRoutePromise = function (app, routePromise) {
+	    app.config(["routeResolverServiceProvider", function (routeResolverServiceProvider) {
+	            routeResolverServiceProvider.configure({
+	                route: routePromise.route,
+	                routes: routePromise.routes,
+	                key: routePromise.key,
+	                promise: routePromise.promise
+	            });
+	        }]);
+	};
+
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(32);
+	var CounterComponent = (function () {
+	    function CounterComponent() {
+	    }
+	    CounterComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(55),
+	            styles: [__webpack_require__(56)],
+	            selector: "counter",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], CounterComponent);
+	    return CounterComponent;
+	}());
+	exports.CounterComponent = CounterComponent;
+
+
+/***/ },
+/* 55 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"counter\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(57);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./counter.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./counter.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(32);
+	var CounterActionCreator = (function () {
+	    function CounterActionCreator(dispatcher, guid, invokeAsync) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	    }
+	    CounterActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "counterActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object])
+	    ], CounterActionCreator);
+	    return CounterActionCreator;
+	}());
+	exports.CounterActionCreator = CounterActionCreator;
+
+
+/***/ },
+/* 59 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 
 /***/ }

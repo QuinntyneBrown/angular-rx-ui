@@ -1,10 +1,16 @@
 ﻿describe("counter", () => {
 
+    var counterComponent;
+
     beforeEach(() => {
-        angular.mock.module("counter");
+        angular.mock.module("app.counter");
     });
 
+    beforeEach(inject(($controller) => {
+        counterComponent = $controller("counterComponent");
+    }));
+
     it("should be defined", () => {
-        expect(1).toEqual(1);
+        expect(counterComponent).toBeDefined();
     });
 })
