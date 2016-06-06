@@ -9,19 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("../core");
-var HelloWorldComponent = (function () {
-    function HelloWorldComponent() {
+var CounterActionCreator = (function () {
+    function CounterActionCreator(dispatcher, guid, invokeAsync) {
+        this.dispatcher = dispatcher;
+        this.guid = guid;
+        this.invokeAsync = invokeAsync;
     }
-    HelloWorldComponent = __decorate([
-        core_1.Component({
-            template: require("./hello-world.component.html"),
-            styles: [require("./hello-world.component.css")],
-            selector: "hello-world",
-            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+    CounterActionCreator = __decorate([
+        core_1.Service({
+            serviceName: "counterActionCreator",
+            viewProviders: ["dispatcher", "guid", "invokeAsync"]
         }), 
-        __metadata('design:paramtypes', [])
-    ], HelloWorldComponent);
-    return HelloWorldComponent;
+        __metadata('design:paramtypes', [Object, Object, Object])
+    ], CounterActionCreator);
+    return CounterActionCreator;
 }());
-exports.HelloWorldComponent = HelloWorldComponent;
-//# sourceMappingURL=hello-world.component.js.map
+exports.CounterActionCreator = CounterActionCreator;
+//# sourceMappingURL=counter.actions.js.map

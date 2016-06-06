@@ -71,8 +71,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\components.js" />
+    <Content Include="dist\components.spec.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
+    <Content Include="karma.conf.js" />
     <Content Include="lib\angular-route.js" />
     <Content Include="lib\angular-sanitize.js" />
     <Content Include="lib\angular.js" />
@@ -80,11 +83,11 @@
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
     <Content Include="src\components\core\core.css" />
-    <Content Include="src\components\hello-world\hello-world.component.css">
-      <DependentUpon>hello-world.component.ts</DependentUpon>
+    <Content Include="src\components\counter\counter.component.css">
+      <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\hello-world\hello-world.component.html">
-      <DependentUpon>hello-world.component.ts</DependentUpon>
+    <Content Include="src\components\counter\counter.component.html">
+      <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
@@ -201,13 +204,18 @@
     <TypeScriptCompile Include="src\components\core\view-children.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\components\core\xhr-backend.ts" />
-    <TypeScriptCompile Include="src\components\hello-world\hello-world.component.ts" />
-    <TypeScriptCompile Include="src\components\hello-world\hello-world.module.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.component.spec.ts">
+      <SubType>Code</SubType>
+      <DependentUpon>counter.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.module.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.actions.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.component.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\components\hello-world\demo\" />
-    <Folder Include="src\components\hello-world\tests\" />
+    <Folder Include="src\sass\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

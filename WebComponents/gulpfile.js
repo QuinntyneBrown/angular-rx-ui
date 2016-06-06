@@ -1,6 +1,7 @@
 ﻿/// <binding AfterBuild='libs' Clean='clean' />
 
 var gulp = require("gulp");
+var karma = require("gulp-karma");
 var gulpUtil = require("gulp-util");
 var webpack = require("gulp-webpack");
 var rename = require("gulp-rename");
@@ -58,8 +59,28 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
             ]
         }
     }))
-    .pipe(rename("app.js"))
+    .pipe(rename("components.js"))
     .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('run-unit-tests', function () {
+    return gulp.src([
+        'libs/jquery/dist/jquery.js',
+        'libs/rx/dist/rx.all.compat.js',
+        'libs/angular/angular.js',
+        'libs/angular-route/angular-route.js',
+        'libs/angular-sanitize/angular-sanitize.js',
+        //'./dist/components.js',
+        './dist/components.spec.js'
+    ])
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        }))
+        .on('error', function (err) {
+            console.log(err);
+            this.emit('end');
+        });
 });
 
 gulp.task('watch', function () {
