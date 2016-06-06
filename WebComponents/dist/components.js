@@ -47,7 +47,7 @@
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
 	var app = angular
-	    .module("app", []);
+	    .module("components", []);
 
 
 /***/ },

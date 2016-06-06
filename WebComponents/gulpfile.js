@@ -1,6 +1,8 @@
 ﻿/// <binding AfterBuild='libs' Clean='clean' />
 
 var gulp = require("gulp");
+var concat = require('gulp-concat');
+var Config = require('./gulpfile.config');
 var karma = require("gulp-karma");
 var gulpUtil = require("gulp-util");
 var webpack = require("gulp-webpack");
@@ -8,6 +10,10 @@ var rename = require("gulp-rename");
 var rimraf = require("rimraf");
 var clean = require('gulp-clean');
 var child_process = require("child_process");
+var tsc = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
+
+var config = new Config();
 
 var paths = {
     npm: './node_modules/',
@@ -63,15 +69,16 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('run-unit-tests', function () {
+gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
     return gulp.src([
-        './lib/jquery/dist/jquery.js',
-        './lib/rx/dist/rx.all.compat.js',
-        './lib/angular/angular.js',
-        './lib/angular-route/angular-route.js',
-        './lib/angular-sanitize/angular-sanitize.js',
+        './lib/jquery.js',
+        './lib/rx.all.compat.js',
+        './lib/angular.js',
+        './lib/angular-route.js',
+        './lib/angular-sanitize.js',
+        './node_modules/angular-mocks/angular-mocks.js',
         './dist/components.js',
-        './dist/components.spec.js'
+        './test/components.spec.js'
     ])
         .pipe(karma({
             configFile: 'karma.conf.js',
@@ -83,10 +90,28 @@ gulp.task('run-unit-tests', function () {
         });
 });
 
+
+gulp.task('compile-ts-tests', ['remove-compiled-js'], function () {
+    var sourceTsFiles = [config.appTypeScriptReferences,
+                        './src/**/*.spec.ts'];
+
+    var tsResult = gulp.src(sourceTsFiles)
+                       .pipe(tsc({
+                           target: 'ES5',
+                           declarationFiles: false,
+                           noExternalResolve: true
+                       }));
+
+    return tsResult.js
+        .pipe(concat('components.spec.js'))
+        .pipe(gulp.dest('./test/'));
+});
+
+
 gulp.task('watch', function () {
     gulp.watch([
         './src/**/*.ts', './src/**/*.html', './src/**/*.css'
-    ], ['remove-compiled-js', 'webpack']);
+    ], ['remove-compiled-js', 'webpack', 'run-unit-tests']);
 });
 
-gulp.task('default', ['remove-compiled-js','libs', 'webpack', 'watch']);
+gulp.task('default', ['remove-compiled-js','libs', 'webpack', 'run-unit-tests','watch']);

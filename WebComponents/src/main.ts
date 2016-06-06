@@ -4,6 +4,6 @@ require("./components/core/core.module");
 
 
 var app = angular
-    .module("app", []);
+    .module("components", []);
 
 

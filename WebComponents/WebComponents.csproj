@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dist\components.js" />
-    <Content Include="dist\components.spec.js" />
+    <Content Include="gulpfile.config.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
@@ -89,6 +89,7 @@
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
+    <Content Include="test\components.spec.js" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <None Include="Web.Debug.config">
