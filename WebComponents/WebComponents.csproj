@@ -87,7 +87,6 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <None Include="src\sass\_varibles.scss" />
-    <Content Include="test\components.spec.js" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">

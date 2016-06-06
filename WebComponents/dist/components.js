@@ -1934,7 +1934,7 @@
 
 
 	// module
-	exports.push([module.id, "body .counter {\n  color: \"#FFF\"; }\n", ""]);
+	exports.push([module.id, ".counter {\n  color: \"#FFF\"; }\n", ""]);
 
 	// exports
 
