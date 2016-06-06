@@ -61,6 +61,10 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
                 },
                 {
                     test: /\.html$/, loader: "raw"
+                },
+                {
+                    test: /\.scss$/,
+                    loaders: ["style", "css", "sass"]
                 }
             ]
         }
@@ -110,7 +114,7 @@ gulp.task('compile-ts-tests', ['remove-compiled-js'], function () {
 
 gulp.task('watch', function () {
     gulp.watch([
-        './src/**/*.ts', './src/**/*.html', './src/**/*.css'
+        './src/**/*.ts', './src/**/*.html', './src/**/*.css', './src/**/*.scss'
     ], ['remove-compiled-js', 'webpack', 'run-unit-tests']);
 });
 
