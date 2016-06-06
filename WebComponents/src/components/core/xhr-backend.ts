@@ -1,0 +1,1 @@
+﻿import { isPresent } from "./is-present";
