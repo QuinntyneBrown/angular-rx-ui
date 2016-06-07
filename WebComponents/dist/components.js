@@ -408,34 +408,17 @@
 	                    if (options.transclude)
 	                        transcludeFn(scope, function (clone) {
 	                        });
-	                    if (styles && !componentStyles[options.selector]) {
-	                        componentStyles[options.selector] = true;
-	                        function addStyleTagToHead() {
-	                            var style = document.createElement("style");
-	                            style.setAttribute("data-selector", options.selector);
-	                            style.appendChild(document.createTextNode(styles));
-	                            document.head.appendChild(style);
+	                    if (document.body && angular.element(document.body.childNodes[0]) && angular.element(document.body.childNodes[0]).injector()) {
+	                        var $injector = angular.element(document.body.childNodes[0]).injector();
+	                        var store = $injector.get("store");
+	                        var safeDigest = $injector.get("safeDigest");
+	                        if (scope.vm && scope.vm.storeOnChange) {
+	                            var subscription = store.subscribe(function (state) {
+	                                scope.vm.storeOnChange(state);
+	                                safeDigest(scope);
+	                            });
+	                            scope.$on("$destroy", function () { return subscription.dispose(); });
 	                        }
-	                        if (document.readyState === "complete" || document.readyState === 'interactive') {
-	                            addStyleTagToHead();
-	                        }
-	                        else {
-	                            function onDocumentLoad() {
-	                                addStyleTagToHead();
-	                                window.removeEventListener("DOMContentLoaded", onDocumentLoad);
-	                            }
-	                            window.addEventListener("DOMContentLoaded", onDocumentLoad);
-	                        }
-	                    }
-	                    var $injector = angular.element(document.body.childNodes[0]).injector();
-	                    var store = $injector.get("store");
-	                    var safeDigest = $injector.get("safeDigest");
-	                    if (scope.vm && scope.vm.storeOnChange) {
-	                        var subscription = store.subscribe(function (state) {
-	                            scope.vm.storeOnChange(state);
-	                            safeDigest(scope);
-	                        });
-	                        scope.$on("$destroy", function () { return subscription.dispose(); });
 	                    }
 	                },
 	                post: function (scope, element, attributes, controller) {
@@ -803,20 +786,19 @@
 	var core_1 = __webpack_require__(10);
 	var counter_actions_1 = __webpack_require__(22);
 	var CounterActionCreator = (function () {
-	    function CounterActionCreator(dispatcher, guid, invokeAsync) {
+	    function CounterActionCreator(dispatcher, guid) {
 	        var _this = this;
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
-	        this.invokeAsync = invokeAsync;
 	        this.increment = function () { return _this.dispatcher.dispatch(new counter_actions_1.Increment()); };
 	        this.decrement = function () { return _this.dispatcher.dispatch(new counter_actions_1.Decrement()); };
 	    }
 	    CounterActionCreator = __decorate([
 	        core_1.Service({
 	            serviceName: "counterActionCreator",
-	            viewProviders: ["dispatcher", "guid", "invokeAsync"]
+	            viewProviders: ["dispatcher", "guid"]
 	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object])
+	        __metadata('design:paramtypes', [Object, Object])
 	    ], CounterActionCreator);
 	    return CounterActionCreator;
 	}());
@@ -868,7 +850,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\r\n    <h1>{{ vm.count }}</h1>\r\n\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
+	module.exports = "<div class=\"counter\">\r\n    <h1>{{ vm.count }}</h1>\r\n\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
 
 /***/ },
 /* 24 */
@@ -905,7 +887,7 @@
 
 
 	// module
-	exports.push([module.id, ".counter {\n  color: #FFF; }\n", ""]);
+	exports.push([module.id, ".counter a {\n  color: red; }\n", ""]);
 
 	// exports
 

@@ -85,7 +85,6 @@
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\counter\demo\app.js" />
     <Content Include="src\components\counter\demo\index.html" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
