@@ -85,6 +85,7 @@
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\counter\demo\app.js" />
     <Content Include="src\components\counter\demo\index.html" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
@@ -147,22 +148,26 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\core\%24q.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
+    <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
     <TypeScriptCompile Include="src\components\core\component-decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\core.module.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
+    <TypeScriptCompile Include="src\components\core\get-action-type.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
     <TypeScriptCompile Include="src\components\core\pluck-out.ts" />
     <TypeScriptCompile Include="src\components\core\pluck.ts" />
+    <TypeScriptCompile Include="src\components\core\provide-action.ts" />
     <TypeScriptCompile Include="src\components\core\provide.ts" />
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.action-creator.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.actions.spec.ts">
       <DependentUpon>counter.actions.ts</DependentUpon>
     </TypeScriptCompile>

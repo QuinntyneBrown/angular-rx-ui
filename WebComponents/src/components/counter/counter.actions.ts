@@ -1,17 +1,12 @@
-import { IDispatcher, BaseActionCreator, Service } from "../core";
+import { Action } from "../core";
 
-@Service({
-    serviceName: "counterActionCreator",
-    viewProviders: ["dispatcher", "guid", "invokeAsync"]
+@Action({
+    type: "counter.increment"
 })
-export class CounterActionCreator {
-    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync) { }  
-    increment = () => this.dispatcher.dispatch(new Increment());
-    decrement = () => this.dispatcher.dispatch(new Decrement());
-
-}
-
 export class Increment { }
 
+@Action({
+    type: "counter.decrement"
+})
 export class Decrement { }
 

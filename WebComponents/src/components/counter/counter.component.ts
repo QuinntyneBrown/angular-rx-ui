@@ -1,5 +1,5 @@
 import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
-import { CounterActionCreator } from "./counter.actions";
+import { CounterActionCreator } from "./counter.action-creator";
 
 @Component({
     template: require("./counter.component.html"),
@@ -17,5 +17,5 @@ export class CounterComponent {
 
     decrement = () => this.counterActionCreator.decrement();
 
-    count: number;
+    count: number = 0;
 }

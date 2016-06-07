@@ -1,8 +1,9 @@
 require("../core/core.module");
 
-import { provide } from "../core";
+import { provide, provideAction } from "../core";
 import { CounterComponent } from "./counter.component";
-import { CounterActionCreator } from "./counter.actions";
+import { CounterActionCreator } from "./counter.action-creator";
+import *  as actions from "./counter.actions";
 import *  as reducers from "./counter.reducers";
 
 var app = (<any>angular.module("app.counter", [
@@ -11,11 +12,10 @@ var app = (<any>angular.module("app.counter", [
 
 provide(app,CounterActionCreator);
 
-var qb = 1;
-
 app.component(CounterComponent);
 
-app.config(["reducersProvider", reducersProvider => {	
-    
+for (var action in actions) { provideAction(app, actions[action]); }
+
+app.config(["reducersProvider", reducersProvider => {	    
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);
