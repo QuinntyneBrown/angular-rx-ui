@@ -40,12 +40,13 @@ export const functionName = (fun) => {
 
 export class Store<T> extends Rx.BehaviorSubject<T> implements IStore {
     constructor(dispatcher: IDispatcher, initialState: T, private localStorageManager, private reducers: any[]) {
-        super(initialState);
-        this.state = initialState;        
+        super(initialState || {} as T);
+        this.state = initialState || {} as T;        
         dispatcher.subscribe(action => this.onDispatcherNext(action));
     }
     
     onDispatcherNext = (action) => {
+        this.state = this.state || {} as T;
         this.state = this.setLastTriggeredByActionId(this.state, action);
         for (var i = 0; i < this.reducers.length; i++) {
             this.state = this.reducers[i](this.state, action);

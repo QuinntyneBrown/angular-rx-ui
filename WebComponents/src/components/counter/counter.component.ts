@@ -1,13 +1,21 @@
 import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import { CounterActionCreator } from "./counter.actions";
 
 @Component({
     template: require("./counter.component.html"),
     styles: [require("./counter.component.scss")],
     selector: "counter",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: ["counterActionCreator"]
 })
 export class CounterComponent {    
-    constructor() {
+    constructor(private counterActionCreator: CounterActionCreator) { }
 
-    }
+    storeOnChange = store => this.count = store.count;
+
+    increment = () => this.counterActionCreator.increment();
+
+    decrement = () => this.counterActionCreator.decrement();
+
+    count: number;
 }

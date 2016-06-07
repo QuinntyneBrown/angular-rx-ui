@@ -185,10 +185,11 @@
 	    __extends(Store, _super);
 	    function Store(dispatcher, initialState, localStorageManager, reducers) {
 	        var _this = this;
-	        _super.call(this, initialState);
+	        _super.call(this, initialState || {});
 	        this.localStorageManager = localStorageManager;
 	        this.reducers = reducers;
 	        this.onDispatcherNext = function (action) {
+	            _this.state = _this.state || {};
 	            _this.state = _this.setLastTriggeredByActionId(_this.state, action);
 	            for (var i = 0; i < _this.reducers.length; i++) {
 	                _this.state = _this.reducers[i](_this.state, action);
@@ -204,7 +205,7 @@
 	        this.functionToString = function (fn) {
 	            return fn.toString();
 	        };
-	        this.state = initialState;
+	        this.state = initialState || {};
 	        dispatcher.subscribe(function (action) { return _this.onDispatcherNext(action); });
 	    }
 	    return Store;
@@ -486,7 +487,7 @@
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(10);
 	var counter_component_1 = __webpack_require__(18);
-	var counter_actions_1 = __webpack_require__(24);
+	var counter_actions_1 = __webpack_require__(19);
 	var reducers = __webpack_require__(25);
 	var app = angular.module("app.counter", [
 	    "app.core"
@@ -731,17 +732,24 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(10);
+	var counter_actions_1 = __webpack_require__(19);
 	var CounterComponent = (function () {
-	    function CounterComponent() {
+	    function CounterComponent(counterActionCreator) {
+	        var _this = this;
+	        this.counterActionCreator = counterActionCreator;
+	        this.storeOnChange = function (store) { return _this.count = store.count; };
+	        this.increment = function () { return _this.counterActionCreator.increment(); };
+	        this.decrement = function () { return _this.counterActionCreator.decrement(); };
 	    }
 	    CounterComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(19),
-	            styles: [__webpack_require__(20)],
+	            template: __webpack_require__(20),
+	            styles: [__webpack_require__(21)],
 	            selector: "counter",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            viewProviders: ["counterActionCreator"]
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [counter_actions_1.CounterActionCreator])
 	    ], CounterComponent);
 	    return CounterComponent;
 	}());
@@ -750,21 +758,69 @@
 
 /***/ },
 /* 19 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div>\r\n    <h1>Hello</h1>\r\n</div>"
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(10);
+	var CounterActionCreator = (function () {
+	    function CounterActionCreator(dispatcher, guid, invokeAsync) {
+	        var _this = this;
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	        this.increment = function () { return _this.dispatcher.dispatch(new Increment()); };
+	        this.decrement = function () { return _this.dispatcher.dispatch(new Decrement()); };
+	    }
+	    CounterActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "counterActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object])
+	    ], CounterActionCreator);
+	    return CounterActionCreator;
+	}());
+	exports.CounterActionCreator = CounterActionCreator;
+	var Increment = (function () {
+	    function Increment() {
+	    }
+	    return Increment;
+	}());
+	exports.Increment = Increment;
+	var Decrement = (function () {
+	    function Decrement() {
+	    }
+	    return Decrement;
+	}());
+	exports.Decrement = Decrement;
+
 
 /***/ },
 /* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n    <h1>{{ vm.count }}</h1>\r\n\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
+
+/***/ },
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(22);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(23)(content, {});
+	var update = __webpack_require__(24)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -781,10 +837,10 @@
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(22)();
+	exports = module.exports = __webpack_require__(23)();
 	// imports
 
 
@@ -795,7 +851,7 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	/*
@@ -851,7 +907,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1103,43 +1159,19 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	var actions = __webpack_require__(19);
+	exports.counterReducer = function (state, action) {
+	    state.count = state.count || 0;
+	    if (action instanceof actions.Increment)
+	        state.count = state.count + 1;
+	    if (action instanceof actions.Decrement)
+	        state.count = state.count - 1;
+	    return state;
 	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(10);
-	var CounterActionCreator = (function () {
-	    function CounterActionCreator(dispatcher, guid, invokeAsync) {
-	        this.dispatcher = dispatcher;
-	        this.guid = guid;
-	        this.invokeAsync = invokeAsync;
-	    }
-	    CounterActionCreator = __decorate([
-	        core_1.Service({
-	            serviceName: "counterActionCreator",
-	            viewProviders: ["dispatcher", "guid", "invokeAsync"]
-	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object])
-	    ], CounterActionCreator);
-	    return CounterActionCreator;
-	}());
-	exports.CounterActionCreator = CounterActionCreator;
-
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	"use strict";
 
 
 /***/ }
