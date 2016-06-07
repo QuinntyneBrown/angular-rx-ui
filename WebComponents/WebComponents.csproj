@@ -82,16 +82,16 @@
     <Content Include="lib\jquery.js" />
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
-    <Content Include="src\components\core\core.css" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <None Include="src\sass\_varibles.scss" />
+    <Content Include="src\components\counter\demo\index.html" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\sass\breakpoints.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -148,79 +148,33 @@
     <TypeScriptCompile Include="src\components\core\%24q.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
-    <TypeScriptCompile Include="src\components\core\animation-control.ts" />
-    <TypeScriptCompile Include="src\components\core\api-endpoint-provider.ts" />
-    <TypeScriptCompile Include="src\components\core\append-to-body-async.ts" />
-    <TypeScriptCompile Include="src\components\core\auth-interceptor.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
     <TypeScriptCompile Include="src\components\core\component-decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
-    <TypeScriptCompile Include="src\components\core\content-child.ts" />
-    <TypeScriptCompile Include="src\components\core\content-children.ts" />
     <TypeScriptCompile Include="src\components\core\core.module.ts" />
-    <TypeScriptCompile Include="src\components\core\create-store.ts" />
-    <TypeScriptCompile Include="src\components\core\debounce.ts" />
-    <TypeScriptCompile Include="src\components\core\directive.ts" />
-    <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
-    <TypeScriptCompile Include="src\components\core\form-encode.ts" />
-    <TypeScriptCompile Include="src\components\core\get-dom.ts" />
-    <TypeScriptCompile Include="src\components\core\get-from-url-sync.ts" />
-    <TypeScriptCompile Include="src\components\core\get-x.ts" />
-    <TypeScriptCompile Include="src\components\core\get-y.ts" />
-    <TypeScriptCompile Include="src\components\core\host-binding.ts" />
-    <TypeScriptCompile Include="src\components\core\host-listener.ts" />
-    <TypeScriptCompile Include="src\components\core\http.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
-    <TypeScriptCompile Include="src\components\core\inject.ts" />
-    <TypeScriptCompile Include="src\components\core\injectable.ts" />
-    <TypeScriptCompile Include="src\components\core\input.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
-    <TypeScriptCompile Include="src\components\core\is-present.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
-    <TypeScriptCompile Include="src\components\core\login-redirect-provider.ts" />
-    <TypeScriptCompile Include="src\components\core\output.ts" />
-    <TypeScriptCompile Include="src\components\core\pipe-transform.ts" />
-    <TypeScriptCompile Include="src\components\core\pipe.ts" />
     <TypeScriptCompile Include="src\components\core\pluck-out.ts" />
     <TypeScriptCompile Include="src\components\core\pluck.ts" />
-    <TypeScriptCompile Include="src\components\core\provide-route-promise.ts" />
     <TypeScriptCompile Include="src\components\core\provide.ts" />
-    <TypeScriptCompile Include="src\components\core\remove-element.ts" />
-    <TypeScriptCompile Include="src\components\core\renderer.ts" />
-    <TypeScriptCompile Include="src\components\core\route-resolver.ts" />
-    <TypeScriptCompile Include="src\components\core\route-when-extension.ts" />
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
-    <TypeScriptCompile Include="src\components\core\service.ts" />
-    <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
-    <TypeScriptCompile Include="src\components\core\static-response.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
-    <TypeScriptCompile Include="src\components\core\transform-y.ts" />
-    <TypeScriptCompile Include="src\components\core\translate-x-async.ts" />
-    <TypeScriptCompile Include="src\components\core\translate-x.ts" />
-    <TypeScriptCompile Include="src\components\core\tree-node.ts" />
-    <TypeScriptCompile Include="src\components\core\tree.ts" />
-    <TypeScriptCompile Include="src\components\core\view-child.ts" />
-    <TypeScriptCompile Include="src\components\core\view-children.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
-    <TypeScriptCompile Include="src\components\core\xhr-backend.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.actions.spec.ts">
-      <SubType>Code</SubType>
       <DependentUpon>counter.actions.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\counter\counter.actions.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.component.spec.ts">
-      <SubType>Code</SubType>
       <DependentUpon>counter.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\components\counter\counter.module.ts" />
-    <TypeScriptCompile Include="src\components\counter\counter.actions.ts" />
-    <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.component.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.module.ts" />
+    <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\components\counter\demo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

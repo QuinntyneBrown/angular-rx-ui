@@ -3,7 +3,6 @@
 require("./components/core/core.module");
 require("./components/counter/counter.module");
 
-
 var app = angular
     .module("components", [
         "app.core",

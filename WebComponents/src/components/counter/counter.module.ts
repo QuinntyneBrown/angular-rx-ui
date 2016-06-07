@@ -11,8 +11,11 @@ var app = (<any>angular.module("app.counter", [
 
 provide(app,CounterActionCreator);
 
+var qb = 1;
+
 app.component(CounterComponent);
 
 app.config(["reducersProvider", reducersProvider => {	
+    
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);

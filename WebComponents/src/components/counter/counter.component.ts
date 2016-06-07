@@ -6,6 +6,8 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "counter",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CounterComponent {
-    constructor() { }
+export class CounterComponent {    
+    constructor() {
+
+    }
 }
