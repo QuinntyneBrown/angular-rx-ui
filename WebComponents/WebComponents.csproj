@@ -86,6 +86,25 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\counter\demo\index.html" />
+    <Content Include="src\components\modal\demo\index.html" />
+    <Content Include="src\components\modal\modal-content.component.css">
+      <DependentUpon>modal-content.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\modal-content.component.html">
+      <DependentUpon>modal-content.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\modal-title.component.css">
+      <DependentUpon>modal-title.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\modal-title.component.html">
+      <DependentUpon>modal-title.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\modal.component.css">
+      <DependentUpon>modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\modal.component.html">
+      <DependentUpon>modal.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -145,14 +164,18 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
+    <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
     <TypeScriptCompile Include="src\components\core\%24q.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
+    <TypeScriptCompile Include="src\components\core\append-to-body-async.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
     <TypeScriptCompile Include="src\components\core\component-decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\core.module.ts" />
+    <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
     <TypeScriptCompile Include="src\components\core\get-action-type.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
@@ -162,8 +185,10 @@
     <TypeScriptCompile Include="src\components\core\pluck.ts" />
     <TypeScriptCompile Include="src\components\core\provide-action.ts" />
     <TypeScriptCompile Include="src\components\core\provide.ts" />
+    <TypeScriptCompile Include="src\components\core\remove-element.ts" />
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
+    <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.action-creator.ts" />
@@ -177,6 +202,14 @@
     <TypeScriptCompile Include="src\components\counter\counter.component.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.module.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal-content.component.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal-title.component.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.actions.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.component.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.module.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.reducers.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup />
