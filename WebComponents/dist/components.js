@@ -161,6 +161,7 @@
 	        this.setLastTriggeredByActionId = function (state, action) {
 	            state.lastTriggeredByActionId = action.id;
 	            state.lastTriggeredByAction = action;
+	            state.lastTriggeredByActionType = action.constructor.type;
 	            return state;
 	        };
 	        this.functionToString = function (fn) {

@@ -165,7 +165,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
-    <TypeScriptCompile Include="src\components\core\%24q.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
