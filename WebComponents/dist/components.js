@@ -47,6 +47,8 @@
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
 	__webpack_require__(19);
+	__webpack_require__(21);
+	__webpack_require__(31);
 	var app = angular
 	    .module("components", [
 	    "app.core",
@@ -714,23 +716,12 @@
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var counter_component_1 = __webpack_require__(20);
-	var counter_action_creator_1 = __webpack_require__(21);
-	var actions = __webpack_require__(22);
-	var reducers = __webpack_require__(28);
-	var app = angular.module("app.counter", [
+	var backdrop_service_1 = __webpack_require__(20);
+	var app = angular.module("app.backdrop", [
 	    "app.core"
 	]);
-	core_1.provide(app, counter_action_creator_1.CounterActionCreator);
-	app.component(counter_component_1.CounterComponent);
-	for (var action in actions) {
-	    core_1.provideAction(app, actions[action]);
-	}
-	app.config(["reducersProvider", function (reducersProvider) {
-	        for (var reducer in reducers) {
-	            reducersProvider.configure(reducers[reducer]);
-	        }
-	    }]);
+	core_1.provide(app, backdrop_service_1.Backdrop);
+	app.run(["backdrop", function (backdrop) { }]);
 
 
 /***/ },
@@ -748,33 +739,122 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var counter_action_creator_1 = __webpack_require__(21);
-	var CounterComponent = (function () {
-	    function CounterComponent(counterActionCreator) {
+	var Backdrop = (function () {
+	    function Backdrop($q, appendToBodyAsync, extendCssAsync, removeElement, setOpacityAsync) {
 	        var _this = this;
-	        this.counterActionCreator = counterActionCreator;
-	        this.storeOnChange = function (store) { return _this.count = store.count; };
-	        this.increment = function () { return _this.counterActionCreator.increment(); };
-	        this.decrement = function () { return _this.counterActionCreator.decrement(); };
-	        this.count = 0;
+	        this.$q = $q;
+	        this.appendToBodyAsync = appendToBodyAsync;
+	        this.extendCssAsync = extendCssAsync;
+	        this.removeElement = removeElement;
+	        this.setOpacityAsync = setOpacityAsync;
+	        this.createInstance = function (options) {
+	            var instance = new Backdrop(_this.$q, _this.appendToBodyAsync, _this.extendCssAsync, _this.removeElement, _this.setOpacityAsync);
+	            return instance;
+	        };
+	        this.openAsync = function () {
+	            var deferred = _this.$q.defer();
+	            _this.initializeAsync()
+	                .then(_this.appendBackDropToBodyAsync)
+	                .then(_this.showAsync)
+	                .then(function () {
+	                _this.isOpen = true;
+	                deferred.resolve();
+	            });
+	            return deferred.promise;
+	        };
+	        this.closeAsync = function () {
+	            var deferred = _this.$q.defer();
+	            _this.hideAsync().then(function (results) {
+	                _this.dispose();
+	                _this.isOpen = false;
+	                deferred.resolve();
+	            });
+	            return deferred.promise;
+	        };
+	        this.initializeAsync = function () {
+	            var deferred = _this.$q.defer();
+	            _this.augmentedJQuery = angular.element("<div></div>");
+	            _this.extendCssAsync({
+	                nativeHTMLElement: _this.nativeHTMLElement,
+	                cssObject: {
+	                    "-webkit-transition": "opacity 300ms ease-in-out",
+	                    "-o-transition": "opacity 300ms ease-in-out",
+	                    "transition": "opacity 300ms ease-in-out",
+	                    "opacity": "0",
+	                    "position": "fixed",
+	                    "top": "0",
+	                    "left": "0",
+	                    "height": "100%",
+	                    "width": "100%",
+	                    "background-color": "rgba(0, 0, 0, .25)",
+	                    "display": "block"
+	                }
+	            }).then(function () {
+	                deferred.resolve();
+	            });
+	            return deferred.promise;
+	        };
+	        this.showAsync = function () {
+	            return _this.setOpacityAsync({ nativeHtmlElement: _this.nativeHTMLElement, opacity: 25 });
+	        };
+	        this.appendBackDropToBodyAsync = function () {
+	            return _this.appendToBodyAsync({ nativeElement: _this.nativeHTMLElement });
+	        };
+	        this.hideAsync = function () {
+	            return _this.setOpacityAsync({ nativeHtmlElement: _this.nativeHTMLElement, opacity: 0 });
+	        };
+	        this.dispose = function () {
+	            _this.removeElement({ nativeHTMLElement: _this.nativeHTMLElement });
+	            _this.augmentedJQuery = null;
+	        };
+	        this.isOpen = false;
+	        this.isAnimating = false;
 	    }
-	    CounterComponent = __decorate([
-	        core_1.Component({
-	            template: __webpack_require__(23),
-	            styles: [__webpack_require__(24)],
-	            selector: "counter",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	            viewProviders: ["counterActionCreator"]
+	    Object.defineProperty(Backdrop.prototype, "nativeHTMLElement", {
+	        get: function () { return this.augmentedJQuery[0]; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Backdrop = __decorate([
+	        core_1.Service({
+	            serviceName: "backdrop",
+	            viewProviders: ["$q", "appendToBodyAsync", "extendCssAsync", "removeElement", "setOpacityAsync"]
 	        }), 
-	        __metadata('design:paramtypes', [counter_action_creator_1.CounterActionCreator])
-	    ], CounterComponent);
-	    return CounterComponent;
+	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object])
+	    ], Backdrop);
+	    return Backdrop;
 	}());
-	exports.CounterComponent = CounterComponent;
+	exports.Backdrop = Backdrop;
 
 
 /***/ },
 /* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(2);
+	var counter_component_1 = __webpack_require__(22);
+	var counter_action_creator_1 = __webpack_require__(23);
+	var actions = __webpack_require__(24);
+	var reducers = __webpack_require__(30);
+	var app = angular.module("app.counter", [
+	    "app.core"
+	]);
+	core_1.provide(app, counter_action_creator_1.CounterActionCreator);
+	app.component(counter_component_1.CounterComponent);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+
+
+/***/ },
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -788,7 +868,47 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var counter_actions_1 = __webpack_require__(22);
+	var counter_action_creator_1 = __webpack_require__(23);
+	var CounterComponent = (function () {
+	    function CounterComponent(counterActionCreator) {
+	        var _this = this;
+	        this.counterActionCreator = counterActionCreator;
+	        this.storeOnChange = function (store) { return _this.count = store.count; };
+	        this.increment = function () { return _this.counterActionCreator.increment(); };
+	        this.decrement = function () { return _this.counterActionCreator.decrement(); };
+	        this.count = 0;
+	    }
+	    CounterComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(25),
+	            styles: [__webpack_require__(26)],
+	            selector: "counter",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            viewProviders: ["counterActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [counter_action_creator_1.CounterActionCreator])
+	    ], CounterComponent);
+	    return CounterComponent;
+	}());
+	exports.CounterComponent = CounterComponent;
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var counter_actions_1 = __webpack_require__(24);
 	var CounterActionCreator = (function () {
 	    function CounterActionCreator(dispatcher, guid) {
 	        var _this = this;
@@ -810,7 +930,7 @@
 
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -851,22 +971,22 @@
 
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"counter\">\r\n    <h1>{{ vm.count }}</h1>\r\n\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(25);
+	var content = __webpack_require__(27);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(27)(content, {});
+	var update = __webpack_require__(29)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -883,10 +1003,10 @@
 	}
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(26)();
+	exports = module.exports = __webpack_require__(28)();
 	// imports
 
 
@@ -897,7 +1017,7 @@
 
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/*
@@ -953,7 +1073,7 @@
 
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1205,11 +1325,11 @@
 
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(22);
+	var actions = __webpack_require__(24);
 	exports.counterReducer = function (state, action) {
 	    state.count = state.count || 0;
 	    if (action instanceof actions.Increment)
@@ -1218,6 +1338,560 @@
 	        state.count = state.count - 1;
 	    return state;
 	};
+
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	__webpack_require__(19);
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(32);
+	var modal_service_1 = __webpack_require__(34);
+	var reducers = __webpack_require__(35);
+	var actions = __webpack_require__(33);
+	var modal_component_1 = __webpack_require__(36);
+	var modal_title_component_1 = __webpack_require__(40);
+	var modal_content_component_1 = __webpack_require__(44);
+	var app = angular.module("app.modal", [
+	    "app.core",
+	    "app.backdrop"
+	]);
+	core_1.provide(app, modal_action_creator_1.ModalActionCreator);
+	core_1.provide(app, modal_service_1.Modal);
+	app.component(modal_component_1.ModalComponent);
+	app.component(modal_title_component_1.ModalTitleComponent);
+	app.component(modal_content_component_1.ModalContentComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+	app.run(["modal", "modalActionCreator", function (modal, modalActionCreator) { }]);
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var modal_actions_1 = __webpack_require__(33);
+	var core_1 = __webpack_require__(2);
+	var ModalActionCreator = (function () {
+	    function ModalActionCreator($rootScope, dispatcher) {
+	        var _this = this;
+	        this.$rootScope = $rootScope;
+	        this.dispatcher = dispatcher;
+	        this.open = function (options) { return _this.dispatcher.dispatch(new modal_actions_1.OpenModalAction(options.html)); };
+	        this.close = function () { return _this.dispatcher.dispatch(new modal_actions_1.CloseModalAction()); };
+	        $rootScope.$on("$routeChangeSuccess", this.close);
+	    }
+	    ModalActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "modalActionCreator",
+	            viewProviders: ["$rootScope", "dispatcher"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], ModalActionCreator);
+	    return ModalActionCreator;
+	}());
+	exports.ModalActionCreator = ModalActionCreator;
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var OpenModalAction = (function () {
+	    function OpenModalAction(html) {
+	        this.html = html;
+	    }
+	    OpenModalAction = __decorate([
+	        core_1.Action({
+	            type: "modal.openModalAction"
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], OpenModalAction);
+	    return OpenModalAction;
+	}());
+	exports.OpenModalAction = OpenModalAction;
+	var CloseModalAction = (function () {
+	    function CloseModalAction() {
+	    }
+	    CloseModalAction = __decorate([
+	        core_1.Action({
+	            type: "modal.closeModalAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], CloseModalAction);
+	    return CloseModalAction;
+	}());
+	exports.CloseModalAction = CloseModalAction;
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var Modal = (function () {
+	    function Modal($compile, $q, $rootScope, appendToBodyAsync, backdrop, extendCssAsync, removeElement, setOpacityAsync, store) {
+	        var _this = this;
+	        this.$compile = $compile;
+	        this.$q = $q;
+	        this.$rootScope = $rootScope;
+	        this.appendToBodyAsync = appendToBodyAsync;
+	        this.backdrop = backdrop;
+	        this.extendCssAsync = extendCssAsync;
+	        this.removeElement = removeElement;
+	        this.setOpacityAsync = setOpacityAsync;
+	        this.store = store;
+	        this.storeOnChange = function (state) {
+	            _this.html = state.modalHtml;
+	            _this.isOpen = state.modalOpen;
+	        };
+	        this._isOpen = false;
+	        this.openAsync = function () {
+	            var openAsyncFn = function () {
+	                return _this.initializeAsync()
+	                    .then(_this.backdrop.openAsync)
+	                    .then(_this.appendModalToBodyAsync)
+	                    .then(_this.showAsync);
+	            };
+	            setTimeout(openAsyncFn, 100);
+	        };
+	        this.initializeAsync = function () {
+	            var deferred = _this.$q.defer();
+	            _this.compileAsync().then(function () {
+	                _this.nativeElement = _this.augmentedJQuery[0];
+	                _this.extendCssAsync({
+	                    nativeHTMLElement: _this.nativeElement,
+	                    cssObject: {
+	                        "opacity": "0",
+	                        "position": "fixed",
+	                        "margin-top": "-300px",
+	                        "top": "0",
+	                        "left": "0",
+	                        "background-color": "#FFF",
+	                        "display": "block",
+	                        "z-index": "999",
+	                        "width": "100%",
+	                        "padding": "30px",
+	                        "transition": "all 0.5s",
+	                        "-webkit-transition": "all 0.5s",
+	                        "-o-transition": "all 0.5s"
+	                    }
+	                }).then(function () {
+	                    deferred.resolve();
+	                });
+	            });
+	            return deferred.promise;
+	        };
+	        this.compileAsync = function () {
+	            var deferred = _this.$q.defer();
+	            _this.$scope = _this.$rootScope.$new();
+	            _this.augmentedJQuery = _this.$compile(angular.element(_this.html))(_this.$scope);
+	            setTimeout(function () {
+	                _this.$scope.$digest();
+	                deferred.resolve();
+	            }, 100);
+	            return deferred.promise;
+	        };
+	        this.appendModalToBodyAsync = function () { return _this.appendToBodyAsync({ nativeElement: _this.nativeElement }); };
+	        this.showAsync = function () { return _this.extendCssAsync({
+	            nativeHTMLElement: _this.nativeElement,
+	            cssObject: {
+	                "opacity": "100",
+	                "margin-top": "0px",
+	            }
+	        }); };
+	        this.closeAsync = function () {
+	            if (!_this.pinned) {
+	                var deferred = _this.$q.defer();
+	                try {
+	                    _this.extendCssAsync({
+	                        nativeHTMLElement: _this.nativeElement,
+	                        cssObject: {
+	                            "opacity": "0",
+	                        }
+	                    })
+	                        .then(_this.backdrop.closeAsync)
+	                        .then(function () {
+	                        _this.augmentedJQuery[0].parentNode.removeChild(_this.augmentedJQuery[0]);
+	                        deferred.resolve();
+	                    });
+	                }
+	                catch (error) {
+	                    deferred.resolve();
+	                }
+	                return deferred.promise;
+	            }
+	        };
+	        this.dispose = function () { };
+	        this.togglePin = function () {
+	            if (_this.pinned) {
+	                _this.pinned = false;
+	                _this.closeAsync();
+	            }
+	            else {
+	                _this.pinned = true;
+	            }
+	        };
+	        this.pinned = false;
+	        store.subscribe(this.storeOnChange);
+	    }
+	    Object.defineProperty(Modal.prototype, "html", {
+	        get: function () { return this._html; },
+	        set: function (value) { this._html = value; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(Modal.prototype, "isOpen", {
+	        get: function () { return this._isOpen; },
+	        set: function (value) {
+	            if (value && !this._isOpen)
+	                this.openAsync();
+	            if (!value && this._isOpen)
+	                this.closeAsync();
+	            this._isOpen = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Modal = __decorate([
+	        core_1.Service({
+	            serviceName: "modal",
+	            viewProviders: [
+	                "$compile",
+	                "$q",
+	                "$rootScope",
+	                "appendToBodyAsync",
+	                "backdrop",
+	                "extendCssAsync",
+	                "removeElement",
+	                "setOpacityAsync",
+	                "store"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, Object, Object, Object, core_1.Store])
+	    ], Modal);
+	    return Modal;
+	}());
+	exports.Modal = Modal;
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var actions = __webpack_require__(33);
+	exports.openModalReducer = function (state, action) {
+	    if (action instanceof actions.OpenModalAction) {
+	        state.modalHtml = action.html;
+	        state.modalOpen = true;
+	    }
+	    return state;
+	};
+	exports.closeModalReducer = function (state, action) {
+	    if (action instanceof actions.CloseModalAction) {
+	        state.modalHtml = '';
+	        state.modalOpen = false;
+	    }
+	    return state;
+	};
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(32);
+	var ModalComponent = (function () {
+	    function ModalComponent($attrs, $element, modalActionCreator) {
+	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.$element = $element;
+	        this.modalActionCreator = modalActionCreator;
+	        this.close = function () { return _this.modalActionCreator.close(); };
+	    }
+	    ModalComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(37),
+	            styles: [__webpack_require__(38)],
+	            selector: "modal",
+	            transclude: {
+	                'title': '?modalTitle',
+	                'content': '?modalContent'
+	            },
+	            viewProviders: [
+	                '$attrs',
+	                '$element',
+	                'modalActionCreator'
+	            ]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], ModalComponent);
+	    return ModalComponent;
+	}());
+	exports.ModalComponent = ModalComponent;
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"modal\">\r\n    <h1 data-ng-click=\"vm.close()\" class=\"modal-close\">X</h1>\r\n    <div ng-transclude=\"title\"></div>\r\n    <div ng-transclude=\"content\"></div>\r\n</div>"
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(39);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./modal.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./modal.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".modal-close {\r\n    cursor:pointer;\r\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(32);
+	var ModalTitleComponent = (function () {
+	    function ModalTitleComponent($attrs, modalActionCreator) {
+	        this.$attrs = $attrs;
+	        this.modalActionCreator = modalActionCreator;
+	        this.storeOnChange = function (state) { };
+	    }
+	    ModalTitleComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(41),
+	            styles: [__webpack_require__(42)],
+	            selector: "modal-title",
+	            transclude: true,
+	            viewProviders: ["$attrs", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, modal_action_creator_1.ModalActionCreator])
+	    ], ModalTitleComponent);
+	    return ModalTitleComponent;
+	}());
+	exports.ModalTitleComponent = ModalTitleComponent;
+
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"modal-title\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(43);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./modal-title.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./modal-title.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(32);
+	var ModalContentComponent = (function () {
+	    function ModalContentComponent($attrs, modalActionCreator) {
+	        this.$attrs = $attrs;
+	        this.modalActionCreator = modalActionCreator;
+	        this.storeOnChange = function (state) { };
+	    }
+	    ModalContentComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(45),
+	            styles: [__webpack_require__(46)],
+	            selector: "modal-content",
+	            transclude: true,
+	            viewProviders: ["$attrs", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, modal_action_creator_1.ModalActionCreator])
+	    ], ModalContentComponent);
+	    return ModalContentComponent;
+	}());
+	exports.ModalContentComponent = ModalContentComponent;
+
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"modal-content\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(47);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./modal-content.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./modal-content.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
 
 
 /***/ }
