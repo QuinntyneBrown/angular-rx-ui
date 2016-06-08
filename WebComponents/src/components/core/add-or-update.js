@@ -1,4 +1,5 @@
-var addOrUpdate = function (options) {
+"use strict";
+exports.addOrUpdate = function (options) {
     var exists = false;
     options.items = options.items || [];
     for (var i = 0; i < options.items.length; i++) {
@@ -11,5 +12,5 @@ var addOrUpdate = function (options) {
         options.items.push(options.item);
     }
 };
-angular.module("addOrUpdate", []).value("addOrUpdate", addOrUpdate);
+angular.module("addOrUpdate", []).value("addOrUpdate", exports.addOrUpdate);
 //# sourceMappingURL=add-or-update.js.map

@@ -46,7 +46,7 @@
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
-	__webpack_require__(10);
+	__webpack_require__(19);
 	var app = angular
 	    .module("components", [
 	    "app.core",
@@ -59,17 +59,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var component_decorators_1 = __webpack_require__(2);
-	window.core = {
-	    Component: component_decorators_1.Component
-	};
-	__webpack_require__(3);
+	var core = __webpack_require__(2);
+	window.core = core;
 	__webpack_require__(4);
-	__webpack_require__(5);
-	__webpack_require__(6);
-	__webpack_require__(7);
-	__webpack_require__(8);
-	__webpack_require__(9);
+	__webpack_require__(3);
+	__webpack_require__(10);
+	__webpack_require__(13);
+	__webpack_require__(16);
+	__webpack_require__(17);
+	__webpack_require__(18);
 	var coreApp = angular.module("app.core", [
 	    "ngSanitize",
 	    "localStorageManager",
@@ -83,95 +81,28 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	function Component(config) {
-	    if (config === void 0) { config = {}; }
-	    return function (cls) {
-	        config.component = cls;
-	        cls.config = config;
-	    };
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	exports.Component = Component;
-	function CanActivate(fnDefinition) {
-	    return function (cls) {
-	        cls.prototype.canActivate = function () {
-	            return fnDefinition;
-	        };
-	    };
-	}
-	exports.CanActivate = CanActivate;
+	__export(__webpack_require__(3));
+	__export(__webpack_require__(5));
+	__export(__webpack_require__(6));
+	__export(__webpack_require__(7));
+	__export(__webpack_require__(8));
+	__export(__webpack_require__(9));
+	__export(__webpack_require__(10));
+	__export(__webpack_require__(11));
+	__export(__webpack_require__(12));
+	__export(__webpack_require__(13));
+	__export(__webpack_require__(14));
+	__export(__webpack_require__(15));
 
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var LocalStorageManagerProvider = (function () {
-	    function LocalStorageManagerProvider() {
-	        var _this = this;
-	        this.id = "2fcfe918-dc2c-42db-9e88-ee62417651de";
-	        this._items = null;
-	        this.get = function (options) {
-	            var storageItem = null;
-	            for (var i = 0; i < _this.items.length; i++) {
-	                if (options.name === _this.items[i].name)
-	                    storageItem = _this.items[i].value;
-	            }
-	            return storageItem;
-	        };
-	        this.put = function (options) {
-	            var itemExists = false;
-	            _this.items.forEach(function (item) {
-	                if (options.name === item.name) {
-	                    itemExists = true;
-	                    item.value = options.value;
-	                }
-	            });
-	            if (!itemExists) {
-	                var items = _this.items;
-	                items.push({ name: options.name, value: options.value });
-	                _this.items = items;
-	                items = null;
-	            }
-	        };
-	        this.clear = function () {
-	            _this._items = [];
-	        };
-	        this.$get = function () { return _this; };
-	        try {
-	            window.onbeforeunload = function () { return localStorage.setItem(_this.id, JSON.stringify(_this.items)); };
-	        }
-	        catch (e) {
-	        }
-	    }
-	    Object.defineProperty(LocalStorageManagerProvider.prototype, "items", {
-	        get: function () {
-	            if (this._items === null) {
-	                var storageItems = localStorage.getItem(this.id);
-	                if (storageItems === "null") {
-	                    storageItems = null;
-	                }
-	                this._items = JSON.parse(storageItems || "[]");
-	            }
-	            return this._items;
-	        },
-	        set: function (value) {
-	            this._items = value;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    return LocalStorageManagerProvider;
-	}());
-	exports.LocalStorageManagerProvider = LocalStorageManagerProvider;
-	angular.module("localStorageManager", []).provider("localStorageManager", LocalStorageManagerProvider);
-
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -183,7 +114,7 @@
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(3));
+	__export(__webpack_require__(4));
 	var InitialStateProvider = (function () {
 	    function InitialStateProvider() {
 	        var _this = this;
@@ -269,10 +200,186 @@
 
 
 /***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var LocalStorageManagerProvider = (function () {
+	    function LocalStorageManagerProvider() {
+	        var _this = this;
+	        this.id = "2fcfe918-dc2c-42db-9e88-ee62417651de";
+	        this._items = null;
+	        this.get = function (options) {
+	            var storageItem = null;
+	            for (var i = 0; i < _this.items.length; i++) {
+	                if (options.name === _this.items[i].name)
+	                    storageItem = _this.items[i].value;
+	            }
+	            return storageItem;
+	        };
+	        this.put = function (options) {
+	            var itemExists = false;
+	            _this.items.forEach(function (item) {
+	                if (options.name === item.name) {
+	                    itemExists = true;
+	                    item.value = options.value;
+	                }
+	            });
+	            if (!itemExists) {
+	                var items = _this.items;
+	                items.push({ name: options.name, value: options.value });
+	                _this.items = items;
+	                items = null;
+	            }
+	        };
+	        this.clear = function () {
+	            _this._items = [];
+	        };
+	        this.$get = function () { return _this; };
+	        try {
+	            window.onbeforeunload = function () { return localStorage.setItem(_this.id, JSON.stringify(_this.items)); };
+	        }
+	        catch (e) {
+	        }
+	    }
+	    Object.defineProperty(LocalStorageManagerProvider.prototype, "items", {
+	        get: function () {
+	            if (this._items === null) {
+	                var storageItems = localStorage.getItem(this.id);
+	                if (storageItems === "null") {
+	                    storageItems = null;
+	                }
+	                this._items = JSON.parse(storageItems || "[]");
+	            }
+	            return this._items;
+	        },
+	        set: function (value) {
+	            this._items = value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return LocalStorageManagerProvider;
+	}());
+	exports.LocalStorageManagerProvider = LocalStorageManagerProvider;
+	angular.module("localStorageManager", []).provider("localStorageManager", LocalStorageManagerProvider);
+
+
+/***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	var addOrUpdate = function (options) {
+	"use strict";
+	function Action(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        cls.type = config.type;
+	    };
+	}
+	exports.Action = Action;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.pluckOut = function (options) {
+	    for (var i = 0; i < options.items.length; i++) {
+	        if (options.value == options.items[i][options.key || "id"]) {
+	            options.items.splice(i, 1);
+	        }
+	    }
+	    return options.items;
+	};
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Describes within the change detector which strategy will be used the next time change
+	 * detection is triggered.
+	 */
+	(function (ChangeDetectionStrategy) {
+	    /**
+	     * `CheckedOnce` means that after calling detectChanges the mode of the change detector
+	     * will become `Checked`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckOnce"] = 0] = "CheckOnce";
+	    /**
+	     * `Checked` means that the change detector should be skipped until its mode changes to
+	     * `CheckOnce`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Checked"] = 1] = "Checked";
+	    /**
+	     * `CheckAlways` means that after calling detectChanges the mode of the change detector
+	     * will remain `CheckAlways`.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckAlways"] = 2] = "CheckAlways";
+	    /**
+	     * `Detached` means that the change detector sub tree is not a part of the main tree and
+	     * should be skipped.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Detached"] = 3] = "Detached";
+	    /**
+	     * `OnPush` means that the change detector's mode will be set to `CheckOnce` during hydration.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 4] = "OnPush";
+	    /**
+	     * `Default` means that the change detector's mode will be set to `CheckAlways` during hydration.
+	     */
+	    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 5] = "Default";
+	})(exports.ChangeDetectionStrategy || (exports.ChangeDetectionStrategy = {}));
+	var ChangeDetectionStrategy = exports.ChangeDetectionStrategy;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Component(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        config.component = cls;
+	        cls.config = config;
+	    };
+	}
+	exports.Component = Component;
+	function CanActivate(fnDefinition) {
+	    return function (cls) {
+	        cls.prototype.canActivate = function () {
+	            return fnDefinition;
+	        };
+	    };
+	}
+	exports.CanActivate = CanActivate;
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Service(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        cls.serviceName = config.serviceName;
+	        cls.$inject = config.viewProviders;
+	    };
+	}
+	exports.Service = Service;
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.addOrUpdate = function (options) {
 	    var exists = false;
 	    options.items = options.items || [];
 	    for (var i = 0; i < options.items.length; i++) {
@@ -285,11 +392,103 @@
 	        options.items.push(options.item);
 	    }
 	};
-	angular.module("addOrUpdate", []).value("addOrUpdate", addOrUpdate);
+	angular.module("addOrUpdate", []).value("addOrUpdate", exports.addOrUpdate);
 
 
 /***/ },
-/* 6 */
+/* 11 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var BaseActionCreator = (function () {
+	    function BaseActionCreator($location, service, dispatcher, guid, addOrUpdateAction, allAction, removeAction, setCurrentAction) {
+	        var _this = this;
+	        this.$location = $location;
+	        this.service = service;
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.addOrUpdateAction = addOrUpdateAction;
+	        this.allAction = allAction;
+	        this.removeAction = removeAction;
+	        this.setCurrentAction = setCurrentAction;
+	        this.getById = function (options) {
+	            var newId = _this.guid();
+	            _this.service.getById({ id: options.id }).then(function (results) {
+	                var action = new _this.addOrUpdateAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.all = function () {
+	            var newId = _this.guid();
+	            _this.service.get().then(function (results) {
+	                var action = new _this.allAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.addOrUpdate = function (options) {
+	            var newId = _this.guid();
+	            _this.service.add({ data: options.data }).then(function (results) {
+	                var action = new _this.addOrUpdateAction(newId, results);
+	                _this.dispatcher.dispatch(action);
+	            });
+	            return newId;
+	        };
+	        this.remove = function (options) {
+	            var newId = _this.guid();
+	            _this.service.remove({
+	                id: options.entity.id
+	            }).then(function (results) {
+	                _this.dispatcher.dispatch(new _this.removeAction(newId, options.entity));
+	            });
+	            return newId;
+	        };
+	        this.edit = function (options) { return _this.dispatcher.dispatch(new _this.setCurrentAction(options.entity)); };
+	        this.create = function () { return _this.dispatcher.dispatch(new _this.setCurrentAction(null)); };
+	    }
+	    return BaseActionCreator;
+	}());
+	exports.BaseActionCreator = BaseActionCreator;
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Defines template and style encapsulation options available for Component's {@link View}.
+	 *
+	 * See {@link ViewMetadata#encapsulation}.
+	 */
+	(function (ViewEncapsulation) {
+	    /**
+	     * Emulate `Native` scoping of styles by adding an attribute containing surrogate id to the Host
+	     * Element and pre-processing the style rules provided via
+	     * {@link ViewMetadata#styles} or {@link ViewMetadata#stylesUrls}, and adding the new Host Element
+	     * attribute to all selectors.
+	     *
+	     * This is the default option.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
+	    /**
+	     * Use the native encapsulation mechanism of the renderer.
+	     *
+	     * For the DOM this means using [Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
+	     * creating a ShadowRoot for Component's Host Element.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["Native"] = 1] = "Native";
+	    /**
+	     * Don't provide any template or style encapsulation.
+	     */
+	    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
+	})(exports.ViewEncapsulation || (exports.ViewEncapsulation = {}));
+	var ViewEncapsulation = exports.ViewEncapsulation;
+
+
+/***/ },
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -339,7 +538,25 @@
 
 
 /***/ },
-/* 7 */
+/* 14 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.provide = function (app, service) { return app.service(service.serviceName, service.$inject.concat([service])); };
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.provideAction = function (app, value) {
+	    app.value(value.type, value);
+	};
+
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -364,7 +581,7 @@
 
 
 /***/ },
-/* 8 */
+/* 17 */
 /***/ function(module, exports) {
 
 	var originalAngularModule = angular.module;
@@ -481,7 +698,7 @@
 
 
 /***/ },
-/* 9 */
+/* 18 */
 /***/ function(module, exports) {
 
 	angular.module("safeDigest", []).value("safeDigest", function (scope) {
@@ -491,12 +708,12 @@
 
 
 /***/ },
-/* 10 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
-	var core_1 = __webpack_require__(11);
+	var core_1 = __webpack_require__(2);
 	var counter_component_1 = __webpack_require__(20);
 	var counter_action_creator_1 = __webpack_require__(21);
 	var actions = __webpack_require__(22);
@@ -517,224 +734,6 @@
 
 
 /***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(4));
-	__export(__webpack_require__(12));
-	__export(__webpack_require__(13));
-	__export(__webpack_require__(14));
-	__export(__webpack_require__(2));
-	__export(__webpack_require__(15));
-	exports.addOrUpdate = angular.injector(['addOrUpdate']).get("addOrUpdate");
-	__export(__webpack_require__(16));
-	__export(__webpack_require__(17));
-	__export(__webpack_require__(6));
-	__export(__webpack_require__(18));
-	__export(__webpack_require__(19));
-
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	"use strict";
-	function Action(config) {
-	    if (config === void 0) { config = {}; }
-	    return function (cls) {
-	        cls.type = config.type;
-	    };
-	}
-	exports.Action = Action;
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.pluckOut = function (options) {
-	    for (var i = 0; i < options.items.length; i++) {
-	        if (options.value == options.items[i][options.key || "id"]) {
-	            options.items.splice(i, 1);
-	        }
-	    }
-	    return options.items;
-	};
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/**
-	 * Describes within the change detector which strategy will be used the next time change
-	 * detection is triggered.
-	 */
-	(function (ChangeDetectionStrategy) {
-	    /**
-	     * `CheckedOnce` means that after calling detectChanges the mode of the change detector
-	     * will become `Checked`.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckOnce"] = 0] = "CheckOnce";
-	    /**
-	     * `Checked` means that the change detector should be skipped until its mode changes to
-	     * `CheckOnce`.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["Checked"] = 1] = "Checked";
-	    /**
-	     * `CheckAlways` means that after calling detectChanges the mode of the change detector
-	     * will remain `CheckAlways`.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["CheckAlways"] = 2] = "CheckAlways";
-	    /**
-	     * `Detached` means that the change detector sub tree is not a part of the main tree and
-	     * should be skipped.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["Detached"] = 3] = "Detached";
-	    /**
-	     * `OnPush` means that the change detector's mode will be set to `CheckOnce` during hydration.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 4] = "OnPush";
-	    /**
-	     * `Default` means that the change detector's mode will be set to `CheckAlways` during hydration.
-	     */
-	    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 5] = "Default";
-	})(exports.ChangeDetectionStrategy || (exports.ChangeDetectionStrategy = {}));
-	var ChangeDetectionStrategy = exports.ChangeDetectionStrategy;
-
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	"use strict";
-	function Service(config) {
-	    if (config === void 0) { config = {}; }
-	    return function (cls) {
-	        cls.serviceName = config.serviceName;
-	        cls.$inject = config.viewProviders;
-	    };
-	}
-	exports.Service = Service;
-
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var BaseActionCreator = (function () {
-	    function BaseActionCreator($location, service, dispatcher, guid, addOrUpdateAction, allAction, removeAction, setCurrentAction) {
-	        var _this = this;
-	        this.$location = $location;
-	        this.service = service;
-	        this.dispatcher = dispatcher;
-	        this.guid = guid;
-	        this.addOrUpdateAction = addOrUpdateAction;
-	        this.allAction = allAction;
-	        this.removeAction = removeAction;
-	        this.setCurrentAction = setCurrentAction;
-	        this.getById = function (options) {
-	            var newId = _this.guid();
-	            _this.service.getById({ id: options.id }).then(function (results) {
-	                var action = new _this.addOrUpdateAction(newId, results);
-	                _this.dispatcher.dispatch(action);
-	            });
-	            return newId;
-	        };
-	        this.all = function () {
-	            var newId = _this.guid();
-	            _this.service.get().then(function (results) {
-	                var action = new _this.allAction(newId, results);
-	                _this.dispatcher.dispatch(action);
-	            });
-	            return newId;
-	        };
-	        this.addOrUpdate = function (options) {
-	            var newId = _this.guid();
-	            _this.service.add({ data: options.data }).then(function (results) {
-	                var action = new _this.addOrUpdateAction(newId, results);
-	                _this.dispatcher.dispatch(action);
-	            });
-	            return newId;
-	        };
-	        this.remove = function (options) {
-	            var newId = _this.guid();
-	            _this.service.remove({
-	                id: options.entity.id
-	            }).then(function (results) {
-	                _this.dispatcher.dispatch(new _this.removeAction(newId, options.entity));
-	            });
-	            return newId;
-	        };
-	        this.edit = function (options) { return _this.dispatcher.dispatch(new _this.setCurrentAction(options.entity)); };
-	        this.create = function () { return _this.dispatcher.dispatch(new _this.setCurrentAction(null)); };
-	    }
-	    return BaseActionCreator;
-	}());
-	exports.BaseActionCreator = BaseActionCreator;
-
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	"use strict";
-	/**
-	 * Defines template and style encapsulation options available for Component's {@link View}.
-	 *
-	 * See {@link ViewMetadata#encapsulation}.
-	 */
-	(function (ViewEncapsulation) {
-	    /**
-	     * Emulate `Native` scoping of styles by adding an attribute containing surrogate id to the Host
-	     * Element and pre-processing the style rules provided via
-	     * {@link ViewMetadata#styles} or {@link ViewMetadata#stylesUrls}, and adding the new Host Element
-	     * attribute to all selectors.
-	     *
-	     * This is the default option.
-	     */
-	    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
-	    /**
-	     * Use the native encapsulation mechanism of the renderer.
-	     *
-	     * For the DOM this means using [Shadow DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
-	     * creating a ShadowRoot for Component's Host Element.
-	     */
-	    ViewEncapsulation[ViewEncapsulation["Native"] = 1] = "Native";
-	    /**
-	     * Don't provide any template or style encapsulation.
-	     */
-	    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
-	})(exports.ViewEncapsulation || (exports.ViewEncapsulation = {}));
-	var ViewEncapsulation = exports.ViewEncapsulation;
-
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.provide = function (app, service) { return app.service(service.serviceName, service.$inject.concat([service])); };
-
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.provideAction = function (app, value) {
-	    app.value(value.type, value);
-	};
-
-
-/***/ },
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -748,7 +747,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(11);
+	var core_1 = __webpack_require__(2);
 	var counter_action_creator_1 = __webpack_require__(21);
 	var CounterComponent = (function () {
 	    function CounterComponent(counterActionCreator) {
@@ -788,7 +787,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(11);
+	var core_1 = __webpack_require__(2);
 	var counter_actions_1 = __webpack_require__(22);
 	var CounterActionCreator = (function () {
 	    function CounterActionCreator(dispatcher, guid) {
@@ -824,7 +823,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(11);
+	var core_1 = __webpack_require__(2);
 	var Increment = (function () {
 	    function Increment() {
 	    }

@@ -1,8 +1,6 @@
-﻿import { Component } from "./component-decorators";
+﻿import * as core from "./index";
 
-(window as any).core = {
-    Component
-};
+(window as any).core = core;
 
 require("./local-storage-manager-provider");
 require("./store");

@@ -1,7 +1,17 @@
 ﻿declare module core {
 
+    export interface IPluckOptions {
+        items: Array<any>;
+        value: number;
+        key?: string;
+    }
+
+    export function addOrUpdate(options);
+
     export function Component(config: IComponentConfigurationOptions);
-    
+
+    export function pluck(options: IPluckOptions);
+
     export interface IComponentConfigurationOptions {
         componentName?: string,
         component?: any,
