@@ -36,3 +36,29 @@ describe("counter", function () {
         expect(counterComponent).toBeDefined();
     });
 });
+
+describe("tvShow", function () {
+    var tvShowComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.tvShow");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        tvShowComponent = $controller("tvShowComponent", { tvShowActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<tv-show></tv-show>")($rootScope);
+        expect(tvShowComponent).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(tvShowComponent).toBeDefined();
+    });
+});
