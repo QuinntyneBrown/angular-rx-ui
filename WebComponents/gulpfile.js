@@ -25,8 +25,11 @@ var libs = [
     paths.npm + 'angular-route/angular-route.js',
     paths.npm + 'angular-sanitize/angular-sanitize.js',
     paths.npm + 'jquery/dist/jquery.js',
-    paths.npm + 'rx/dist/rx.all.compat.js'
+    paths.npm + 'rx/dist/rx.all.compat.js',
+    paths.npm + 'slick-carousel/slick/slick.js'
 ];
+
+//node_modules/
 
 gulp.task("typedoc", function () {
     child_process.exec("typedoc --out ./docs/ ./wwwroot/ --module commonjs --jsx react --experimentalDecorators --ignoreCompilerErrors --exclude node_module");
@@ -76,6 +79,7 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
 gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
     return gulp.src([
         './lib/jquery.js',
+        './lib/slick.js',
         './lib/rx.all.compat.js',
         './lib/angular.js',
         './lib/angular-route.js',

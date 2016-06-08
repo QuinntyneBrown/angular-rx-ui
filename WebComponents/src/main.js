@@ -3,11 +3,12 @@ require("./components/core/core.module");
 require("./components/backdrop/backdrop.module");
 require("./components/counter/counter.module");
 require("./components/modal/modal.module");
-require("./components/tv-show/tv-show.module");
+require("./components/slick/slick.module");
 var app = angular
     .module("components", [
     "app.core",
     "app.counter",
-    "app.tvShow"
+    "app.modal",
+    "app.slick"
 ]);
 //# sourceMappingURL=main.js.map

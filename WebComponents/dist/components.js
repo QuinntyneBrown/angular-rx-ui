@@ -54,7 +54,8 @@
 	    .module("components", [
 	    "app.core",
 	    "app.counter",
-	    "app.tvShow"
+	    "app.modal",
+	    "app.slick"
 	]);
 
 
@@ -1904,15 +1905,15 @@
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var tv_show_component_1 = __webpack_require__(49);
-	var tv_show_action_creator_1 = __webpack_require__(53);
+	var slick_component_1 = __webpack_require__(49);
+	var slick_action_creator_1 = __webpack_require__(53);
 	var reducers = __webpack_require__(54);
 	var actions = __webpack_require__(55);
-	var app = angular.module("app.tvShow", [
+	var app = angular.module("app.slick", [
 	    "app.core"
 	]);
-	core_1.provide(app, tv_show_action_creator_1.TvShowActionCreator);
-	app.component(tv_show_component_1.TvShowComponent);
+	core_1.provide(app, slick_action_creator_1.SlickActionCreator);
+	app.component(slick_component_1.SlickComponent);
 	app.config(["reducersProvider", function (reducersProvider) {
 	        for (var reducer in reducers) {
 	            reducersProvider.configure(reducers[reducer]);
@@ -1938,28 +1939,36 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var TvShowComponent = (function () {
-	    function TvShowComponent() {
+	var SlickComponent = (function () {
+	    function SlickComponent($element) {
+	        var _this = this;
+	        this.$element = $element;
+	        this.ngOnInit = function () {
+	            _this.$element.slick({
+	                infinite: false
+	            });
+	        };
 	    }
-	    TvShowComponent = __decorate([
+	    SlickComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(50),
 	            styles: [__webpack_require__(51)],
-	            selector: "tv-show",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            selector: "slick",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            viewProviders: ["$element"]
 	        }), 
-	        __metadata('design:paramtypes', [])
-	    ], TvShowComponent);
-	    return TvShowComponent;
+	        __metadata('design:paramtypes', [Object])
+	    ], SlickComponent);
+	    return SlickComponent;
 	}());
-	exports.TvShowComponent = TvShowComponent;
+	exports.SlickComponent = SlickComponent;
 
 
 /***/ },
 /* 50 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tv-show\">\r\n    <h1>TV Show</h1>\r\n</div>\r\n"
+	module.exports = "<div>\r\n    <div><h3>1</h3></div>\r\n    <div><h3>2</h3></div>\r\n    <div><h3>3</h3></div>\r\n    <div><h3>4</h3></div>\r\n    <div><h3>5</h3></div>\r\n    <div><h3>6</h3></div>\r\n</div>"
 
 /***/ },
 /* 51 */
@@ -1977,8 +1986,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tv-show.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tv-show.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./slick.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./slick.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -2017,23 +2026,23 @@
 	};
 	var core_1 = __webpack_require__(2);
 	var modal_action_creator_1 = __webpack_require__(32);
-	var TvShowActionCreator = (function () {
-	    function TvShowActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	var SlickActionCreator = (function () {
+	    function SlickActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
 	        this.invokeAsync = invokeAsync;
 	        this.modalActionCreator = modalActionCreator;
 	    }
-	    TvShowActionCreator = __decorate([
+	    SlickActionCreator = __decorate([
 	        core_1.Service({
-	            serviceName: "tvShowActionCreator",
+	            serviceName: "slickActionCreator",
 	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
 	        }), 
 	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
-	    ], TvShowActionCreator);
-	    return TvShowActionCreator;
+	    ], SlickActionCreator);
+	    return SlickActionCreator;
 	}());
-	exports.TvShowActionCreator = TvShowActionCreator;
+	exports.SlickActionCreator = SlickActionCreator;
 
 
 /***/ },

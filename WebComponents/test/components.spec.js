@@ -37,8 +37,8 @@ describe("counter", function () {
     });
 });
 
-describe("tvShow", function () {
-    var tvShowComponent;
+describe("slick", function () {
+    var slickComponent;
     var $compile;
     var $rootScope;
     var MockActionCreator = (function () {
@@ -47,18 +47,18 @@ describe("tvShow", function () {
         return MockActionCreator;
     }());
     beforeEach(function () {
-        angular.mock.module("app.tvShow");
+        angular.mock.module("app.slick");
     });
     beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        tvShowComponent = $controller("tvShowComponent", { tvShowActionCreator: new MockActionCreator() });
+        slickComponent = $controller("slickComponent", { $element: {} });
     }));
     it("should compile", function () {
-        var element = $compile("<tv-show></tv-show>")($rootScope);
-        expect(tvShowComponent).toBeDefined();
+        var element = $compile("<slick></slick>")($rootScope);
+        expect(element).toBeDefined();
     });
     it("should be defined", function () {
-        expect(tvShowComponent).toBeDefined();
+        expect(slickComponent).toBeDefined();
     });
 });

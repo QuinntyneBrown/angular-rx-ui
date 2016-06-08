@@ -38,6 +38,7 @@
     "rimraf": "^2.5.2",
     "rx": "^4.1.0",
     "sass-loader": "^3.2.0",
+    "slick-carousel": "^1.6.0",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
