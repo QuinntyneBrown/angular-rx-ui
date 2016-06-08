@@ -1,4 +1,9 @@
-﻿
+﻿import { Component } from "./component-decorators";
+
+(window as any).core = {
+    Component
+};
+
 require("./local-storage-manager-provider");
 require("./store");
 

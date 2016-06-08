@@ -46,7 +46,7 @@
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
-	__webpack_require__(9);
+	__webpack_require__(10);
 	var app = angular
 	    .module("components", [
 	    "app.core",
@@ -58,13 +58,18 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(2);
+	"use strict";
+	var component_decorators_1 = __webpack_require__(2);
+	window.core = {
+	    Component: component_decorators_1.Component
+	};
 	__webpack_require__(3);
 	__webpack_require__(4);
 	__webpack_require__(5);
 	__webpack_require__(6);
 	__webpack_require__(7);
 	__webpack_require__(8);
+	__webpack_require__(9);
 	var coreApp = angular.module("app.core", [
 	    "ngSanitize",
 	    "localStorageManager",
@@ -78,6 +83,29 @@
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function Component(config) {
+	    if (config === void 0) { config = {}; }
+	    return function (cls) {
+	        config.component = cls;
+	        cls.config = config;
+	    };
+	}
+	exports.Component = Component;
+	function CanActivate(fnDefinition) {
+	    return function (cls) {
+	        cls.prototype.canActivate = function () {
+	            return fnDefinition;
+	        };
+	    };
+	}
+	exports.CanActivate = CanActivate;
+
+
+/***/ },
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -143,7 +171,7 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -155,7 +183,7 @@
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(2));
+	__export(__webpack_require__(3));
 	var InitialStateProvider = (function () {
 	    function InitialStateProvider() {
 	        var _this = this;
@@ -241,7 +269,7 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	var addOrUpdate = function (options) {
@@ -261,7 +289,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -311,7 +339,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -336,7 +364,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	var originalAngularModule = angular.module;
@@ -453,7 +481,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	angular.module("safeDigest", []).value("safeDigest", function (scope) {
@@ -463,12 +491,12 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
-	var core_1 = __webpack_require__(10);
+	var core_1 = __webpack_require__(11);
 	var counter_component_1 = __webpack_require__(20);
 	var counter_action_creator_1 = __webpack_require__(21);
 	var actions = __webpack_require__(22);
@@ -489,29 +517,29 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(3));
-	__export(__webpack_require__(11));
+	__export(__webpack_require__(4));
 	__export(__webpack_require__(12));
 	__export(__webpack_require__(13));
 	__export(__webpack_require__(14));
+	__export(__webpack_require__(2));
 	__export(__webpack_require__(15));
 	exports.addOrUpdate = angular.injector(['addOrUpdate']).get("addOrUpdate");
 	__export(__webpack_require__(16));
 	__export(__webpack_require__(17));
-	__export(__webpack_require__(5));
+	__export(__webpack_require__(6));
 	__export(__webpack_require__(18));
 	__export(__webpack_require__(19));
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -525,7 +553,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -540,7 +568,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -579,29 +607,6 @@
 	    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 5] = "Default";
 	})(exports.ChangeDetectionStrategy || (exports.ChangeDetectionStrategy = {}));
 	var ChangeDetectionStrategy = exports.ChangeDetectionStrategy;
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	"use strict";
-	function Component(config) {
-	    if (config === void 0) { config = {}; }
-	    return function (cls) {
-	        config.component = cls;
-	        cls.config = config;
-	    };
-	}
-	exports.Component = Component;
-	function CanActivate(fnDefinition) {
-	    return function (cls) {
-	        cls.prototype.canActivate = function () {
-	            return fnDefinition;
-	        };
-	    };
-	}
-	exports.CanActivate = CanActivate;
 
 
 /***/ },
@@ -743,7 +748,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(10);
+	var core_1 = __webpack_require__(11);
 	var counter_action_creator_1 = __webpack_require__(21);
 	var CounterComponent = (function () {
 	    function CounterComponent(counterActionCreator) {
@@ -783,7 +788,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(10);
+	var core_1 = __webpack_require__(11);
 	var counter_actions_1 = __webpack_require__(22);
 	var CounterActionCreator = (function () {
 	    function CounterActionCreator(dispatcher, guid) {
@@ -819,7 +824,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(10);
+	var core_1 = __webpack_require__(11);
 	var Increment = (function () {
 	    function Increment() {
 	    }

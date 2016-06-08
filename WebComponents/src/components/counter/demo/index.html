@@ -12,14 +12,12 @@
               height=device-height,
               target-densitydpi=device-dpi" />
 </head>
-<body data-ng-app="counterDemoApp" data-ng-controller="mainController as main">
+<body data-ng-app="counterDemoApp">
     <div>
         <a href="../../../../index.html">Back</a>
     </div>
     
-    <div>
-        <counter></counter>
-    </div>
+    <app></app>
     
     <script src="../../../../lib/rx.all.compat.js"></script>
     <script src="../../../../lib/jquery.js"></script>
@@ -27,13 +25,6 @@
     <script src="../../../../lib/angular-sanitize.js"></script>
     <script src="../../../../lib/angular-route.js"></script>  
     <script src="../../../../dist/components.js"></script>
-    <script>
-        var app = angular.module("counterDemoApp", [
-            "app.counter"
-        ]).controller("mainController", ["counterActionCreator", function (counterActionCreator) {
-            counterActionCreator.increment();
-        }]);
-    </script>
-    
+    <script src="app.js"></script>
 </body>
 </html>

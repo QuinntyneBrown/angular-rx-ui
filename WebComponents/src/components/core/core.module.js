@@ -1,3 +1,8 @@
+"use strict";
+var component_decorators_1 = require("./component-decorators");
+window.core = {
+    Component: component_decorators_1.Component
+};
 require("./local-storage-manager-provider");
 require("./store");
 require("./add-or-update");
