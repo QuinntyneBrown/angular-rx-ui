@@ -2,7 +2,6 @@ require("../core/core.module");
 
 import { provide, provideAction } from "../core";
 import { CarouselComponent } from "./carousel.component";
-import { CarouselContentComponent } from "./carousel-content.component";
 import { CarouselActionCreator } from "./carousel.action-creator";
 import *  as reducers from "./carousel.reducers";
 import *  as actions from "./carousel.actions";

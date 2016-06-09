@@ -83,12 +83,6 @@
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="lib\slick.js" />
     <Content Include="package.json" />
-    <Content Include="src\components\carousel\carousel-content.component.html">
-      <DependentUpon>carousel-content.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\carousel\carousel-content.component.scss">
-      <DependentUpon>carousel-content.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\carousel\carousel.component.html">
       <DependentUpon>carousel.component.ts</DependentUpon>
     </Content>
@@ -179,10 +173,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel-content.component.spec.ts">
-      <DependentUpon>carousel-content.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\carousel\carousel-content.component.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.action-creator.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.actions.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.component.spec.ts">

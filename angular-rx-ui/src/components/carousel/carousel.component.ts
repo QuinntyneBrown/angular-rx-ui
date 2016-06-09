@@ -145,7 +145,7 @@ export class CarouselComponent {
     content: HTMLElement;
     template: HTMLElement;
     clone: HTMLElement;
-    items: Array<any> = [{ title: "The Wedding Crashers" }, { title: "Training Day" }];
+    items: Array<any> = JSON.parse(this.$attrs["props"]);
     itemName: string = "movie";
 
     
