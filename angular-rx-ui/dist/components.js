@@ -933,7 +933,7 @@
 	        this.guid = guid;
 	        this.invokeAsync = invokeAsync;
 	        Rx.Observable
-	            .fromEvent(angular.element($window), 'resize')
+	            .fromEvent($window, 'resize')
 	            .map(function () { return window.innerWidth; })
 	            .debounce(100)
 	            .distinctUntilChanged()
@@ -978,9 +978,7 @@
 	"use strict";
 	var actions = __webpack_require__(25);
 	exports.breakpointsReducer = function (state, action) {
-	    //TODO: fix
 	    if (action instanceof actions.WindowResizeAction) {
-	        alert("works");
 	        if (action.currentWindowSize < 788)
 	            state.breakpointName = "x-small";
 	        if (action.currentWindowSize < 788)

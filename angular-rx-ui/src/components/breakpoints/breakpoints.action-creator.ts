@@ -9,7 +9,7 @@ export class BreakpointsActionCreator {
     constructor(private $window: angular.IWindowService, private dispatcher: IDispatcher, private guid, private invokeAsync) {        
 
         Rx.Observable
-            .fromEvent(angular.element($window), 'resize')
+            .fromEvent($window, 'resize')
             .map(() => window.innerWidth)
             .debounce(100)
             .distinctUntilChanged()

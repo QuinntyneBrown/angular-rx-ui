@@ -2,13 +2,8 @@ import * as actions from "./breakpoints.actions";
 import { addOrUpdate, pluckOut } from "../core";
 
 export const breakpointsReducer = (state, action) => {    
-
-    //TODO: fix
     
-    if (action instanceof actions.WindowResizeAction) {
-
-        alert("works");
-
+    if (action instanceof actions.WindowResizeAction) {        
         if ((action as actions.WindowResizeAction).currentWindowSize < 788)
             state.breakpointName = "x-small"    
 
