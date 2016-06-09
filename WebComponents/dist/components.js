@@ -46,16 +46,16 @@
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	__webpack_require__(1);
-	__webpack_require__(19);
 	__webpack_require__(21);
-	__webpack_require__(31);
-	__webpack_require__(48);
+	__webpack_require__(23);
+	__webpack_require__(33);
+	__webpack_require__(50);
 	var app = angular
 	    .module("components", [
+	    "app.carousel",
 	    "app.core",
 	    "app.counter",
-	    "app.modal",
-	    "app.slick"
+	    "app.modal"
 	]);
 
 
@@ -71,16 +71,20 @@
 	__webpack_require__(10);
 	__webpack_require__(13);
 	__webpack_require__(16);
-	__webpack_require__(17);
 	__webpack_require__(18);
+	__webpack_require__(19);
+	__webpack_require__(20);
+	__webpack_require__(17);
 	var coreApp = angular.module("app.core", [
 	    "ngSanitize",
 	    "localStorageManager",
 	    "store",
 	    "addOrUpdate",
+	    "getX",
 	    "invokeAsync",
 	    "fetch",
-	    "safeDigest"
+	    "safeDigest",
+	    "translateX"
 	]);
 
 
@@ -104,6 +108,8 @@
 	__export(__webpack_require__(13));
 	__export(__webpack_require__(14));
 	__export(__webpack_require__(15));
+	__export(__webpack_require__(16));
+	__export(__webpack_require__(17));
 
 
 /***/ },
@@ -566,6 +572,38 @@
 /***/ function(module, exports) {
 
 	"use strict";
+	exports.getX = function (element) {
+	    var transform = angular.element(element).css("transform");
+	    if (transform === "none")
+	        return 0;
+	    var result = JSON.parse(transform.replace(/^\w+\(/, "[").replace(/\)$/, "]"));
+	    return JSON.parse(transform.replace(/^\w+\(/, "[").replace(/\)$/, "]"))[4];
+	};
+	angular.module("getX", []).value("getX", exports.getX);
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.translateX = function (element, value) {
+	    angular.element(element).css({
+	        "-moz-transform": "translateX(" + value + "px)",
+	        "-webkit-transform": "translateX(" + value + "px)",
+	        "-ms-transform": "translateX(" + value + "px)",
+	        "-transform": "translateX(" + value + "px)"
+	    });
+	    return element;
+	};
+	angular.module("translateX", []).value("translateX", exports.translateX);
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	"use strict";
 	angular.module("invokeAsync", []).value("invokeAsync", function (options) {
 	    var store = angular.element(document.body).injector().get("store");
 	    var $q = angular.element(document.body).injector().get("$q");
@@ -587,7 +625,7 @@
 
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports) {
 
 	var originalAngularModule = angular.module;
@@ -704,7 +742,7 @@
 
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports) {
 
 	angular.module("safeDigest", []).value("safeDigest", function (scope) {
@@ -714,13 +752,13 @@
 
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var backdrop_service_1 = __webpack_require__(20);
+	var backdrop_service_1 = __webpack_require__(22);
 	var app = angular.module("app.backdrop", [
 	    "app.core"
 	]);
@@ -729,7 +767,7 @@
 
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -832,16 +870,16 @@
 
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var counter_component_1 = __webpack_require__(22);
-	var counter_action_creator_1 = __webpack_require__(23);
-	var actions = __webpack_require__(24);
-	var reducers = __webpack_require__(30);
+	var counter_component_1 = __webpack_require__(24);
+	var counter_action_creator_1 = __webpack_require__(25);
+	var actions = __webpack_require__(26);
+	var reducers = __webpack_require__(32);
 	var app = angular.module("app.counter", [
 	    "app.core"
 	]);
@@ -858,7 +896,7 @@
 
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -872,7 +910,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var counter_action_creator_1 = __webpack_require__(23);
+	var counter_action_creator_1 = __webpack_require__(25);
 	var CounterComponent = (function () {
 	    function CounterComponent(counterActionCreator) {
 	        var _this = this;
@@ -884,8 +922,8 @@
 	    }
 	    CounterComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(25),
-	            styles: [__webpack_require__(26)],
+	            template: __webpack_require__(27),
+	            styles: [__webpack_require__(28)],
 	            selector: "counter",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            viewProviders: ["counterActionCreator"]
@@ -898,7 +936,7 @@
 
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -912,7 +950,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var counter_actions_1 = __webpack_require__(24);
+	var counter_actions_1 = __webpack_require__(26);
 	var CounterActionCreator = (function () {
 	    function CounterActionCreator(dispatcher, guid) {
 	        var _this = this;
@@ -934,7 +972,7 @@
 
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -975,22 +1013,22 @@
 
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"counter\">\r\n    <h1>{{ vm.count }}</h1>\r\n\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(27);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1007,10 +1045,10 @@
 	}
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(28)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1021,7 +1059,7 @@
 
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/*
@@ -1077,7 +1115,7 @@
 
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1329,11 +1367,11 @@
 
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(24);
+	var actions = __webpack_require__(26);
 	exports.counterReducer = function (state, action) {
 	    state.count = state.count || 0;
 	    if (action instanceof actions.Increment)
@@ -1345,20 +1383,20 @@
 
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
-	__webpack_require__(19);
+	__webpack_require__(21);
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(32);
-	var modal_service_1 = __webpack_require__(34);
-	var reducers = __webpack_require__(35);
-	var actions = __webpack_require__(33);
-	var modal_component_1 = __webpack_require__(36);
-	var modal_title_component_1 = __webpack_require__(40);
-	var modal_content_component_1 = __webpack_require__(44);
+	var modal_action_creator_1 = __webpack_require__(34);
+	var modal_service_1 = __webpack_require__(36);
+	var reducers = __webpack_require__(37);
+	var actions = __webpack_require__(35);
+	var modal_component_1 = __webpack_require__(38);
+	var modal_title_component_1 = __webpack_require__(42);
+	var modal_content_component_1 = __webpack_require__(46);
 	var app = angular.module("app.modal", [
 	    "app.core",
 	    "app.backdrop"
@@ -1380,7 +1418,7 @@
 
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1393,7 +1431,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var modal_actions_1 = __webpack_require__(33);
+	var modal_actions_1 = __webpack_require__(35);
 	var core_1 = __webpack_require__(2);
 	var ModalActionCreator = (function () {
 	    function ModalActionCreator($rootScope, dispatcher) {
@@ -1417,7 +1455,7 @@
 
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1459,7 +1497,7 @@
 
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1619,11 +1657,11 @@
 
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(33);
+	var actions = __webpack_require__(35);
 	exports.openModalReducer = function (state, action) {
 	    if (action instanceof actions.OpenModalAction) {
 	        state.modalHtml = action.html;
@@ -1641,7 +1679,7 @@
 
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1655,7 +1693,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(32);
+	var modal_action_creator_1 = __webpack_require__(34);
 	var ModalComponent = (function () {
 	    function ModalComponent($attrs, $element, modalActionCreator) {
 	        var _this = this;
@@ -1666,8 +1704,8 @@
 	    }
 	    ModalComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(37),
-	            styles: [__webpack_require__(38)],
+	            template: __webpack_require__(39),
+	            styles: [__webpack_require__(40)],
 	            selector: "modal",
 	            transclude: {
 	                'title': '?modalTitle',
@@ -1687,22 +1725,22 @@
 
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal\">\r\n    <h1 data-ng-click=\"vm.close()\" class=\"modal-close\">X</h1>\r\n    <div ng-transclude=\"title\"></div>\r\n    <div ng-transclude=\"content\"></div>\r\n</div>"
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(39);
+	var content = __webpack_require__(41);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1719,10 +1757,10 @@
 	}
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(28)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1733,7 +1771,7 @@
 
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1747,7 +1785,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(32);
+	var modal_action_creator_1 = __webpack_require__(34);
 	var ModalTitleComponent = (function () {
 	    function ModalTitleComponent($attrs, modalActionCreator) {
 	        this.$attrs = $attrs;
@@ -1756,8 +1794,8 @@
 	    }
 	    ModalTitleComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(41),
-	            styles: [__webpack_require__(42)],
+	            template: __webpack_require__(43),
+	            styles: [__webpack_require__(44)],
 	            selector: "modal-title",
 	            transclude: true,
 	            viewProviders: ["$attrs", "modalActionCreator"]
@@ -1770,22 +1808,22 @@
 
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-title\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(45);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1802,10 +1840,10 @@
 	}
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(28)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1816,7 +1854,7 @@
 
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1830,7 +1868,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(32);
+	var modal_action_creator_1 = __webpack_require__(34);
 	var ModalContentComponent = (function () {
 	    function ModalContentComponent($attrs, modalActionCreator) {
 	        this.$attrs = $attrs;
@@ -1839,8 +1877,8 @@
 	    }
 	    ModalContentComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(45),
-	            styles: [__webpack_require__(46)],
+	            template: __webpack_require__(47),
+	            styles: [__webpack_require__(48)],
 	            selector: "modal-content",
 	            transclude: true,
 	            viewProviders: ["$attrs", "modalActionCreator"]
@@ -1853,22 +1891,22 @@
 
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-content\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(47);
+	var content = __webpack_require__(49);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1885,10 +1923,10 @@
 	}
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(28)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1899,21 +1937,21 @@
 
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var slick_component_1 = __webpack_require__(49);
-	var slick_action_creator_1 = __webpack_require__(53);
-	var reducers = __webpack_require__(54);
-	var actions = __webpack_require__(55);
-	var app = angular.module("app.slick", [
+	var carousel_component_1 = __webpack_require__(51);
+	var carousel_action_creator_1 = __webpack_require__(56);
+	var reducers = __webpack_require__(57);
+	var actions = __webpack_require__(52);
+	var app = angular.module("app.carousel", [
 	    "app.core"
 	]);
-	core_1.provide(app, slick_action_creator_1.SlickActionCreator);
-	app.component(slick_component_1.SlickComponent);
+	core_1.provide(app, carousel_action_creator_1.CarouselActionCreator);
+	app.component(carousel_component_1.CarouselComponent);
 	app.config(["reducersProvider", function (reducersProvider) {
 	        for (var reducer in reducers) {
 	            reducersProvider.configure(reducers[reducer]);
@@ -1925,7 +1963,7 @@
 
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1939,55 +1977,153 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var SlickComponent = (function () {
-	    function SlickComponent($element) {
+	var carousel_actions_1 = __webpack_require__(52);
+	var CarouselComponent = (function () {
+	    function CarouselComponent($attrs, $compile, $element, $injector, $scope, $transclude, getX, translateX) {
 	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.$compile = $compile;
 	        this.$element = $element;
+	        this.$injector = $injector;
+	        this.$scope = $scope;
+	        this.$transclude = $transclude;
+	        this.getX = getX;
+	        this.translateX = translateX;
 	        this.ngOnInit = function () {
-	            _this.$element.slick({
-	                infinite: false
-	            });
+	            _this.initialRender();
 	        };
+	        this.storeOnChange = function (state) {
+	            if (state.lastTriggeredByAction instanceof carousel_actions_1.CarouselNextAction) {
+	            }
+	            if (state.lastTriggeredByAction instanceof carousel_actions_1.CarouselPreviousAction) {
+	            }
+	        };
+	        this.render = function () {
+	        };
+	        this.reRender = function () {
+	        };
+	        this.initialRender = function () {
+	            var el = _this.$element.find(".carousel-inner")[0];
+	            var fragment = document.createDocumentFragment();
+	            var nodes = [];
+	            for (var i = 0; i < _this.items.length; i++) {
+	                var childScope = _this.$scope.$new(true);
+	                childScope[_this.itemName] = _this.items[i];
+	                childScope.$$index = i;
+	                var itemContent = _this.$compile(angular.element(_this.getHtml(_this.clone[0], true)))(childScope);
+	                fragment.appendChild(itemContent[0]);
+	            }
+	            _this.$element.find(".carousel-inner")[0].appendChild(fragment);
+	        };
+	        this.getHtml = function (who, deep) {
+	            if (!who || !who.tagName)
+	                return '';
+	            var txt, ax, el = document.createElement("div");
+	            el.appendChild(who.cloneNode(false));
+	            txt = el.innerHTML;
+	            if (deep) {
+	                ax = txt.indexOf('>') + 1;
+	                txt = txt.substring(0, ax) + who.innerHTML + txt.substring(ax);
+	            }
+	            el = null;
+	            return txt;
+	        };
+	        this.renderNext = function () {
+	        };
+	        this.renderPrevious = function () {
+	        };
+	        this.items = [{ title: "The Wedding Crashers" }, { title: "Training Day" }];
+	        this.itemName = "movie";
 	    }
-	    SlickComponent = __decorate([
+	    CarouselComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(50),
-	            styles: [__webpack_require__(51)],
-	            selector: "slick",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	            viewProviders: ["$element"]
+	            template: __webpack_require__(53),
+	            styles: [__webpack_require__(54)],
+	            selector: "carousel",
+	            transclude: true,
+	            viewProviders: [
+	                "$attrs",
+	                "$compile",
+	                "$element",
+	                "$injector",
+	                "$scope",
+	                "$transclude",
+	                "getX",
+	                "translateX"
+	            ]
 	        }), 
-	        __metadata('design:paramtypes', [Object])
-	    ], SlickComponent);
-	    return SlickComponent;
+	        __metadata('design:paramtypes', [Object, Function, Object, Object, Object, Function, Object, Object])
+	    ], CarouselComponent);
+	    return CarouselComponent;
 	}());
-	exports.SlickComponent = SlickComponent;
+	exports.CarouselComponent = CarouselComponent;
 
 
 /***/ },
-/* 50 */
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var CarouselNextAction = (function () {
+	    function CarouselNextAction() {
+	    }
+	    CarouselNextAction = __decorate([
+	        core_1.Action({
+	            type: "carousel.nextAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], CarouselNextAction);
+	    return CarouselNextAction;
+	}());
+	exports.CarouselNextAction = CarouselNextAction;
+	var CarouselPreviousAction = (function () {
+	    function CarouselPreviousAction() {
+	    }
+	    CarouselPreviousAction = __decorate([
+	        core_1.Action({
+	            type: "carousel.previousAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], CarouselPreviousAction);
+	    return CarouselPreviousAction;
+	}());
+	exports.CarouselPreviousAction = CarouselPreviousAction;
+
+
+/***/ },
+/* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\r\n    <div><h3>1</h3></div>\r\n    <div><h3>2</h3></div>\r\n    <div><h3>3</h3></div>\r\n    <div><h3>4</h3></div>\r\n    <div><h3>5</h3></div>\r\n    <div><h3>6</h3></div>\r\n</div>"
+	module.exports = "<div class=\"carousel\">\r\n    <div class=\"carousel-previous\"  data-ng-click=\"vm.previous()\"></div>\r\n    <div class=\"carousel-next\" data-ng-click=\"vm.next()\"></div>\r\n    <div class=\"carousel-inner\">\r\n\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 51 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(52);
+	var content = __webpack_require__(55);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./slick.component.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./slick.component.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./carousel.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./carousel.component.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1997,10 +2133,10 @@
 	}
 
 /***/ },
-/* 52 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(28)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -2011,7 +2147,7 @@
 
 
 /***/ },
-/* 53 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2025,44 +2161,32 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(32);
-	var SlickActionCreator = (function () {
-	    function SlickActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	var carousel_actions_1 = __webpack_require__(52);
+	var CarouselActionCreator = (function () {
+	    function CarouselActionCreator(dispatcher, guid) {
+	        var _this = this;
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
-	        this.invokeAsync = invokeAsync;
-	        this.modalActionCreator = modalActionCreator;
+	        this.next = function () { return _this.dispatcher.dispatch(new carousel_actions_1.CarouselNextAction()); };
+	        this.previous = function () { return _this.dispatcher.dispatch(new carousel_actions_1.CarouselPreviousAction()); };
 	    }
-	    SlickActionCreator = __decorate([
+	    CarouselActionCreator = __decorate([
 	        core_1.Service({
-	            serviceName: "slickActionCreator",
-	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	            serviceName: "carouselActionCreator",
+	            viewProviders: ["dispatcher", "guid"]
 	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
-	    ], SlickActionCreator);
-	    return SlickActionCreator;
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], CarouselActionCreator);
+	    return CarouselActionCreator;
 	}());
-	exports.SlickActionCreator = SlickActionCreator;
+	exports.CarouselActionCreator = CarouselActionCreator;
 
 
 /***/ },
-/* 54 */
+/* 57 */
 /***/ function(module, exports) {
 
 	"use strict";
-
-
-/***/ },
-/* 55 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var Default = (function () {
-	    function Default() {
-	    }
-	    return Default;
-	}());
-	exports.Default = Default;
 
 
 /***/ }

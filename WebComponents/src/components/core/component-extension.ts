@@ -83,7 +83,7 @@ angular.module = function () {
                         var $injector = angular.element(document.body.childNodes[0]).injector();
                         var store = $injector.get("store");
                         var safeDigest = $injector.get("safeDigest");
-
+                        
                         if (scope.vm && scope.vm.storeOnChange) {
                             var subscription = store.subscribe(state => {
                                 scope.vm.storeOnChange(state);
@@ -95,6 +95,19 @@ angular.module = function () {
                     }
                 },
                 post: function (scope: any, element, attributes, controller) {
+
+                    var getHtml: any = (who: HTMLElement, deep: boolean) => {
+                        if (!who || !who.tagName) return '';
+                        var txt: any, ax: any, el: any = document.createElement("div");
+                        el.appendChild(who.cloneNode(false));
+                        txt = el.innerHTML;
+                        if (deep) {
+                            ax = txt.indexOf('>') + 1;
+                            txt = txt.substring(0, ax) + who.innerHTML + txt.substring(ax);
+                        }
+                        el = null;
+                        return txt;
+                    }
 
                     if (options.require) {
                         var componentName = options.require.replace("^", "");
@@ -111,7 +124,7 @@ angular.module = function () {
                             for (var i = 0; i < clone.length; i++) {
                                 documentFragment.append(clone[i]);
                             }
-                            scope.vm.clone = documentFragment;
+                            scope.vm.clone = getHtml(documentFragment[0], true);
                         });
 
                     if (scope.vm && scope.vm.ngOnInit)

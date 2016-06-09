@@ -83,6 +83,19 @@
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="lib\slick.js" />
     <Content Include="package.json" />
+    <Content Include="src\components\carousel\carousel-content.component.html">
+      <DependentUpon>carousel-content.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\carousel\carousel-content.component.scss">
+      <DependentUpon>carousel-content.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\carousel\carousel.component.html">
+      <DependentUpon>carousel.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\carousel\carousel.component.scss">
+      <DependentUpon>carousel.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\carousel\demo\index.html" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
@@ -104,13 +117,6 @@
     </Content>
     <Content Include="src\components\modal\modal.component.html">
       <DependentUpon>modal.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\slick\demo\index.html" />
-    <Content Include="src\components\slick\slick.component.html">
-      <DependentUpon>slick.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\slick\slick.component.scss">
-      <DependentUpon>slick.component.ts</DependentUpon>
     </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
@@ -173,6 +179,18 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel-content.component.spec.ts">
+      <DependentUpon>carousel-content.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\carousel\carousel-content.component.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel.actions.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel.component.spec.ts">
+      <DependentUpon>carousel.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\carousel\carousel.component.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel.module.ts" />
+    <TypeScriptCompile Include="src\components\carousel\carousel.reducers.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
@@ -183,6 +201,7 @@
     <TypeScriptCompile Include="src\components\core\core.module.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
     <TypeScriptCompile Include="src\components\core\get-action-type.ts" />
+    <TypeScriptCompile Include="src\components\core\get-x.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
@@ -193,6 +212,7 @@
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
+    <TypeScriptCompile Include="src\components\core\translate-x.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.action-creator.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.actions.spec.ts">
@@ -214,17 +234,7 @@
     <TypeScriptCompile Include="src\components\modal\modal.module.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.reducers.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.service.ts" />
-    <TypeScriptCompile Include="src\components\slick\demo\app.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.component.spec.ts">
-      <DependentUpon>slick.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.model.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.module.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.actions.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.reducers.ts" />
-    <TypeScriptCompile Include="src\components\slick\slick.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

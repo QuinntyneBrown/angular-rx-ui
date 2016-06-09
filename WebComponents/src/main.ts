@@ -5,14 +5,14 @@ require("./components/core/core.module");
 require("./components/backdrop/backdrop.module");
 require("./components/counter/counter.module");
 require("./components/modal/modal.module");
-require("./components/slick/slick.module");
+require("./components/carousel/carousel.module");
 
 var app = angular
     .module("components", [
+        "app.carousel",
         "app.core",
         "app.counter",
-        "app.modal",
-        "app.slick"
+        "app.modal"        
     ]);
 
 
