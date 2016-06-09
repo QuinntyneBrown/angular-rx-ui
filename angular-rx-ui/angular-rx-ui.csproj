@@ -199,6 +199,7 @@
     <TypeScriptCompile Include="src\components\core\get-x.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
+    <TypeScriptCompile Include="src\components\core\is-between.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
     <TypeScriptCompile Include="src\components\core\pluck-out.ts" />
     <TypeScriptCompile Include="src\components\core\pluck.ts" />

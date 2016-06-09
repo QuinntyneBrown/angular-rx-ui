@@ -13,4 +13,5 @@ export * from "./fetch";
 export * from "./provide";
 export * from "./provide-action";
 export * from "./get-x";
+export * from "./is-between";
 export * from "./translate-x";

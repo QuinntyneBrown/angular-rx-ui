@@ -10,11 +10,12 @@ export class BreakpointsActionCreator {
 
         Rx.Observable
             .fromEvent($window, 'resize')
-            .map(() => window.innerWidth)
+            .map(() => $window.innerWidth)
             .debounce(100)
             .distinctUntilChanged()
             .subscribe(windowSize =>
-                this.dispatcher.dispatch(new WindowResizeAction(windowSize)));        
+                this.dispatcher.dispatch(new WindowResizeAction(windowSize)));    
+            
     }    
     
 }
