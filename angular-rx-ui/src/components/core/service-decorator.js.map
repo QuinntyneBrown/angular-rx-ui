@@ -1,0 +1,1 @@
+{"version":3,"file":"service-decorator.js","sourceRoot":"","sources":["service-decorator.ts"],"names":[],"mappings":";AAAC,iBAAwB,MAAyC;IAAzC,sBAAyC,GAAzC,WAAyC;IAC9D,MAAM,CAAC,UAAU,GAAG;QAChB,GAAG,CAAC,WAAW,GAAG,MAAM,CAAC,WAAW,CAAC;QACrC,GAAG,CAAC,OAAO,GAAG,MAAM,CAAC,aAAa,CAAC;IACvC,CAAC,CAAC;AACN,CAAC;AALgB,eAAO,UAKvB,CAAA"}

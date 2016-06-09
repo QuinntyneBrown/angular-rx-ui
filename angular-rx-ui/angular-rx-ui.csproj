@@ -118,6 +118,7 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="src\sass\breakpoints.scss" />
+    <Content Include="leora.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,6 +174,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
+    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.actions.ts" />
+    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.module.ts" />
+    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.reducers.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.action-creator.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.actions.ts" />
     <TypeScriptCompile Include="src\components\carousel\carousel.component.spec.ts">
