@@ -3,12 +3,14 @@
 require("./components/core/core.module");
 
 require("./components/backdrop/backdrop.module");
+require("./components/breakpoints/breakpoints.module");
 require("./components/counter/counter.module");
 require("./components/modal/modal.module");
 require("./components/carousel/carousel.module");
 
 var app = angular
     .module("components", [
+        "app.breakpoints",
         "app.carousel",
         "app.core",
         "app.counter",

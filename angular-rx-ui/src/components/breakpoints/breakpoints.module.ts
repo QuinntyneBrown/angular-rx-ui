@@ -12,7 +12,7 @@ var app = (<any>angular.module("app.breakpoints", [
 provide(app,BreakpointsActionCreator);
 
 app.config(["reducersProvider", reducersProvider => {	
-    for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
+    for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }    
 }]);
 
 for (var action in actions) { provideAction(app, actions[action]); }

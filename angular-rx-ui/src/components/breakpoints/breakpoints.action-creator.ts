@@ -8,22 +8,15 @@ import { WindowResizeAction } from "./breakpoints.actions";
 export class BreakpointsActionCreator {
     constructor(private $window: angular.IWindowService, private dispatcher: IDispatcher, private guid, private invokeAsync) {        
 
-        Rx.Observable.fromEvent(angular.element($window), 'resize')
-            .map(function () {
-                return window.innerWidth;
-            })
+        Rx.Observable
+            .fromEvent(angular.element($window), 'resize')
+            .map(() => window.innerWidth)
             .debounce(100)
             .distinctUntilChanged()
-            .flatMapLatest(this.windowResize);        
+            .subscribe(windowSize =>
+                this.dispatcher.dispatch(new WindowResizeAction(windowSize)));        
     }    
-
-    windowResize = (windowInnerWidth): any => {        
-        if (this._windowInnerWidth != windowInnerWidth)
-            this.dispatcher.dispatch(new WindowResizeAction(0, windowInnerWidth));        
-        this._windowInnerWidth = windowInnerWidth;
-    }
     
-    _windowInnerWidth;
 }
 
 

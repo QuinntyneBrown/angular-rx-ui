@@ -1,4 +1,5 @@
 require("../core/core.module");
+require("../breakpoints/breakpoints.module");
 
 import { provide, provideAction } from "../core";
 import { CarouselComponent } from "./carousel.component";
@@ -7,6 +8,7 @@ import *  as reducers from "./carousel.reducers";
 import *  as actions from "./carousel.actions";
 
 var app = (<any>angular.module("app.carousel", [
+    "app.breakpoints",
     "app.core"    
 ]));
 
