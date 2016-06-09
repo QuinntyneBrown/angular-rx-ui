@@ -1,5 +1,5 @@
 import { Component } from "../core";
-import {  CarouselPreviousAction, CarouselNextAction  } from "./carousel.actions";
+import { CarouselPreviousAction, CarouselNextAction  } from "./carousel.actions";
 
 @Component({
     template: require("./carousel.component.html"),
@@ -40,7 +40,6 @@ export class CarouselComponent {
         if (state.lastTriggeredByAction instanceof CarouselPreviousAction) {
 
         }
-
     }
 
     render = () => {
@@ -52,9 +51,8 @@ export class CarouselComponent {
     }
 
     initialRender = () => {
-        var el = this.$element.find(".carousel-inner")[0];
-        var fragment = document.createDocumentFragment();
-        var nodes = [];
+        let fragment = document.createDocumentFragment();
+        let nodes = [];
         for (var i = 0; i < this.items.length; i++) {
             var childScope = this.$scope.$new(true);
             childScope[this.itemName] = this.items[i];
