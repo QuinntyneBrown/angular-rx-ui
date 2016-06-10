@@ -7,6 +7,7 @@ require("./components/breakpoints/breakpoints.module");
 require("./components/counter/counter.module");
 require("./components/modal/modal.module");
 require("./components/carousel/carousel.module");
+require("./components/nav-menu/nav-menu.module");
 
 var app = angular
     .module("components", [
@@ -14,7 +15,8 @@ var app = angular
         "app.carousel",
         "app.core",
         "app.counter",
-        "app.modal"        
+        "app.modal",
+        "app.navMenu"        
     ]);
 
 

@@ -1,4 +1,5 @@
-﻿export * from "./store";
+﻿
+export * from "./store";
 export * from "./action-decorator";
 export * from "./pluck-out";
 export * from "./invoke-async";
@@ -15,3 +16,4 @@ export * from "./provide-action";
 export * from "./get-x";
 export * from "./is-between";
 export * from "./translate-x";
+export var Observable = Rx.Observable;

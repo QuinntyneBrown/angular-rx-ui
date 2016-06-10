@@ -1,4 +1,4 @@
-import { IDispatcher, BaseActionCreator, Service } from "../core";
+import { IDispatcher, BaseActionCreator, Service, Observable } from "../core";
 import { WindowResizeAction } from "./breakpoints.actions";
 
 @Service({
@@ -7,18 +7,12 @@ import { WindowResizeAction } from "./breakpoints.actions";
 })
 export class BreakpointsActionCreator {
     constructor(private $window: angular.IWindowService, private dispatcher: IDispatcher, private guid, private invokeAsync) {        
-
-        Rx.Observable
+        Observable
             .fromEvent($window, 'resize')
             .map(() => $window.innerWidth)
             .debounce(100)
             .distinctUntilChanged()
-            .subscribe(windowSize =>
-                this.dispatcher.dispatch(new WindowResizeAction(windowSize)));    
-            
-    }    
-    
+            .subscribe(innderWidth =>
+                this.dispatcher.dispatch(new WindowResizeAction(innderWidth)));               
+    }        
 }
-
-
-

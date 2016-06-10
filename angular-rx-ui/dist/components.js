@@ -51,13 +51,15 @@
 	__webpack_require__(28);
 	__webpack_require__(38);
 	__webpack_require__(55);
+	__webpack_require__(63);
 	var app = angular
 	    .module("components", [
 	    "app.breakpoints",
 	    "app.carousel",
 	    "app.core",
 	    "app.counter",
-	    "app.modal"
+	    "app.modal",
+	    "app.navMenu"
 	]);
 
 
@@ -113,6 +115,7 @@
 	__export(__webpack_require__(16));
 	__export(__webpack_require__(17));
 	__export(__webpack_require__(18));
+	exports.Observable = Rx.Observable;
 
 
 /***/ },
@@ -944,13 +947,13 @@
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
 	        this.invokeAsync = invokeAsync;
-	        Rx.Observable
+	        core_1.Observable
 	            .fromEvent($window, 'resize')
 	            .map(function () { return $window.innerWidth; })
 	            .debounce(100)
 	            .distinctUntilChanged()
-	            .subscribe(function (windowSize) {
-	            return _this.dispatcher.dispatch(new breakpoints_actions_1.WindowResizeAction(windowSize));
+	            .subscribe(function (innderWidth) {
+	            return _this.dispatcher.dispatch(new breakpoints_actions_1.WindowResizeAction(innderWidth));
 	        });
 	    }
 	    BreakpointsActionCreator = __decorate([
@@ -2383,6 +2386,165 @@
 /***/ function(module, exports) {
 
 	"use strict";
+
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(2);
+	var nav_menu_component_1 = __webpack_require__(64);
+	var nav_menu_action_creator_1 = __webpack_require__(68);
+	var reducers = __webpack_require__(69);
+	var actions = __webpack_require__(70);
+	var app = angular.module("app.navMenu", [
+	    "app.core"
+	]);
+	core_1.provide(app, nav_menu_action_creator_1.NavMenuActionCreator);
+	app.component(nav_menu_component_1.NavMenuComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var NavMenuComponent = (function () {
+	    function NavMenuComponent() {
+	    }
+	    NavMenuComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(65),
+	            styles: [__webpack_require__(66)],
+	            selector: "nav-menu",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], NavMenuComponent);
+	    return NavMenuComponent;
+	}());
+	exports.NavMenuComponent = NavMenuComponent;
+
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"nav-menu\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(67);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./nav-menu.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./nav-menu.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var modal_action_creator_1 = __webpack_require__(39);
+	var NavMenuActionCreator = (function () {
+	    function NavMenuActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	    }
+	    NavMenuActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "navMenuActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], NavMenuActionCreator);
+	    return NavMenuActionCreator;
+	}());
+	exports.NavMenuActionCreator = NavMenuActionCreator;
+
+
+/***/ },
+/* 69 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 70 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Default = (function () {
+	    function Default() {
+	    }
+	    return Default;
+	}());
+	exports.Default = Default;
 
 
 /***/ }

@@ -112,6 +112,12 @@
     <Content Include="src\components\modal\modal.component.html">
       <DependentUpon>modal.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\nav-menu\nav-menu.component.html">
+      <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\nav-menu\nav-menu.component.scss">
+      <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -230,7 +236,15 @@
     <TypeScriptCompile Include="src\components\modal\modal.module.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.reducers.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.service.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.spec.ts">
+      <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.module.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.actions.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.reducers.ts" />
+    <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
