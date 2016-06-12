@@ -1,5 +1,6 @@
- .slide { 
-   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); } 
+.slide { 
+   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); 
+} 
 
  .notransition .slide { 
   transition: none !important; } 
@@ -10,27 +11,45 @@
    overflow-y: hidden; 
  } 
 
- .rotator .view-port .previous-arrow img 
- .rotator .view-port .next-arrow img { 
+ .rotator .view-port .container { 
+   width: 99999px; 
+ } 
+
+ .rotator .view-port .previous-arrow img:hover 
+ .rotator .view-port .next-arrow img:hover { 
+   opacity: .9; 
+   transform: scale(1.51.5); 
+ } 
+
+ .rotator .view-port .slide { 
+   position: relative; 
+   float: left; 
+   margin: 0 auto; 
+ } 
+
+
+.rotator .view-port .next-arrow, 
+.rotator .view-port .previous-arrow {
+    display: inline;
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index: 25;
+    width: 100px;
+    height: 100%; 
+}
+
+.rotator .view-port .next-arrow {        
+    left: calc(100% - 80px);
+}
+
+.rotator .view-port .next-arrow img,
+.rotator .view-port .previous-arrow img { 
    position: absolute; 
    top: calc(50% - 40px); 
    cursor: pointer; 
    left: 0; 
    z-index: 999; 
    opacity: .3; 
-   transition: all .250s; } 
-
- .rotator .view-port .next-arrow img { 
-   left: calc(100% - 80px); } 
-
- .rotator .view-port .container { 
-   width: 99999px; } 
-
- .rotator .view-port .previous-arrow img:hover 
- .rotator .view-port .next-arrow img:hover { 
-   opacity: .9; transform: scale(1.51.5); } 
-
- .rotator .view-port .slide { 
-   position: relative; 
-   float: left; 
-   margin: 0 auto; } 
+   transition: all .250s; 
+ } 

@@ -3309,7 +3309,7 @@
 /* 91 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='rotator'>    \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n</div>"
+	module.exports = "<div class='rotator'>    \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img class=\"previous-arrow-img\" data-ng-src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img class=\"next-arrow-img\" data-ng-src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n\r\n</div>"
 
 /***/ },
 /* 92 */
@@ -3346,7 +3346,7 @@
 
 
 	// module
-	exports.push([module.id, " .slide { \r\n   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); } \r\n\r\n .notransition .slide { \r\n  transition: none !important; } \r\n\r\n .rotator .view-port { height:100%; \r\n   position: relative; \r\n   overflow-x: hidden; \r\n   overflow-y: hidden; \r\n } \r\n\r\n .rotator .view-port .previous-arrow img \r\n .rotator .view-port .next-arrow img { \r\n   position: absolute; \r\n   top: calc(50% - 40px); \r\n   cursor: pointer; \r\n   left: 0; \r\n   z-index: 999; \r\n   opacity: .3; \r\n   transition: all .250s; } \r\n\r\n .rotator .view-port .next-arrow img { \r\n   left: calc(100% - 80px); } \r\n\r\n .rotator .view-port .container { \r\n   width: 99999px; } \r\n\r\n .rotator .view-port .previous-arrow img:hover \r\n .rotator .view-port .next-arrow img:hover { \r\n   opacity: .9; transform: scale(1.51.5); } \r\n\r\n .rotator .view-port .slide { \r\n   position: relative; \r\n   float: left; \r\n   margin: 0 auto; } ", ""]);
+	exports.push([module.id, ".slide { \r\n   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); \r\n} \r\n\r\n .notransition .slide { \r\n  transition: none !important; } \r\n\r\n .rotator .view-port { height:100%; \r\n   position: relative; \r\n   overflow-x: hidden; \r\n   overflow-y: hidden; \r\n } \r\n\r\n .rotator .view-port .container { \r\n   width: 99999px; \r\n } \r\n\r\n .rotator .view-port .previous-arrow img:hover \r\n .rotator .view-port .next-arrow img:hover { \r\n   opacity: .9; \r\n   transform: scale(1.51.5); \r\n } \r\n\r\n .rotator .view-port .slide { \r\n   position: relative; \r\n   float: left; \r\n   margin: 0 auto; \r\n } \r\n\r\n\r\n.rotator .view-port .next-arrow, \r\n.rotator .view-port .previous-arrow {\r\n    display: inline;\r\n    position: absolute;\r\n    top: 0;\r\n    left:0;\r\n    z-index: 25;\r\n    width: 100px;\r\n    height: 100%; \r\n}\r\n\r\n.rotator .view-port .next-arrow {        \r\n    left: calc(100% - 80px);\r\n}\r\n\r\n.rotator .view-port .next-arrow img,\r\n.rotator .view-port .previous-arrow img { \r\n   position: absolute; \r\n   top: calc(50% - 40px); \r\n   cursor: pointer; \r\n   left: 0; \r\n   z-index: 999; \r\n   opacity: .3; \r\n   transition: all .250s; \r\n } ", ""]);
 
 	// exports
 

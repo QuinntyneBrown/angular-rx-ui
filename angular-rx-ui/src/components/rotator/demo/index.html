@@ -21,12 +21,12 @@
         <rotator id="featured"
                 items="vm.photos"
                 rotator-for-name="photo"
-                next-button-image-url="'/rotator_button_next.png'"
-                previous-button-image-url="'/rotator_button_prev.png'"
+                next-button-image-url="'rotator_button_next.png'"
+                previous-button-image-url="'rotator_button_prev.png'"
                 width="'500'"
                 height="'500'">
-            <div>
-                <img src="{{ photo.url }}" />
+            <div class="slide">
+                <img data-ng-src="{{ photo.url }}" />
             </div>
         </rotator>
     </div>

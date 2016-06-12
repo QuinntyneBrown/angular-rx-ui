@@ -48,8 +48,9 @@ export class RotatorComponent {
         private translateX: Function,
         private translateXAsync: Function) { }
 
-    private ngOnInit = () => {
+    nextButtonImageUrl: any;
 
+    private ngOnInit = () => {
         this.$element.find(".view-port").css("width", this.width);
 
         let fragment = document.createDocumentFragment();
