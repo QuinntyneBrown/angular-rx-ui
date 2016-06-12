@@ -242,7 +242,7 @@ export class RotatorComponent {
         if (this.$attrs["contentUrl"]) {
             this._template = this.getFromUrlSync({ url: this.$attrs["contentUrl"] });
         } else {
-            this._template = this.clone.find("content")[0].innerHTML;
+            this._template = this.clone;
         }
         return this._template;
     }

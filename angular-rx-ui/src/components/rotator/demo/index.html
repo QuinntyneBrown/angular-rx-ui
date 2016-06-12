@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Rotator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="user-scalable=no,
+              initial-scale=1,
+              maximum-scale=1,
+              minimum-scale=1,
+              width=device-width,
+              height=device-height,
+              target-densitydpi=device-dpi" />
+</head>
+<body data-ng-app="app" data-ng-controller="mainController as vm">
+    <div>
+        <a href="../../../../index.html">Back</a>
+    </div>
+
+    <div style="width:1024px; height: 500px; margin: 0 auto;">
+        <rotator id="featured"
+                items="vm.photos"
+                rotator-for-name="photo"
+                next-button-image-url="'/rotator_button_next.png'"
+                previous-button-image-url="'/rotator_button_prev.png'"
+                width="'500'"
+                height="'500'">
+            <div>
+                <img src="{{ photo.url }}" />
+            </div>
+        </rotator>
+    </div>
+
+    <script src="../../../../lib/rx.all.compat.js"></script>
+    <script src="../../../../lib/jquery.js"></script>
+    <script src="../../../../lib/angular.js"></script>
+    <script src="../../../../lib/angular-sanitize.js"></script>
+    <script src="../../../../lib/angular-route.js"></script>
+    <script src="../../../../dist/components.js"></script>
+    <script type="text/javascript">
+
+        var app = angular.module("app", [
+            "components"
+        ]).controller("mainController", [function () {
+            var self = this;
+
+            self.photos = [
+                { "url": "shoe-1.jpg" },
+                { "url": "shoe-2.jpg" },
+                { "url": "shoe-3.jpg" }
+            ];
+
+            return self;
+
+        }]);
+    </script>
+</body>
+</html>

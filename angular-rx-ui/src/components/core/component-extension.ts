@@ -121,8 +121,8 @@ angular.module = function () {
                             if (template[0].nodeType === 1)
                                 var documentFragment = angular.element("<div></div>");
 
-                            for (var i = 0; i < clone.length; i++) {
-                                documentFragment.append(clone[i]);
+                            for (var i = 0; i < (<HTMLElement>clone[0].children[0]).children.length; i++) {
+                                documentFragment.append((<HTMLElement>clone[0].children[0]).children[i]);
                             }
                             scope.vm.clone = getHtml(documentFragment[0], true);
                         });
