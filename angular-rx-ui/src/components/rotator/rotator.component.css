@@ -1,0 +1,36 @@
+ .slide { 
+   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); } 
+
+ .notransition .slide { 
+  transition: none !important; } 
+
+ .rotator .view-port { height:100%; 
+   position: relative; 
+   overflow-x: hidden; 
+   overflow-y: hidden; 
+ } 
+
+ .rotator .view-port .previous-arrow img 
+ .rotator .view-port .next-arrow img { 
+   position: absolute; 
+   top: calc(50% - 40px); 
+   cursor: pointer; 
+   left: 0; 
+   z-index: 999; 
+   opacity: .3; 
+   transition: all .250s; } 
+
+ .rotator .view-port .next-arrow img { 
+   left: calc(100% - 80px); } 
+
+ .rotator .view-port .container { 
+   width: 99999px; } 
+
+ .rotator .view-port .previous-arrow img:hover 
+ .rotator .view-port .next-arrow img:hover { 
+   opacity: .9; transform: scale(1.51.5); } 
+
+ .rotator .view-port .slide { 
+   position: relative; 
+   float: left; 
+   margin: 0 auto; } 

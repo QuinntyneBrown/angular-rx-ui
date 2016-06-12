@@ -1,4 +1,5 @@
-﻿@core.Component({
+﻿
+@core.Component({
     selector: "app",
     template: "<div><counter></counter></div>"
 })

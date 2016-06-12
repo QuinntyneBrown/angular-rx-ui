@@ -94,6 +94,18 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\counter\demo\index.html" />
+    <Content Include="src\components\flip-card\flip-card-back.component.html">
+      <DependentUpon>flip-card-back.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\flip-card\flip-card-front.component.html">
+      <DependentUpon>flip-card-front.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\flip-card\flip-card.component.css">
+      <DependentUpon>flip-card.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\flip-card\flip-card.component.html">
+      <DependentUpon>flip-card.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\modal\modal-content.component.css">
       <DependentUpon>modal-content.component.ts</DependentUpon>
     </Content>
@@ -117,6 +129,12 @@
     </Content>
     <Content Include="src\components\nav-menu\nav-menu.component.scss">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\rotator\rotator.component.css">
+      <DependentUpon>rotator.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\rotator\rotator.component.html">
+      <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
@@ -228,6 +246,12 @@
     <TypeScriptCompile Include="src\components\counter\counter.module.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
     <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card.component.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card.module.ts" />
+    <TypeScriptCompile Include="src\components\flip-card\flip-card.reducers.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-content.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-title.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.action-creator.ts" />
@@ -239,6 +263,11 @@
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.spec.ts">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\rotator\rotator.actions.ts" />
+    <TypeScriptCompile Include="src\components\rotator\rotator.component.ts" />
+    <TypeScriptCompile Include="src\components\rotator\rotator.module.ts" />
+    <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
+    <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.module.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.actions.ts" />

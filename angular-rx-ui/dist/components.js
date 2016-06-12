@@ -50,16 +50,20 @@
 	__webpack_require__(24);
 	__webpack_require__(28);
 	__webpack_require__(38);
-	__webpack_require__(55);
-	__webpack_require__(63);
+	__webpack_require__(49);
+	__webpack_require__(66);
+	__webpack_require__(74);
+	__webpack_require__(82);
 	var app = angular
 	    .module("components", [
 	    "app.breakpoints",
 	    "app.carousel",
 	    "app.core",
 	    "app.counter",
+	    "app.flipCard",
 	    "app.modal",
-	    "app.navMenu"
+	    "app.navMenu",
+	    "app.rotator"
 	]);
 
 
@@ -90,6 +94,7 @@
 	    "safeDigest",
 	    "translateX"
 	]);
+	angular.extend(window, core);
 
 
 /***/ },
@@ -116,6 +121,7 @@
 	__export(__webpack_require__(17));
 	__export(__webpack_require__(18));
 	exports.Observable = Rx.Observable;
+	angular.extend(window, Rx);
 
 
 /***/ },
@@ -1528,16 +1534,291 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	__webpack_require__(2);
+	var core_1 = __webpack_require__(2);
+	var flip_card_component_1 = __webpack_require__(39);
+	var flip_card_back_component_1 = __webpack_require__(43);
+	var flip_card_front_component_1 = __webpack_require__(45);
+	var flip_card_action_creator_1 = __webpack_require__(47);
+	var reducers = __webpack_require__(48);
+	var app = angular.module("app.flipCard", [
+	    "app.core"
+	]);
+	core_1.provide(app, flip_card_action_creator_1.FlipCardActionCreator);
+	app.component(flip_card_component_1.FlipCardComponent);
+	app.component(flip_card_front_component_1.FlipCardFrontComponent);
+	app.component(flip_card_back_component_1.FlipCardBackComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var FlipCardComponent = (function () {
+	    function FlipCardComponent($attrs, $element) {
+	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.$element = $element;
+	        this.ngOnInit = function () {
+	            _this.$element[0].style.height = _this.height;
+	            _this.$element[0].style.width = _this.width;
+	            _this.$element[0].addEventListener("ontouchstart", function () {
+	                _this.$element[0].classList.toggle('hover');
+	            });
+	        };
+	        this.ngOnChildInit = function (options) {
+	            var nativeElement = options.component.$element[0];
+	            nativeElement.style.height = _this.height;
+	            nativeElement.style.width = _this.width;
+	            _this.viewChildren.push(nativeElement);
+	            options.component.added = _this.added;
+	            options.component.toggleAdded = _this.toggleAdded;
+	            _this.components.push(options.component);
+	            if (_this.viewChildren.length == 2) {
+	                _this.viewChildren[0].style.backgroundColor = "#ECECEC";
+	                _this.viewChildren[1].style.backgroundColor = "#B32E31";
+	            }
+	        };
+	        this.toggleAdded = function (options) {
+	            _this.added = !_this.added;
+	            _this.components[1].added = _this.added;
+	        };
+	        this.added = false;
+	        this.viewChildren = [];
+	        this.components = [];
+	    }
+	    Object.defineProperty(FlipCardComponent.prototype, "height", {
+	        get: function () { return this.$attrs.height || "480px"; },
+	        set: function (value) { },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(FlipCardComponent.prototype, "width", {
+	        get: function () { return this.$attrs.width || "320px"; },
+	        set: function (value) { },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    FlipCardComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(40),
+	            styleUrls: [__webpack_require__(41)],
+	            transclude: {
+	                'front': '?flipCardFront',
+	                'back': '?flipCardBack'
+	            },
+	            selector: "flip-card",
+	            viewProviders: ["$attrs", "$element"],
+	            inputs: ['height?', 'width?', 'toggleAdded?', 'added?']
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], FlipCardComponent);
+	    return FlipCardComponent;
+	}());
+	exports.FlipCardComponent = FlipCardComponent;
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"flip-container\">\r\n    <div class=\"flipper\">\r\n        <div ng-transclude=\"front\"></div>\r\n        <div ng-transclude=\"back\"></div>\r\n    </div>\r\n</div>"
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(42);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./flip-card.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./flip-card.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/* entire container, keeps perspective */\r\n.flip-container {\r\n\tperspective: 1000;\r\n}\r\n\r\n/* flip the pane when hovered */\r\n.flip-container:hover .flipper, .flip-container.hover .flipper {\r\n\ttransform: rotateY(180deg);\r\n}\r\n\r\n/* flip speed goes here */\r\n.flip-container .flipper {\r\n\ttransition: 0.6s;\r\n\ttransform-style: preserve-3d;\r\n    \r\n\r\n\tposition: relative;\r\n}\r\n\r\n/* hide back of pane during swap */\r\n.flip-container .front, .flip-container .back {\r\n\tbackface-visibility: hidden;\r\n\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tleft: 0;\r\n}\r\n\r\n/* front pane, placed above back */\r\n.flip-container .front {\r\n\tz-index: 2;\r\n\t/* for firefox 31 */\r\n\ttransform: rotateY(0deg);\r\n}\r\n\r\n/* back, initially hidden pane */\r\n.flip-container .back {\r\n\ttransform: rotateY(180deg);\r\n}\r\n\r\n.flip-container {\r\n    position:relative; \r\n    float:left; \r\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var FlipCardBackComponent = (function () {
+	    function FlipCardBackComponent($element) {
+	        var _this = this;
+	        this.$element = $element;
+	        this.storeOnChange = function (state) { };
+	        this.ngOnInit = function () { _this.flipCard.ngOnChildInit({ component: _this }); };
+	    }
+	    FlipCardBackComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(44),
+	            selector: "flip-card-back",
+	            transclude: true,
+	            require: '^flipCard',
+	            viewProviders: ["$element"]
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], FlipCardBackComponent);
+	    return FlipCardBackComponent;
+	}());
+	exports.FlipCardBackComponent = FlipCardBackComponent;
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"back\">\r\n    <div class=\"flip-card-back-added-container\">\r\n        <h1 class=\"flip-card-back-added\" data-ng-if=\"!vm.added\" data-ng-click=\"vm.toggleAdded()\">+</h1>\r\n        <h1 class=\"flip-card-back-added\" data-ng-if=\"vm.added\" data-ng-click=\"vm.toggleAdded()\">-</h1>\r\n    </div>\r\n    <ng-transclude></ng-transclude>\r\n</div>"
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var FlipCardFrontComponent = (function () {
+	    function FlipCardFrontComponent($element) {
+	        var _this = this;
+	        this.$element = $element;
+	        this.ngOnInit = function () { _this.flipCard.ngOnChildInit({ component: _this }); };
+	    }
+	    FlipCardFrontComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(46),
+	            selector: "flip-card-front",
+	            transclude: true,
+	            require: '^flipCard',
+	            viewProviders: ["$element"]
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], FlipCardFrontComponent);
+	    return FlipCardFrontComponent;
+	}());
+	exports.FlipCardFrontComponent = FlipCardFrontComponent;
+
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"front\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var FlipCardActionCreator = (function () {
+	    function FlipCardActionCreator(dispatcher, guid) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	    }
+	    FlipCardActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "flipCardActionCreator",
+	            viewProviders: ["$location", "dispatcher", "guid"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], FlipCardActionCreator);
+	    return FlipCardActionCreator;
+	}());
+	exports.FlipCardActionCreator = FlipCardActionCreator;
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	__webpack_require__(1);
 	__webpack_require__(22);
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(39);
-	var modal_service_1 = __webpack_require__(41);
-	var reducers = __webpack_require__(42);
-	var actions = __webpack_require__(40);
-	var modal_component_1 = __webpack_require__(43);
-	var modal_title_component_1 = __webpack_require__(47);
-	var modal_content_component_1 = __webpack_require__(51);
+	var modal_action_creator_1 = __webpack_require__(50);
+	var modal_service_1 = __webpack_require__(52);
+	var reducers = __webpack_require__(53);
+	var actions = __webpack_require__(51);
+	var modal_component_1 = __webpack_require__(54);
+	var modal_title_component_1 = __webpack_require__(58);
+	var modal_content_component_1 = __webpack_require__(62);
 	var app = angular.module("app.modal", [
 	    "app.core",
 	    "app.backdrop"
@@ -1559,7 +1840,7 @@
 
 
 /***/ },
-/* 39 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1572,7 +1853,7 @@
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var modal_actions_1 = __webpack_require__(40);
+	var modal_actions_1 = __webpack_require__(51);
 	var core_1 = __webpack_require__(2);
 	var ModalActionCreator = (function () {
 	    function ModalActionCreator($rootScope, dispatcher) {
@@ -1596,7 +1877,7 @@
 
 
 /***/ },
-/* 40 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1638,7 +1919,7 @@
 
 
 /***/ },
-/* 41 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1798,11 +2079,11 @@
 
 
 /***/ },
-/* 42 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var actions = __webpack_require__(40);
+	var actions = __webpack_require__(51);
 	exports.openModalReducer = function (state, action) {
 	    if (action instanceof actions.OpenModalAction) {
 	        state.modalHtml = action.html;
@@ -1820,7 +2101,7 @@
 
 
 /***/ },
-/* 43 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1834,7 +2115,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(39);
+	var modal_action_creator_1 = __webpack_require__(50);
 	var ModalComponent = (function () {
 	    function ModalComponent($attrs, $element, modalActionCreator) {
 	        var _this = this;
@@ -1845,8 +2126,8 @@
 	    }
 	    ModalComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(44),
-	            styles: [__webpack_require__(45)],
+	            template: __webpack_require__(55),
+	            styles: [__webpack_require__(56)],
 	            selector: "modal",
 	            transclude: {
 	                'title': '?modalTitle',
@@ -1866,19 +2147,19 @@
 
 
 /***/ },
-/* 44 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal\">\r\n    <h1 data-ng-click=\"vm.close()\" class=\"modal-close\">X</h1>\r\n    <div ng-transclude=\"title\"></div>\r\n    <div ng-transclude=\"content\"></div>\r\n</div>"
 
 /***/ },
-/* 45 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(57);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -1898,7 +2179,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -1912,7 +2193,7 @@
 
 
 /***/ },
-/* 47 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1926,7 +2207,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(39);
+	var modal_action_creator_1 = __webpack_require__(50);
 	var ModalTitleComponent = (function () {
 	    function ModalTitleComponent($attrs, modalActionCreator) {
 	        this.$attrs = $attrs;
@@ -1935,8 +2216,8 @@
 	    }
 	    ModalTitleComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(48),
-	            styles: [__webpack_require__(49)],
+	            template: __webpack_require__(59),
+	            styles: [__webpack_require__(60)],
 	            selector: "modal-title",
 	            transclude: true,
 	            viewProviders: ["$attrs", "modalActionCreator"]
@@ -1949,19 +2230,19 @@
 
 
 /***/ },
-/* 48 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-title\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
 
 /***/ },
-/* 49 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(61);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -1981,7 +2262,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -1995,7 +2276,7 @@
 
 
 /***/ },
-/* 51 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2009,7 +2290,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(39);
+	var modal_action_creator_1 = __webpack_require__(50);
 	var ModalContentComponent = (function () {
 	    function ModalContentComponent($attrs, modalActionCreator) {
 	        this.$attrs = $attrs;
@@ -2018,8 +2299,8 @@
 	    }
 	    ModalContentComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(52),
-	            styles: [__webpack_require__(53)],
+	            template: __webpack_require__(63),
+	            styles: [__webpack_require__(64)],
 	            selector: "modal-content",
 	            transclude: true,
 	            viewProviders: ["$attrs", "modalActionCreator"]
@@ -2032,19 +2313,19 @@
 
 
 /***/ },
-/* 52 */
+/* 63 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-content\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
 
 /***/ },
-/* 53 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(54);
+	var content = __webpack_require__(65);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -2064,7 +2345,7 @@
 	}
 
 /***/ },
-/* 54 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -2078,17 +2359,17 @@
 
 
 /***/ },
-/* 55 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	__webpack_require__(24);
 	var core_1 = __webpack_require__(2);
-	var carousel_component_1 = __webpack_require__(56);
-	var carousel_action_creator_1 = __webpack_require__(61);
-	var reducers = __webpack_require__(62);
-	var actions = __webpack_require__(57);
+	var carousel_component_1 = __webpack_require__(67);
+	var carousel_action_creator_1 = __webpack_require__(72);
+	var reducers = __webpack_require__(73);
+	var actions = __webpack_require__(68);
 	var app = angular.module("app.carousel", [
 	    "app.breakpoints",
 	    "app.core"
@@ -2106,7 +2387,7 @@
 
 
 /***/ },
-/* 56 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2120,7 +2401,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var carousel_actions_1 = __webpack_require__(57);
+	var carousel_actions_1 = __webpack_require__(68);
 	var CarouselComponent = (function () {
 	    function CarouselComponent($attrs, $compile, $element, $injector, $scope, $transclude, getX, translateX) {
 	        var _this = this;
@@ -2236,8 +2517,8 @@
 	    });
 	    CarouselComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(58),
-	            styles: [__webpack_require__(59)],
+	            template: __webpack_require__(69),
+	            styles: [__webpack_require__(70)],
 	            selector: "carousel",
 	            transclude: true,
 	            viewProviders: [
@@ -2259,7 +2540,7 @@
 
 
 /***/ },
-/* 57 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2300,19 +2581,19 @@
 
 
 /***/ },
-/* 58 */
+/* 69 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"carousel\">\r\n    <div class=\"carousel-previous\"  data-ng-click=\"vm.previous()\"></div>\r\n    <div class=\"carousel-next\" data-ng-click=\"vm.next()\"></div>\r\n    <div class=\"carousel-inner\">\r\n\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 59 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(60);
+	var content = __webpack_require__(71);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -2332,7 +2613,7 @@
 	}
 
 /***/ },
-/* 60 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -2346,7 +2627,7 @@
 
 
 /***/ },
-/* 61 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2360,7 +2641,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var carousel_actions_1 = __webpack_require__(57);
+	var carousel_actions_1 = __webpack_require__(68);
 	var CarouselActionCreator = (function () {
 	    function CarouselActionCreator(dispatcher, guid) {
 	        var _this = this;
@@ -2382,23 +2663,23 @@
 
 
 /***/ },
-/* 62 */
+/* 73 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 63 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(2);
-	var nav_menu_component_1 = __webpack_require__(64);
-	var nav_menu_action_creator_1 = __webpack_require__(68);
-	var reducers = __webpack_require__(69);
-	var actions = __webpack_require__(70);
+	var nav_menu_component_1 = __webpack_require__(75);
+	var nav_menu_action_creator_1 = __webpack_require__(79);
+	var reducers = __webpack_require__(80);
+	var actions = __webpack_require__(81);
 	var app = angular.module("app.navMenu", [
 	    "app.core"
 	]);
@@ -2415,7 +2696,7 @@
 
 
 /***/ },
-/* 64 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2434,8 +2715,8 @@
 	    }
 	    NavMenuComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(65),
-	            styles: [__webpack_require__(66)],
+	            template: __webpack_require__(76),
+	            styles: [__webpack_require__(77)],
 	            selector: "nav-menu",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -2447,19 +2728,19 @@
 
 
 /***/ },
-/* 65 */
+/* 76 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"nav-menu\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 66 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(67);
+	var content = __webpack_require__(78);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -2479,7 +2760,7 @@
 	}
 
 /***/ },
-/* 67 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -2493,7 +2774,7 @@
 
 
 /***/ },
-/* 68 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2507,7 +2788,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(2);
-	var modal_action_creator_1 = __webpack_require__(39);
+	var modal_action_creator_1 = __webpack_require__(50);
 	var NavMenuActionCreator = (function () {
 	    function NavMenuActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
 	        this.dispatcher = dispatcher;
@@ -2528,14 +2809,14 @@
 
 
 /***/ },
-/* 69 */
+/* 80 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 70 */
+/* 81 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2545,6 +2826,401 @@
 	    return Default;
 	}());
 	exports.Default = Default;
+
+
+/***/ },
+/* 82 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(2);
+	var core_1 = __webpack_require__(2);
+	var rotator_component_1 = __webpack_require__(83);
+	var rotator_action_creator_1 = __webpack_require__(87);
+	var reducers = __webpack_require__(88);
+	var app = angular.module("app.rotator", [
+	    "app.core"
+	]);
+	core_1.provide(app, rotator_action_creator_1.RotatorActionCreator);
+	app.component(rotator_component_1.RotatorComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var RotatorComponent = (function () {
+	    function RotatorComponent($attrs, $compile, $element, $http, $interval, $location, $q, $scope, $timeout, $transclude, debounce, getFromUrlSync, getX, translateX, translateXAsync) {
+	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.$compile = $compile;
+	        this.$element = $element;
+	        this.$http = $http;
+	        this.$interval = $interval;
+	        this.$location = $location;
+	        this.$q = $q;
+	        this.$scope = $scope;
+	        this.$timeout = $timeout;
+	        this.$transclude = $transclude;
+	        this.debounce = debounce;
+	        this.getFromUrlSync = getFromUrlSync;
+	        this.getX = getX;
+	        this.translateX = translateX;
+	        this.translateXAsync = translateXAsync;
+	        this.ngOnInit = function () {
+	            _this.$element.find(".view-port").css("width", _this.width);
+	            var fragment = document.createDocumentFragment();
+	            for (var i = 0; i < _this.items.length; i++) {
+	                var childScope = _this.$scope.$new(true);
+	                childScope[_this.$attrs["rotatorForName"] || "rotatorItem"] = _this.items[i];
+	                childScope.width = _this.width;
+	                childScope.height = _this.height;
+	                childScope.$$index = i;
+	                childScope.$$isFirst = (i === 0);
+	                childScope.$$isLast = (i === _this.items.length - 1);
+	                var itemContent = _this.$compile(angular.element(_this.template))(childScope);
+	                itemContent.addClass("slide");
+	                fragment.appendChild(itemContent[0]);
+	            }
+	            _this.containerNavtiveElement.appendChild(fragment);
+	            _this.turnOffTransitions();
+	            if (_this.queryStringParam && _this.queryStringParamIndex != 0) {
+	                for (var i = _this.slideNavtiveElements.length - 1; i >= 0; i--) {
+	                    var initialMoveX = (-1) * (_this.queryStringParamIndex * (Number(_this.width)));
+	                    if (i < _this.queryStringParamIndex - _this.buffer) {
+	                        _this.translateX(_this.slideNavtiveElements[i], initialMoveX + Number(_this.width) * _this.items.length);
+	                    }
+	                    else {
+	                        _this.translateX(_this.slideNavtiveElements[i], initialMoveX);
+	                    }
+	                }
+	                _this.currentIndex = _this.queryStringParamIndex;
+	            }
+	            else {
+	                _this.currentIndex = 0;
+	                var desiredX = Number(_this.width) * (-1);
+	                var delta = desiredX - ((_this.items.length - 1) * Number(_this.width));
+	                _this.translateX(_this.rendererdNodes[_this.items.length - 1].node, delta);
+	                _this.isAnimating = false;
+	            }
+	            setTimeout(function () { _this.turnOnTransitions(); });
+	        };
+	        this.onKeyDown = function (event) {
+	            switch (event.keyCode) {
+	                case 37:
+	                    _this.onPreviousAsyncDebounce();
+	                    break;
+	                case 39:
+	                    _this.onNextAsyncDebounce();
+	                    break;
+	            }
+	        };
+	        this.onLocationChangeSuccess = function () {
+	            if (_this.currentIndex != -1
+	                && _this.items[_this.currentIndex][_this.$attrs["querySearchField"] || 'id'] != _this.queryStringParam
+	                && _this.queryStringParamIndex != _this.currentIndex) {
+	                //TO DO: Turn off transitions for manual manipulation of location bar
+	                if (_this.currentIndex === _this.items.length - 1 && _this.queryStringParamIndex === 0)
+	                    return _this.onNextAsync();
+	                if (_this.currentIndex === 0 && _this.queryStringParamIndex === _this.items.length - 1)
+	                    return _this.onPreviousAsync();
+	                if ((_this.currentIndex - _this.queryStringParamIndex) < 0) {
+	                    return _this.onNextAsync();
+	                }
+	                else {
+	                    return _this.onPreviousAsync();
+	                }
+	            }
+	        };
+	        this.onPreviousAsyncDebounce = function () { _this.debounce(_this.onPreviousAsync, 100)(); };
+	        this.onPreviousAsync = function () {
+	            return _this.move({ x: (Number(_this.width)) }).then(function () {
+	                _this.turnOffTransitions();
+	                var desiredX = Number(_this.width) * (-1);
+	                var delta = desiredX - _this.rendererdNodes[_this.items.length - 1].offsetLeft;
+	                _this.translateX(_this.rendererdNodes[_this.items.length - 1].node, delta);
+	                _this.inTransition = true;
+	                _this.currentIndex = (_this.currentIndex === 0) ? _this.items.length - 1 : _this.currentIndex - 1;
+	                setTimeout(function () {
+	                    _this.turnOnTransitions();
+	                    _this.inTransition = false;
+	                }, 300);
+	            });
+	        };
+	        this.onNextAsyncDebounce = function () { _this.debounce(_this.onNextAsync, 100)(); };
+	        this.onNextAsync = function () {
+	            return _this.move({ x: (-1) * (Number(_this.width)) }).then(function () {
+	                _this.turnOffTransitions();
+	                var desiredX = Number(_this.width) * (_this.items.length - 2);
+	                var delta = desiredX - _this.rendererdNodes[0].offsetLeft;
+	                _this.translateX(_this.rendererdNodes[0].node, delta);
+	                _this.inTransition = true;
+	                _this.currentIndex = (_this.currentIndex === _this.items.length - 1) ? 0 : _this.currentIndex + 1;
+	                setTimeout(function () {
+	                    _this.turnOnTransitions();
+	                    _this.inTransition = false;
+	                }, 300);
+	            });
+	        };
+	        this.move = function (options) {
+	            var deferred = _this.$q.defer();
+	            if (!_this.isAnimating && !_this.inTransition) {
+	                var promises = [];
+	                _this.isAnimating = true;
+	                if (options.x < 0) {
+	                    for (var i = _this.slideNavtiveElements.length - 1; i > -1; i--) {
+	                        promises.push(_this.translateXAsync({ element: _this.slideNavtiveElements[i], x: (_this.getX(_this.slideNavtiveElements[i]) + options.x) }));
+	                    }
+	                }
+	                if (options.x >= 0) {
+	                    for (var i = 0; i < _this.slideNavtiveElements.length; i++) {
+	                        promises.push(_this.translateXAsync({ element: _this.slideNavtiveElements[i], x: (_this.getX(_this.slideNavtiveElements[i]) + options.x) }));
+	                    }
+	                }
+	                _this.$q.all(promises).then(function () {
+	                    _this.isAnimating = false;
+	                    deferred.resolve();
+	                });
+	            }
+	            else {
+	                deferred.reject();
+	            }
+	            return deferred.promise;
+	        };
+	        this.dispose = function () {
+	            angular.element(_this.containerNavtiveElement).find(".slide").remove();
+	            _this.containerNavtiveElement.innerHTML = "";
+	            _this.$element[0].innerHTML = null;
+	            _this.$element = null;
+	            _this.$attrs = null;
+	            _this.clone = null;
+	            delete _this.$element;
+	            delete _this.clone;
+	        };
+	        this.turnOffTransitions = function () { _this.$element.addClass("notransition"); };
+	        this._currentIndex = -1;
+	        this._template = null;
+	    }
+	    Object.defineProperty(RotatorComponent.prototype, "buffer", {
+	        get: function () { return 1; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "queryStringParam", {
+	        get: function () { return this.$location.search()[this.$attrs["querySearchField"] || 'id']; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "queryStringParamIndex", {
+	        get: function () {
+	            var value = -1;
+	            for (var i = 0; i < this.items.length; i++) {
+	                if (this.items[i][this.$attrs["querySearchField"] || 'id'] == this.queryStringParam) {
+	                    value = i;
+	                }
+	            }
+	            return value;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    RotatorComponent.prototype.atBegining = function () { return this.currentIndex == 0; };
+	    RotatorComponent.prototype.atEnd = function () { return this.currentIndex == this.items.length - 1; };
+	    RotatorComponent.prototype.turnOnTransitions = function () { this.$element.removeClass("notransition"); };
+	    Object.defineProperty(RotatorComponent.prototype, "slideNavtiveElements", {
+	        get: function () { return this.containerNavtiveElement.children; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "currentIndex", {
+	        get: function () { return this._currentIndex; },
+	        set: function (value) {
+	            this._currentIndex = value;
+	            this.$scope.$emit("componentUpdate", { scope: this.$scope });
+	            var url = this.items[this.currentIndex][this.$attrs["querySearchField"] || 'id'];
+	            this.$location.search(this.$attrs["querySearchField"] || 'id', url);
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "template", {
+	        get: function () {
+	            if (this._template != null)
+	                return this._template;
+	            if (this.$attrs["contentUrl"]) {
+	                this._template = this.getFromUrlSync({ url: this.$attrs["contentUrl"] });
+	            }
+	            else {
+	                this._template = this.clone.find("content")[0].innerHTML;
+	            }
+	            return this._template;
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "containerNavtiveElement", {
+	        get: function () { return this.$element.find(".container")[0]; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(RotatorComponent.prototype, "rendererdNodes", {
+	        get: function () {
+	            var renderedNodes = [];
+	            for (var i = 0; i < this.slideNavtiveElements.length; i++) {
+	                var x = this.getX(this.slideNavtiveElements[i]);
+	                var offsetLeft = this.slideNavtiveElements[i].offsetLeft;
+	                var left = x + offsetLeft;
+	                var node = this.slideNavtiveElements[i];
+	                renderedNodes.push({
+	                    x: x,
+	                    offsetLeft: offsetLeft,
+	                    left: left,
+	                    node: node
+	                });
+	            }
+	            return renderedNodes.sort(function (a, b) {
+	                return a.left - b.left;
+	            });
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    RotatorComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(84),
+	            styles: __webpack_require__(85),
+	            selector: "rotator",
+	            transclude: "element",
+	            inputs: [
+	                "height",
+	                "items",
+	                "nextButtonImageUrl",
+	                "previousButtonImageUrl",
+	                "width"
+	            ],
+	            viewProviders: ["$attrs",
+	                "$compile",
+	                "$element",
+	                "$http",
+	                "$interval",
+	                "$location",
+	                "$q",
+	                "$scope",
+	                "$timeout",
+	                "$transclude",
+	                "debounce",
+	                "getFromUrlSync",
+	                "getX",
+	                "translateX",
+	                "translateXAsync"],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [Object, Function, Object, Function, Function, Object, Function, Object, Function, Function, Function, Function, Function, Function, Function])
+	    ], RotatorComponent);
+	    return RotatorComponent;
+	}());
+	exports.RotatorComponent = RotatorComponent;
+
+
+/***/ },
+/* 84 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='rotator'>    \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n</div>"
+
+/***/ },
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(86);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./rotator.component.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./rotator.component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 86 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, " .slide { \r\n   transition: transform 0.5s cubic-bezier(0.1 0.1 0.25 0.9); } \r\n\r\n .notransition .slide { \r\n  transition: none !important; } \r\n\r\n .rotator .view-port { height:100%; \r\n   position: relative; \r\n   overflow-x: hidden; \r\n   overflow-y: hidden; \r\n } \r\n\r\n .rotator .view-port .previous-arrow img \r\n .rotator .view-port .next-arrow img { \r\n   position: absolute; \r\n   top: calc(50% - 40px); \r\n   cursor: pointer; \r\n   left: 0; \r\n   z-index: 999; \r\n   opacity: .3; \r\n   transition: all .250s; } \r\n\r\n .rotator .view-port .next-arrow img { \r\n   left: calc(100% - 80px); } \r\n\r\n .rotator .view-port .container { \r\n   width: 99999px; } \r\n\r\n .rotator .view-port .previous-arrow img:hover \r\n .rotator .view-port .next-arrow img:hover { \r\n   opacity: .9; transform: scale(1.51.5); } \r\n\r\n .rotator .view-port .slide { \r\n   position: relative; \r\n   float: left; \r\n   margin: 0 auto; } ", ""]);
+
+	// exports
+
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(2);
+	var RotatorActionCreator = (function () {
+	    function RotatorActionCreator(dispatcher, guid) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	    }
+	    RotatorActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "rotatorActionCreator",
+	            viewProviders: ["dispatcher", "guid"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], RotatorActionCreator);
+	    return RotatorActionCreator;
+	}());
+	exports.RotatorActionCreator = RotatorActionCreator;
+
+
+/***/ },
+/* 88 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 
 /***/ }

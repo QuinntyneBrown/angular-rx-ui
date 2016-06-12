@@ -23,3 +23,6 @@ let coreApp = (<any>angular.module("app.core", [
     "safeDigest",
     "translateX"
 ]));
+
+
+angular.extend(window, core);

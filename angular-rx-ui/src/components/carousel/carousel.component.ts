@@ -25,12 +25,13 @@ export class CarouselComponent {
         private $scope: angular.IScope,
         private $transclude: Function,
         private getX,
-        private translateX
+        private translateX        
     ) { }
 
     ngOnInit = () => this.initialRender();
 
     storeOnChange = state => {
+        
         if (state.lastTriggeredByAction instanceof CarouselNextAction) {
 
         }
@@ -146,7 +147,9 @@ export class CarouselComponent {
     template: HTMLElement;
     clone: HTMLElement;
     items: Array<any> = JSON.parse(this.$attrs["props"]);
-    itemName: string = "movie";
-
-    
+    itemName: string = "movie";    
 }
+
+
+
+
