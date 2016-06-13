@@ -6,6 +6,7 @@ import { RotatorActionCreator } from "./rotator.action-creator";
 import *  as reducers from "./rotator.reducers";
 
 let app = (<any>angular.module("app.rotator", [
+    "ngTouch",
     "app.core"    
 ]));
 

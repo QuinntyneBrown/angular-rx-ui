@@ -21,7 +21,8 @@ export class WindowActionCreator {
             .fromEvent($window, 'keydown')
             .map( (e:KeyboardEvent) => e.keyCode)
             .debounce(100)
-            .subscribe(keyCode =>this.dispatcher.dispatch(new KeyDownAction(keyCode))); 
+            .subscribe(keyCode => this.dispatcher.dispatch(new KeyDownAction(keyCode))); 
+
     }    
 
 

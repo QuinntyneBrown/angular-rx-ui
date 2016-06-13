@@ -23,3 +23,8 @@ var app = angular
     ]);
 
 
+app.config([() => {
+    FastClick.attach(document.body);
+}]);
+
+

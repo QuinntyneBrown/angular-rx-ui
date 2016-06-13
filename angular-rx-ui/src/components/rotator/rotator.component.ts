@@ -72,14 +72,17 @@ export class RotatorComponent {
         let fragment = document.createDocumentFragment();
 
         for (var i = 0; i < this.items.length; i++) {
-            var childScope: any = this.$scope.$new(true);
+            var childScope: any = this.$scope.$new(false);
             childScope[this.$attrs["rotatorForName"] || "rotatorItem"] = this.items[i];
             childScope.width = this.width;
             childScope.height = this.height;
             childScope.$$index = i;
             childScope.$$isFirst = (i === 0);
             childScope.$$isLast = (i === this.items.length - 1);            
-            let itemContent = this.$compile(angular.element(this.template))(childScope);
+            var slide = angular.element(this.template);
+            slide.attr("ng-swipe-left", "vm.swipeLeft()");
+            slide.attr("ng-swipe-right", "vm.swipeRight()");
+            let itemContent = this.$compile(slide)(childScope);
             itemContent.addClass("slide");
             fragment.appendChild(itemContent[0]);
         }
@@ -157,7 +160,11 @@ export class RotatorComponent {
     }
 
     public onPreviousAsyncDebounce = () => { this.debounce(this.onPreviousAsync, 10)(); }
+    
+    public swipeLeft = () => this.onNextAsyncDebounce();
 
+    public swipeRight = () => this.onPreviousAsyncDebounce();
+    
     public onPreviousAsync = () => {
         return this.move({ x: (Number(this.width)) }).then(() => {
             this.turnOffTransitions();

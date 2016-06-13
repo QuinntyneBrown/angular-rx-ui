@@ -63,6 +63,9 @@
 	    "app.rotator",
 	    "app.window"
 	]);
+	app.config([function () {
+	        FastClick.attach(document.body);
+	    }]);
 
 
 /***/ },
@@ -2582,6 +2585,7 @@
 	var rotator_action_creator_1 = __webpack_require__(79);
 	var reducers = __webpack_require__(85);
 	var app = angular.module("app.rotator", [
+	    "ngTouch",
 	    "app.core"
 	]);
 	core_1.provide(app, rotator_action_creator_1.RotatorActionCreator);
@@ -2640,14 +2644,17 @@
 	            _this.$element.find(".view-port").css("width", _this.width);
 	            var fragment = document.createDocumentFragment();
 	            for (var i = 0; i < _this.items.length; i++) {
-	                var childScope = _this.$scope.$new(true);
+	                var childScope = _this.$scope.$new(false);
 	                childScope[_this.$attrs["rotatorForName"] || "rotatorItem"] = _this.items[i];
 	                childScope.width = _this.width;
 	                childScope.height = _this.height;
 	                childScope.$$index = i;
 	                childScope.$$isFirst = (i === 0);
 	                childScope.$$isLast = (i === _this.items.length - 1);
-	                var itemContent = _this.$compile(angular.element(_this.template))(childScope);
+	                var slide = angular.element(_this.template);
+	                slide.attr("ng-swipe-left", "vm.swipeLeft()");
+	                slide.attr("ng-swipe-right", "vm.swipeRight()");
+	                var itemContent = _this.$compile(slide)(childScope);
 	                itemContent.addClass("slide");
 	                fragment.appendChild(itemContent[0]);
 	            }
@@ -2702,6 +2709,8 @@
 	            }
 	        };
 	        this.onPreviousAsyncDebounce = function () { _this.debounce(_this.onPreviousAsync, 10)(); };
+	        this.swipeLeft = function () { return _this.onNextAsyncDebounce(); };
+	        this.swipeRight = function () { return _this.onPreviousAsyncDebounce(); };
 	        this.onPreviousAsync = function () {
 	            return _this.move({ x: (Number(_this.width)) }).then(function () {
 	                _this.turnOffTransitions();
@@ -3003,7 +3012,7 @@
 /* 82 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='rotator'>    \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img class=\"previous-arrow-img\" data-ng-src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img class=\"next-arrow-img\" data-ng-src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n\r\n</div>"
+	module.exports = "<div class='rotator'>            \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img class=\"previous-arrow-img\" data-ng-src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img class=\"next-arrow-img\" data-ng-src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n\r\n</div>"
 
 /***/ },
 /* 83 */

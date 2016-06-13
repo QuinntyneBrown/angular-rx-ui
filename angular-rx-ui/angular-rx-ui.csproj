@@ -78,10 +78,11 @@
     <Content Include="karma.conf.js" />
     <Content Include="lib\angular-route.js" />
     <Content Include="lib\angular-sanitize.js" />
+    <Content Include="lib\angular-touch.js" />
     <Content Include="lib\angular.js" />
+    <Content Include="lib\fastclick.js" />
     <Content Include="lib\jquery.js" />
     <Content Include="lib\rx.all.compat.js" />
-    <Content Include="lib\slick.js" />
     <Content Include="package.json" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
