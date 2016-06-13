@@ -83,13 +83,6 @@
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="lib\slick.js" />
     <Content Include="package.json" />
-    <Content Include="src\components\carousel\carousel.component.html">
-      <DependentUpon>carousel.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\carousel\carousel.component.scss">
-      <DependentUpon>carousel.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\carousel\demo\index.html" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
@@ -204,18 +197,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\backdrop.module.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
-    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.actions.ts" />
-    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.module.ts" />
-    <TypeScriptCompile Include="src\components\breakpoints\breakpoints.reducers.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel.actions.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel.component.spec.ts">
-      <DependentUpon>carousel.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\carousel\carousel.component.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel.module.ts" />
-    <TypeScriptCompile Include="src\components\carousel\carousel.reducers.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
@@ -276,12 +257,15 @@
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.spec.ts">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\rotator\demo\app.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.actions.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.component.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.module.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\window\window.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\window\window.actions.ts" />
+    <TypeScriptCompile Include="src\components\window\window.module.ts" />
+    <TypeScriptCompile Include="src\components\window\window.reducers.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.module.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.actions.ts" />

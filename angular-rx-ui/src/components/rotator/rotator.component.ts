@@ -1,5 +1,7 @@
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import { CanActivate, ChangeDetectionStrategy, Component, Observable } from "../core";
 import { RotatorActionCreator } from "./rotator.action-creator";
+import { RotatorPreviousAction, RotatorNextAction } from "./rotator.actions";
+import { KeyDownAction, ResizeAction } from "../window/window.actions";
 
 @Component({
     template: require("./rotator.component.html"),
@@ -26,6 +28,7 @@ import { RotatorActionCreator } from "./rotator.action-creator";
         "debounce",
         "getFromUrlSync",
         "getX",
+        "rotatorActionCreator",
         "translateX",
         "translateXAsync"],
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -45,8 +48,21 @@ export class RotatorComponent {
         private debounce: Function,
         private getFromUrlSync: Function,
         private getX: Function,
+        private rotatorActionCreator: RotatorActionCreator,
         private translateX: Function,
         private translateXAsync: Function) { }
+
+    storeOnChange = state => {
+        if (state.lastTriggeredByAction instanceof KeyDownAction)
+            this.onKeyDown({ keyCode: state.lastTriggeredByAction.keyCode });
+        
+        if (state.lastTriggeredByAction instanceof ResizeAction) { }
+            
+    }
+
+    next = () => this.rotatorActionCreator.next(this.id);
+
+    previous = () => this.rotatorActionCreator.previous(this.id);
 
     nextButtonImageUrl: any;
 
@@ -62,7 +78,7 @@ export class RotatorComponent {
             childScope.height = this.height;
             childScope.$$index = i;
             childScope.$$isFirst = (i === 0);
-            childScope.$$isLast = (i === this.items.length - 1);
+            childScope.$$isLast = (i === this.items.length - 1);            
             let itemContent = this.$compile(angular.element(this.template))(childScope);
             itemContent.addClass("slide");
             fragment.appendChild(itemContent[0]);
@@ -95,9 +111,9 @@ export class RotatorComponent {
 
     private get buffer() { return 1; }
 
-    private onKeyDown = (event: KeyboardEvent) => {
+    private onKeyDown = options => {
         
-        switch (event.keyCode) {
+        switch (options.keyCode) {
             case 37:
                 this.onPreviousAsyncDebounce();
                 break;
@@ -106,6 +122,7 @@ export class RotatorComponent {
                 break;
         }
     }
+
     private onLocationChangeSuccess = () => {
         if (this.currentIndex != -1
             && this.items[this.currentIndex][this.$attrs["querySearchField"] || 'id'] != this.queryStringParam
@@ -139,7 +156,7 @@ export class RotatorComponent {
         return value;
     }
 
-    public onPreviousAsyncDebounce = () => { this.debounce(this.onPreviousAsync, 100)(); }
+    public onPreviousAsyncDebounce = () => { this.debounce(this.onPreviousAsync, 10)(); }
 
     public onPreviousAsync = () => {
         return this.move({ x: (Number(this.width)) }).then(() => {
@@ -156,7 +173,7 @@ export class RotatorComponent {
         });
     }
 
-    public onNextAsyncDebounce = () => { this.debounce(this.onNextAsync, 100)(); }
+    public onNextAsyncDebounce = () => { this.debounce(this.onNextAsync, 10)(); }
 
     public onNextAsync = () => {
         return this.move({ x: (-1) * (Number(this.width)) }).then(() => {
@@ -214,7 +231,6 @@ export class RotatorComponent {
         delete this.clone;
     }
 
-
     public turnOffTransitions = () => { this.$element.addClass("notransition"); }
 
     public turnOnTransitions() { this.$element.removeClass("notransition"); }
@@ -259,6 +275,8 @@ export class RotatorComponent {
     private width: string;
 
     private height: string;
+
+    private id: string;
 
     private get rendererdNodes() {
         var renderedNodes = [];
