@@ -84,6 +84,18 @@
     <Content Include="lib\jquery.js" />
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
+    <Content Include="src\components\blog\article-author.component.html">
+      <DependentUpon>article-author.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-author.component.scss">
+      <DependentUpon>article-author.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-social-share.component.html">
+      <DependentUpon>article-social-share.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-social-share.component.scss">
+      <DependentUpon>article-social-share.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\blog\blog-detail.component.html">
       <DependentUpon>blog-detail.component.ts</DependentUpon>
     </Content>
@@ -223,6 +235,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\components\backdrop\index.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-author.component.spec.ts">
+      <DependentUpon>article-author.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\article-social-share.component.spec.ts">
+      <DependentUpon>article-social-share.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\blog\blog-detail.component.spec.ts">
       <DependentUpon>blog-detail.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -250,6 +268,7 @@
     <TypeScriptCompile Include="src\components\core\get-from-url-sync.ts" />
     <TypeScriptCompile Include="src\components\core\get-x.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
+    <TypeScriptCompile Include="src\components\core\injectable.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
     <TypeScriptCompile Include="src\components\core\is-between.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
@@ -260,6 +279,7 @@
     <TypeScriptCompile Include="src\components\core\remove-element.ts" />
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
+    <TypeScriptCompile Include="src\components\core\service.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x-async.ts" />
@@ -318,6 +338,8 @@
     <TypeScriptCompile Include="src\components\blog\blog-header.component.ts" />
     <TypeScriptCompile Include="src\components\blog\blog-list.component.ts" />
     <TypeScriptCompile Include="src\components\blog\blog-list-item.component.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-author.component.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-social-share.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

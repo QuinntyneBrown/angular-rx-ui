@@ -1,4 +1,6 @@
 ﻿
+export * from "./service";
+export * from "./injectable";
 export * from "./store";
 export * from "./action-decorator";
 export * from "./pluck-out";
@@ -22,6 +24,7 @@ export const Observable = Rx.Observable;
 angular.extend(window, Rx); 
 
 import { Store } from "./store";
+import { BaseService } from "./service";
 import { Action } from "./action-decorator";
 import { pluckOut } from "./pluck-out";
 import { ChangeDetectionStrategy } from "./change-detection-strategy";
@@ -40,6 +43,7 @@ import { translateX } from "./translate-x";
 import * as core from "./index";
 
 (window as any).core = {
+    BaseService,
     Store,
     Action,
     pluckOut,
