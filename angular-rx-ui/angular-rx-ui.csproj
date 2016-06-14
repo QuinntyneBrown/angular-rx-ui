@@ -85,29 +85,41 @@
     <Content Include="lib\moment.js" />
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
+    <Content Include="src\components\author\author.component.html">
+      <DependentUpon>author.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author.component.scss">
+      <DependentUpon>author.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\blog\article-author.component.html">
       <DependentUpon>article-author.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\blog\article-author.component.scss">
       <DependentUpon>article-author.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\blog\article-body.component.html">
+      <DependentUpon>article-body.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-body.component.scss">
+      <DependentUpon>article-body.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-category.component.html">
+      <DependentUpon>article-category.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-category.component.scss">
+      <DependentUpon>article-category.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-header.component.html">
+      <DependentUpon>article-header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\blog\article-header.component.scss">
+      <DependentUpon>article-header.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\blog\article-social-share.component.html">
       <DependentUpon>article-social-share.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\blog\article-social-share.component.scss">
       <DependentUpon>article-social-share.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\blog\blog-detail.component.html">
-      <DependentUpon>blog-detail.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\blog\blog-detail.component.scss">
-      <DependentUpon>blog-detail.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\blog\blog-header.component.html">
-      <DependentUpon>blog-header.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\blog\blog-header.component.scss">
-      <DependentUpon>blog-header.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\blog\blog-list-item.component.html">
       <DependentUpon>blog-list-item.component.ts</DependentUpon>
@@ -175,6 +187,12 @@
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\tag\tag-list.component.html">
+      <DependentUpon>tag-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\tag\tag-list.component.scss">
+      <DependentUpon>tag-list.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -235,22 +253,28 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="src\components\author\author.component.spec.ts">
+      <DependentUpon>author.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\backdrop\index.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
     <TypeScriptCompile Include="src\components\blog\article-author.component.spec.ts">
       <DependentUpon>article-author.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\article-body.component.spec.ts">
+      <DependentUpon>article-body.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\article-category.component.spec.ts">
+      <DependentUpon>article-category.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\article-header.component.spec.ts">
+      <DependentUpon>article-header.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\blog\article-social-share.component.spec.ts">
       <DependentUpon>article-social-share.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\blog\article.model.ts" />
     <TypeScriptCompile Include="src\components\blog\author.model.ts" />
-    <TypeScriptCompile Include="src\components\blog\blog-detail.component.spec.ts">
-      <DependentUpon>blog-detail.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\blog\blog-header.component.spec.ts">
-      <DependentUpon>blog-header.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\blog\blog-list-item.component.spec.ts">
       <DependentUpon>blog-list-item.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -259,7 +283,6 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\blog\category.model.ts" />
     <TypeScriptCompile Include="src\components\blog\picture.model.ts" />
-    <TypeScriptCompile Include="src\components\blog\tag.model.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
@@ -335,6 +358,9 @@
     <TypeScriptCompile Include="src\components\rotator\index.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag-list.component.spec.ts">
+      <DependentUpon>tag-list.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\window\window.action-creator.ts" />
     <TypeScriptCompile Include="src\components\window\window.actions.ts" />
     <TypeScriptCompile Include="src\components\window\index.ts" />
@@ -350,12 +376,24 @@
     <TypeScriptCompile Include="src\components\blog\blog.actions.ts" />
     <TypeScriptCompile Include="src\components\blog\blog.action-creator.ts" />
     <TypeScriptCompile Include="src\components\blog\blog.reducers.ts" />
-    <TypeScriptCompile Include="src\components\blog\blog-detail.component.ts" />
-    <TypeScriptCompile Include="src\components\blog\blog-header.component.ts" />
     <TypeScriptCompile Include="src\components\blog\blog-list.component.ts" />
     <TypeScriptCompile Include="src\components\blog\blog-list-item.component.ts" />
     <TypeScriptCompile Include="src\components\blog\article-author.component.ts" />
     <TypeScriptCompile Include="src\components\blog\article-social-share.component.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-header.component.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-body.component.ts" />
+    <TypeScriptCompile Include="src\components\blog\article-category.component.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag.model.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag.actions.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag.reducers.ts" />
+    <TypeScriptCompile Include="src\components\tag\tag-list.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author.model.ts" />
+    <TypeScriptCompile Include="src\components\author\index.ts" />
+    <TypeScriptCompile Include="src\components\author\author.actions.ts" />
+    <TypeScriptCompile Include="src\components\author\author.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\author\author.reducers.ts" />
+    <TypeScriptCompile Include="src\components\author\author.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

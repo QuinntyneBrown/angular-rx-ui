@@ -1,5 +1,5 @@
 ﻿import { Picture } from "./picture.model";
-import { Tag } from "./tag.model";
+import { Tag } from "../tag/tag.model";
 import { Category } from "./category.model";
 import { Author } from "./author.model";
 
