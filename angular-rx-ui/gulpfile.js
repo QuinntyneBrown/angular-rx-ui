@@ -27,7 +27,8 @@ var libs = [
     paths.npm + 'angular-touch/angular-touch.js',
     paths.npm + 'jquery/dist/jquery.js',
     paths.npm + 'rx/dist/rx.all.compat.js',
-    paths.npm + 'fastclick/lib/fastclick.js'
+    paths.npm + 'fastclick/lib/fastclick.js',
+    paths.npm + 'moment/moment.js'
 ];
 
 
@@ -78,6 +79,7 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
 
 gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
     return gulp.src([
+        './lib/moment.js',
         './lib/jquery.js',
         './lib/fastclick.js',
         './lib/rx.all.compat.js',

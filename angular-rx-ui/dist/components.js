@@ -1195,6 +1195,7 @@
 	var reducers = __webpack_require__(62);
 	var actions = __webpack_require__(63);
 	var app = angular.module("app.blog", [
+	    "ngSanitize",
 	    "app.core"
 	]);
 	core_1.provide(app, blog_action_creator_1.BlogActionCreator);
@@ -1237,7 +1238,10 @@
 	            template: __webpack_require__(34),
 	            styles: [__webpack_require__(35)],
 	            selector: "article-author",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            inputs: [
+	                "authorFullName"
+	            ]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], ArticleAuthorComponent);
@@ -1250,7 +1254,7 @@
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"article-author\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"article-author\">\r\n    <a>Posted by <span> {{ vm.authorFullName }}</span></a>\r\n</div>\r\n"
 
 /***/ },
 /* 35 */
@@ -1779,7 +1783,12 @@
 	            template: __webpack_require__(48),
 	            styles: [__webpack_require__(49)],
 	            selector: "blog-header",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            inputs: [
+	                "articleTitle",
+	                "articleHref",
+	                "articlePublishedDate"
+	            ]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], BlogHeaderComponent);
@@ -1792,7 +1801,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"blog-header\">\r\n\r\n</div>\r\n"
+	module.exports = "<div>\r\n    <a>\r\n        {{ vm.articlePublishedDate }}\r\n    </a>\r\n    <a class=\"blog-header\" data-ng-href=\"{{ vm.articleHeaderHref }}\">\r\n        <h2>{{ vm.articleTitle }}</h2>\r\n    </a>\r\n</div>\r\n"
 
 /***/ },
 /* 49 */
@@ -1829,7 +1838,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".blog-header {\n  cursor: pointer; }\n", ""]);
 
 	// exports
 
@@ -1870,7 +1879,7 @@
 /* 52 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"blog-list\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"blog-list\">\r\n    <h1>?</h1>\r\n</div>\r\n"
 
 /***/ },
 /* 53 */
@@ -1948,7 +1957,7 @@
 /* 56 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"blog-list-item\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"blog-list-item\">\r\n    <h1>?</h1>\r\n</div>\r\n"
 
 /***/ },
 /* 57 */

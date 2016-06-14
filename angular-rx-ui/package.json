@@ -33,6 +33,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
+    "moment": "^2.13.0",
     "node-sass": "^3.7.0",
     "phantomjs": "^2.1.7",
     "phantomjs-prebuilt": "^2.1.7",

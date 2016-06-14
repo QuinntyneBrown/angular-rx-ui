@@ -82,6 +82,7 @@
     <Content Include="lib\angular.js" />
     <Content Include="lib\fastclick.js" />
     <Content Include="lib\jquery.js" />
+    <Content Include="lib\moment.js" />
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
     <Content Include="src\components\blog\article-author.component.html">

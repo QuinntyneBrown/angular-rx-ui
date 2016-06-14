@@ -15,9 +15,29 @@
 <body data-ng-app="app" data-ng-controller="mainController as vm">
     <div>
         <a href="../../../../index.html">Back</a>
+
+        <div>
+            <div>
+                <article-author author-full-name="'Quinntyne Brown'"></article-author>
+            </div>
+            <div>
+                <blog-list></blog-list>
+            </div>
+            <div>
+                <blog-list-item></blog-list-item>
+            </div>
+            <div>
+                <blog-header 
+                             article-title="'Showcase\'s Exciting 2016/2017 Lineup'" 
+                             article-header-href="'http://www.showcase.ca/blogs/7289/showcases-exciting-new-lineup-for-20162017'"
+                             article-published-date="'WEDNESDAY, JUNE 08, 2016 9:00 AM'">
+                </blog-header>
+            </div>
+        </div>
     </div>
 
     <script src="../../../../lib/fastclick.js"></script>
+    <script src="../../../../lib/moment.js"></script>
     <script src="../../../../lib/rx.all.compat.js"></script>
     <script src="../../../../lib/jquery.js"></script>
     <script src="../../../../lib/angular.js"></script>

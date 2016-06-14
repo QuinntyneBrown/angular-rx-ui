@@ -15,6 +15,7 @@ import *  as reducers from "./blog.reducers";
 import *  as actions from "./blog.actions";
 
 var app = (<any>angular.module("app.blog", [
+    "ngSanitize",
     "app.core"    
 ]));
 

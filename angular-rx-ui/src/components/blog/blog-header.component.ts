@@ -4,8 +4,11 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     template: require("./blog-header.component.html"),
     styles: [require("./blog-header.component.scss")],
     selector: "blog-header",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: [
+        "articleTitle",
+        "articleHref",
+        "articlePublishedDate"
+    ]
 })
-export class BlogHeaderComponent {
-    constructor() { }
-}
+export class BlogHeaderComponent { }

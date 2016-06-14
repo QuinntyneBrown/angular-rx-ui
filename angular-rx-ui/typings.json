@@ -7,6 +7,8 @@
     "fastclick": "registry:dt/fastclick#1.0.3+20160317120654",
     "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
     "require": "registry:dt/require#2.1.20+20160316155526"
   }
 }
