@@ -1,4 +1,4 @@
-require("../core/core.module");
+require("../core");
 
 import { provide } from "../core";
 import { Backdrop } from "./backdrop.service";

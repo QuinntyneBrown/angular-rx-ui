@@ -1,5 +1,5 @@
-require("../core/core.module");
-require("../backdrop/backdrop.module");
+require("../core");
+require("../backdrop");
 
 import { provide, provideAction } from "../core";
 import { ModalActionCreator } from "./modal.action-creator";

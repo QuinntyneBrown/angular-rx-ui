@@ -1,4 +1,4 @@
-require("../core/core.module");
+require("../core");
 
 import { provide, provideAction } from "../core";
 import { WindowActionCreator } from "./window.action-creator";

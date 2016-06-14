@@ -1,4 +1,4 @@
-require("../core/core.module");
+require("../core");
 
 import { provide, provideAction } from "../core";
 import { CounterComponent } from "./counter.component";
