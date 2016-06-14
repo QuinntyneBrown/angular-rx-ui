@@ -6,8 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,8 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -206,6 +204,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\components\category\categorys-container.component.css" />
+    <Content Include="src\components\category\categorys-container.component.html" />
+    <Content Include="src\components\category\category.component.scss" />
+    <Content Include="src\components\category\category.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -231,8 +233,7 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -394,6 +395,14 @@
     <TypeScriptCompile Include="src\components\author\author.action-creator.ts" />
     <TypeScriptCompile Include="src\components\author\author.reducers.ts" />
     <TypeScriptCompile Include="src\components\author\author.component.ts" />
+    <TypeScriptCompile Include="src\components\category\category.model.ts" />
+    <TypeScriptCompile Include="src\components\category\category.module.ts" />
+    <TypeScriptCompile Include="src\components\category\categorys-container.component.ts" />
+    <TypeScriptCompile Include="src\components\category\category.actions.ts" />
+    <TypeScriptCompile Include="src\components\category\category.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\category\category.reducers.ts" />
+    <TypeScriptCompile Include="src\components\category\category.component.ts" />
+    <TypeScriptCompile Include="src\components\category\category.component.spec.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
