@@ -8,6 +8,7 @@ require("./components/counter");
 require("./components/flip-card");
 require("./components/modal");
 require("./components/nav-menu");
+require("./components/paged-list");
 require("./components/rotator");
 require("./components/window");
 
@@ -19,6 +20,7 @@ var app = angular
         "app.flipCard",
         "app.modal",
         "app.navMenu",
+        "app.pagedList",
         "app.rotator",   
         "app.window"                        
     ]);

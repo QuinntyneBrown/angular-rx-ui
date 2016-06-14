@@ -54,6 +54,7 @@
 	__webpack_require__(98);
 	__webpack_require__(106);
 	__webpack_require__(115);
+	__webpack_require__(124);
 	var app = angular
 	    .module("components", [
 	    "app.blog",
@@ -62,6 +63,7 @@
 	    "app.flipCard",
 	    "app.modal",
 	    "app.navMenu",
+	    "app.pagedList",
 	    "app.rotator",
 	    "app.window"
 	]);
@@ -3241,11 +3243,212 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__webpack_require__(1);
+	__webpack_require__(107);
+	var core_1 = __webpack_require__(1);
+	var paged_list_actions_1 = __webpack_require__(109);
+	var reducers = __webpack_require__(110);
+	__export(__webpack_require__(111));
+	__export(__webpack_require__(112));
+	var app = angular.module("app.pagedList", [
+	    "app.core"
+	]);
+	core_1.provide(app, paged_list_actions_1.PagedListActionCreator);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+
+
+/***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(108);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./paged-list.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./paged-list.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(37)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".previous, .next {\n  cursor: pointer; }\n\n.paged-list-navigation {\n  margin-bottom: 30px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var PagedListActionCreator = (function () {
+	    function PagedListActionCreator(dispatcher, guid) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	    }
+	    PagedListActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "pagedListActionCreator",
+	            viewProviders: ["dispatcher", "guid"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object])
+	    ], PagedListActionCreator);
+	    return PagedListActionCreator;
+	}());
+	exports.PagedListActionCreator = PagedListActionCreator;
+
+
+/***/ },
+/* 110 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var PagedList = (function () {
+	    function PagedList(_data, _page, _pageSize, _totalCount) {
+	        this._data = _data;
+	        this._page = _page;
+	        this._pageSize = _pageSize;
+	        this._totalCount = _totalCount;
+	    }
+	    Object.defineProperty(PagedList.prototype, "data", {
+	        get: function () { return this._data; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PagedList.prototype, "page", {
+	        get: function () { return this._page; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PagedList.prototype, "pageSize", {
+	        get: function () { return this._pageSize; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PagedList.prototype, "totalCount", {
+	        get: function () { return this._totalCount; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(PagedList.prototype, "totalPages", {
+	        get: function () { return Math.ceil(this._totalCount / this._pageSize); },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return PagedList;
+	}());
+	exports.PagedList = PagedList;
+
+
+/***/ },
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var validate_page_properties_and_get_skip_count_1 = __webpack_require__(113);
+	var paging_config_model_1 = __webpack_require__(114);
+	var paged_list_model_1 = __webpack_require__(111);
+	function toPageListFromInMemory(entities, page, pageSize) {
+	    if (entities == null)
+	        throw new Error("entities");
+	    var pagingConfig = new paging_config_model_1.PagingConfig(page, pageSize);
+	    var skipCount = validate_page_properties_and_get_skip_count_1.validatePagePropertiesAndGetSkipCount(pagingConfig);
+	    var data = entities.slice(skipCount, pageSize + skipCount);
+	    return new paged_list_model_1.PagedList(data, page, pageSize, entities.length);
+	}
+	exports.toPageListFromInMemory = toPageListFromInMemory;
+
+
+/***/ },
+/* 113 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function validatePagePropertiesAndGetSkipCount(pagingConfig) {
+	    if (pagingConfig.page < 1) {
+	        pagingConfig.page = 1;
+	    }
+	    if (pagingConfig.pageSize < 1) {
+	        pagingConfig.pageSize = 1;
+	    }
+	    if (pagingConfig.pageSize > 100) {
+	        pagingConfig.pageSize = 100;
+	    }
+	    return pagingConfig.pageSize * (pagingConfig.page - 1);
+	}
+	exports.validatePagePropertiesAndGetSkipCount = validatePagePropertiesAndGetSkipCount;
+
+
+/***/ },
+/* 114 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var PagingConfig = (function () {
+	    function PagingConfig(page, pageSize) {
+	        this.page = page;
+	        this.pageSize = pageSize;
+	    }
+	    return PagingConfig;
+	}());
+	exports.PagingConfig = PagingConfig;
+
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var rotator_component_1 = __webpack_require__(107);
-	var rotator_action_creator_1 = __webpack_require__(108);
-	var reducers = __webpack_require__(114);
+	var rotator_component_1 = __webpack_require__(116);
+	var rotator_action_creator_1 = __webpack_require__(117);
+	var reducers = __webpack_require__(123);
 	var app = angular.module("app.rotator", [
 	    "ngTouch",
 	    "app.core"
@@ -3260,7 +3463,7 @@
 
 
 /***/ },
-/* 107 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3274,8 +3477,8 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var rotator_action_creator_1 = __webpack_require__(108);
-	var window_actions_1 = __webpack_require__(110);
+	var rotator_action_creator_1 = __webpack_require__(117);
+	var window_actions_1 = __webpack_require__(119);
 	var RotatorComponent = (function () {
 	    function RotatorComponent($attrs, $compile, $element, $http, $interval, $location, $q, $scope, $timeout, $transclude, debounce, getFromUrlSync, getX, rotatorActionCreator, translateX, translateXAsync) {
 	        var _this = this;
@@ -3527,8 +3730,8 @@
 	    });
 	    RotatorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(111),
-	            styles: __webpack_require__(112),
+	            template: __webpack_require__(120),
+	            styles: __webpack_require__(121),
 	            selector: "rotator",
 	            transclude: "element",
 	            inputs: [
@@ -3564,7 +3767,7 @@
 
 
 /***/ },
-/* 108 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3578,7 +3781,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var rotator_actions_1 = __webpack_require__(109);
+	var rotator_actions_1 = __webpack_require__(118);
 	var RotatorActionCreator = (function () {
 	    function RotatorActionCreator(dispatcher, guid) {
 	        var _this = this;
@@ -3600,7 +3803,7 @@
 
 
 /***/ },
-/* 109 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3643,7 +3846,7 @@
 
 
 /***/ },
-/* 110 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3671,19 +3874,19 @@
 
 
 /***/ },
-/* 111 */
+/* 120 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='rotator'>            \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img class=\"previous-arrow-img\" data-ng-src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img class=\"next-arrow-img\" data-ng-src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n\r\n</div>"
 
 /***/ },
-/* 112 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(113);
+	var content = __webpack_require__(122);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(38)(content, {});
@@ -3703,7 +3906,7 @@
 	}
 
 /***/ },
-/* 113 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(37)();
@@ -3717,11 +3920,11 @@
 
 
 /***/ },
-/* 114 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var rotator_actions_1 = __webpack_require__(109);
+	var rotator_actions_1 = __webpack_require__(118);
 	exports.rotatorPreviousReducer = function (state, action) {
 	    if (action instanceof rotator_actions_1.RotatorPreviousAction) { }
 	    return state;
@@ -3733,15 +3936,15 @@
 
 
 /***/ },
-/* 115 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var window_action_creator_1 = __webpack_require__(116);
-	var reducers = __webpack_require__(117);
-	var actions = __webpack_require__(110);
+	var window_action_creator_1 = __webpack_require__(125);
+	var reducers = __webpack_require__(126);
+	var actions = __webpack_require__(119);
 	var app = angular.module("app.window", [
 	    "app.core"
 	]);
@@ -3758,7 +3961,7 @@
 
 
 /***/ },
-/* 116 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3772,7 +3975,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var window_actions_1 = __webpack_require__(110);
+	var window_actions_1 = __webpack_require__(119);
 	var WindowActionCreator = (function () {
 	    function WindowActionCreator($window, dispatcher, guid, invokeAsync) {
 	        var _this = this;
@@ -3807,11 +4010,11 @@
 
 
 /***/ },
-/* 117 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var window_actions_1 = __webpack_require__(110);
+	var window_actions_1 = __webpack_require__(119);
 	var core_1 = __webpack_require__(1);
 	exports.breakpointsReducer = function (state, action) {
 	    if (action instanceof window_actions_1.ResizeAction) {
