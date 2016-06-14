@@ -241,6 +241,8 @@
     <TypeScriptCompile Include="src\components\blog\article-social-share.component.spec.ts">
       <DependentUpon>article-social-share.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\article.model.ts" />
+    <TypeScriptCompile Include="src\components\blog\author.model.ts" />
     <TypeScriptCompile Include="src\components\blog\blog-detail.component.spec.ts">
       <DependentUpon>blog-detail.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -253,6 +255,9 @@
     <TypeScriptCompile Include="src\components\blog\blog-list.component.spec.ts">
       <DependentUpon>blog-list.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\blog\category.model.ts" />
+    <TypeScriptCompile Include="src\components\blog\picture.model.ts" />
+    <TypeScriptCompile Include="src\components\blog\tag.model.ts" />
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\add-or-update.ts" />
