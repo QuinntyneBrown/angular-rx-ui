@@ -1,3 +1,4 @@
+var angularRxUI =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -45,6 +46,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
 	__webpack_require__(1);
 	__webpack_require__(30);
 	__webpack_require__(42);
@@ -82,6 +87,7 @@
 	app.config([function () {
 	        FastClick.attach(document.body);
 	    }]);
+	__export(__webpack_require__(1));
 
 
 /***/ },
@@ -110,43 +116,6 @@
 	__export(__webpack_require__(18));
 	__export(__webpack_require__(19));
 	exports.Observable = Rx.Observable;
-	angular.extend(window, Rx);
-	var store_2 = __webpack_require__(4);
-	var service_2 = __webpack_require__(2);
-	var action_decorator_2 = __webpack_require__(6);
-	var pluck_out_2 = __webpack_require__(7);
-	var change_detection_strategy_2 = __webpack_require__(8);
-	var component_decorators_2 = __webpack_require__(9);
-	var service_decorator_2 = __webpack_require__(10);
-	var add_or_update_2 = __webpack_require__(11);
-	var action_creator_2 = __webpack_require__(12);
-	var view_encapsulation_2 = __webpack_require__(13);
-	var fetch_2 = __webpack_require__(14);
-	var provide_2 = __webpack_require__(15);
-	var provide_action_2 = __webpack_require__(16);
-	var get_x_2 = __webpack_require__(17);
-	var is_between_2 = __webpack_require__(18);
-	var translate_x_2 = __webpack_require__(19);
-	var core = __webpack_require__(1);
-	window.core = {
-	    BaseService: service_2.BaseService,
-	    Store: store_2.Store,
-	    Action: action_decorator_2.Action,
-	    pluckOut: pluck_out_2.pluckOut,
-	    ChangeDetectionStrategy: change_detection_strategy_2.ChangeDetectionStrategy,
-	    CanActivate: component_decorators_2.CanActivate,
-	    Component: component_decorators_2.Component,
-	    Service: service_decorator_2.Service,
-	    addOrUpdate: add_or_update_2.addOrUpdate,
-	    BaseActionCreator: action_creator_2.BaseActionCreator,
-	    ViewEncapsulation: view_encapsulation_2.ViewEncapsulation,
-	    Fetch: fetch_2.Fetch,
-	    provide: provide_2.provide,
-	    provideAction: provide_action_2.provideAction,
-	    getX: get_x_2.getX,
-	    isBetween: is_between_2.isBetween,
-	    translateX: translate_x_2.translateX
-	};
 	__webpack_require__(5);
 	__webpack_require__(4);
 	__webpack_require__(11);
@@ -181,7 +150,6 @@
 	    "translateX",
 	    "translateXAsync"
 	]);
-	angular.extend(window, core);
 
 
 /***/ },

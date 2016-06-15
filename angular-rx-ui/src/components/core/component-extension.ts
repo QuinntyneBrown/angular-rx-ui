@@ -36,7 +36,7 @@ angular.module = function () {
             ]);
         }
 
-        
+
         var directiveDefinitionObject: any = {
             restrict: options.restrict || "E",
             template: angular.isArray(options.template) ? options.template.join(" \n ") : options.template,
@@ -71,11 +71,11 @@ angular.module = function () {
 
                         });
 
-                    if (document.body && angular.element(document.body.childNodes[0]) && angular.element(document.body.childNodes[0]).injector()) {                        
+                    if (document.body && angular.element(document.body.childNodes[0]) && angular.element(document.body.childNodes[0]).injector()) {
                         var $injector = angular.element(document.body.childNodes[0]).injector();
                         var store = $injector.get("store");
                         var safeDigest = $injector.get("safeDigest");
-                        
+
                         if (scope.vm && scope.vm.storeOnChange) {
                             var subscription = store.subscribe(state => {
                                 scope.vm.storeOnChange(state);
@@ -109,7 +109,7 @@ angular.module = function () {
                     if (options.transclude && scope.vm.$transclude)
                         scope.vm.$transclude(scope.$new(), function (clone: ng.IAugmentedJQuery) {
                             scope.vm.template = template;
-                            
+
                             if (template[0].nodeType === 1)
                                 var documentFragment = angular.element("<div></div>");
 

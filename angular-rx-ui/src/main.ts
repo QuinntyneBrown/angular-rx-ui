@@ -42,3 +42,4 @@ app.config([() => {
 }]);
 
 
+export * from "./components/core";

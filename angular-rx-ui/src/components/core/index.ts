@@ -21,8 +21,6 @@ export * from "./translate-x";
 
 export const Observable = Rx.Observable;
 
-angular.extend(window, Rx); 
-
 import { Store } from "./store";
 import { BaseService } from "./service";
 import { Action } from "./action-decorator";
@@ -39,28 +37,6 @@ import { provideAction } from "./provide-action";
 import { getX } from "./get-x";
 import { isBetween } from "./is-between";
 import { translateX } from "./translate-x";
-
-import * as core from "./index";
-
-(window as any).core = {
-    BaseService,
-    Store,
-    Action,
-    pluckOut,
-    ChangeDetectionStrategy,
-    CanActivate,
-    Component,
-    Service,
-    addOrUpdate,
-    BaseActionCreator,
-    ViewEncapsulation,
-    Fetch,
-    provide,
-    provideAction,
-    getX,
-    isBetween,
-    translateX
-};
 
 require("./local-storage-manager-provider");
 require("./store");
@@ -98,5 +74,3 @@ let coreApp = (<any>angular.module("app.core", [
     "translateXAsync"
 ]));
 
-
-angular.extend(window, core);
