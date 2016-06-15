@@ -7,12 +7,14 @@ import { ArticleDetailComponent } from "./article-detail.component";
 import { ArticleHeaderComponent } from "./article-header.component";
 import { ArticleListComponent } from "./article-list.component";
 import { ArticleListItemComponent } from "./article-list-item.component";
+import { ArticleFeaturedImageComponent } from "./article-featured-image.component";
 
 import { ArticleActionCreator } from "./article.action-creator";
 import *  as reducers from "./article.reducers";
 import *  as actions from "./article.actions";
 
 var app = (<any>angular.module("app.article", [
+    "ngSanitize",
     "app.core"    
 ]));
 
@@ -23,6 +25,7 @@ app.component(ArticleDetailComponent);
 app.component(ArticleHeaderComponent);
 app.component(ArticleListComponent);
 app.component(ArticleListItemComponent);
+app.component(ArticleFeaturedImageComponent);
 
 app.config(["reducersProvider", reducersProvider => {	
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }

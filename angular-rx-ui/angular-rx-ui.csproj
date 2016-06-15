@@ -85,6 +85,18 @@
     <Content Include="lib\moment.js" />
     <Content Include="lib\rx.all.compat.js" />
     <Content Include="package.json" />
+    <Content Include="src\components\ads\ads.component.html">
+      <DependentUpon>ads.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\ads\ads.component.scss">
+      <DependentUpon>ads.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-featured-image.component.html">
+      <DependentUpon>article-featured-image.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-featured-image.component.scss">
+      <DependentUpon>article-featured-image.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
     </Content>
@@ -264,6 +276,12 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
+      <DependentUpon>ads.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\article\article-featured-image.component.spec.ts">
+      <DependentUpon>article-featured-image.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\author\author.component.spec.ts">
       <DependentUpon>author.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -425,6 +443,13 @@
     <TypeScriptCompile Include="src\components\article\article.action-creator.ts" />
     <TypeScriptCompile Include="src\components\article\article.reducers.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-list.component.ts" />
+    <TypeScriptCompile Include="src\components\article\article-featured-image.component.ts" />
+    <TypeScriptCompile Include="src\components\ads\ads.model.ts" />
+    <TypeScriptCompile Include="src\components\ads\index.ts" />
+    <TypeScriptCompile Include="src\components\ads\ads.actions.ts" />
+    <TypeScriptCompile Include="src\components\ads\ads.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\ads\ads.reducers.ts" />
+    <TypeScriptCompile Include="src\components\ads\ads.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\article\demo\" />

@@ -1,3 +1,29 @@
+describe("ads", function () {
+    var adsComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.ads");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        adsComponent = $controller("adsComponent", { adsActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<ads></ads>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(adsComponent).toBeDefined();
+    });
+});
+
 describe("articleBody", function () {
     var articleBodyComponent;
     var $compile;
@@ -47,6 +73,32 @@ describe("articleDetail", function () {
     });
     it("should be defined", function () {
         expect(articleDetailComponent).toBeDefined();
+    });
+});
+
+describe("articleFeaturedImage", function () {
+    var articleFeaturedImageComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.articleFeaturedImage");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        articleFeaturedImageComponent = $controller("articleFeaturedImageComponent", { articleFeaturedImageActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<article-featured-image></article-featured-image>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(articleFeaturedImageComponent).toBeDefined();
     });
 });
 

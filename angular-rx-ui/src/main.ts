@@ -2,6 +2,7 @@
 
 require("./components/core");
 
+require("./components/ads");
 require("./components/article");
 require("./components/author");
 require("./components/backdrop");
@@ -19,6 +20,7 @@ require("./components/window");
 
 var app = angular
     .module("components", [
+        "app.ads",
         "app.article",
         "app.author",
         "app.category",
