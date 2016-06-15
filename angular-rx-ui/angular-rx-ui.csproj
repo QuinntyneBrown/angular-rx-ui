@@ -91,6 +91,7 @@
     <Content Include="src\components\ads\ads.component.scss">
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\article\demo\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
     </Content>
@@ -441,8 +442,6 @@
     <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
     <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\components\article\demo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

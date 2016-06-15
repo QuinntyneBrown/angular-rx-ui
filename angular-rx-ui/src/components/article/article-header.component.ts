@@ -1,7 +1,6 @@
 import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 
 @Component({
-    componentName:"articleHeaderComponent",
     template: require("./article-header.component.html"),
     styles: [require("./article-header.component.scss")],
     selector: "article-header",
@@ -12,4 +11,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
         "articlePublishedDate"
     ]
 })
-export class ArticleHeaderComponent { }
+export class ArticleHeaderComponent {}

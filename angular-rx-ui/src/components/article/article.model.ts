@@ -5,15 +5,16 @@ import { Author } from "../author/author.model";
 
 export class Article {    
     id: number;
-    body: string;
+    articleBody: string;
     excerpt: string;
-    title: string;
-    shortTitle: string;
-    slug: string;
-    promoImage: Picture;
-    featuredImage: Picture;
+    headline: string;
+    alternativeHeadline: string;
+    url: string;
+    thumbnailUrl: Picture;
+    image: Array<string>;
     author: Author;
     categories: Array<Category> = [];
     tags: Array<Tag> = [];
-    publishedDate: string;
+    datePublished: Date;
+    dateModified: Date;
 }

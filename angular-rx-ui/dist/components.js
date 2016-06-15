@@ -1667,7 +1667,6 @@
 	    }
 	    ArticleDetailComponent = __decorate([
 	        core_1.Component({
-	            componentName: "articleDetailComponent",
 	            template: __webpack_require__(44),
 	            styles: [__webpack_require__(45)],
 	            selector: "article-detail",
@@ -1747,7 +1746,6 @@
 	    }
 	    ArticleHeaderComponent = __decorate([
 	        core_1.Component({
-	            componentName: "articleHeaderComponent",
 	            template: __webpack_require__(48),
 	            styles: [__webpack_require__(49)],
 	            selector: "article-header",
@@ -1831,14 +1829,11 @@
 	    }
 	    ArticleListComponent = __decorate([
 	        core_1.Component({
-	            componentName: "articleListComponent",
 	            template: __webpack_require__(52),
 	            styles: [__webpack_require__(53)],
 	            selector: "article-list",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	            inputs: [
-	                "articles"
-	            ]
+	            inputs: ["articles"]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], ArticleListComponent);
@@ -1913,7 +1908,6 @@
 	    }
 	    ArticleListItemComponent = __decorate([
 	        core_1.Component({
-	            componentName: "articleListItemComponent",
 	            template: __webpack_require__(56),
 	            styles: [__webpack_require__(57)],
 	            selector: "article-list-item",
@@ -2075,9 +2069,7 @@
 	            styles: [__webpack_require__(65)],
 	            selector: "author",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-	            inputs: [
-	                "authorFullName"
-	            ]
+	            inputs: ["authorFullName"]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], AuthorComponent);

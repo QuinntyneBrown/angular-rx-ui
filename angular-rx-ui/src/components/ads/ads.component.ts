@@ -6,6 +6,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "ads",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdsComponent {
-    constructor() { }
-}
+export class AdsComponent {}
