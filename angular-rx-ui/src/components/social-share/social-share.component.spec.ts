@@ -1,27 +1,27 @@
-describe("tagList", () => {
+describe("socialShare", () => {
 
-    var tagListComponent;
+    var socialShareComponent;
     var $compile;
     var $rootScope;
 
     class MockActionCreator { }
 
     beforeEach(() => {
-        angular.mock.module("app.tag");
+        angular.mock.module("app.socialShare");
     });
 
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
+        socialShareComponent = $controller("socialShareComponent", { socialShareActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<tag-list></tag-list>")($rootScope);
+        var element = $compile("<social-share></social-share>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(tagListComponent).toBeDefined();
+        expect(socialShareComponent).toBeDefined();
     });
 })

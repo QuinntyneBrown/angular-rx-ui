@@ -1,27 +1,27 @@
-describe("tagList", () => {
+describe("articleHeader", () => {
 
-    var tagListComponent;
+    var articleHeaderComponent;
     var $compile;
     var $rootScope;
 
     class MockActionCreator { }
 
     beforeEach(() => {
-        angular.mock.module("app.tag");
+        angular.mock.module("app.article");
     });
 
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
+        articleHeaderComponent = $controller("articleHeaderComponent", { articleHeaderActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<tag-list></tag-list>")($rootScope);
+        var element = $compile("<article-header></article-header>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(tagListComponent).toBeDefined();
+        expect(articleHeaderComponent).toBeDefined();
     });
 })
