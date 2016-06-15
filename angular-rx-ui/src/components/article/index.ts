@@ -8,17 +8,15 @@ import { ArticleListComponent } from "./article-list.component";
 import { ArticleListItemComponent } from "./article-list-item.component";
 
 import { ArticleActionCreator } from "./article.action-creator";
-import *  as reducers from "./article.reducers";
-import *  as actions from "./article.actions";
+import * as reducers from "./article.reducers";
+import * as actions from "./article.actions";
 
 var app = (<any>angular.module("app.article", [
     "ngSanitize",
     "app.core",
 
     "app.category",
-    "app.socialShare",
-    "app.tag"
-
+    "app.socialShare"
 ]));
 
 provide(app,ArticleActionCreator);

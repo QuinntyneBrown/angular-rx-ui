@@ -4,14 +4,11 @@ var componentStyles = {};
 angular.module = function () {
     var m = originalAngularModule.apply(this, arguments);
     m.component = function (component) {
-        var options = component.config;
-        var styles;
-
-        if (options.selector) {
-            var componentNameCamelCase = options.selector.replace(/-([a-z])/g, (g) => {
-                return g[1].toUpperCase();
-            });
-        }
+        let options = component.config;
+        let componentNameCamelCase = options.selector.replace(/-([a-z])/g, (g) => {
+            return g[1].toUpperCase();
+        });
+        let componentName = `${componentNameCamelCase}Component`;
 
         if (options.component.canActivate) {
             m.config(["routeResolverServiceProvider", function (routeResolverServiceProvider) {
@@ -50,7 +47,7 @@ angular.module = function () {
             transclude: options.transclude,
             controllerAs: "vm",
             require: options.require,
-            controller: componentNameCamelCase + "Component"
+            controller: componentName
         }
 
         options.component.$inject = options.viewProviders
@@ -64,11 +61,6 @@ angular.module = function () {
                 }
 
             }
-        }
-
-        if ((options.component && options.component.styles) || options.styles) {
-            styles = options.styles ? options.styles : options.component.styles;
-            styles = angular.isArray(styles) ? styles.join(" \n ") : styles;
         }
 
         directiveDefinitionObject.compile = function (template: angular.IAugmentedJQuery) {
@@ -143,7 +135,7 @@ angular.module = function () {
         m.directive(componentNameCamelCase,
             [() => { return directiveDefinitionObject; }]);
 
-        m.controller(options.componentName ? options.componentName : componentNameCamelCase + "Component", options.component);
+        m.controller(componentName, options.component);
     }
     return m;
 };

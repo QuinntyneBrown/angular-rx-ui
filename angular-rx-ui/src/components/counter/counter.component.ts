@@ -2,6 +2,7 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 import { CounterActionCreator } from "./counter.action-creator";
 
 @Component({
+    componentName:"counterComponent",
     template: require("./counter.component.html"),
     styles: [require("./counter.component.scss")],
     selector: "counter",

@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -119,11 +121,17 @@
     <Content Include="src\components\article\article-list.component.scss">
       <DependentUpon>article-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\category\category.component.html">
-      <DependentUpon>category.component.ts</DependentUpon>
+    <Content Include="src\components\category\category-list-for-item.component.html">
+      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\category\category.component.scss">
-      <DependentUpon>category.component.ts</DependentUpon>
+    <Content Include="src\components\category\category-list-for-item.component.scss">
+      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\category\category-list.component.html">
+      <DependentUpon>category-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\category\category-list.component.scss">
+      <DependentUpon>category-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
@@ -184,11 +192,11 @@
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\social-share\social-share-list.component.html">
-      <DependentUpon>social-share-list.component.ts</DependentUpon>
+    <Content Include="src\components\social-share\social-share-icons.component.html">
+      <DependentUpon>social-share-icons.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\social-share\social-share-list.component.scss">
-      <DependentUpon>social-share-list.component.ts</DependentUpon>
+    <Content Include="src\components\social-share\social-share-icons.component.scss">
+      <DependentUpon>social-share-icons.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\social-share\social-share.component.html">
       <DependentUpon>social-share.component.ts</DependentUpon>
@@ -240,7 +248,8 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -282,8 +291,11 @@
       <DependentUpon>article-list.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\article\article.model.ts" />
-    <TypeScriptCompile Include="src\components\category\category.component.spec.ts">
-      <DependentUpon>category.component.ts</DependentUpon>
+    <TypeScriptCompile Include="src\components\category\category-list-for-item.component.spec.ts">
+      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\category\category-list.component.spec.ts">
+      <DependentUpon>category-list.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
@@ -326,9 +338,9 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\counter\counter.component.ts" />
+    <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
     <TypeScriptCompile Include="src\components\counter\index.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
-    <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card.action-creator.ts" />
@@ -363,8 +375,8 @@
     <TypeScriptCompile Include="src\components\rotator\index.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\social-share\social-share-list.component.spec.ts">
-      <DependentUpon>social-share-list.component.ts</DependentUpon>
+    <TypeScriptCompile Include="src\components\social-share\social-share-icons.component.spec.ts">
+      <DependentUpon>social-share-icons.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\social-share\social-share.component.spec.ts">
       <DependentUpon>social-share.component.ts</DependentUpon>
@@ -400,7 +412,6 @@
     <TypeScriptCompile Include="src\components\category\category.actions.ts" />
     <TypeScriptCompile Include="src\components\category\category.action-creator.ts" />
     <TypeScriptCompile Include="src\components\category\category.reducers.ts" />
-    <TypeScriptCompile Include="src\components\category\category.component.ts" />
     <TypeScriptCompile Include="src\components\article\article-detail.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.model.ts" />
     <TypeScriptCompile Include="src\components\picture\index.ts" />
@@ -417,7 +428,6 @@
     <TypeScriptCompile Include="src\components\social-share\social-share.reducers.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.component.ts" />
     <TypeScriptCompile Include="src\components\article\index.ts" />
-    <TypeScriptCompile Include="src\components\social-share\social-share-list.component.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.model.ts" />
     <TypeScriptCompile Include="src\components\ads\index.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.actions.ts" />
@@ -427,6 +437,9 @@
     <TypeScriptCompile Include="src\components\article\article.actions.ts" />
     <TypeScriptCompile Include="src\components\article\article.action-creator.ts" />
     <TypeScriptCompile Include="src\components\article\article.reducers.ts" />
+    <TypeScriptCompile Include="src\components\social-share\social-share-icons.component.ts" />
+    <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
+    <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\article\demo\" />

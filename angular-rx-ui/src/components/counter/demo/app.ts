@@ -1,5 +1,4 @@
-﻿
-@core.Component({
+﻿@core.Component({
     selector: "app",
     template: "<div><counter></counter></div>"
 })
@@ -13,7 +12,7 @@ class AppComponent {
         if (state && state.lastTriggeredByActionType === "counter.decrement") {
 
         }
-            
+
     }
 }
 

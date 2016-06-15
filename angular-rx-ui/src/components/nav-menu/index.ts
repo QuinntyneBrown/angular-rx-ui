@@ -3,8 +3,8 @@ require("../core");
 import { provide, provideAction } from "../core";
 import { NavMenuComponent } from "./nav-menu.component";
 import { NavMenuActionCreator } from "./nav-menu.action-creator";
-import *  as reducers from "./nav-menu.reducers";
-import *  as actions from "./nav-menu.actions";
+import * as reducers from "./nav-menu.reducers";
+import * as actions from "./nav-menu.actions";
 
 var app = (<any>angular.module("app.navMenu", [
     "app.core"    
