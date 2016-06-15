@@ -11,6 +11,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
         "articlePublishedDate"
     ]
 })
-export class ArticleHeaderComponent {
-    constructor() { }
-}
+export class ArticleHeaderComponent { }

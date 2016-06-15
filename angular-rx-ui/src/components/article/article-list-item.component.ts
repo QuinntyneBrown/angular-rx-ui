@@ -6,6 +6,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "article-list-item",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleListItemComponent {
-    constructor() { }
-}
+export class ArticleListItemComponent { }

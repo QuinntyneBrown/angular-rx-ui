@@ -15,4 +15,5 @@ export class Article {
     author: Author;
     categories: Array<Category> = [];
     tags: Array<Tag> = [];
+    publishedDate: string;
 }

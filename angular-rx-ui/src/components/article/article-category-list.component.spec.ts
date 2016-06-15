@@ -1,6 +1,6 @@
-describe("articleFeaturedImage", () => {
+describe("articleCategoryList", () => {
 
-    var articleFeaturedImageComponent;
+    var articleCategoryListComponent;
     var $compile;
     var $rootScope;
 
@@ -13,15 +13,15 @@ describe("articleFeaturedImage", () => {
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        articleFeaturedImageComponent = $controller("articleFeaturedImageComponent", { articleFeaturedImageActionCreator: new MockActionCreator() });
+        articleCategoryListComponent = $controller("articleCategoryListComponent", { articleCategoryListActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<article-featured-image></article-featured-image>")($rootScope);
+        var element = $compile("<article-category-list></article-category-list>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(articleFeaturedImageComponent).toBeDefined();
+        expect(articleCategoryListComponent).toBeDefined();
     });
 })

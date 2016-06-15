@@ -91,6 +91,18 @@
     <Content Include="src\components\ads\ads.component.scss">
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\article\article-category-list.component.html">
+      <DependentUpon>article-category-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-category-list.component.scss">
+      <DependentUpon>article-category-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-excerpt.component.html">
+      <DependentUpon>article-excerpt.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-excerpt.component.scss">
+      <DependentUpon>article-excerpt.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\article\article-featured-image.component.html">
       <DependentUpon>article-featured-image.component.ts</DependentUpon>
     </Content>
@@ -279,6 +291,12 @@
     <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
       <DependentUpon>ads.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\article\article-category-list.component.spec.ts">
+      <DependentUpon>article-category-list.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\article\article-excerpt.component.spec.ts">
+      <DependentUpon>article-excerpt.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\article\article-featured-image.component.spec.ts">
       <DependentUpon>article-featured-image.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -450,6 +468,8 @@
     <TypeScriptCompile Include="src\components\ads\ads.action-creator.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.reducers.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.component.ts" />
+    <TypeScriptCompile Include="src\components\article\article-category-list.component.ts" />
+    <TypeScriptCompile Include="src\components\article\article-excerpt.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\article\demo\" />

@@ -50,6 +50,32 @@ describe("articleBody", function () {
     });
 });
 
+describe("articleCategoryList", function () {
+    var articleCategoryListComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.article");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        articleCategoryListComponent = $controller("articleCategoryListComponent", { articleCategoryListActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<article-category-list></article-category-list>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(articleCategoryListComponent).toBeDefined();
+    });
+});
+
 describe("articleDetail", function () {
     var articleDetailComponent;
     var $compile;
@@ -76,6 +102,32 @@ describe("articleDetail", function () {
     });
 });
 
+describe("articleExcerpt", function () {
+    var articleExcerptComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.article");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        articleExcerptComponent = $controller("articleExcerptComponent", { articleExcerptActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<article-excerpt></article-excerpt>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(articleExcerptComponent).toBeDefined();
+    });
+});
+
 describe("articleFeaturedImage", function () {
     var articleFeaturedImageComponent;
     var $compile;
@@ -86,7 +138,7 @@ describe("articleFeaturedImage", function () {
         return MockActionCreator;
     }());
     beforeEach(function () {
-        angular.mock.module("app.articleFeaturedImage");
+        angular.mock.module("app.article");
     });
     beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
         $rootScope = _$rootScope_;
