@@ -4,8 +4,9 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     template: require("./author.component.html"),
     styles: [require("./author.component.scss")],
     selector: "author",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: [
+        "authorFullName"
+    ]
 })
-export class AuthorComponent {
-    constructor() { }
-}
+export class AuthorComponent {}

@@ -24,58 +24,6 @@ describe("ads", function () {
     });
 });
 
-describe("articleBody", function () {
-    var articleBodyComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.article");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        articleBodyComponent = $controller("articleBodyComponent", { articleBodyActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<article-body></article-body>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(articleBodyComponent).toBeDefined();
-    });
-});
-
-describe("articleCategoryList", function () {
-    var articleCategoryListComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.article");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        articleCategoryListComponent = $controller("articleCategoryListComponent", { articleCategoryListActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<article-category-list></article-category-list>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(articleCategoryListComponent).toBeDefined();
-    });
-});
-
 describe("articleDetail", function () {
     var articleDetailComponent;
     var $compile;
@@ -99,58 +47,6 @@ describe("articleDetail", function () {
     });
     it("should be defined", function () {
         expect(articleDetailComponent).toBeDefined();
-    });
-});
-
-describe("articleExcerpt", function () {
-    var articleExcerptComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.article");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        articleExcerptComponent = $controller("articleExcerptComponent", { articleExcerptActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<article-excerpt></article-excerpt>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(articleExcerptComponent).toBeDefined();
-    });
-});
-
-describe("articleFeaturedImage", function () {
-    var articleFeaturedImageComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.article");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        articleFeaturedImageComponent = $controller("articleFeaturedImageComponent", { articleFeaturedImageActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<article-featured-image></article-featured-image>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(articleFeaturedImageComponent).toBeDefined();
     });
 });
 

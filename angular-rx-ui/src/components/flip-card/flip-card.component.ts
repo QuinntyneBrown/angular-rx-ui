@@ -3,7 +3,7 @@ import { FlipCardActionCreator } from "./flip-card.action-creator";
 
 @Component({
     template: require("./flip-card.component.html"),
-    styleUrls: [require('./flip-card.component.css')],
+    styleUrls: [require('./flip-card.component.scss')],
     transclude: {
         'front': '?flipCardFront',
         'back': '?flipCardBack'

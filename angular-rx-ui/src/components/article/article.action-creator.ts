@@ -1,12 +1,11 @@
 import { IDispatcher, BaseActionCreator, Service } from "../core";
-import { ModalActionCreator } from "../modal/modal.action-creator";
 
 @Service({
     serviceName: "articleActionCreator",
-    viewProviders: ["dispatcher", "guid", "invokeAsync","modalActionCreator"]
+    viewProviders: ["dispatcher", "guid", "invokeAsync"]
 })
 export class ArticleActionCreator {
-    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync, private modalActionCreator: ModalActionCreator) { }    
+    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync) { }    
 
 }
 

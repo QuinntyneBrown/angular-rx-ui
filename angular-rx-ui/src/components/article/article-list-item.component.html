@@ -1,7 +1,15 @@
 <div class="article-list-item">
-    <article-featured-image></article-featured-image>
+
+    <img data-ng-src="vm.article.promoImage.url" />
+
     <article-header></article-header>
-    <article-excerpt></article-excerpt>
+
+    <div data-ng-bind-html="vm.article.excerpt">
+
+    </div>
+
     <article-author></article-author>
-    <article-category-list></article-category-list>
+
+    <category-list-for-item categories="vm.article.categories"></category-list-for-item>
+
 </div>
