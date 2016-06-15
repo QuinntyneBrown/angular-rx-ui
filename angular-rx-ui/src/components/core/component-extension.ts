@@ -102,8 +102,8 @@ angular.module = function () {
                     }
 
                     if (options.require) {
-                        var componentName = options.require.replace("^", "");
-                        scope.vm[componentName] = controller;
+                        var requiredComponentName = options.require.replace("^", "");
+                        scope.vm[requiredComponentName] = controller;
                     }
 
                     if (options.transclude && scope.vm.$transclude)

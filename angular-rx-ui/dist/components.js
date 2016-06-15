@@ -966,8 +966,8 @@
 	                        return txt;
 	                    };
 	                    if (options.require) {
-	                        var componentName = options.require.replace("^", "");
-	                        scope.vm[componentName] = controller;
+	                        var requiredComponentName = options.require.replace("^", "");
+	                        scope.vm[requiredComponentName] = controller;
 	                    }
 	                    if (options.transclude && scope.vm.$transclude)
 	                        scope.vm.$transclude(scope.$new(), function (clone) {
