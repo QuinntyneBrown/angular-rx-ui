@@ -65,7 +65,8 @@ var angularRxUI =
 	__webpack_require__(148);
 	__webpack_require__(157);
 	__webpack_require__(169);
-	__webpack_require__(177);
+	__webpack_require__(185);
+	__webpack_require__(193);
 	var app = angular
 	    .module("components", [
 	    "app.ads",
@@ -81,6 +82,7 @@ var angularRxUI =
 	    "app.picture",
 	    "app.rotator",
 	    "app.socialShare",
+	    "app.tabs",
 	    "app.tag",
 	    "app.window"
 	]);
@@ -4917,11 +4919,460 @@ var angularRxUI =
 
 	"use strict";
 	__webpack_require__(1);
+	var tab_content_component_1 = __webpack_require__(170);
+	var tab_title_component_1 = __webpack_require__(176);
+	var tabs_component_1 = __webpack_require__(180);
+	var tabs_action_creator_1 = __webpack_require__(171);
+	var reducers = __webpack_require__(184);
 	var core_1 = __webpack_require__(1);
-	var tag_list_component_1 = __webpack_require__(170);
-	var tag_action_creator_1 = __webpack_require__(174);
-	var reducers = __webpack_require__(175);
-	var actions = __webpack_require__(176);
+	var app = angular.module("app.tabs", [
+	    "app.core"
+	]);
+	core_1.provide(app, tabs_action_creator_1.TabsActionCreator);
+	app.service("tabsActionCreator", ["$location", "dispatcher", "tabsService", "guid", tabs_action_creator_1.TabsActionCreator]);
+	app.component(tab_content_component_1.TabContentComponent);
+	app.component(tab_title_component_1.TabTitleComponent);
+	app.component(tabs_component_1.TabsComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        reducersProvider.configure(reducers.setCurrentTabReducer);
+	        reducersProvider.configure(reducers.tabChildLoadedReducer);
+	    }]);
+	app.config(["initialStateProvider", "localStorageManagerProvider", function (initialStateProvider, localStorageManagerProvider) {
+	        var localStorageInitialState = localStorageManagerProvider.get({ name: "initialState" });
+	        if (!localStorageInitialState)
+	            localStorageManagerProvider.put({
+	                name: "initialState", value: {
+	                    tabIndex: {}
+	                }
+	            });
+	        var initialState = localStorageManagerProvider.get({ name: "initialState" });
+	        initialState.tabIndex = initialState.tabIndex || {};
+	        initialStateProvider.configure(initialState);
+	    }]);
+
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var tabs_action_creator_1 = __webpack_require__(171);
+	var TabContentComponent = (function () {
+	    function TabContentComponent(_tabsActionCreator) {
+	        var _this = this;
+	        this._tabsActionCreator = _tabsActionCreator;
+	        this.storeOnChange = function (state) { };
+	        this.ngOnInit = function () { return _this._tabsActionCreator.tabChildLoaded(); };
+	    }
+	    TabContentComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(173),
+	            styles: [__webpack_require__(174)],
+	            selector: "tab-content",
+	            transclude: true,
+	            viewProviders: ["tabsActionCreator"],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [tabs_action_creator_1.TabsActionCreator])
+	    ], TabContentComponent);
+	    return TabContentComponent;
+	}());
+	exports.TabContentComponent = TabContentComponent;
+
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var tabs_actions_1 = __webpack_require__(172);
+	var TabsActionCreator = (function () {
+	    function TabsActionCreator(dispatcher) {
+	        var _this = this;
+	        this.dispatcher = dispatcher;
+	        this.setCurrentTab = function (options) { return _this.dispatcher.dispatch(new tabs_actions_1.SetCurrentTabAction(options.tabName, options.index)); };
+	        this.tabChildLoaded = function () { return _this.dispatcher.dispatch(new tabs_actions_1.TabChildLoadedAction()); };
+	    }
+	    TabsActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "tabsActionCreator",
+	            viewProviders: ["dispatcher"]
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], TabsActionCreator);
+	    return TabsActionCreator;
+	}());
+	exports.TabsActionCreator = TabsActionCreator;
+
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var TabChildLoadedAction = (function () {
+	    function TabChildLoadedAction() {
+	    }
+	    TabChildLoadedAction = __decorate([
+	        core_1.Action({
+	            type: "tabs.tabChildLoadedAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], TabChildLoadedAction);
+	    return TabChildLoadedAction;
+	}());
+	exports.TabChildLoadedAction = TabChildLoadedAction;
+	var SetCurrentTabAction = (function () {
+	    function SetCurrentTabAction(tabName, index) {
+	        this.tabName = tabName;
+	        this.index = index;
+	    }
+	    SetCurrentTabAction = __decorate([
+	        core_1.Action({
+	            type: "tabs.setCurrentTabAction"
+	        }), 
+	        __metadata('design:paramtypes', [String, Number])
+	    ], SetCurrentTabAction);
+	    return SetCurrentTabAction;
+	}());
+	exports.SetCurrentTabAction = SetCurrentTabAction;
+
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"tab-content\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(175);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tab-content.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tab-content.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".tab-content {\n  min-height: 200px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var tabs_action_creator_1 = __webpack_require__(171);
+	var TabTitleComponent = (function () {
+	    function TabTitleComponent($attrs, tabsActionCreator) {
+	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.tabsActionCreator = tabsActionCreator;
+	        this.storeOnChange = function (state) { };
+	        this.ngOnInit = function () { return _this.tabsActionCreator.tabChildLoaded(); };
+	        this.onTabTitleClick = function () {
+	            _this.tabsActionCreator.setCurrentTab({
+	                tabName: _this.$attrs.$$element[0].getAttribute("tabs-name"),
+	                index: _this.$attrs.$$element[0].getAttribute("index")
+	            });
+	        };
+	    }
+	    TabTitleComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(177),
+	            styles: [__webpack_require__(178)],
+	            selector: "tab-title",
+	            transclude: true,
+	            viewProviders: ["$attrs", "tabsActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, tabs_action_creator_1.TabsActionCreator])
+	    ], TabTitleComponent);
+	    return TabTitleComponent;
+	}());
+	exports.TabTitleComponent = TabTitleComponent;
+
+
+/***/ },
+/* 177 */
+/***/ function(module, exports) {
+
+	module.exports = "<h2 ng-click=\"vm.onTabTitleClick()\" class=\"tab-title\" ng-transclude></h2>"
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(179);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tab-title.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tab-title.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".tab-title {\n  display: inline-block;\n  font-weight: 100;\n  padding-right: 20px;\n  padding-left: 20px;\n  line-height: 3em;\n  text-align: center;\n  text-transform: uppercase;\n  font-size: 1em;\n  cursor: pointer; }\n\n.tab-title.tabs-titleselected {\n  font-weight: 800; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var tabs_action_creator_1 = __webpack_require__(171);
+	var tabs_actions_1 = __webpack_require__(172);
+	var TabsComponent = (function () {
+	    function TabsComponent($attrs, $element, tabsActionCreator) {
+	        var _this = this;
+	        this.$attrs = $attrs;
+	        this.$element = $element;
+	        this.tabsActionCreator = tabsActionCreator;
+	        this.storeOnChange = function (state) {
+	            _this.currentIndex = state.tabIndex[_this.$attrs["tabsName"]] || 0;
+	            if (state.lastTriggeredByAction === tabs_actions_1.SetCurrentTabAction) {
+	                _this.updateCurrentTab();
+	            }
+	            if (state.lastTriggeredByAction === tabs_actions_1.TabChildLoadedAction) {
+	                _this._titleElements = angular.element(_this.$element[0].querySelectorAll('.tab-title'));
+	                _this._contentElements = angular.element(_this.$element[0].querySelectorAll('.tab-content'));
+	                for (var i = 0; i < _this.titleElements.length; i++) {
+	                    _this.titleElements[i].setAttribute("index", i.toString());
+	                    _this.titleElements[i].setAttribute("tabs-name", _this.$attrs["tabsName"]);
+	                }
+	                _this.updateCurrentTab();
+	            }
+	        };
+	        this.updateCurrentTab = function () {
+	            for (var i = 0; i < _this.titleElements.length; i++) {
+	                if (i != _this.currentIndex) {
+	                    _this.titleElements[i].classList.remove("tabs-titleselected");
+	                }
+	                else {
+	                    _this.titleElements[i].classList.add("tabs-titleselected");
+	                }
+	            }
+	            for (var i = 0; i < _this.contentElements.length; i++) {
+	                if (i != _this.currentIndex) {
+	                    _this.contentElements[i].classList.add("tabs-contentInActive");
+	                }
+	                else {
+	                    _this.contentElements[i].classList.remove("tabs-contentInActive");
+	                }
+	            }
+	        };
+	        this.currentIndex = 0;
+	    }
+	    Object.defineProperty(TabsComponent.prototype, "titleElements", {
+	        get: function () { return this._titleElements; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Object.defineProperty(TabsComponent.prototype, "contentElements", {
+	        get: function () { return this._contentElements; },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TabsComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(181),
+	            styles: [__webpack_require__(182)],
+	            selector: "tabs",
+	            transclude: {
+	                'title': '?tabTitle',
+	                'content': '?tabContent'
+	            },
+	            viewProviders: [
+	                '$attrs',
+	                '$element',
+	                'tabsActionCreator'
+	            ]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, tabs_action_creator_1.TabsActionCreator])
+	    ], TabsComponent);
+	    return TabsComponent;
+	}());
+	exports.TabsComponent = TabsComponent;
+
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"tabs\">\r\n    <div ng-transclude=\"title\"></div>\r\n    <div ng-transclude=\"content\"></div>\r\n</div>"
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(183);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(36)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tabs.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./tabs.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(35)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".tabs-contentInActive {\n  display: none; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var tabs_actions_1 = __webpack_require__(172);
+	exports.setCurrentTabReducer = function (state, action) {
+	    if (action instanceof tabs_actions_1.SetCurrentTabAction) {
+	        state.tabIndex[action.tabName] = action.index;
+	        state.lastTriggeredByAction = tabs_actions_1.SetCurrentTabAction;
+	    }
+	    return state;
+	};
+	exports.tabChildLoadedReducer = function (state, action) {
+	    if (action instanceof tabs_actions_1.TabChildLoadedAction) {
+	        state.lastTriggeredByAction = tabs_actions_1.TabChildLoadedAction;
+	    }
+	    return state;
+	};
+
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(1);
+	var tag_list_component_1 = __webpack_require__(186);
+	var tag_action_creator_1 = __webpack_require__(190);
+	var reducers = __webpack_require__(191);
+	var actions = __webpack_require__(192);
 	var app = angular.module("app.tag", [
 	    "app.core"
 	]);
@@ -4938,7 +5389,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 170 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4957,8 +5408,8 @@ var angularRxUI =
 	    }
 	    TagListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(171),
-	            styles: [__webpack_require__(172)],
+	            template: __webpack_require__(187),
+	            styles: [__webpack_require__(188)],
 	            selector: "tag-list",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            inputs: ["tags"]
@@ -4971,19 +5422,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 171 */
+/* 187 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tag-list\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 172 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(173);
+	var content = __webpack_require__(189);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(36)(content, {});
@@ -5003,7 +5454,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 173 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(35)();
@@ -5017,7 +5468,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 174 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5052,14 +5503,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 175 */
+/* 191 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 176 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -5072,14 +5523,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 177 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var window_action_creator_1 = __webpack_require__(178);
-	var reducers = __webpack_require__(179);
+	var window_action_creator_1 = __webpack_require__(194);
+	var reducers = __webpack_require__(195);
 	var actions = __webpack_require__(152);
 	var app = angular.module("app.window", [
 	    "app.core"
@@ -5097,7 +5548,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 178 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5146,7 +5597,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 179 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

@@ -15,6 +15,7 @@ require("./components/paged-list");
 require("./components/picture");
 require("./components/rotator");
 require("./components/social-share");
+require("./components/tabs");
 require("./components/tag");
 require("./components/window");
 
@@ -33,6 +34,7 @@ var app = angular
         "app.picture",
         "app.rotator",   
         "app.socialShare",
+        "app.tabs",
         "app.tag",
         "app.window"                        
     ]);
