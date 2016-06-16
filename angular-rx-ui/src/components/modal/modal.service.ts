@@ -83,9 +83,7 @@ export class Modal {
                     "transition": "all 0.5s",
                     "-webkit-transition": "all 0.5s",
                     "-o-transition": "all 0.5s"
-                }
-
-
+                }               
             }).then(function () {
                 deferred.resolve();
             });

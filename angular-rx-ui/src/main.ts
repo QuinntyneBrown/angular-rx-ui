@@ -9,10 +9,13 @@ require("./components/backdrop");
 require("./components/category");
 require("./components/counter");
 require("./components/flip-card");
+require("./components/flyout");
+require("./components/hamburger-button");
 require("./components/modal");
 require("./components/nav-menu");
 require("./components/paged-list");
 require("./components/picture");
+require("./components/popover");
 require("./components/rotator");
 require("./components/social-share");
 require("./components/tabs");
@@ -28,9 +31,12 @@ var app = angular
         "app.core",
         "app.counter",
         "app.flipCard",
+        "app.flyout",
+        "app.hamburgerButton",
         "app.modal",
         "app.navMenu",
         "app.pagedList",
+        "app.popover",
         "app.picture",
         "app.rotator",   
         "app.socialShare",

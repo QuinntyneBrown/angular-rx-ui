@@ -91,6 +91,7 @@
     <Content Include="src\components\ads\ads.component.scss">
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\ads\demo\index.html" />
     <Content Include="src\components\article\demo\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
@@ -122,6 +123,8 @@
     <Content Include="src\components\article\article-list.component.scss">
       <DependentUpon>article-list.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\author\demo\index.html" />
+    <Content Include="src\components\backdrop\demo\index.html" />
     <Content Include="src\components\category\category-list-for-item.component.html">
       <DependentUpon>category-list-for-item.component.ts</DependentUpon>
     </Content>
@@ -134,10 +137,12 @@
     <Content Include="src\components\category\category-list.component.scss">
       <DependentUpon>category-list.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\category\demo\index.html" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\counter\demo\index.html" />
+    <Content Include="src\components\flip-card\demo\index.html" />
     <Content Include="src\components\flip-card\flip-card-back.component.html">
       <DependentUpon>flip-card-back.component.ts</DependentUpon>
     </Content>
@@ -147,6 +152,19 @@
     <Content Include="src\components\flip-card\flip-card.component.html">
       <DependentUpon>flip-card.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\flyout\flyout.component.html">
+      <DependentUpon>flyout.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\flyout\flyout.component.scss">
+      <DependentUpon>flyout.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\hamburger-button\hamburger-button.component.html">
+      <DependentUpon>hamburger-button.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\hamburger-button\hamburger-button.component.scss">
+      <DependentUpon>hamburger-button.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\modal\demo\index.html" />
     <Content Include="src\components\modal\modal-content.component.css">
       <DependentUpon>modal-content.component.ts</DependentUpon>
     </Content>
@@ -165,6 +183,7 @@
     <Content Include="src\components\modal\modal.component.html">
       <DependentUpon>modal.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\nav-menu\demo\index.html" />
     <Content Include="src\components\nav-menu\nav-menu.component.html">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </Content>
@@ -175,6 +194,8 @@
       <DependentUpon>flip-card.component.ts</DependentUpon>
     </Content>
     <None Include="src\components\paged-list\paged-list.scss" />
+    <Content Include="src\components\paged-list\demo\index.html" />
+    <Content Include="src\components\picture\demo\index.html" />
     <Content Include="src\components\picture\picture-upload.component.html">
       <DependentUpon>picture-upload.component.ts</DependentUpon>
     </Content>
@@ -186,6 +207,12 @@
     </Content>
     <Content Include="src\components\picture\picture.component.scss">
       <DependentUpon>picture.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\popover\popover.component.html">
+      <DependentUpon>popover.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\popover\popover.component.scss">
+      <DependentUpon>popover.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\rotator\demo\index.html" />
     <Content Include="src\components\rotator\demo\rotator_button_next.png" />
@@ -199,6 +226,7 @@
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\social-share\demo\index.html" />
     <Content Include="src\components\social-share\social-share-icons.component.html">
       <DependentUpon>social-share-icons.component.ts</DependentUpon>
     </Content>
@@ -211,6 +239,7 @@
     <Content Include="src\components\social-share\social-share.component.scss">
       <DependentUpon>social-share.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\tabs\demo\index.html" />
     <Content Include="src\components\tabs\tab-content.component.scss">
       <DependentUpon>tab-content.component.ts</DependentUpon>
     </Content>
@@ -226,12 +255,14 @@
     <Content Include="src\components\tabs\tabs.component.html">
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\tag\demo\index.html" />
     <Content Include="src\components\tag\tag-list.component.html">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\tag\tag-list.component.scss">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\window\demo\index.html" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -373,6 +404,12 @@
     <TypeScriptCompile Include="src\components\flip-card\flip-card.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\index.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card.reducers.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.component.spec.ts">
+      <DependentUpon>flyout.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.component.spec.ts">
+      <DependentUpon>hamburger-button.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\modal\modal-content.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-title.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.action-creator.ts" />
@@ -399,6 +436,9 @@
     <TypeScriptCompile Include="src\components\picture\picture-upload.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.component.spec.ts">
       <DependentUpon>picture.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\popover\popover.component.spec.ts">
+      <DependentUpon>popover.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\rotator\rotator.actions.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.component.ts" />
@@ -478,6 +518,24 @@
     <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
     <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.service.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.model.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\index.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.actions.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.reducers.ts" />
+    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.component.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.model.ts" />
+    <TypeScriptCompile Include="src\components\popover\index.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.actions.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.reducers.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.component.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.model.ts" />
+    <TypeScriptCompile Include="src\components\flyout\index.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.actions.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.reducers.ts" />
+    <TypeScriptCompile Include="src\components\flyout\flyout.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

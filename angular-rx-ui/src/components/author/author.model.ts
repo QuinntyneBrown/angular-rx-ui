@@ -1,4 +1,7 @@
+import { Picture } from "../picture/picture.model";
+
 export class Author { 
 	id:number;
-	name:string;
+    name: string;
+    picture: Picture
 }

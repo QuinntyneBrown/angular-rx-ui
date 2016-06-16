@@ -245,6 +245,58 @@ describe("counter", function () {
     });
 });
 
+describe("flyout", function () {
+    var flyoutComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.flyout");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        flyoutComponent = $controller("flyoutComponent", { flyoutActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<flyout></flyout>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(flyoutComponent).toBeDefined();
+    });
+});
+
+describe("hamburgerButton", function () {
+    var hamburgerButtonComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.hamburgerButton");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        hamburgerButtonComponent = $controller("hamburgerButtonComponent", { hamburgerButtonActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<hamburger-button></hamburger-button>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(hamburgerButtonComponent).toBeDefined();
+    });
+});
+
 describe("navMenu", function () {
     var navMenuComponent;
     var $compile;
@@ -296,6 +348,32 @@ describe("picture", function () {
     });
     it("should be defined", function () {
         expect(pictureComponent).toBeDefined();
+    });
+});
+
+describe("popover", function () {
+    var popoverComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.popover");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        popoverComponent = $controller("popoverComponent", { popoverActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<popover></popover>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(popoverComponent).toBeDefined();
     });
 });
 
