@@ -1,4 +1,4 @@
-﻿declare module core {
+﻿declare module angularRxUI {
 
     export interface IPluckOptions {
         items: Array<any>;

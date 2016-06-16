@@ -42,6 +42,7 @@ require("./local-storage-manager-provider");
 require("./store");
 require("./add-or-update");
 require("./append-to-body-async");
+require("./auth-interceptor");
 require("./debounce");
 require("./extend-css-async");
 require("./get-from-url-sync");
@@ -57,6 +58,8 @@ require("./translate-x-async");
 
 let coreApp = (<any>angular.module("app.core", [
     "ngSanitize",
+
+    "authInterceptor",
     "localStorageManager",
     "store",
     "addOrUpdate",
