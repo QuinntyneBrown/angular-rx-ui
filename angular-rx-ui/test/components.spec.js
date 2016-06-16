@@ -271,6 +271,8 @@ describe("navMenu", function () {
     });
 });
 
+
+
 describe("picture", function () {
     var pictureComponent;
     var $compile;

@@ -1,5 +1,4 @@
-﻿import { Picture } from "../picture/picture.model";
-import { Tag } from "../tag/tag.model";
+﻿import { Tag } from "../tag/tag.model";
 import { Category } from "../category/category.model";
 import { Author } from "../author/author.model";
 
@@ -10,7 +9,7 @@ export class Article {
     headline: string;
     alternativeHeadline: string;
     url: string;
-    thumbnailUrl: Picture;
+    thumbnailUrl: string;
     image: Array<string>;
     author: Author;
     categories: Array<Category> = [];
