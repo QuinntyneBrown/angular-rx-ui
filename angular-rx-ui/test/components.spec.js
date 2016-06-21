@@ -323,6 +323,32 @@ describe("navMenu", function () {
     });
 });
 
+describe("popover", function () {
+    var popoverComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.popover");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        popoverComponent = $controller("popoverComponent", { popoverActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<popover></popover>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(popoverComponent).toBeDefined();
+    });
+});
+
 
 
 describe("picture", function () {
@@ -348,32 +374,6 @@ describe("picture", function () {
     });
     it("should be defined", function () {
         expect(pictureComponent).toBeDefined();
-    });
-});
-
-describe("popover", function () {
-    var popoverComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.popover");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        popoverComponent = $controller("popoverComponent", { popoverActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<popover></popover>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(popoverComponent).toBeDefined();
     });
 });
 

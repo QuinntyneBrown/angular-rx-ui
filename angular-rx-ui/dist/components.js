@@ -3277,7 +3277,7 @@ var angularRxUI =
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".hamburger-button {\n  position: relative;\n  height: 70px;\n  width: 70px;\n  margin: 0 auto;\n  margin-top: 25%;\n  border-radius: 50%;\n  background-color: cyan; }\n\n.hamburger-button:before {\n  content: \"\";\n  position: absolute;\n  top: 34%;\n  left: 30%;\n  width: 40%;\n  height: 25%;\n  border-top: 4px solid #FFF;\n  border-bottom: 4px solid #FFF; }\n\n.hamburger-button:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 30%;\n  width: 40%;\n  height: 25%;\n  border-top: 4px solid #FFF; }\n", ""]);
 
 	// exports
 
