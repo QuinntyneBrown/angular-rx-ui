@@ -125,6 +125,13 @@
     </Content>
     <Content Include="src\components\author\demo\index.html" />
     <Content Include="src\components\backdrop\demo\index.html" />
+    <Content Include="src\components\bold-button\bold-button.component.html">
+      <DependentUpon>bold-button.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\bold-button\bold-button.component.scss">
+      <DependentUpon>bold-button.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\bold-button\demo\index.html" />
     <Content Include="src\components\carousel-action-panel\carousel-action-panel.component.html">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
     </Content>
@@ -368,6 +375,9 @@
       <DependentUpon>article-list.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\article\article.model.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.component.spec.ts">
+      <DependentUpon>bold-button.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\carousel-action-panel\carousel-action-panel.component.spec.ts">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -575,6 +585,12 @@
     <TypeScriptCompile Include="src\components\carousel-action-panel\carousel-action-panel.action-creator.ts" />
     <TypeScriptCompile Include="src\components\carousel-action-panel\carousel-action-panel.reducers.ts" />
     <TypeScriptCompile Include="src\components\carousel-action-panel\carousel-action-panel.component.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.model.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\index.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.actions.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.reducers.ts" />
+    <TypeScriptCompile Include="src\components\bold-button\bold-button.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

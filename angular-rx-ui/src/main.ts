@@ -6,6 +6,7 @@ require("./components/ads");
 require("./components/article");
 require("./components/author");
 require("./components/backdrop");
+require("./components/bold-button");
 require("./components/category");
 require("./components/carousel-action-panel");
 require("./components/counter");
@@ -29,6 +30,8 @@ var app = angular
         "app.ads",
         "app.article",
         "app.author",
+        "app.backdrop",
+        "app.boldButton",
         "app.carouselActionPanel",
         "app.category",
         "app.core",
