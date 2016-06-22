@@ -154,6 +154,32 @@ describe("author", function () {
     });
 });
 
+describe("carouselActionPanel", function () {
+    var carouselActionPanelComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.carouselActionPanel");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        carouselActionPanelComponent = $controller("carouselActionPanelComponent", { carouselActionPanelActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<carousel-action-panel></carousel-action-panel>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(carouselActionPanelComponent).toBeDefined();
+    });
+});
+
 describe("categoryListForItem", function () {
     var categoryListForItemComponent;
     var $compile;
@@ -403,6 +429,32 @@ describe("popover", function () {
     });
 });
 
+describe("tagList", function () {
+    var tagListComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.tag");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<tag-list></tag-list>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(tagListComponent).toBeDefined();
+    });
+});
+
 describe("socialShareIcons", function () {
     var socialShareIconsComponent;
     var $compile;
@@ -452,31 +504,5 @@ describe("socialShare", function () {
     });
     it("should be defined", function () {
         expect(socialShareComponent).toBeDefined();
-    });
-});
-
-describe("tagList", function () {
-    var tagListComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.tag");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<tag-list></tag-list>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(tagListComponent).toBeDefined();
     });
 });

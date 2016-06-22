@@ -7,6 +7,7 @@ require("./components/article");
 require("./components/author");
 require("./components/backdrop");
 require("./components/category");
+require("./components/carousel-action-panel");
 require("./components/counter");
 require("./components/flip-card");
 require("./components/flyout");
@@ -28,6 +29,7 @@ var app = angular
         "app.ads",
         "app.article",
         "app.author",
+        "app.carouselActionPanel",
         "app.category",
         "app.core",
         "app.counter",
