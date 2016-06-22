@@ -4256,7 +4256,7 @@ var angularRxUI =
 /* 154 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"panel\">\r\n    <div>\r\n        <div class=\"panel-image\">\r\n            <img data-ng-src=\"{{ vm.imageUrl }}\" />\r\n        </div>\r\n        <div class=\"panel-html-body\">\r\n            <h2>{{ vm.headline }}</h2>\r\n            <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"panel\">\r\n    <div class=\"panel-image\">\r\n        <img data-ng-src=\"{{ vm.imageUrl }}\" />\r\n    </div>\r\n    <div class=\"panel-html-body\">\r\n        <h2>{{ vm.headline }}</h2>\r\n        <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 155 */
@@ -4293,7 +4293,7 @@ var angularRxUI =
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".panel-image {\n  float: left;\n  position: relative; }\n\n.panel-html-body {\n  float: left;\n  position: relative; }\n\n.panel-html-body:after {\n  content: '';\n  display: block;\n  clear: both; }\n", ""]);
 
 	// exports
 

@@ -1,0 +1,15 @@
+.panel-image {
+    float:left;
+    position:relative;
+}
+
+.panel-html-body {
+    float:left;
+    position:relative;
+}
+
+.panel-html-body:after {
+    content: '';
+    display: block;
+    clear: both;
+}
