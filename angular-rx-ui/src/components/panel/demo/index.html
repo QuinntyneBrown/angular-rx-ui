@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+	<meta charset="utf-8" />
+    <meta name="viewport"
+          content="user-scalable=no,
+              initial-scale=1,
+              maximum-scale=1,
+              minimum-scale=1,
+              width=device-width,
+              height=device-height,
+              target-densitydpi=device-dpi" />
+</head>
+<body data-ng-app="app" data-ng-controller="mainController as vm">
+    <div>
+        <a href="../../../../index.html">Back</a>
+    </div>
+
+    <div>
+        <panel headline="vm.headline" image-url="vm.imageUrl" html-body="vm.htmlBody" ></panel>
+    </div>
+
+    <script src="../../../../lib/fastclick.js"></script>
+    <script src="../../../../lib/rx.all.compat.js"></script>
+    <script src="../../../../lib/jquery.js"></script>
+    <script src="../../../../lib/angular.js"></script>
+    <script src="../../../../lib/angular-sanitize.js"></script>
+    <script src="../../../../lib/angular-touch.js"></script>
+    <script src="../../../../lib/angular-route.js"></script>  
+    <script src="../../../../dist/components.js"></script>
+    <script type="text/javascript">
+
+        var module = angular.module("app", [
+            "components"
+        ])
+        .controller("mainController", [function mainController() {
+            var self = this;
+            self.imageUrl = "shoe-1.jpg";
+            self.headline = "Penny";
+            self.htmlBody = "<h1>Dope!</h1>";
+            return self;
+        }]);
+
+    </script>
+</body>
+</html>

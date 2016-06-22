@@ -196,6 +196,14 @@
     </Content>
     <None Include="src\components\paged-list\paged-list.scss" />
     <Content Include="src\components\paged-list\demo\index.html" />
+    <Content Include="src\components\panel\demo\index.html" />
+    <Content Include="src\components\panel\demo\shoe-1.jpg" />
+    <Content Include="src\components\panel\panel.component.html">
+      <DependentUpon>panel.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\panel\panel.component.scss">
+      <DependentUpon>panel.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\picture\demo\index.html" />
     <Content Include="src\components\picture\picture-upload.component.html">
       <DependentUpon>picture-upload.component.ts</DependentUpon>
@@ -431,6 +439,9 @@
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list-from-in-memory.ts" />
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list.ts" />
     <TypeScriptCompile Include="src\components\paged-list\validate-page-properties-and-get-skip-count.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.component.spec.ts">
+      <DependentUpon>panel.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\picture\picture-upload.component.spec.ts">
       <DependentUpon>picture-upload.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -537,6 +548,12 @@
     <TypeScriptCompile Include="src\components\flyout\flyout.action-creator.ts" />
     <TypeScriptCompile Include="src\components\flyout\flyout.reducers.ts" />
     <TypeScriptCompile Include="src\components\flyout\flyout.component.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.model.ts" />
+    <TypeScriptCompile Include="src\components\panel\index.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.actions.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.reducers.ts" />
+    <TypeScriptCompile Include="src\components\panel\panel.component.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

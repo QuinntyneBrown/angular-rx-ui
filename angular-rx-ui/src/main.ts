@@ -14,6 +14,7 @@ require("./components/hamburger-button");
 require("./components/modal");
 require("./components/nav-menu");
 require("./components/paged-list");
+require("./components/panel");
 require("./components/picture");
 require("./components/popover");
 require("./components/rotator");
@@ -36,6 +37,7 @@ var app = angular
         "app.modal",
         "app.navMenu",
         "app.pagedList",
+        "app.panel",
         "app.popover",
         "app.picture",
         "app.rotator",   
