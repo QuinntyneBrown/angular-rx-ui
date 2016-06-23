@@ -1,27 +1,27 @@
-describe("boldButton", () => {
+describe("button", () => {
 
-    var boldButtonComponent;
+    var buttonComponent;
     var $compile;
     var $rootScope;
 
     class MockActionCreator { }
 
     beforeEach(() => {
-        angular.mock.module("app.boldButton");
+        angular.mock.module("app.button");
     });
 
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        boldButtonComponent = $controller("boldButtonComponent", { boldButtonActionCreator: new MockActionCreator() });
+        buttonComponent = $controller("buttonComponent", { buttonActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<bold-button></bold-button>")($rootScope);
+        var element = $compile("<button></button>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(boldButtonComponent).toBeDefined();
+        expect(buttonComponent).toBeDefined();
     });
 })

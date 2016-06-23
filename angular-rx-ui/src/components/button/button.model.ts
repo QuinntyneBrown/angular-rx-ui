@@ -1,4 +1,4 @@
-export class BoldButton { 
+export class Button { 
 	id:number;
 	name:string;
 }

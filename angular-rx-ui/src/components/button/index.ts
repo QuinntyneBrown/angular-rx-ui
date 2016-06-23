@@ -1,17 +1,19 @@
 require("../core");
 
 import { provide, provideAction } from "../core";
+import { ButtonComponent } from "./button.component";
 import { BoldButtonComponent } from "./bold-button.component";
-import { BoldButtonActionCreator } from "./bold-button.action-creator";
-import *  as reducers from "./bold-button.reducers";
-import *  as actions from "./bold-button.actions";
+import { ButtonActionCreator } from "./button.action-creator";
+import *  as reducers from "./button.reducers";
+import *  as actions from "./button.actions";
 
-var app = (<any>angular.module("app.boldButton", [
+var app = (<any>angular.module("app.button", [
     "app.core"    
 ]));
 
-provide(app,BoldButtonActionCreator);
+provide(app,ButtonActionCreator);
 
+app.component(ButtonComponent);
 app.component(BoldButtonComponent);
 
 app.config(["reducersProvider", reducersProvider => {	

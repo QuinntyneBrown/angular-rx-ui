@@ -6,6 +6,4 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "popover",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PopoverComponent {
-    constructor() { }
-}
+export class PopoverComponent { }
