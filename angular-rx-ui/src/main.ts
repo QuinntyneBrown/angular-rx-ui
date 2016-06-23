@@ -2,6 +2,8 @@
 
 require("./components/core");
 
+require("./sass");
+
 require("./components/ads");
 require("./components/article");
 require("./components/author");

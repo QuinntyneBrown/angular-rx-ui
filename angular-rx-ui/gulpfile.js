@@ -56,7 +56,7 @@ gulp.task("webpack", ['remove-compiled-js'], function () {
             library:"angularRxUI"
         },
         resolve: {
-            extensions: ["", ".js", ".ts"]
+            extensions: ["", ".js", ".ts",".scss"]
         },
         module: {
             loaders: [
