@@ -17,6 +17,8 @@ require("./components/flyout");
 require("./components/hamburger-button");
 require("./components/modal");
 require("./components/nav-menu");
+require("./components/ngrx-footer");
+require("./components/ngrx-header");
 require("./components/paged-list");
 require("./components/panel");
 require("./components/picture");
@@ -43,6 +45,8 @@ var app = angular
         "app.hamburgerButton",
         "app.modal",
         "app.navMenu",
+        "app.ngrxHeader",
+        "app.ngrxFooter",
         "app.pagedList",
         "app.panel",
         "app.popover",

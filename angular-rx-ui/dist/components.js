@@ -66,14 +66,16 @@ var angularRxUI =
 	__webpack_require__(143);
 	__webpack_require__(158);
 	__webpack_require__(166);
-	__webpack_require__(175);
-	__webpack_require__(183);
-	__webpack_require__(196);
-	__webpack_require__(204);
-	__webpack_require__(213);
-	__webpack_require__(225);
+	__webpack_require__(174);
+	__webpack_require__(182);
+	__webpack_require__(191);
+	__webpack_require__(199);
+	__webpack_require__(212);
+	__webpack_require__(220);
+	__webpack_require__(229);
 	__webpack_require__(241);
-	__webpack_require__(249);
+	__webpack_require__(257);
+	__webpack_require__(265);
 	var app = angular
 	    .module("components", [
 	    "app.ads",
@@ -90,6 +92,8 @@ var angularRxUI =
 	    "app.hamburgerButton",
 	    "app.modal",
 	    "app.navMenu",
+	    "app.ngrxHeader",
+	    "app.ngrxFooter",
 	    "app.pagedList",
 	    "app.panel",
 	    "app.popover",
@@ -4464,16 +4468,334 @@ var angularRxUI =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(1);
+	var ngrx_footer_component_1 = __webpack_require__(167);
+	var ngrx_footer_action_creator_1 = __webpack_require__(171);
+	var reducers = __webpack_require__(172);
+	var actions = __webpack_require__(173);
+	var app = angular.module("app.ngrxFooter", [
+	    "app.core"
+	]);
+	core_1.provide(app, ngrx_footer_action_creator_1.NgrxFooterActionCreator);
+	app.component(ngrx_footer_component_1.NgrxFooterComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var NgrxFooterComponent = (function () {
+	    function NgrxFooterComponent() {
+	    }
+	    NgrxFooterComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(168),
+	            styles: [__webpack_require__(169)],
+	            selector: "ngrx-footer",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], NgrxFooterComponent);
+	    return NgrxFooterComponent;
+	}());
+	exports.NgrxFooterComponent = NgrxFooterComponent;
+
+
+/***/ },
+/* 168 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"ngrx-footer\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(170);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(35)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./ngrx-footer.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./ngrx-footer.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(33)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var modal_action_creator_1 = __webpack_require__(42);
+	var NgrxFooterActionCreator = (function () {
+	    function NgrxFooterActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	    }
+	    NgrxFooterActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "ngrxFooterActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], NgrxFooterActionCreator);
+	    return NgrxFooterActionCreator;
+	}());
+	exports.NgrxFooterActionCreator = NgrxFooterActionCreator;
+
+
+/***/ },
+/* 172 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Default = (function () {
+	    function Default() {
+	    }
+	    return Default;
+	}());
+	exports.Default = Default;
+
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(1);
+	var core_1 = __webpack_require__(1);
+	var ngrx_header_component_1 = __webpack_require__(175);
+	var ngrx_header_action_creator_1 = __webpack_require__(179);
+	var reducers = __webpack_require__(180);
+	var actions = __webpack_require__(181);
+	var app = angular.module("app.ngrxHeader", [
+	    "app.core"
+	]);
+	core_1.provide(app, ngrx_header_action_creator_1.NgrxHeaderActionCreator);
+	app.component(ngrx_header_component_1.NgrxHeaderComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var NgrxHeaderComponent = (function () {
+	    function NgrxHeaderComponent() {
+	    }
+	    NgrxHeaderComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(176),
+	            styles: [__webpack_require__(177)],
+	            selector: "ngrx-header",
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], NgrxHeaderComponent);
+	    return NgrxHeaderComponent;
+	}());
+	exports.NgrxHeaderComponent = NgrxHeaderComponent;
+
+
+/***/ },
+/* 176 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"ngrx-header\">\r\n\r\n</div>\r\n"
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(178);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(35)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./ngrx-header.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./ngrx-header.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(33)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(1);
+	var modal_action_creator_1 = __webpack_require__(42);
+	var NgrxHeaderActionCreator = (function () {
+	    function NgrxHeaderActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	    }
+	    NgrxHeaderActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "ngrxHeaderActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], NgrxHeaderActionCreator);
+	    return NgrxHeaderActionCreator;
+	}());
+	exports.NgrxHeaderActionCreator = NgrxHeaderActionCreator;
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Default = (function () {
+	    function Default() {
+	    }
+	    return Default;
+	}());
+	exports.Default = Default;
+
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__webpack_require__(1);
-	__webpack_require__(167);
+	__webpack_require__(183);
 	var core_1 = __webpack_require__(1);
-	var paged_list_actions_1 = __webpack_require__(169);
-	var reducers = __webpack_require__(170);
-	__export(__webpack_require__(171));
-	__export(__webpack_require__(172));
+	var paged_list_actions_1 = __webpack_require__(185);
+	var reducers = __webpack_require__(186);
+	__export(__webpack_require__(187));
+	__export(__webpack_require__(188));
 	var app = angular.module("app.pagedList", [
 	    "app.core"
 	]);
@@ -4486,13 +4808,13 @@ var angularRxUI =
 
 
 /***/ },
-/* 167 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(168);
+	var content = __webpack_require__(184);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -4512,7 +4834,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 168 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -4526,7 +4848,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 169 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4558,14 +4880,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 170 */
+/* 186 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 171 */
+/* 187 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4607,13 +4929,13 @@ var angularRxUI =
 
 
 /***/ },
-/* 172 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var validate_page_properties_and_get_skip_count_1 = __webpack_require__(173);
-	var paging_config_model_1 = __webpack_require__(174);
-	var paged_list_model_1 = __webpack_require__(171);
+	var validate_page_properties_and_get_skip_count_1 = __webpack_require__(189);
+	var paging_config_model_1 = __webpack_require__(190);
+	var paged_list_model_1 = __webpack_require__(187);
 	function toPageListFromInMemory(entities, page, pageSize) {
 	    if (entities == null)
 	        throw new Error("entities");
@@ -4626,7 +4948,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 173 */
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4646,7 +4968,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 174 */
+/* 190 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4661,16 +4983,16 @@ var angularRxUI =
 
 
 /***/ },
-/* 175 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var panel_component_1 = __webpack_require__(176);
-	var panel_action_creator_1 = __webpack_require__(180);
-	var reducers = __webpack_require__(181);
-	var actions = __webpack_require__(182);
+	var panel_component_1 = __webpack_require__(192);
+	var panel_action_creator_1 = __webpack_require__(196);
+	var reducers = __webpack_require__(197);
+	var actions = __webpack_require__(198);
 	var app = angular.module("app.panel", [
 	    "app.core"
 	]);
@@ -4687,7 +5009,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 176 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4706,8 +5028,8 @@ var angularRxUI =
 	    }
 	    PanelComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(177),
-	            styles: [__webpack_require__(178)],
+	            template: __webpack_require__(193),
+	            styles: [__webpack_require__(194)],
 	            selector: "panel",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            inputs: ["imageUrl", "headline", "htmlBody"]
@@ -4720,19 +5042,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 177 */
+/* 193 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"panel\">\r\n    <div class=\"panel-image\">\r\n        <img data-ng-src=\"{{ vm.imageUrl }}\" />\r\n    </div>\r\n    <div class=\"panel-html-body\">\r\n        <h2>{{ vm.headline }}</h2>\r\n        <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
-/* 178 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(179);
+	var content = __webpack_require__(195);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -4752,7 +5074,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 179 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -4766,7 +5088,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 180 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4801,14 +5123,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 181 */
+/* 197 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 182 */
+/* 198 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4821,18 +5143,18 @@ var angularRxUI =
 
 
 /***/ },
-/* 183 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var picture_component_1 = __webpack_require__(184);
-	var picture_upload_component_1 = __webpack_require__(188);
-	var picture_action_creator_1 = __webpack_require__(189);
-	var picture_service_1 = __webpack_require__(194);
-	var reducers = __webpack_require__(195);
-	var actions = __webpack_require__(190);
+	var picture_component_1 = __webpack_require__(200);
+	var picture_upload_component_1 = __webpack_require__(204);
+	var picture_action_creator_1 = __webpack_require__(205);
+	var picture_service_1 = __webpack_require__(210);
+	var reducers = __webpack_require__(211);
+	var actions = __webpack_require__(206);
 	var app = angular.module("app.picture", [
 	    "app.core"
 	]);
@@ -4851,7 +5173,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 184 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4870,8 +5192,8 @@ var angularRxUI =
 	    }
 	    PictureComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(185),
-	            styles: [__webpack_require__(186)],
+	            template: __webpack_require__(201),
+	            styles: [__webpack_require__(202)],
 	            selector: "picture",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -4883,19 +5205,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 185 */
+/* 201 */
 /***/ function(module, exports) {
 
 	module.exports = "<img class=\"picture\" data-ng-src=\"vm.pictureSrc\"/>    \r\n\r\n"
 
 /***/ },
-/* 186 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(187);
+	var content = __webpack_require__(203);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -4915,7 +5237,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 187 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -4929,7 +5251,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 188 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4943,7 +5265,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var picture_action_creator_1 = __webpack_require__(189);
+	var picture_action_creator_1 = __webpack_require__(205);
 	var PictureUploadComponent = (function () {
 	    function PictureUploadComponent($element, pictureActionCreator) {
 	        var _this = this;
@@ -4967,8 +5289,8 @@ var angularRxUI =
 	    });
 	    PictureUploadComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(191),
-	            styles: __webpack_require__(192),
+	            template: __webpack_require__(207),
+	            styles: __webpack_require__(208),
 	            selector: "picture-upload",
 	            viewProviders: ["$element", "pictureActionCreator"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -4981,7 +5303,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 189 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4996,7 +5318,7 @@ var angularRxUI =
 	};
 	var core_1 = __webpack_require__(1);
 	var modal_action_creator_1 = __webpack_require__(42);
-	var picture_actions_1 = __webpack_require__(190);
+	var picture_actions_1 = __webpack_require__(206);
 	var PictureActionCreator = (function () {
 	    function PictureActionCreator(dispatcher, guid, invokeAsync, modalActionCreator, pictureService) {
 	        var _this = this;
@@ -5037,7 +5359,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 190 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5068,19 +5390,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 191 */
+/* 207 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\r\n    <div class=\"drop-zone\">DROP FILES HERE TO BE UPLOADED...</div>\r\n</div>"
 
 /***/ },
-/* 192 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(193);
+	var content = __webpack_require__(209);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -5100,7 +5422,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 193 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -5114,7 +5436,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 194 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5171,23 +5493,23 @@ var angularRxUI =
 
 
 /***/ },
-/* 195 */
+/* 211 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 196 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var popover_component_1 = __webpack_require__(197);
-	var popover_action_creator_1 = __webpack_require__(201);
-	var reducers = __webpack_require__(202);
-	var actions = __webpack_require__(203);
+	var popover_component_1 = __webpack_require__(213);
+	var popover_action_creator_1 = __webpack_require__(217);
+	var reducers = __webpack_require__(218);
+	var actions = __webpack_require__(219);
 	var app = angular.module("app.popover", [
 	    "app.core"
 	]);
@@ -5204,7 +5526,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 197 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5223,8 +5545,8 @@ var angularRxUI =
 	    }
 	    PopoverComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(198),
-	            styles: [__webpack_require__(199)],
+	            template: __webpack_require__(214),
+	            styles: [__webpack_require__(215)],
 	            selector: "popover",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -5236,19 +5558,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 198 */
+/* 214 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"popover\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 199 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(200);
+	var content = __webpack_require__(216);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -5268,7 +5590,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 200 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -5282,7 +5604,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 201 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5317,14 +5639,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 202 */
+/* 218 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 203 */
+/* 219 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -5337,15 +5659,15 @@ var angularRxUI =
 
 
 /***/ },
-/* 204 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var rotator_component_1 = __webpack_require__(205);
-	var rotator_action_creator_1 = __webpack_require__(206);
-	var reducers = __webpack_require__(212);
+	var rotator_component_1 = __webpack_require__(221);
+	var rotator_action_creator_1 = __webpack_require__(222);
+	var reducers = __webpack_require__(228);
 	var app = angular.module("app.rotator", [
 	    "ngTouch",
 	    "app.core"
@@ -5360,7 +5682,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 205 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5374,8 +5696,8 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var rotator_action_creator_1 = __webpack_require__(206);
-	var window_actions_1 = __webpack_require__(208);
+	var rotator_action_creator_1 = __webpack_require__(222);
+	var window_actions_1 = __webpack_require__(224);
 	var RotatorComponent = (function () {
 	    function RotatorComponent($attrs, $compile, $element, $http, $interval, $location, $q, $scope, $timeout, $transclude, debounce, getFromUrlSync, getX, rotatorActionCreator, translateX, translateXAsync) {
 	        var _this = this;
@@ -5627,8 +5949,8 @@ var angularRxUI =
 	    });
 	    RotatorComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(209),
-	            styles: __webpack_require__(210),
+	            template: __webpack_require__(225),
+	            styles: __webpack_require__(226),
 	            selector: "rotator",
 	            transclude: "element",
 	            inputs: [
@@ -5664,7 +5986,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 206 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5678,7 +6000,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var rotator_actions_1 = __webpack_require__(207);
+	var rotator_actions_1 = __webpack_require__(223);
 	var RotatorActionCreator = (function () {
 	    function RotatorActionCreator(dispatcher, guid) {
 	        var _this = this;
@@ -5700,7 +6022,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 207 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5743,7 +6065,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 208 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5771,19 +6093,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 209 */
+/* 225 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='rotator'>            \r\n    <div class='view-port'>        \r\n        <div class='container'></div>\r\n        <div class='previous-arrow' data-ng-click='vm.onPreviousAsyncDebounce()'>&nbsp;<img class=\"previous-arrow-img\" data-ng-src='{{ vm.previousButtonImageUrl }}' /></div>\r\n        <div class='next-arrow' data-ng-click='vm.onNextAsyncDebounce()'>&nbsp;<img class=\"next-arrow-img\" data-ng-src='{{ vm.nextButtonImageUrl }}' /></div>        \r\n    </div>    \r\n\r\n</div>"
 
 /***/ },
-/* 210 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(211);
+	var content = __webpack_require__(227);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -5803,7 +6125,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 211 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -5817,11 +6139,11 @@ var angularRxUI =
 
 
 /***/ },
-/* 212 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var rotator_actions_1 = __webpack_require__(207);
+	var rotator_actions_1 = __webpack_require__(223);
 	exports.rotatorPreviousReducer = function (state, action) {
 	    if (action instanceof rotator_actions_1.RotatorPreviousAction) { }
 	    return state;
@@ -5833,17 +6155,17 @@ var angularRxUI =
 
 
 /***/ },
-/* 213 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var social_share_component_1 = __webpack_require__(214);
-	var social_share_icons_component_1 = __webpack_require__(218);
-	var social_share_action_creator_1 = __webpack_require__(222);
-	var reducers = __webpack_require__(223);
-	var actions = __webpack_require__(224);
+	var social_share_component_1 = __webpack_require__(230);
+	var social_share_icons_component_1 = __webpack_require__(234);
+	var social_share_action_creator_1 = __webpack_require__(238);
+	var reducers = __webpack_require__(239);
+	var actions = __webpack_require__(240);
 	var app = angular.module("app.socialShare", [
 	    "app.core"
 	]);
@@ -5861,7 +6183,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 214 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5880,8 +6202,8 @@ var angularRxUI =
 	    }
 	    SocialShareComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(215),
-	            styles: [__webpack_require__(216)],
+	            template: __webpack_require__(231),
+	            styles: [__webpack_require__(232)],
 	            selector: "social-share",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -5893,19 +6215,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 215 */
+/* 231 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"social-share\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 216 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(217);
+	var content = __webpack_require__(233);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -5925,7 +6247,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 217 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -5939,7 +6261,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 218 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5958,8 +6280,8 @@ var angularRxUI =
 	    }
 	    SocialShareIconsComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(219),
-	            styles: [__webpack_require__(220)],
+	            template: __webpack_require__(235),
+	            styles: [__webpack_require__(236)],
 	            selector: "social-share-icons",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
@@ -5971,19 +6293,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 219 */
+/* 235 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"social-share-icons\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 220 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(221);
+	var content = __webpack_require__(237);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -6003,7 +6325,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 221 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -6017,7 +6339,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 222 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6052,14 +6374,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 223 */
+/* 239 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 224 */
+/* 240 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6072,16 +6394,16 @@ var angularRxUI =
 
 
 /***/ },
-/* 225 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
-	var tab_content_component_1 = __webpack_require__(226);
-	var tab_title_component_1 = __webpack_require__(232);
-	var tabs_component_1 = __webpack_require__(236);
-	var tabs_action_creator_1 = __webpack_require__(227);
-	var reducers = __webpack_require__(240);
+	var tab_content_component_1 = __webpack_require__(242);
+	var tab_title_component_1 = __webpack_require__(248);
+	var tabs_component_1 = __webpack_require__(252);
+	var tabs_action_creator_1 = __webpack_require__(243);
+	var reducers = __webpack_require__(256);
 	var core_1 = __webpack_require__(1);
 	var app = angular.module("app.tabs", [
 	    "app.core"
@@ -6110,7 +6432,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 226 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6124,7 +6446,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var tabs_action_creator_1 = __webpack_require__(227);
+	var tabs_action_creator_1 = __webpack_require__(243);
 	var TabContentComponent = (function () {
 	    function TabContentComponent(_tabsActionCreator) {
 	        var _this = this;
@@ -6134,8 +6456,8 @@ var angularRxUI =
 	    }
 	    TabContentComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(229),
-	            styles: [__webpack_require__(230)],
+	            template: __webpack_require__(245),
+	            styles: [__webpack_require__(246)],
 	            selector: "tab-content",
 	            transclude: true,
 	            viewProviders: ["tabsActionCreator"],
@@ -6149,7 +6471,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 227 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6163,7 +6485,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var tabs_actions_1 = __webpack_require__(228);
+	var tabs_actions_1 = __webpack_require__(244);
 	var TabsActionCreator = (function () {
 	    function TabsActionCreator(dispatcher) {
 	        var _this = this;
@@ -6184,7 +6506,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 228 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6227,19 +6549,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 229 */
+/* 245 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tab-content\">\r\n    <ng-transclude></ng-transclude>\r\n</div>"
 
 /***/ },
-/* 230 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(231);
+	var content = __webpack_require__(247);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -6259,7 +6581,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 231 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -6273,7 +6595,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 232 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6287,7 +6609,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var tabs_action_creator_1 = __webpack_require__(227);
+	var tabs_action_creator_1 = __webpack_require__(243);
 	var TabTitleComponent = (function () {
 	    function TabTitleComponent($attrs, tabsActionCreator) {
 	        var _this = this;
@@ -6304,8 +6626,8 @@ var angularRxUI =
 	    }
 	    TabTitleComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(233),
-	            styles: [__webpack_require__(234)],
+	            template: __webpack_require__(249),
+	            styles: [__webpack_require__(250)],
 	            selector: "tab-title",
 	            transclude: true,
 	            viewProviders: ["$attrs", "tabsActionCreator"]
@@ -6318,19 +6640,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 233 */
+/* 249 */
 /***/ function(module, exports) {
 
 	module.exports = "<h2 ng-click=\"vm.onTabTitleClick()\" class=\"tab-title\" ng-transclude></h2>"
 
 /***/ },
-/* 234 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(235);
+	var content = __webpack_require__(251);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -6350,7 +6672,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 235 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -6364,7 +6686,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 236 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6378,8 +6700,8 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var tabs_action_creator_1 = __webpack_require__(227);
-	var tabs_actions_1 = __webpack_require__(228);
+	var tabs_action_creator_1 = __webpack_require__(243);
+	var tabs_actions_1 = __webpack_require__(244);
 	var TabsComponent = (function () {
 	    function TabsComponent($attrs, $element, tabsActionCreator) {
 	        var _this = this;
@@ -6433,8 +6755,8 @@ var angularRxUI =
 	    });
 	    TabsComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(237),
-	            styles: [__webpack_require__(238)],
+	            template: __webpack_require__(253),
+	            styles: [__webpack_require__(254)],
 	            selector: "tabs",
 	            transclude: {
 	                'title': '?tabTitle',
@@ -6454,19 +6776,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 237 */
+/* 253 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tabs\">\r\n    <div ng-transclude=\"title\"></div>\r\n    <div ng-transclude=\"content\"></div>\r\n</div>"
 
 /***/ },
-/* 238 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(239);
+	var content = __webpack_require__(255);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -6486,7 +6808,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 239 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -6500,11 +6822,11 @@ var angularRxUI =
 
 
 /***/ },
-/* 240 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var tabs_actions_1 = __webpack_require__(228);
+	var tabs_actions_1 = __webpack_require__(244);
 	exports.setCurrentTabReducer = function (state, action) {
 	    if (action instanceof tabs_actions_1.SetCurrentTabAction) {
 	        state.tabIndex[action.tabName] = action.index;
@@ -6521,16 +6843,16 @@ var angularRxUI =
 
 
 /***/ },
-/* 241 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var tag_list_component_1 = __webpack_require__(242);
-	var tag_action_creator_1 = __webpack_require__(246);
-	var reducers = __webpack_require__(247);
-	var actions = __webpack_require__(248);
+	var tag_list_component_1 = __webpack_require__(258);
+	var tag_action_creator_1 = __webpack_require__(262);
+	var reducers = __webpack_require__(263);
+	var actions = __webpack_require__(264);
 	var app = angular.module("app.tag", [
 	    "app.core"
 	]);
@@ -6547,7 +6869,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 242 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6566,8 +6888,8 @@ var angularRxUI =
 	    }
 	    TagListComponent = __decorate([
 	        core_1.Component({
-	            template: __webpack_require__(243),
-	            styles: [__webpack_require__(244)],
+	            template: __webpack_require__(259),
+	            styles: [__webpack_require__(260)],
 	            selector: "tag-list",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
 	            inputs: ["tags"]
@@ -6580,19 +6902,19 @@ var angularRxUI =
 
 
 /***/ },
-/* 243 */
+/* 259 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tag-list\">\r\n\r\n</div>\r\n"
 
 /***/ },
-/* 244 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(245);
+	var content = __webpack_require__(261);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(35)(content, {});
@@ -6612,7 +6934,7 @@ var angularRxUI =
 	}
 
 /***/ },
-/* 245 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
@@ -6626,7 +6948,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 246 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6661,14 +6983,14 @@ var angularRxUI =
 
 
 /***/ },
-/* 247 */
+/* 263 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 
 /***/ },
-/* 248 */
+/* 264 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6681,15 +7003,15 @@ var angularRxUI =
 
 
 /***/ },
-/* 249 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	__webpack_require__(1);
 	var core_1 = __webpack_require__(1);
-	var window_action_creator_1 = __webpack_require__(250);
-	var reducers = __webpack_require__(251);
-	var actions = __webpack_require__(208);
+	var window_action_creator_1 = __webpack_require__(266);
+	var reducers = __webpack_require__(267);
+	var actions = __webpack_require__(224);
 	var app = angular.module("app.window", [
 	    "app.core"
 	]);
@@ -6706,7 +7028,7 @@ var angularRxUI =
 
 
 /***/ },
-/* 250 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6720,7 +7042,7 @@ var angularRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(1);
-	var window_actions_1 = __webpack_require__(208);
+	var window_actions_1 = __webpack_require__(224);
 	var WindowActionCreator = (function () {
 	    function WindowActionCreator($window, dispatcher, guid, invokeAsync) {
 	        var _this = this;
@@ -6755,11 +7077,11 @@ var angularRxUI =
 
 
 /***/ },
-/* 251 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var window_actions_1 = __webpack_require__(208);
+	var window_actions_1 = __webpack_require__(224);
 	var core_1 = __webpack_require__(1);
 	exports.breakpointsReducer = function (state, action) {
 	    if (action instanceof window_actions_1.ResizeAction) {
