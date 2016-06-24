@@ -1,5 +1,4 @@
-﻿import { ITemplate, ITemplateGetOptions } from "./popover.interfaces";
-import { Service } from "../core";
+﻿import { Service, ITemplate, ITemplateGetOptions, provide } from "../core";
 
 @Service({
     serviceName: "template",
@@ -11,7 +10,7 @@ export class Template implements ITemplate {
         private $q: ng.IQService,
         private $templateCache: ng.ITemplateCacheService) {}
 
-    public get = (options: ITemplateGetOptions) => {
+    public get = (options: ITemplateGetOptions): angular.IPromise<any> => {
 
         let deferred = this.$q.defer();
         let cacheResult = this.$templateCache.get(options.templateUrl);
@@ -31,4 +30,9 @@ export class Template implements ITemplate {
     }
 
 }
+
+
+var app = angular.module("template", []);
+
+provide(app, Template);
 

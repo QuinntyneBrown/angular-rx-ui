@@ -21,6 +21,16 @@ export * from "./is-between";
 export * from "./translate-x";
 export * from "./translate-x-y";
 
+export * from "./point.d";
+export * from "./position.d";
+export * from "./rectangle-instance-options.d";
+export * from "./ruler.d";
+export * from "./space.d";
+export * from "./translate-x-y.d";
+export * from "./rectangle.d";
+export * from "./template.d";
+export * from "./template-get-options.d";
+
 export const Observable = Rx.Observable;
 
 import { Store } from "./store";
@@ -40,6 +50,11 @@ import { getX } from "./get-x";
 import { isBetween } from "./is-between";
 import { translateX } from "./translate-x";
 import { translateXY } from "./translate-x-y";
+import { Position } from "./position.service";
+import { Rectangle } from "./rectangle.service";
+import { Ruler } from "./ruler.service";
+import { Space } from "./space.service";
+import { Template } from "./template.service";
 
 require("./local-storage-manager-provider");
 require("./store");
@@ -54,12 +69,17 @@ require("./fetch");
 require("./get-x");
 require("./invoke-async");
 require("./component-extension");
+require("./position.service");
 require("./remove-element");
+require("./rectangle.service");
+require("./ruler.service");
 require("./safe-digest");
 require("./set-opacity-async");
+require("./space.service");
 require("./translate-x");
 require("./translate-x-y");
 require("./translate-x-async");
+require("./template.service");
 
 let coreApp = (<any>angular.module("app.core", [
     "ngSanitize",
@@ -76,11 +96,17 @@ let coreApp = (<any>angular.module("app.core", [
     "getX",
     "invokeAsync",
     "fetch",
+    "position",
     "removeElement",
+    "rectangle",
+    "ruler",
     "safeDigest",
     "setOpacityAsync",
+    "space",
+    "rectangle",
     "translateX",
     "translateXY",
-    "translateXAsync"
+    "translateXAsync",
+    "template"
 ]));
 

@@ -1,5 +1,4 @@
-﻿import { IPosition, IRuler, ISpace, ITranslateXY, IRectangle } from "./popover.interfaces";
-import { Injectable, Service } from "../core";
+﻿import { IPosition, IRuler, ISpace, ITranslateXY, IRectangle, Injectable, Service, provide } from "../core";
 
 @Injectable()
 @Service({
@@ -72,3 +71,13 @@ export class Position implements IPosition {
 
         
 }
+
+
+var app = angular.module("position", [
+    "ruler",
+    "space",
+    "translateXY"
+]);
+
+provide(app, Position);
+

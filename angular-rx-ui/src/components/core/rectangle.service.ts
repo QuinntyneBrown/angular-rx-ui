@@ -1,5 +1,4 @@
-﻿import { IRectangle, IRectangleInstanceOptions, IPoint } from "./popover.interfaces";
-import { Service } from "../core";
+﻿import { Service, IRectangle, IRectangleInstanceOptions, IPoint, provide } from "../core";
 
 @Service({
     serviceName: "rectangle"
@@ -43,3 +42,7 @@ export class Rectangle implements IRectangle {
 
     public get middle(): IPoint { return { x: this.centerX, y: this.centerY }; }
 }
+
+var app = angular.module("rectangle", []);
+
+provide(app, Rectangle);

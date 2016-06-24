@@ -441,6 +441,21 @@
     <TypeScriptCompile Include="src\components\core\index.ts" />
     <TypeScriptCompile Include="src\components\core\injectable.ts" />
     <TypeScriptCompile Include="src\components\core\invoke-async.ts" />
+    <TypeScriptCompile Include="src\components\core\point.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover-instance-options.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover-options.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover-scope.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover-trigger-scope.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover-vm.d.ts" />
+    <TypeScriptCompile Include="src\components\core\popover.d.ts" />
+    <TypeScriptCompile Include="src\components\core\position-detached-element-dto.ts" />
+    <TypeScriptCompile Include="src\components\core\position-detached-element-response-dto.d.ts" />
+    <TypeScriptCompile Include="src\components\core\position-detached-element.d.ts" />
+    <TypeScriptCompile Include="src\components\core\position.d.ts" />
+    <TypeScriptCompile Include="src\components\core\rect.d.ts" />
+    <TypeScriptCompile Include="src\components\core\rectangle.d.ts" />
+    <TypeScriptCompile Include="src\components\core\rectangle-instance-options.d.ts" />
+    <TypeScriptCompile Include="src\components\core\ruler.d.ts" />
     <TypeScriptCompile Include="src\components\core\is-between.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
     <TypeScriptCompile Include="src\components\core\pluck-out.ts" />
@@ -452,8 +467,12 @@
     <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\service.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
+    <TypeScriptCompile Include="src\components\core\space.d.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
+    <TypeScriptCompile Include="src\components\core\template-get-options.d.ts" />
+    <TypeScriptCompile Include="src\components\core\template.d.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x-async.ts" />
+    <TypeScriptCompile Include="src\components\core\translate-x-y.d.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x-y.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
@@ -474,9 +493,6 @@
     <TypeScriptCompile Include="src\components\error-list\error-item.model.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-list.component.spec.ts">
       <DependentUpon>error-list.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.spec.ts">
-      <DependentUpon>file-explorer.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
@@ -527,16 +543,15 @@
     <TypeScriptCompile Include="src\components\picture\picture.component.spec.ts">
       <DependentUpon>picture.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\popover\popover.component.spec.ts">
-      <DependentUpon>popover.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\popover\popover.interfaces.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover-instance-options.d.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover-vm.d.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.d.ts" />
     <TypeScriptCompile Include="src\components\popover\popover.service.ts" />
-    <TypeScriptCompile Include="src\components\popover\position.service.ts" />
-    <TypeScriptCompile Include="src\components\popover\rectangle.service.ts" />
-    <TypeScriptCompile Include="src\components\popover\ruler.service.ts" />
-    <TypeScriptCompile Include="src\components\popover\space.service.ts" />
-    <TypeScriptCompile Include="src\components\popover\template.service.ts" />
+    <TypeScriptCompile Include="src\components\core\position.service.ts" />
+    <TypeScriptCompile Include="src\components\core\rectangle.service.ts" />
+    <TypeScriptCompile Include="src\components\core\ruler.service.ts" />
+    <TypeScriptCompile Include="src\components\core\space.service.ts" />
+    <TypeScriptCompile Include="src\components\core\template.service.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.actions.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.component.ts" />
     <TypeScriptCompile Include="src\components\rotator\index.ts" />

@@ -5,11 +5,7 @@ import { PopoverComponent } from "./popover.component";
 import { PopoverActionCreator } from "./popover.action-creator";
 import * as actions from "./popover.actions";
 import { Popover } from "./popover.service";
-import { Position } from "./position.service";
-import { Rectangle } from "./rectangle.service";
-import { Ruler } from "./ruler.service";
-import { Space } from "./space.service";
-import { Template } from "./template.service";
+
 
 import *  as reducers from "./popover.reducers";
 
@@ -19,11 +15,6 @@ var app = (<any>angular.module("app.popover", [
 
 provide(app, PopoverActionCreator);
 provide(app, Popover);
-provide(app, Position);
-provide(app, Rectangle);
-provide(app, Ruler);
-provide(app, Space);
-provide(app, Template);
 
 app.value("translateXY", translateXY);
 

@@ -1,6 +1,4 @@
-﻿import { IRectangle, IRuler } from "./popover.interfaces";
-import { Service } from "../core";
-
+﻿import { Service, IRuler, IRectangle, provide } from "../core";
 
 @Service({
     serviceName: "ruler",
@@ -28,3 +26,8 @@ export class Ruler implements IRuler {
     }
 }
 
+var app = angular.module("ruler", [
+    "rectangle",
+]);
+
+provide(app, Ruler);

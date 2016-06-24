@@ -1,5 +1,7 @@
 ﻿import { Injectable, Store, IAppState, Service } from "../core";
-import { IPopover, IPosition, ITemplate, IPopoverInstanceOptions, IRectangle } from "./popover.interfaces";
+import { IPosition, ITemplate, IRectangle } from "../core";
+import { IPopover } from "./popover.d";
+import { IPopoverInstanceOptions } from "./popover-instance-options.d";
 import * as actions from "./popover.actions";
 
 @Injectable()

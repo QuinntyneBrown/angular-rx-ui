@@ -1,5 +1,4 @@
-﻿import { ISpace, IRectangle } from "./popover.interfaces";
-import { Service } from "../core";
+﻿import { Service, ISpace, IRectangle, provide } from "../core";
 
 @Service({
     serviceName: "space"
@@ -22,3 +21,8 @@ export class Space implements ISpace {
         return false;
     }
 }
+
+
+var app = angular.module("space", []);
+
+provide(app, Space);
