@@ -7,6 +7,7 @@ export * from "./pluck-out";
 export * from "./invoke-async";
 export * from "./change-detection-strategy";
 export * from "./component-decorators";
+export * from "./convert-unix-timestamp-to-date";
 export * from "./service-decorator";
 export * from "./add-or-update";
 export * from "./action-creator";
@@ -43,6 +44,7 @@ require("./store");
 require("./add-or-update");
 require("./append-to-body-async");
 require("./auth-interceptor");
+require("./convert-unix-timestamp-to-date");
 require("./debounce");
 require("./extend-css-async");
 require("./get-from-url-sync");
@@ -64,6 +66,7 @@ let coreApp = (<any>angular.module("app.core", [
     "store",
     "addOrUpdate",
     "appendToBodyAsync",
+    "convertUnixTimestampToDate",
     "debounce",
     "extendCssAsync",
     "getFromUrlSync",
