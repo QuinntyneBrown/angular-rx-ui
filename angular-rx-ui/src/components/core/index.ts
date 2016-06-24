@@ -19,6 +19,7 @@ export * from "./provide-action";
 export * from "./get-x";
 export * from "./is-between";
 export * from "./translate-x";
+export * from "./translate-x-y";
 
 export const Observable = Rx.Observable;
 
@@ -38,6 +39,7 @@ import { provideAction } from "./provide-action";
 import { getX } from "./get-x";
 import { isBetween } from "./is-between";
 import { translateX } from "./translate-x";
+import { translateXY } from "./translate-x-y";
 
 require("./local-storage-manager-provider");
 require("./store");
@@ -56,6 +58,7 @@ require("./remove-element");
 require("./safe-digest");
 require("./set-opacity-async");
 require("./translate-x");
+require("./translate-x-y");
 require("./translate-x-async");
 
 let coreApp = (<any>angular.module("app.core", [
@@ -77,6 +80,7 @@ let coreApp = (<any>angular.module("app.core", [
     "safeDigest",
     "setOpacityAsync",
     "translateX",
+    "translateXY",
     "translateXAsync"
 ]));
 

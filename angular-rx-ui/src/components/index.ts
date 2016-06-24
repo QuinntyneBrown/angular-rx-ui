@@ -7,6 +7,7 @@ require("./button");
 require("./category");
 require("./carousel-action-panel");
 require("./counter");
+require("./error-list");
 require("./flip-card");
 require("./flyout");
 require("./hamburger-button");

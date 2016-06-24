@@ -1,4 +1,6 @@
-﻿import { Component, ChangeDetectionStrategy } from "../core";
+﻿//https://github.com/valor-software/ng2-file-upload/
+
+import { Component, ChangeDetectionStrategy } from "../core";
 import { PictureActionCreator } from "./picture.action-creator";
 
 @Component({

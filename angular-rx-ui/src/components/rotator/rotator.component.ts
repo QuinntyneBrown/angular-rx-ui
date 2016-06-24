@@ -5,7 +5,7 @@ import { KeyDownAction, ResizeAction } from "../window/window.actions";
 
 @Component({
     template: require("./rotator.component.html"),
-    styles: require("./rotator.component.css"),
+    styles: require("./rotator.component.scss"),
     selector: "rotator",
     transclude: "element",
     inputs: [

@@ -1,14 +1,18 @@
-import { IDispatcher, BaseActionCreator, Service } from "../core";
-import { ModalActionCreator } from "../modal/modal.action-creator";
+import { IDispatcher, Service } from "../core";
+import { OpenPopoverAction, ClosePopoverAction } from "./popover.actions";
 
 @Service({
     serviceName: "popoverActionCreator",
-    viewProviders: ["dispatcher", "guid", "invokeAsync","modalActionCreator"]
+    viewProviders: ["$rootScope", "dispatcher", "guid"]
 })
 export class PopoverActionCreator {
-    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync, private modalActionCreator: ModalActionCreator) { }    
+    constructor(private $rootScope: angular.IRootScopeService, private dispatcher: IDispatcher, private guid) {
+        $rootScope.$on("$routeChangeSuccess", this.close);
+    }
 
+    public open = () => this.dispatcher.dispatch(new OpenPopoverAction());
+
+    public close = () => this.dispatcher.dispatch(new ClosePopoverAction());
 }
-
 
 

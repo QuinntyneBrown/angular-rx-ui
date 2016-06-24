@@ -167,6 +167,18 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\counter\demo\index.html" />
+    <Content Include="src\components\error-list\error-list.component.html">
+      <DependentUpon>error-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\error-list\error-list.component.scss">
+      <DependentUpon>error-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\file-explorer\file-explorer.component.html">
+      <DependentUpon>file-explorer.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\file-explorer\file-explorer.component.scss">
+      <DependentUpon>file-explorer.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\flip-card\demo\index.html" />
     <Content Include="src\components\flip-card\flip-card-back.component.html">
       <DependentUpon>flip-card-back.component.ts</DependentUpon>
@@ -266,9 +278,6 @@
     <Content Include="src\components\rotator\demo\shoe-1.jpg" />
     <Content Include="src\components\rotator\demo\shoe-2.jpg" />
     <Content Include="src\components\rotator\demo\shoe-3.jpg" />
-    <Content Include="src\components\rotator\rotator.component.css">
-      <DependentUpon>rotator.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
@@ -320,6 +329,9 @@
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
     <Content Include="src\assets\sass\index.scss" />
+    <Content Include="src\components\rotator\rotator.component.scss">
+      <DependentUpon>rotator.component.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -442,6 +454,7 @@
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\store.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x-async.ts" />
+    <TypeScriptCompile Include="src\components\core\translate-x-y.ts" />
     <TypeScriptCompile Include="src\components\core\translate-x.ts" />
     <TypeScriptCompile Include="src\components\core\view-encapsulation.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.action-creator.ts" />
@@ -456,6 +469,15 @@
     <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
     <TypeScriptCompile Include="src\components\counter\index.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-config.service.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-event.model.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-item.model.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.component.spec.ts">
+      <DependentUpon>error-list.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.spec.ts">
+      <DependentUpon>file-explorer.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card.action-creator.ts" />
@@ -508,6 +530,13 @@
     <TypeScriptCompile Include="src\components\popover\popover.component.spec.ts">
       <DependentUpon>popover.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\popover\popover.interfaces.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover.service.ts" />
+    <TypeScriptCompile Include="src\components\popover\position.service.ts" />
+    <TypeScriptCompile Include="src\components\popover\rectangle.service.ts" />
+    <TypeScriptCompile Include="src\components\popover\ruler.service.ts" />
+    <TypeScriptCompile Include="src\components\popover\space.service.ts" />
+    <TypeScriptCompile Include="src\components\popover\template.service.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.actions.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.component.ts" />
     <TypeScriptCompile Include="src\components\rotator\index.ts" />
@@ -635,7 +664,21 @@
     <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.action-creator.ts" />
     <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.reducers.ts" />
     <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.component.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.model.ts" />
+    <TypeScriptCompile Include="src\components\error-list\index.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.actions.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.reducers.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-list.component.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.model.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\index.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.actions.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.reducers.ts" />
+    <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\components\popover\demo\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
