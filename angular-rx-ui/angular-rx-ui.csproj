@@ -72,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dist\components.js" />
-    <Content Include="gulpfile.config.js" />
+    <Content Include="config\gulpfile.config.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
-    <Content Include="karma.conf.js" />
+    <Content Include="config\karma.conf.js" />
     <Content Include="lib\angular-route.js" />
     <Content Include="lib\angular-sanitize.js" />
     <Content Include="lib\angular-touch.js" />
@@ -309,18 +309,17 @@
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\window\demo\index.html" />
-    <Content Include="src\sass\normalize.css" />
+    <None Include="src\assets\sass\normalize.scss" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\sass\breakpoints.scss" />
-    <Content Include="leora.json" />
+    <Content Include="src\assets\sass\breakpoints.scss" />
     <Content Include="src\components\tabs\tabs.component.scss">
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\sass\index.scss" />
+    <Content Include="src\assets\sass\index.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -374,6 +373,7 @@
   </Target>
   -->
   <ItemGroup>
+    <Content Include="config\webpack.config.js" />
     <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
       <DependentUpon>ads.component.ts</DependentUpon>
     </TypeScriptCompile>

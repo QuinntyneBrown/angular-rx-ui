@@ -1,8 +1,8 @@
 ﻿/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 
-require("./components/core");
+require("./assets/sass");
 
-require("./sass");
+require("./components/core");
 
 require("./components/ads");
 require("./components/article");

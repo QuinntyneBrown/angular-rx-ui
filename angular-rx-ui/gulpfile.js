@@ -2,7 +2,8 @@
 
 var gulp = require("gulp");
 var concat = require('gulp-concat');
-var Config = require('./gulpfile.config');
+var Config = require('./config/gulpfile.config');
+var WebpackConfig = require('./config/webpack.config');
 var karma = require("gulp-karma");
 var gulpUtil = require("gulp-util");
 var webpack = require("gulp-webpack");
@@ -14,6 +15,7 @@ var tsc = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 
 var config = new Config();
+var webpackConfig = new WebpackConfig();
 
 var paths = {
     npm: './node_modules/',
@@ -51,31 +53,7 @@ gulp.task('clean', function (callback) {
 
 gulp.task("webpack", ['remove-compiled-js'], function () {
     return gulp.src('src/main.ts')
-    .pipe(webpack({
-        output: {
-            library:"angularRxUI"
-        },
-        resolve: {
-            extensions: ["", ".js", ".ts",".scss"]
-        },
-        module: {
-            loaders: [
-                {
-                    test: /\.ts$/, loader: "ts", exclude: [/node_modules/]
-                },
-                {
-                    test: /\.css$/, exclude: [/node_modules/], loader: "style-loader!css-loader"
-                },
-                {
-                    test: /\.html$/, loader: "raw"
-                },
-                {
-                    test: /\.scss$/,
-                    loaders: ["style", "css", "sass"]
-                }
-            ]
-        }
-    }))
+    .pipe(webpack(webpackConfig))
     .pipe(rename("components.js"))
     .pipe(gulp.dest('dist/'));
 });
@@ -95,7 +73,7 @@ gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
         './test/components.spec.js'
     ])
         .pipe(karma({
-            configFile: 'karma.conf.js',
+            configFile: './config/karma.conf.js',
             action: 'run'
         }))
         .on('error', function (err) {
