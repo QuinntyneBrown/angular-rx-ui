@@ -1,33 +1,7 @@
 ﻿/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 
 require("./assets/sass");
-
-require("./components/core");
-
-require("./components/ads");
-require("./components/article");
-require("./components/author");
-require("./components/backdrop");
-require("./components/button");
-require("./components/category");
-require("./components/carousel-action-panel");
-require("./components/counter");
-require("./components/flip-card");
-require("./components/flyout");
-require("./components/hamburger-button");
-require("./components/modal");
-require("./components/nav-menu");
-require("./components/ngrx-footer");
-require("./components/ngrx-header");
-require("./components/paged-list");
-require("./components/panel");
-require("./components/picture");
-require("./components/popover");
-require("./components/rotator");
-require("./components/social-share");
-require("./components/tabs");
-require("./components/tag");
-require("./components/window");
+require("./components");
 
 var app = angular
     .module("components", [

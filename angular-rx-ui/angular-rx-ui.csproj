@@ -467,6 +467,7 @@
     <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.component.spec.ts">
       <DependentUpon>hamburger-button.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\index.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-content.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-title.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.action-creator.ts" />
