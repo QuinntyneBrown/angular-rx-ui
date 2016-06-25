@@ -1,6 +1,6 @@
 ﻿export interface IPluckOptions {
     items: Array<any>;
-    value: number;
+    value: any;
     key?: string;
 }
 

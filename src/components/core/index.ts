@@ -1,6 +1,7 @@
 ﻿
 export * from "./service";
 export * from "./injectable";
+export * from "./inject";
 export * from "./store";
 export * from "./action-decorator";
 export * from "./pluck-out";
@@ -11,11 +12,13 @@ export * from "./convert-unix-timestamp-to-date";
 export * from "./service-decorator";
 export * from "./add-or-update";
 export * from "./action-creator";
-
+export * from "./pluck";
 export * from "./view-encapsulation";
 export * from "./fetch";
+export * from "./login-redirect-provider";
 export * from "./provide";
 export * from "./provide-action";
+export * from "./provide-route-promise";
 export * from "./get-x";
 export * from "./is-between";
 export * from "./translate-x";
@@ -58,7 +61,9 @@ import { Ruler } from "./ruler.service";
 import { Space } from "./space.service";
 import { Template } from "./template.service";
 
+require("./api-endpoint-provider");
 require("./local-storage-manager-provider");
+require("./login-redirect-provider");
 require("./store");
 require("./add-or-update");
 require("./append-to-body-async");
@@ -74,6 +79,8 @@ require("./invoke-async");
 require("./component-extension");
 require("./position.service");
 require("./remove-element");
+require("./route-resolver");
+require("./route-when-extension");
 require("./rectangle.service");
 require("./renderer.service");
 require("./ruler.service");
@@ -84,10 +91,11 @@ require("./translate-x");
 require("./translate-x-y");
 require("./translate-x-async");
 require("./template.service");
+require("./form-encode");
 
 let coreApp = (<any>angular.module("app.core", [
     "ngSanitize",
-
+    "apiEndpoint",
     "authInterceptor",
     "localStorageManager",
     "store",
@@ -101,8 +109,12 @@ let coreApp = (<any>angular.module("app.core", [
     "getX",
     "invokeAsync",
     "fetch",
+    "formEncode",
+    "loginRedirect",
     "position",
     "removeElement",
+    "routeResolver",
+    "routeWhenExtension",
     "rectangle",
     "renderer",
     "ruler",
