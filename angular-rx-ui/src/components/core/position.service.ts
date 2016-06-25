@@ -3,14 +3,14 @@
 @Injectable()
 @Service({
     serviceName: "position",
-    viewProviders: ["$q", "ruler", "space", "translationXY"]
+    viewProviders: ["$q", "ruler", "space", "translateXY"]
 })
 export class Position implements IPosition {
         
     constructor(private $q: ng.IQService,
         private ruler: IRuler,
         private space: ISpace,
-        private translationXY: ITranslateXY) { }
+        private translateXY: ITranslateXY) { }
 
     public somewhere = (a: HTMLElement, b: HTMLElement, space: number, directionPriorityList: Array<string>) => {
         var deferred = this.$q.defer();        
@@ -24,7 +24,7 @@ export class Position implements IPosition {
             .then((resultsArray: Array<IRectangle>) => {
                 var aRectangle = resultsArray[0];
                 var bRectangle = resultsArray[1];
-                this.translationXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
+                this.translateXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
                 deferred.resolve();
             });
         return deferred.promise;
@@ -37,7 +37,7 @@ export class Position implements IPosition {
             .then((resultsArray: Array<IRectangle>) => {
             var aRectangle = resultsArray[0];
             var bRectangle = resultsArray[1];
-            this.translationXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);                
+            this.translateXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);                
             deferred.resolve();
         });
         return deferred.promise;
@@ -50,7 +50,7 @@ export class Position implements IPosition {
             .then((resultsArray: Array<IRectangle>) => {
                 var aRectangle = resultsArray[0];
                 var bRectangle = resultsArray[1];
-                this.translationXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
+                this.translateXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
                 deferred.resolve();
             });
         return deferred.promise;
@@ -63,7 +63,7 @@ export class Position implements IPosition {
             .then((resultsArray: Array<IRectangle>) => {
                 var aRectangle = resultsArray[0];
                 var bRectangle = resultsArray[1];
-                this.translationXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
+                this.translateXY(b, aRectangle.centerX - bRectangle.radiusX, aRectangle.bottom + space);
                 deferred.resolve();
             });
         return deferred.promise;

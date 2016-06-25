@@ -266,12 +266,8 @@
     <Content Include="src\components\picture\picture.component.scss">
       <DependentUpon>picture.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\popover\popover.component.html">
-      <DependentUpon>popover.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\popover\popover.component.scss">
-      <DependentUpon>popover.component.ts</DependentUpon>
-    </Content>
+    <Content Include="src\components\popover\demo\index.html" />
+    <Content Include="src\components\popover\demo\template.html" />
     <Content Include="src\components\rotator\demo\index.html" />
     <Content Include="src\components\rotator\demo\rotator_button_next.png" />
     <Content Include="src\components\rotator\demo\rotator_button_prev.png" />
@@ -641,7 +637,6 @@
     <TypeScriptCompile Include="src\components\popover\popover.actions.ts" />
     <TypeScriptCompile Include="src\components\popover\popover.action-creator.ts" />
     <TypeScriptCompile Include="src\components\popover\popover.reducers.ts" />
-    <TypeScriptCompile Include="src\components\popover\popover.component.ts" />
     <TypeScriptCompile Include="src\components\flyout\flyout.model.ts" />
     <TypeScriptCompile Include="src\components\flyout\index.ts" />
     <TypeScriptCompile Include="src\components\flyout\flyout.actions.ts" />
@@ -692,8 +687,6 @@
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.reducers.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\components\popover\demo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Rotator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="user-scalable=no,
+              initial-scale=1,
+              maximum-scale=1,
+              minimum-scale=1,
+              width=device-width,
+              height=device-height,
+              target-densitydpi=device-dpi" />
+    <style>
+        #trigger {
+            display:block;
+            position:relative;
+            height:50px;
+            width:100px;
+        }
+    </style>
+</head>
+<body data-ng-app="app" data-ng-controller="mainController as vm">
+    <div>
+        <a href="../../../../index.html">Back</a>
+    </div>
+
+    <div id="trigger">
+        <h1 data-ng-click="vm.pop()">Pop</h1>
+    </div>
+
+    <script src="../../../../lib/fastclick.js"></script>
+    <script src="../../../../lib/rx.all.compat.js"></script>
+    <script src="../../../../lib/jquery.js"></script>
+    <script src="../../../../lib/angular.js"></script>
+    <script src="../../../../lib/angular-sanitize.js"></script>
+    <script src="../../../../lib/angular-route.js"></script>
+    <script src="../../../../lib/angular-touch.js"></script>
+    <script src="../../../../dist/components.js"></script>
+
+    <script type="text/javascript">
+        
+        var app = angular.module("app", [
+            "ngTouch",
+            "components"
+        ]).controller("mainController", ["$scope", "popover", function ($scope,popover) {
+            var self = this;
+            
+            self.pop = function () {
+                popover.createInstance({
+                    templateUrl: "template.html",
+                    triggerAugmentedJQuery: angular.element(document.getElementById("trigger")),
+                    scope: $scope
+                }).then(function (instance) {
+                    instance.show();
+                    setTimeout(function () {
+                        instance.hide();
+                    }, 1000);
+                });
+            }
+
+            return self;
+        }]);
+    </script>
+</body>
+</html>
