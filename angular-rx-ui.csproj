@@ -424,12 +424,14 @@
     <TypeScriptCompile Include="src\components\core\api-endpoint-provider.ts" />
     <TypeScriptCompile Include="src\components\core\append-to-body-async.ts" />
     <TypeScriptCompile Include="src\components\core\auth-interceptor.ts" />
+    <TypeScriptCompile Include="src\components\core\base-wrapped-exception.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
     <TypeScriptCompile Include="src\components\core\component-decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\convert-unix-timestamp-to-date.ts" />
     <TypeScriptCompile Include="src\components\core\core.d.ts" />
     <TypeScriptCompile Include="src\components\core\debounce.ts" />
+    <TypeScriptCompile Include="src\components\core\exception-handler.ts" />
     <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
     <TypeScriptCompile Include="src\components\core\form-encode.ts" />
@@ -498,6 +500,7 @@
     <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
     <TypeScriptCompile Include="src\components\counter\index.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
+    <TypeScriptCompile Include="src\components\error-list\error-config.provider.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-config.service.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-event.model.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-item.model.ts" />

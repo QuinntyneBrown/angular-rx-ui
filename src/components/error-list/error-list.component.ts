@@ -1,6 +1,6 @@
 import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
-import {ErrorItem} from './error-item.model';
-import {ErrorEvent} from './error-event.model';
+import { ErrorItem } from './error-item.model';
+import { ErrorEvent } from './error-event.model';
 import { ErrorConfig } from './error-config.service';
 
 @Component({
@@ -14,6 +14,10 @@ export class ErrorListComponent {
     public errorList: Array<ErrorItem> = [];
 
     constructor(public errorConfig: ErrorConfig) { }
+
+    storeOnChange = state => {
+
+    }
 
     private getGenericError(): ErrorItem {
         return {

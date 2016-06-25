@@ -3,6 +3,7 @@ require("../core");
 import { provide, provideAction } from "../core";
 import { ErrorListComponent } from "./error-list.component";
 import { ErrorConfig } from "./error-config.service";
+import { ErrorConfigProvider } from "./error-config.provider";
 import { ErrorListActionCreator } from "./error-list.action-creator";
 import *  as reducers from "./error-list.reducers";
 import *  as actions from "./error-list.actions";
@@ -12,7 +13,8 @@ var app = (<any>angular.module("app.errorList", [
 ]));
 
 provide(app, ErrorListActionCreator);
-provide(app, ErrorConfig);
+
+app.provider("ErrorConfig", ErrorConfigProvider);
 
 app.component(ErrorListComponent);
 
