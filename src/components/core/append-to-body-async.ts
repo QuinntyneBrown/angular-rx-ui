@@ -5,7 +5,7 @@
  * @param options
  */
 export var appendToBodyAsync = (options: any) => {
-    var deferred = $q.defer();
+    let deferred = $q.defer();
     document.body.appendChild(options.nativeElement);
     setTimeout(() => { deferred.resolve(); }, options.wait || 100);
     return deferred.promise;

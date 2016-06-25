@@ -1,6 +1,6 @@
-﻿export var getFromUrlSync = (options) => {
-    var responseText = "";
-    var xhr = new XMLHttpRequest();
+﻿export const getFromUrlSync = (options) => {
+    let responseText = "";
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", options.url, false);
     xhr.onload = (e) => {
         if (xhr.readyState === 4) {
