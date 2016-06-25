@@ -1,3 +1,3 @@
 ﻿export class PopoverConfig {
-    constructor(public distance: number) { }
+    constructor(public directionPriorityList: Array<string>,public distance: number, public transitionDurationInMilliseconds: number) { }
 }

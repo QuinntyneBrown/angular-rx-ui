@@ -20,9 +20,10 @@ export * from "./get-x";
 export * from "./is-between";
 export * from "./translate-x";
 export * from "./translate-x-y";
-
+export * from "./get-html";
 export * from "./point.d";
 export * from "./position.d";
+export * from "./renderer.service";
 export * from "./rectangle-instance-options.d";
 export * from "./ruler.d";
 export * from "./space.d";
@@ -51,6 +52,7 @@ import { isBetween } from "./is-between";
 import { translateX } from "./translate-x";
 import { translateXY } from "./translate-x-y";
 import { Position } from "./position.service";
+import { Renderer } from "./renderer.service";
 import { Rectangle } from "./rectangle.service";
 import { Ruler } from "./ruler.service";
 import { Space } from "./space.service";
@@ -65,6 +67,7 @@ require("./convert-unix-timestamp-to-date");
 require("./debounce");
 require("./extend-css-async");
 require("./get-from-url-sync");
+require("./get-html");
 require("./fetch");
 require("./get-x");
 require("./invoke-async");
@@ -72,6 +75,7 @@ require("./component-extension");
 require("./position.service");
 require("./remove-element");
 require("./rectangle.service");
+require("./renderer.service");
 require("./ruler.service");
 require("./safe-digest");
 require("./set-opacity-async");
@@ -93,12 +97,14 @@ let coreApp = (<any>angular.module("app.core", [
     "debounce",
     "extendCssAsync",
     "getFromUrlSync",
+    "getHtml",
     "getX",
     "invokeAsync",
     "fetch",
     "position",
     "removeElement",
     "rectangle",
+    "renderer",
     "ruler",
     "safeDigest",
     "setOpacityAsync",

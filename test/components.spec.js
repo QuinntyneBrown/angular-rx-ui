@@ -401,32 +401,6 @@ describe("hamburgerButton", function () {
     });
 });
 
-describe("navMenu", function () {
-    var navMenuComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.navMenu");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        navMenuComponent = $controller("navMenuComponent", { navMenuActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<nav-menu></nav-menu>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(navMenuComponent).toBeDefined();
-    });
-});
-
 describe("ngrxFooter", function () {
     var ngrxFooterComponent;
     var $compile;
@@ -453,8 +427,8 @@ describe("ngrxFooter", function () {
     });
 });
 
-describe("panel", function () {
-    var panelComponent;
+describe("navMenu", function () {
+    var navMenuComponent;
     var $compile;
     var $rootScope;
     var MockActionCreator = (function () {
@@ -463,19 +437,19 @@ describe("panel", function () {
         return MockActionCreator;
     }());
     beforeEach(function () {
-        angular.mock.module("app.panel");
+        angular.mock.module("app.navMenu");
     });
     beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        panelComponent = $controller("panelComponent", { panelActionCreator: new MockActionCreator() });
+        navMenuComponent = $controller("navMenuComponent", { navMenuActionCreator: new MockActionCreator() });
     }));
     it("should compile", function () {
-        var element = $compile("<panel></panel>")($rootScope);
+        var element = $compile("<nav-menu></nav-menu>")($rootScope);
         expect(element).toBeDefined();
     });
     it("should be defined", function () {
-        expect(panelComponent).toBeDefined();
+        expect(navMenuComponent).toBeDefined();
     });
 });
 
@@ -502,6 +476,32 @@ describe("ngrxHeader", function () {
     });
     it("should be defined", function () {
         expect(ngrxHeaderComponent).toBeDefined();
+    });
+});
+
+describe("panel", function () {
+    var panelComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.panel");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        panelComponent = $controller("panelComponent", { panelActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<panel></panel>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(panelComponent).toBeDefined();
     });
 });
 

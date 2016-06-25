@@ -433,6 +433,7 @@
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
     <TypeScriptCompile Include="src\components\core\get-action-type.ts" />
     <TypeScriptCompile Include="src\components\core\get-from-url-sync.ts" />
+    <TypeScriptCompile Include="src\components\core\get-html.ts" />
     <TypeScriptCompile Include="src\components\core\get-x.ts" />
     <TypeScriptCompile Include="src\components\core\index.ts" />
     <TypeScriptCompile Include="src\components\core\injectable.ts" />
@@ -451,6 +452,7 @@
     <TypeScriptCompile Include="src\components\core\rect.d.ts" />
     <TypeScriptCompile Include="src\components\core\rectangle.d.ts" />
     <TypeScriptCompile Include="src\components\core\rectangle-instance-options.d.ts" />
+    <TypeScriptCompile Include="src\components\core\renderer.service.ts" />
     <TypeScriptCompile Include="src\components\core\ruler.d.ts" />
     <TypeScriptCompile Include="src\components\core\is-between.ts" />
     <TypeScriptCompile Include="src\components\core\local-storage-manager-provider.ts" />
@@ -525,6 +527,7 @@
     <TypeScriptCompile Include="src\components\paged-list\paged-list.model.ts" />
     <TypeScriptCompile Include="src\components\paged-list\index.ts" />
     <TypeScriptCompile Include="src\components\paged-list\paged-list.reducers.ts" />
+    <TypeScriptCompile Include="src\components\paged-list\paging-config-provider.ts" />
     <TypeScriptCompile Include="src\components\paged-list\paging-config.model.ts" />
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list-from-in-memory.ts" />
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list.ts" />

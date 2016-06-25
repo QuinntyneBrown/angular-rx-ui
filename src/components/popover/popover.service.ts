@@ -4,11 +4,12 @@ import { IPopover } from "./popover.d";
 import { IPopoverInstanceOptions } from "./popover-instance-options.d";
 import { PopoverConfig } from "./popover-config";
 import * as actions from "./popover.actions";
+import { IRenderer } from "../core";
 
 @Injectable()
 @Service({
     serviceName: "popover",
-    viewProviders: ["$compile", "$document", "$http", "$q", "$timeout", "guid", "popoverConfig","position", "store","template"]
+    viewProviders: ["$compile", "$document", "$http", "$q", "$timeout", "guid", "popoverConfig","position","renderer","store","template"]
 })
 export class Popover implements IPopover {
         
@@ -21,6 +22,7 @@ export class Popover implements IPopover {
         private guid: any,
         private popoverConfig: PopoverConfig,
         private position: IPosition,
+        private renderer: IRenderer,
         private store: Store<IAppState>,
         private template: ITemplate           
     ) { }
@@ -36,6 +38,7 @@ export class Popover implements IPopover {
             this.guid,
             this.popoverConfig,
             this.position,
+            this.renderer,
             this.store,
             this.template);
 
@@ -59,20 +62,23 @@ export class Popover implements IPopover {
         }
     }
      
-    private setInitialCss = () => {
-        this.augmentedJQuery[0].setAttribute("style", "-webkit-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;-o-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;");
-        this.augmentedJQuery[0].style.opacity = "0";
-        this.augmentedJQuery[0].style.position = "fixed";
-        this.augmentedJQuery[0].style.top = "0";
-        this.augmentedJQuery[0].style.left = "0";
-        this.augmentedJQuery[0].style.display = "block";
-    }
-
+    private get style() {
+        return {
+            "-webkit-transition":"opacity " + this.popoverConfig.transitionDurationInMilliseconds + "ms ease-in-out",
+            "-o-transition":"opacity " + this.popoverConfig.transitionDurationInMilliseconds + "ms ease-in-out",
+            "-ms-transition":"opacity " + this.popoverConfig.transitionDurationInMilliseconds + "ms ease-in-out",
+            "transition":"opacity " + this.popoverConfig.transitionDurationInMilliseconds + "ms ease-in-out",
+            "opacity":"0",
+            "position":"fixed",
+            "top":"0",
+            "left":"0",
+            "display":"block"
+        };
+    } 
     public show = () => {
         let deferred = this.$q.defer();            
-        this.augmentedJQuery = this.$compile(this.templateHtml)(this.scope.$new(true));
-        this.setInitialCss();
-        this.position.below(this.triggerAugmentedJQuery[0], this.augmentedJQuery[0], this.popoverConfig.distance).then(() => {
+        this.augmentedJQuery = <angular.IAugmentedJQuery>this.renderer.render({ html: this.templateHtml, parentScope: this.scope, style:this.style });
+        this.position.somewhere(this.triggerAugmentedJQuery[0], this.augmentedJQuery[0], this.popoverConfig.distance, this.popoverConfig.directionPriorityList).then(() => {
             document.body.appendChild(this.augmentedJQuery[0]);                
             this.$timeout(() => { this.augmentedJQuery.css("opacity", 100); }, 100, false);
             deferred.resolve();
@@ -96,6 +102,5 @@ export class Popover implements IPopover {
     private augmentedJQuery: ng.IAugmentedJQuery;
     private triggerAugmentedJQuery: ng.IAugmentedJQuery        
     private rectangle: IRectangle;
-    private get transitionDurationInMilliseconds() { return 1000; }
     private attributes: ng.IAttributes;
 }
