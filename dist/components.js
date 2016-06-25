@@ -1666,16 +1666,13 @@ var angularRxUI =
 	};
 	var core_1 = __webpack_require__(6);
 	var Position = (function () {
-	    function Position($q, ruler, space, translateXY) {
+	    function Position(ruler, space, translateXY) {
 	        var _this = this;
-	        this.$q = $q;
 	        this.ruler = ruler;
 	        this.space = space;
 	        this.translateXY = translateXY;
 	        this.somewhere = function (a, b, space, directionPriorityList) {
-	            var deferred = _this.$q.defer();
-	            _this.$q
-	                .all([_this.ruler.measure(a), _this.ruler.measure(b)])
+	            return _this.ruler.measure({ elements: [a, b] })
 	                .then(function (resultsArray) {
 	                var aRectangle = resultsArray[0];
 	                var bRectangle = resultsArray[1];
@@ -1688,82 +1685,53 @@ var angularRxUI =
 	                            if (aRectangle.top > heightNeeded && !resolved) {
 	                                _this.translate(b, aRectangle, bRectangle, space, "above");
 	                                resolved = true;
-	                                deferred.resolve();
 	                            }
 	                            break;
 	                        case "bottom":
 	                            if (window.innerHeight - aRectangle.bottom > heightNeeded && !resolved) {
 	                                _this.translate(b, aRectangle, bRectangle, space, "below");
 	                                resolved = true;
-	                                deferred.resolve();
 	                            }
 	                            break;
 	                        case "left":
 	                            if (aRectangle.left > widthNeeded && !resolved) {
 	                                _this.translate(b, aRectangle, bRectangle, space, "left");
 	                                resolved = true;
-	                                deferred.resolve();
 	                            }
 	                            break;
 	                        case "right":
 	                            if (window.innerWidth - aRectangle.bottom > widthNeeded && !resolved) {
 	                                _this.translate(b, aRectangle, bRectangle, space, "right");
 	                                resolved = true;
-	                                deferred.resolve();
 	                            }
 	                            break;
 	                    }
 	                }
 	            });
-	            return deferred.promise;
 	        };
 	        this.above = function (a, b, space) {
-	            var deferred = _this.$q.defer();
-	            _this.$q
-	                .all([_this.ruler.measure(a), _this.ruler.measure(b)])
+	            return _this.ruler.measure({ elements: [a, b] })
 	                .then(function (resultsArray) {
-	                var aRectangle = resultsArray[0];
-	                var bRectangle = resultsArray[1];
-	                _this.translate(b, aRectangle, bRectangle, space, "above");
-	                deferred.resolve();
+	                _this.translate(b, resultsArray[0], resultsArray[1], space, "above");
 	            });
-	            return deferred.promise;
 	        };
 	        this.below = function (a, b, space) {
-	            var deferred = _this.$q.defer();
-	            _this.$q
-	                .all([_this.ruler.measure(a), _this.ruler.measure(b)])
+	            return _this.ruler.measure({ elements: [a, b] })
 	                .then(function (resultsArray) {
-	                var aRectangle = resultsArray[0];
-	                var bRectangle = resultsArray[1];
-	                _this.translate(b, aRectangle, bRectangle, space, "below");
-	                deferred.resolve();
+	                _this.translate(b, resultsArray[0], resultsArray[1], space, "below");
 	            });
-	            return deferred.promise;
 	        };
 	        this.left = function (a, b, space) {
-	            var deferred = _this.$q.defer();
-	            _this.$q
-	                .all([_this.ruler.measure(a), _this.ruler.measure(b)])
+	            return _this.ruler.measure({ elements: [a, b] })
 	                .then(function (resultsArray) {
-	                var aRectangle = resultsArray[0];
-	                var bRectangle = resultsArray[1];
-	                _this.translate(b, aRectangle, bRectangle, space, "left");
-	                deferred.resolve();
+	                _this.translate(b, resultsArray[0], resultsArray[1], space, "left");
 	            });
-	            return deferred.promise;
 	        };
 	        this.right = function (a, b, space) {
-	            var deferred = _this.$q.defer();
-	            _this.$q
-	                .all([_this.ruler.measure(a), _this.ruler.measure(b)])
+	            return _this.ruler.measure({ elements: [a, b] })
 	                .then(function (resultsArray) {
-	                var aRectangle = resultsArray[0];
-	                var bRectangle = resultsArray[1];
-	                _this.translate(b, aRectangle, bRectangle, space, "right");
-	                deferred.resolve();
+	                _this.translate(b, resultsArray[0], resultsArray[1], space, "right");
 	            });
-	            return deferred.promise;
 	        };
 	        this.translate = function (htmlElement, aRectangle, bRectangle, space, side) {
 	            if (side === "above")
@@ -1780,9 +1748,9 @@ var angularRxUI =
 	        core_1.Injectable(),
 	        core_1.Service({
 	            serviceName: "position",
-	            viewProviders: ["$q", "ruler", "space", "translateXY"]
+	            viewProviders: ["ruler", "space", "translateXY"]
 	        }), 
-	        __metadata('design:paramtypes', [Function, Object, Object, Function])
+	        __metadata('design:paramtypes', [Object, Object, Function])
 	    ], Position);
 	    return Position;
 	}());
@@ -2076,7 +2044,12 @@ var angularRxUI =
 	        this.$q = $q;
 	        this.$timeout = $timeout;
 	        this.rectangle = rectangle;
-	        this.measure = function (element) {
+	        this.measure = function (options) {
+	            if (options.element)
+	                return _this.measureHtmlElement(options.element);
+	            return _this.$q.all(options.elements.map(function (x) { return _this.measureHtmlElement(x); }));
+	        };
+	        this.measureHtmlElement = function (element) {
 	            var deferred = _this.$q.defer();
 	            var documentRef = angular.element(_this.$document)[0];
 	            if (documentRef.body.contains(element)) {
@@ -2098,7 +2071,7 @@ var angularRxUI =
 	            serviceName: "ruler",
 	            viewProviders: ["$document", "$q", "$timeout", "rectangle"]
 	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Function, Object])
+	        __metadata('design:paramtypes', [Object, Function, Function, Object])
 	    ], Ruler);
 	    return Ruler;
 	}());

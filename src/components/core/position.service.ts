@@ -1,25 +1,31 @@
-﻿import { IPosition, IRuler, ISpace, ITranslateXY, IRectangle, Injectable, Service, provide } from "../core";
+﻿import {
+    IPosition,
+    IRuler,
+    ISpace,
+    ITranslateXY,
+    IRectangle,
+    Injectable,
+    Service,
+    provide
+} from "../core";
 
 @Injectable()
 @Service({
     serviceName: "position",
-    viewProviders: ["$q", "ruler", "space", "translateXY"]
+    viewProviders: ["ruler", "space", "translateXY"]
 })
 export class Position implements IPosition {
         
-    constructor(private $q: ng.IQService,
+    constructor(
         private ruler: IRuler,
         private space: ISpace,
         private translateXY: ITranslateXY) { }
 
-    public somewhere = (a: HTMLElement, b: HTMLElement, space: number, directionPriorityList: Array<string>) => {
-        var deferred = this.$q.defer();        
-
-        this.$q
-            .all([this.ruler.measure(a), this.ruler.measure(b)])
-            .then((resultsArray: Array<IRectangle>) => {
-                let aRectangle = resultsArray[0];
-                let bRectangle = resultsArray[1];
+    public somewhere = (a: HTMLElement, b: HTMLElement, space: number, directionPriorityList: Array<string>) => {                    
+        return (this.ruler.measure({ elements: [a, b] }) as ng.IPromise<Array<IRectangle>>)
+            .then((resultsArray: any) => {
+                let aRectangle = (resultsArray as Array<IRectangle>)[0];
+                let bRectangle = (resultsArray as Array<IRectangle>)[1];
                 let widthNeeded = bRectangle.width + space;
                 let heightNeeded = bRectangle.height + space;
                 let resolved = false;
@@ -28,88 +34,58 @@ export class Position implements IPosition {
                         case "top":
                             if (aRectangle.top > heightNeeded && !resolved) {
                                 this.translate(b, aRectangle, bRectangle, space, "above");
-                                resolved = true;                                
-                                deferred.resolve();
+                                resolved = true;                                                                
                             }
                             break;
                         case "bottom":
                             if (window.innerHeight - aRectangle.bottom > heightNeeded && !resolved) {
                                 this.translate(b, aRectangle, bRectangle, space, "below");
                                 resolved = true;
-                                deferred.resolve();                                
                             }
                             break;
                         case "left":
                             if (aRectangle.left > widthNeeded && !resolved) {
                                 this.translate(b, aRectangle, bRectangle, space, "left");
                                 resolved = true;
-                                deferred.resolve();
                             }
                             break;
                         case "right":
                             if (window.innerWidth - aRectangle.bottom > widthNeeded && !resolved) {
                                 this.translate(b, aRectangle, bRectangle, space, "right");
                                 resolved = true;
-                                deferred.resolve();
                             }
                             break;
                     }
                 }
-            });
-
-        return deferred.promise;
+            });       
     }
 
     public above = (a: HTMLElement, b: HTMLElement, space: number) => {
-        var deferred = this.$q.defer();
-        this.$q
-            .all([this.ruler.measure(a), this.ruler.measure(b)])
+        return (this.ruler.measure({ elements: [a, b] }) as ng.IPromise<Array<IRectangle>>)
             .then((resultsArray: Array<IRectangle>) => {
-                var aRectangle = resultsArray[0];
-                var bRectangle = resultsArray[1];
-                this.translate(b, aRectangle, bRectangle, space, "above");
-                deferred.resolve();
+                this.translate(b, resultsArray[0], resultsArray[1], space, "above");
             });
-        return deferred.promise;
     }
-
+    
     public below = (a: HTMLElement, b: HTMLElement, space: number) => {
-        var deferred = this.$q.defer();
-        this.$q
-            .all([this.ruler.measure(a),this.ruler.measure(b)])
+        return (this.ruler.measure({ elements: [a, b] }) as ng.IPromise<Array<IRectangle>>)
             .then((resultsArray: Array<IRectangle>) => {
-            var aRectangle = resultsArray[0];
-            var bRectangle = resultsArray[1];
-            this.translate(b, aRectangle, bRectangle, space, "below");            
-            deferred.resolve();
+                this.translate(b, resultsArray[0], resultsArray[1], space, "below");                        
         });
-        return deferred.promise;
     }
 
     public left = (a: HTMLElement, b: HTMLElement, space: number) => {
-        var deferred = this.$q.defer();
-        this.$q
-            .all([this.ruler.measure(a), this.ruler.measure(b)])
+        return (this.ruler.measure({ elements: [a, b] }) as ng.IPromise<Array<IRectangle>>)
             .then((resultsArray: Array<IRectangle>) => {
-                var aRectangle = resultsArray[0];
-                var bRectangle = resultsArray[1];
-                this.translate(b, aRectangle, bRectangle, space, "left");
-                deferred.resolve();
+                this.translate(b, resultsArray[0], resultsArray[1], space, "left");
             });
-        return deferred.promise;
     }
 
     public right = (a: HTMLElement, b: HTMLElement, space: number) => {
-        var deferred = this.$q.defer();
-        this.$q
-            .all([this.ruler.measure(a), this.ruler.measure(b)])
+        return (this.ruler.measure({ elements: [a, b] }) as ng.IPromise<Array<IRectangle>>)
             .then((resultsArray: Array<IRectangle>) => {
-                var aRectangle = resultsArray[0];
-                var bRectangle = resultsArray[1];
-                this.translate(b, aRectangle, bRectangle, space, "right");
-                deferred.resolve();
+                this.translate(b, resultsArray[0], resultsArray[1], space, "right");
             });
-        return deferred.promise;
     }
 
     private translate = (htmlElement: HTMLElement, aRectangle: IRectangle, bRectangle: IRectangle, space: number, side: string) => {

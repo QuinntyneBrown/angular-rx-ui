@@ -1,5 +1,10 @@
 ﻿import { IRectangle } from "./rectangle.d";
 
+export interface IRulerOptions {
+    element?: HTMLElement;
+    elements?: Array<HTMLElement>;
+}
+
 export interface IRuler {
-    measure(element: HTMLElement, detachedFromDom?: boolean): ng.IPromise<IRectangle>;
+    measure(options): ng.IPromise<IRectangle> | ng.IPromise<Array<IRectangle>>;    
 }
