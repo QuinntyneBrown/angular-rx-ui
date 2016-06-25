@@ -3,4 +3,5 @@
     template?: string;
     scope: ng.IScope;
     triggerAugmentedJQuery: ng.IAugmentedJQuery;
+    guid?: string;
 }

@@ -39,7 +39,7 @@ export const functionName = (fun) => {
 }
 
 export class Store<T> extends Rx.BehaviorSubject<T> implements IStore {
-    constructor(dispatcher: IDispatcher, initialState: T, private localStorageManager, private reducers: any[]) {
+    constructor(private dispatcher: IDispatcher, initialState: T, private localStorageManager, private reducers: any[]) {
         super(initialState || {} as T);
         this.state = initialState || {} as T;        
         dispatcher.subscribe(action => this.onDispatcherNext(action));
@@ -66,6 +66,8 @@ export class Store<T> extends Rx.BehaviorSubject<T> implements IStore {
         return fn.toString();
     }
 
+    dispatch = this.dispatcher.dispatch;
+    
     state: T;
 
 }

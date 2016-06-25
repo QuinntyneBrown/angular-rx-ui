@@ -43,20 +43,18 @@
         var app = angular.module("app", [
             "ngTouch",
             "components"
-        ]).controller("mainController", ["$scope", "popover", function ($scope,popover) {
+        ]).controller("mainController", ["$scope", "popoverActionCreator", function ($scope, popoverActionCreator) {
             var self = this;
             
             self.pop = function () {
-                popover.createInstance({
+                var guid = popoverActionCreator.open({
                     templateUrl: "template.html",
                     triggerAugmentedJQuery: angular.element(document.getElementById("trigger")),
                     scope: $scope
-                }).then(function (instance) {
-                    instance.show();
-                    setTimeout(function () {
-                        instance.hide();
-                    }, 1000);
                 });
+                setTimeout(function () {
+                    popoverActionCreator.close({ guid: guid });
+                }, 1000);
             }
 
             return self;

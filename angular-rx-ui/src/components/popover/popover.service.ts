@@ -21,10 +21,7 @@ export class Popover implements IPopover {
         private position: IPosition,
         private store: Store<IAppState>,
         private template: ITemplate           
-    ) {
-
-        store.subscribe(this.storeOnChange);
-    }
+    ) { }
 
     public createInstance = (options: IPopoverInstanceOptions) => {
         var deferred = this.$q.defer();
@@ -40,8 +37,9 @@ export class Popover implements IPopover {
             this.template);
 
         instance.scope = options.scope;
-        instance.triggerAugmentedJQuery = options.triggerAugmentedJQuery;
-
+        instance.triggerAugmentedJQuery = options.triggerAugmentedJQuery;        
+        instance.guid = options.guid;
+        this.store.subscribe(instance.storeOnChange)
         this.$q.all([this.template.get({ templateUrl: options.templateUrl })]).then((resultsArray: any) => {
             instance.templateHtml = resultsArray[0];
             deferred.resolve(instance);
@@ -50,13 +48,11 @@ export class Popover implements IPopover {
         return deferred.promise;
     }
 
-    private storeOnChange = (state: IAppState) => {
-        if (state.lastTriggeredByAction === actions.OpenPopoverAction) {
-            
-        }
-
-        if (state.lastTriggeredByAction === actions.ClosePopoverAction) {
-
+    private storeOnChange = (state: IAppState) => {                
+        if (state.lastTriggeredByAction instanceof actions.ClosePopoverAction && this.guid === state.lastTriggeredByAction.id) {
+            this.hide().then(() => {
+                this.store.dispatch(new actions.PopoverClosedAction(this.guid));
+            });
         }
     }
      

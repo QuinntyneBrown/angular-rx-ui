@@ -664,6 +664,7 @@ var angularRxUI =
 	    function Store(dispatcher, initialState, localStorageManager, reducers) {
 	        var _this = this;
 	        _super.call(this, initialState || {});
+	        this.dispatcher = dispatcher;
 	        this.localStorageManager = localStorageManager;
 	        this.reducers = reducers;
 	        this.onDispatcherNext = function (action) {
@@ -684,6 +685,7 @@ var angularRxUI =
 	        this.functionToString = function (fn) {
 	            return fn.toString();
 	        };
+	        this.dispatch = this.dispatcher.dispatch;
 	        this.state = initialState || {};
 	        dispatcher.subscribe(function (action) { return _this.onDispatcherNext(action); });
 	    }
@@ -6125,22 +6127,34 @@ var angularRxUI =
 	};
 	var core_1 = __webpack_require__(6);
 	var popover_actions_1 = __webpack_require__(230);
+	var popover_service_1 = __webpack_require__(231);
 	var PopoverActionCreator = (function () {
-	    function PopoverActionCreator($rootScope, dispatcher, guid) {
+	    function PopoverActionCreator($rootScope, dispatcher, guid, popover) {
 	        var _this = this;
 	        this.$rootScope = $rootScope;
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
-	        this.open = function () { return _this.dispatcher.dispatch(new popover_actions_1.OpenPopoverAction()); };
-	        this.close = function () { return _this.dispatcher.dispatch(new popover_actions_1.ClosePopoverAction()); };
+	        this.popover = popover;
+	        this.open = function (options) {
+	            var guid = _this.guid();
+	            options.guid = guid;
+	            _this.popover.createInstance(options).then(function (instance) {
+	                instance.show().then(function () { return _this.dispatcher.dispatch(new popover_actions_1.PopoverOpenedAction(guid, instance)); });
+	            });
+	            return guid;
+	        };
+	        this.close = function (options) { return _this.dispatcher.dispatch(new popover_actions_1.ClosePopoverAction(options.guid)); };
+	        this.opened = function (options) {
+	        };
+	        this.closed = function (options) { return _this.dispatcher.dispatch(new popover_actions_1.PopoverClosedAction(options.id)); };
 	        $rootScope.$on("$routeChangeSuccess", this.close);
 	    }
 	    PopoverActionCreator = __decorate([
 	        core_1.Service({
 	            serviceName: "popoverActionCreator",
-	            viewProviders: ["$rootScope", "dispatcher", "guid"]
+	            viewProviders: ["$rootScope", "dispatcher", "guid", "popover"]
 	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object])
+	        __metadata('design:paramtypes', [Object, Object, Object, popover_service_1.Popover])
 	    ], PopoverActionCreator);
 	    return PopoverActionCreator;
 	}());
@@ -6163,29 +6177,58 @@ var angularRxUI =
 	};
 	var core_1 = __webpack_require__(6);
 	var OpenPopoverAction = (function () {
-	    function OpenPopoverAction() {
+	    function OpenPopoverAction(id, entity) {
+	        this.id = id;
+	        this.entity = entity;
 	    }
 	    OpenPopoverAction = __decorate([
 	        core_1.Action({
 	            type: "popover.openPopoverAction"
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [Object, Object])
 	    ], OpenPopoverAction);
 	    return OpenPopoverAction;
 	}());
 	exports.OpenPopoverAction = OpenPopoverAction;
 	var ClosePopoverAction = (function () {
-	    function ClosePopoverAction() {
+	    function ClosePopoverAction(id) {
+	        this.id = id;
 	    }
 	    ClosePopoverAction = __decorate([
 	        core_1.Action({
 	            type: "popover.closePopoverAction"
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [String])
 	    ], ClosePopoverAction);
 	    return ClosePopoverAction;
 	}());
 	exports.ClosePopoverAction = ClosePopoverAction;
+	var PopoverOpenedAction = (function () {
+	    function PopoverOpenedAction(id, entity) {
+	        this.id = id;
+	    }
+	    PopoverOpenedAction = __decorate([
+	        core_1.Action({
+	            type: "popover.popoverOpenedAction"
+	        }), 
+	        __metadata('design:paramtypes', [String, Object])
+	    ], PopoverOpenedAction);
+	    return PopoverOpenedAction;
+	}());
+	exports.PopoverOpenedAction = PopoverOpenedAction;
+	var PopoverClosedAction = (function () {
+	    function PopoverClosedAction(id) {
+	        this.id = id;
+	    }
+	    PopoverClosedAction = __decorate([
+	        core_1.Action({
+	            type: "popover.popoverClosedAction"
+	        }), 
+	        __metadata('design:paramtypes', [String])
+	    ], PopoverClosedAction);
+	    return PopoverClosedAction;
+	}());
+	exports.PopoverClosedAction = PopoverClosedAction;
 
 
 /***/ },
@@ -6221,6 +6264,8 @@ var angularRxUI =
 	            var instance = new Popover(_this.$compile, _this.$document, _this.$http, _this.$q, _this.$timeout, _this.guid, _this.position, _this.store, _this.template);
 	            instance.scope = options.scope;
 	            instance.triggerAugmentedJQuery = options.triggerAugmentedJQuery;
+	            instance.guid = options.guid;
+	            _this.store.subscribe(instance.storeOnChange);
 	            _this.$q.all([_this.template.get({ templateUrl: options.templateUrl })]).then(function (resultsArray) {
 	                instance.templateHtml = resultsArray[0];
 	                deferred.resolve(instance);
@@ -6228,9 +6273,10 @@ var angularRxUI =
 	            return deferred.promise;
 	        };
 	        this.storeOnChange = function (state) {
-	            if (state.lastTriggeredByAction === actions.OpenPopoverAction) {
-	            }
-	            if (state.lastTriggeredByAction === actions.ClosePopoverAction) {
+	            if (state.lastTriggeredByAction instanceof actions.ClosePopoverAction && _this.guid === state.lastTriggeredByAction.id) {
+	                _this.hide().then(function () {
+	                    _this.store.dispatch(new actions.PopoverClosedAction(_this.guid));
+	                });
 	            }
 	        };
 	        this.setInitialCss = function () {
@@ -6262,7 +6308,6 @@ var angularRxUI =
 	            }, false);
 	            return deferred.promise;
 	        };
-	        store.subscribe(this.storeOnChange);
 	    }
 	    Object.defineProperty(Popover.prototype, "transitionDurationInMilliseconds", {
 	        get: function () { return 1000; },
