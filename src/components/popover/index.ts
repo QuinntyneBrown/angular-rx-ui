@@ -4,6 +4,7 @@ import { provide, provideAction } from "../core";
 import { PopoverActionCreator } from "./popover.action-creator";
 import * as actions from "./popover.actions";
 import { Popover } from "./popover.service";
+import { PopoverConfigProvider } from "./popover-config-provider";
 
 import *  as reducers from "./popover.reducers";
 
@@ -13,6 +14,8 @@ var app = (<any>angular.module("app.popover", [
 
 provide(app, PopoverActionCreator);
 provide(app, Popover);
+
+app.provider("popoverConfig", PopoverConfigProvider);
 
 app.config(["reducersProvider", reducersProvider => {
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }

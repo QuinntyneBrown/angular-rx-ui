@@ -2,12 +2,13 @@
 import { IPosition, ITemplate, IRectangle } from "../core";
 import { IPopover } from "./popover.d";
 import { IPopoverInstanceOptions } from "./popover-instance-options.d";
+import { PopoverConfig } from "./popover-config";
 import * as actions from "./popover.actions";
 
 @Injectable()
 @Service({
     serviceName: "popover",
-    viewProviders: ["$compile", "$document", "$http", "$q", "$timeout", "guid", "position", "store","template"]
+    viewProviders: ["$compile", "$document", "$http", "$q", "$timeout", "guid", "popoverConfig","position", "store","template"]
 })
 export class Popover implements IPopover {
         
@@ -17,7 +18,8 @@ export class Popover implements IPopover {
         private $http: ng.IHttpService,
         private $q: ng.IQService,
         private $timeout: ng.ITimeoutService,
-        private guid:any,
+        private guid: any,
+        private popoverConfig: PopoverConfig,
         private position: IPosition,
         private store: Store<IAppState>,
         private template: ITemplate           
@@ -32,6 +34,7 @@ export class Popover implements IPopover {
             this.$q,
             this.$timeout,
             this.guid,
+            this.popoverConfig,
             this.position,
             this.store,
             this.template);
@@ -69,7 +72,7 @@ export class Popover implements IPopover {
         let deferred = this.$q.defer();            
         this.augmentedJQuery = this.$compile(this.templateHtml)(this.scope.$new(true));
         this.setInitialCss();
-        this.position.below(this.triggerAugmentedJQuery[0], this.augmentedJQuery[0], 30).then(() => {
+        this.position.below(this.triggerAugmentedJQuery[0], this.augmentedJQuery[0], this.popoverConfig.distance).then(() => {
             document.body.appendChild(this.augmentedJQuery[0]);                
             this.$timeout(() => { this.augmentedJQuery.css("opacity", 100); }, 100, false);
             deferred.resolve();

@@ -17,6 +17,15 @@
             position:relative;
             height:50px;
             width:100px;
+            background-color:#ccc;
+        }
+
+        .popover {
+            display:block;
+            position:relative;
+            height:50px;
+            width:100px;
+            background-color:#ccc;
         }
     </style>
 </head>
@@ -58,6 +67,10 @@
             }
 
             return self;
+        }]);
+
+        app.config(["popoverConfigProvider", function (popoverConfigProvider) {
+            popoverConfigProvider.distance = 30;
         }]);
     </script>
 </body>

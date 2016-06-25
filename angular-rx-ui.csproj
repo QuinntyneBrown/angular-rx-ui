@@ -539,6 +539,8 @@
     <TypeScriptCompile Include="src\components\picture\picture.component.spec.ts">
       <DependentUpon>picture.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\popover\popover-config-provider.ts" />
+    <TypeScriptCompile Include="src\components\popover\popover-config.ts" />
     <TypeScriptCompile Include="src\components\popover\popover-instance-options.d.ts" />
     <TypeScriptCompile Include="src\components\popover\popover-vm.d.ts" />
     <TypeScriptCompile Include="src\components\popover\popover.d.ts" />
