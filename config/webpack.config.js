@@ -5,7 +5,7 @@ var WebpackConfig = (function () {
     function WebpackConfig() {
         return {
             output: {
-                library: "angularRxUI"
+                library: "ngRxUI"
             },
             resolve: {
                 extensions: ["", ".js", ".ts", ".scss"]

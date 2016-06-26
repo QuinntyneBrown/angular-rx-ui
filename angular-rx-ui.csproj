@@ -71,7 +71,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\components.js" />
     <Content Include="config\gulpfile.config.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
@@ -526,6 +525,7 @@
     <TypeScriptCompile Include="src\components\modal\modal.actions.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.component.ts" />
     <TypeScriptCompile Include="src\components\modal\index.ts" />
+    <TypeScriptCompile Include="src\components\modal\modal.d.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.reducers.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.service.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.spec.ts">
@@ -702,6 +702,8 @@
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.reducers.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="dist\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

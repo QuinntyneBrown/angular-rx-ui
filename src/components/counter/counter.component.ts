@@ -7,6 +7,7 @@ import { CounterActionCreator } from "./counter.action-creator";
     styles: [require("./counter.component.scss")],
     selector: "counter",
     changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs:["@headline"],
     viewProviders: ["counterActionCreator"]
 })
 export class CounterComponent {    

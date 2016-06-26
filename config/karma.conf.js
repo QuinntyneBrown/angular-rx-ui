@@ -16,7 +16,7 @@
 
         reporters: ['progress', 'coverage'],
 
-        preprocessors: { './dist/components.js': ['coverage'] },
+        preprocessors: { './dist/angular-rx-ui.js': ['coverage'] },
 
         port: 9876,
 

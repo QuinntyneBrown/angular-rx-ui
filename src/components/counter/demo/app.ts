@@ -1,6 +1,6 @@
-﻿@angularRxUI.Component({
+﻿@ngRxUI.core.Component({
     selector: "app",
-    template: "<div><counter></counter></div>"
+    template: "<div><counter headline='counter'></counter></div>"
 })
 class AppComponent {
 

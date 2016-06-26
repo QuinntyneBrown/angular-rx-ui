@@ -54,7 +54,7 @@ gulp.task('clean', function (callback) {
 gulp.task("webpack", ['remove-compiled-js'], function () {
     return gulp.src('src/main.ts')
     .pipe(webpack(webpackConfig))
-    .pipe(rename("components.js"))
+    .pipe(rename("angular-rx-ui.js"))
     .pipe(gulp.dest('dist/'));
 });
 
@@ -69,8 +69,8 @@ gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
         './lib/angular-sanitize.js',
         './lib/angular-touch.js',
         './node_modules/angular-mocks/angular-mocks.js',
-        './dist/components.js',
-        './test/components.spec.js'
+        './dist/angular-rx-ui.js',
+        './test/angular-rx-ui.spec.js'
     ])
         .pipe(karma({
             configFile: './config/karma.conf.js',
@@ -95,7 +95,7 @@ gulp.task('compile-ts-tests', ['remove-compiled-js'], function () {
                        }));
 
     return tsResult.js
-        .pipe(concat('components.spec.js'))
+        .pipe(concat('angular-rx-ui.spec.js'))
         .pipe(gulp.dest('./test/'));
 });
 

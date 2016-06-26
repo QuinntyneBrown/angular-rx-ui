@@ -1,4 +1,47 @@
-﻿declare module angularRxUI {
+﻿declare module ngRxUI.core {
+
+    export function provideAction(app: any, value: any);
+
+    export interface IDispatcher {
+        dispatch(action): any;
+        subscribe(onNext): void;
+    }
+
+    export class BaseActionCreator {
+        constructor($location: angular.ILocationService,
+            service,
+            dispatcher: IDispatcher,
+            guid,
+            addOrUpdateAction,
+            allAction,
+            removeAction,
+            setCurrentAction
+        );
+
+        public $location: angular.ILocationService;
+        public service;
+        public dispatcher: IDispatcher;
+        public guid;
+
+        getById(options);
+        all();
+        addOrUpdate(options);
+        remove(options);
+        edit(options);        
+        create();
+    }
+
+    export function CanActivate(fnDefinition: Array<any>);
+
+    export function Service(config: IServiceConfigurationOptions);
+
+    export interface IServiceConfigurationOptions {
+        service?: any;
+        serviceName?: string,
+        selector?: string,
+        viewProviders?: Array<string>;
+        moduleId?: string,
+    }
 
     export interface IPluckOptions {
         items: Array<any>;
@@ -11,6 +54,8 @@
     export function Component(config: IComponentConfigurationOptions);
 
     export function pluck(options: IPluckOptions);
+
+    export function pluckOut(options:any);
 
     export interface IComponentConfigurationOptions {
         componentName?: string,

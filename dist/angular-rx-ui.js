@@ -1,4 +1,4 @@
-var angularRxUI =
+var ngRxUI =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -47,9 +47,6 @@ var angularRxUI =
 
 	/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__webpack_require__(1);
 	__webpack_require__(5);
 	var app = angular
@@ -84,7 +81,8 @@ var angularRxUI =
 	app.config([function () {
 	        FastClick.attach(document.body);
 	    }]);
-	__export(__webpack_require__(6));
+	var _core = __webpack_require__(6);
+	exports.core = _core;
 
 
 /***/ },
@@ -1595,6 +1593,11 @@ var angularRxUI =
 	                if (options.inputs[i].substring(0, 2) === "on") {
 	                    directiveDefinitionObject.bindToController[options.inputs[i]] = "&";
 	                }
+	                else if (options.inputs[i].substring(0, 1) === "@"
+	                    || options.inputs[i].substring(0, 1) === "&"
+	                    || options.inputs[i].substring(0, 1) === "=") {
+	                    directiveDefinitionObject.bindToController[options.inputs[i].substr(1)] = options.inputs[i].substring(0, 1);
+	                }
 	                else {
 	                    directiveDefinitionObject.bindToController[options.inputs[i]] = "=";
 	                }
@@ -1626,7 +1629,8 @@ var angularRxUI =
 	                    }
 	                    if (options.transclude && scope.vm.$transclude)
 	                        scope.vm.$transclude(scope.$new(), function (clone) {
-	                            scope.vm.template = template;
+	                            if (scope.vm.hasOwnProperty("template"))
+	                                scope.vm.template = template;
 	                            if (template[0].nodeType === 1)
 	                                var documentFragment = angular.element("<div></div>");
 	                            for (var i = 0; i < clone[0].children[0].children.length; i++) {
@@ -3869,6 +3873,7 @@ var angularRxUI =
 	            styles: [__webpack_require__(130)],
 	            selector: "counter",
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            inputs: ["@headline"],
 	            viewProviders: ["counterActionCreator"]
 	        }), 
 	        __metadata('design:paramtypes', [counter_action_creator_1.CounterActionCreator])
@@ -3959,7 +3964,7 @@ var angularRxUI =
 /* 129 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"counter\">\r\n    <h1>{{ vm.count }}</h1>\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
+	module.exports = "<div class=\"counter\">\r\n    <h1>{{ vm.headline }}</h1>\r\n    <h1>{{ vm.count }}</h1>\r\n    <a data-ng-click=\"vm.increment()\">Increment</a>\r\n    <a data-ng-click=\"vm.decrement()\">Decrement</a>\r\n</div>"
 
 /***/ },
 /* 130 */

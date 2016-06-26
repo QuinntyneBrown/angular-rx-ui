@@ -57,7 +57,14 @@ angular.module = function () {
             for (var i = 0; i < options.inputs.length; i++) {
                 if (options.inputs[i].substring(0, 2) === "on") {
                     directiveDefinitionObject.bindToController[options.inputs[i]] = "&";
-                } else {
+                }
+                else if (options.inputs[i].substring(0, 1) === "@"
+                    || options.inputs[i].substring(0, 1) === "&"
+                    || options.inputs[i].substring(0, 1) === "="
+                ) {                    
+                    directiveDefinitionObject.bindToController[options.inputs[i].substr(1)] = options.inputs[i].substring(0, 1);
+                }
+                else {
                     directiveDefinitionObject.bindToController[options.inputs[i]] = "=";
                 }
 
@@ -96,7 +103,8 @@ angular.module = function () {
 
                     if (options.transclude && scope.vm.$transclude)
                         scope.vm.$transclude(scope.$new(), function (clone: ng.IAugmentedJQuery) {
-                            scope.vm.template = template;
+                            if (scope.vm.hasOwnProperty("template"))
+                                scope.vm.template = template;
 
                             if (template[0].nodeType === 1)
                                 var documentFragment = angular.element("<div></div>");

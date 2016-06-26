@@ -37,5 +37,6 @@ app.config([() => {
     FastClick.attach(document.body);
 }]);
 
+import * as _core from "./components/core";
 
-export * from "./components/core";
+export var core = _core;
