@@ -1,14 +1,25 @@
 <div class="carousel-action-panel">
 
-    <rotator id="featured"
-             items="vm.items"
-             rotator-for-name="item"
-             next-button-image-url="'rotator_button_next.png'"
-             previous-button-image-url="'rotator_button_prev.png'"
-             width="'500'"
-             height="'500'">
-        <div>
-            <img data-ng-src="{{ item.url }}" />
+    <div>
+        <rotator id="featured"
+                 items="vm.items"
+                 rotator-for-name="item"
+                 next-button-image-url="'rotator_button_next.png'"
+                 previous-button-image-url="'rotator_button_prev.png'"
+                 width="'500'"
+                 height="'500'">
+            <div>
+                <img data-ng-src="{{ item.url }}" />
+            </div>
+        </rotator>
+    </div>
+
+    <div>
+        <h1>{{vm.headline}}</h1>
+        <div data-ng-bind-html="vm.htmlBody">
+
         </div>
-    </rotator>
+        <bold-button></bold-button>
+    </div>
+
 </div>

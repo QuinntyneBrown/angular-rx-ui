@@ -3312,7 +3312,7 @@ var ngRxUI =
 /* 99 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"bold-button\">\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"bold-button\">\r\n    <span>Bold Button</span>\r\n</div>\r\n"
 
 /***/ },
 /* 100 */
@@ -3720,7 +3720,7 @@ var ngRxUI =
 /* 119 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"carousel-action-panel\">\r\n\r\n    <rotator id=\"featured\"\r\n             items=\"vm.items\"\r\n             rotator-for-name=\"item\"\r\n             next-button-image-url=\"'rotator_button_next.png'\"\r\n             previous-button-image-url=\"'rotator_button_prev.png'\"\r\n             width=\"'500'\"\r\n             height=\"'500'\">\r\n        <div>\r\n            <img data-ng-src=\"{{ item.url }}\" />\r\n        </div>\r\n    </rotator>\r\n</div>\r\n"
+	module.exports = "<div class=\"carousel-action-panel\">\r\n\r\n    <div>\r\n        <rotator id=\"featured\"\r\n                 items=\"vm.items\"\r\n                 rotator-for-name=\"item\"\r\n                 next-button-image-url=\"'rotator_button_next.png'\"\r\n                 previous-button-image-url=\"'rotator_button_prev.png'\"\r\n                 width=\"'500'\"\r\n                 height=\"'500'\">\r\n            <div>\r\n                <img data-ng-src=\"{{ item.url }}\" />\r\n            </div>\r\n        </rotator>\r\n    </div>\r\n\r\n    <div>\r\n        <h1>{{vm.headline}}</h1>\r\n        <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n        </div>\r\n        <bold-button></bold-button>\r\n    </div>\r\n\r\n</div>\r\n"
 
 /***/ },
 /* 120 */
