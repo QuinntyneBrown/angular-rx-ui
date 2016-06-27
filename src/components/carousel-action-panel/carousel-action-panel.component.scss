@@ -1,0 +1,14 @@
+.carousel-action-panel-rotator,
+.carousel-action-panel-description {
+    float:left;
+    position:relative;
+}
+
+.carousel-action-panel-description:after {
+    content:" ";
+    font-size: 0;
+    height:0;
+    display:block;
+    clear:both;
+    visibility: hidden;        
+}

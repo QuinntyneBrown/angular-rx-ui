@@ -17,10 +17,14 @@
         <a href="../../../../index.html">Back</a>
     </div>
 
-    <div>
-        <carousel-action-panel headline="vm.headline" image-url="vm.imageUrl" html-body="vm.htmlBody" items="vm.items" >
-        </carousel-action-panel>
-    </div>
+    <carousel-action-panel 
+                            headline="vm.headline" 
+                            image-url="vm.imageUrl" 
+                            html-body="vm.htmlBody" 
+                            items="vm.items"
+                            on-click="vm.onClick()"
+                            action-button-caption="vm.actionButtonCaption" >
+    </carousel-action-panel>
 
     <script src="../../../../lib/fastclick.js"></script>
     <script src="../../../../lib/rx.all.compat.js"></script>
@@ -40,6 +44,10 @@
             self.imageUrl = "shoe-1.jpg";
             self.headline = "Penny";
             self.htmlBody = "<h1>Dope!</h1>";
+            self.actionButtonCaption = "Action Button Caption";
+            self.onClick = function () {
+                alert("works out here?");
+            };
             self.items = [
                 { "url": "shoe-1.jpg" },
                 { "url": "shoe-2.jpg" },

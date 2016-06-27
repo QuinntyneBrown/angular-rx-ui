@@ -10,11 +10,9 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
         "headline",
         "htmlBody",
         "actionButtonCaption",
-        "onAction",
+        "&onClick",
         "backgroundColor",
         "items"
     ]
 })
-export class CarouselActionPanelComponent {
-    constructor() {}
-}
+export class CarouselActionPanelComponent {}

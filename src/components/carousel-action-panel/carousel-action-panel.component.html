@@ -1,6 +1,6 @@
 <div class="carousel-action-panel">
 
-    <div>
+    <div class="carousel-action-panel-rotator">
         <rotator id="featured"
                  items="vm.items"
                  rotator-for-name="item"
@@ -14,12 +14,12 @@
         </rotator>
     </div>
 
-    <div>
-        <h1>{{vm.headline}}</h1>
+    <div class="carousel-action-panel-description">
+        <h2>{{vm.headline}}</h2>
         <div data-ng-bind-html="vm.htmlBody">
 
         </div>
-        <bold-button></bold-button>
+        <bold-button on-click="vm.onClick()" caption="{{vm.actionButtonCaption}}"></bold-button>
     </div>
 
 </div>

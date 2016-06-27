@@ -3234,7 +3234,7 @@ var ngRxUI =
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"button\">\r\n\r\n</div>\r\n"
+	module.exports = "<div>\r\n    \r\n</div>"
 
 /***/ },
 /* 96 */
@@ -3299,7 +3299,8 @@ var ngRxUI =
 	            template: __webpack_require__(99),
 	            styles: [__webpack_require__(100)],
 	            selector: "bold-button",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            inputs: ["&onClick", "@caption"]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], BoldButtonComponent);
@@ -3312,7 +3313,7 @@ var ngRxUI =
 /* 99 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"bold-button\">\r\n    <span>Bold Button</span>\r\n</div>\r\n"
+	module.exports = "<input type=\"button\" class=\"bold-button\" data-ng-click=\"vm.onClick()\" value=\"{{ ::vm.caption }}\"></input>"
 
 /***/ },
 /* 100 */
@@ -3704,7 +3705,7 @@ var ngRxUI =
 	                "headline",
 	                "htmlBody",
 	                "actionButtonCaption",
-	                "onAction",
+	                "&onClick",
 	                "backgroundColor",
 	                "items"
 	            ]
@@ -3720,7 +3721,7 @@ var ngRxUI =
 /* 119 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"carousel-action-panel\">\r\n\r\n    <div>\r\n        <rotator id=\"featured\"\r\n                 items=\"vm.items\"\r\n                 rotator-for-name=\"item\"\r\n                 next-button-image-url=\"'rotator_button_next.png'\"\r\n                 previous-button-image-url=\"'rotator_button_prev.png'\"\r\n                 width=\"'500'\"\r\n                 height=\"'500'\">\r\n            <div>\r\n                <img data-ng-src=\"{{ item.url }}\" />\r\n            </div>\r\n        </rotator>\r\n    </div>\r\n\r\n    <div>\r\n        <h1>{{vm.headline}}</h1>\r\n        <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n        </div>\r\n        <bold-button></bold-button>\r\n    </div>\r\n\r\n</div>\r\n"
+	module.exports = "<div class=\"carousel-action-panel\">\r\n\r\n    <div class=\"carousel-action-panel-rotator\">\r\n        <rotator id=\"featured\"\r\n                 items=\"vm.items\"\r\n                 rotator-for-name=\"item\"\r\n                 next-button-image-url=\"'rotator_button_next.png'\"\r\n                 previous-button-image-url=\"'rotator_button_prev.png'\"\r\n                 width=\"'500'\"\r\n                 height=\"'500'\">\r\n            <div>\r\n                <img data-ng-src=\"{{ item.url }}\" />\r\n            </div>\r\n        </rotator>\r\n    </div>\r\n\r\n    <div class=\"carousel-action-panel-description\">\r\n        <h2>{{vm.headline}}</h2>\r\n        <div data-ng-bind-html=\"vm.htmlBody\">\r\n\r\n        </div>\r\n        <bold-button on-click=\"vm.onClick()\" caption=\"{{vm.actionButtonCaption}}\"></bold-button>\r\n    </div>\r\n\r\n</div>\r\n"
 
 /***/ },
 /* 120 */
@@ -3757,7 +3758,7 @@ var ngRxUI =
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".carousel-action-panel-rotator,\n.carousel-action-panel-description {\n  float: left;\n  position: relative; }\n\n.carousel-action-panel-description:after {\n  content: \" \";\n  font-size: 0;\n  height: 0;\n  display: block;\n  clear: both;\n  visibility: hidden; }\n", ""]);
 
 	// exports
 
