@@ -18,7 +18,8 @@
     </div>
 
     <div>
-        <carousel-action-panel headline="vm.headline" image-url="vm.imageUrl" html-body="vm.htmlBody" ></carousel-action-panel>
+        <carousel-action-panel headline="vm.headline" image-url="vm.imageUrl" html-body="vm.htmlBody" items="vm.items" >
+        </carousel-action-panel>
     </div>
 
     <script src="../../../../lib/fastclick.js"></script>
@@ -39,6 +40,12 @@
             self.imageUrl = "shoe-1.jpg";
             self.headline = "Penny";
             self.htmlBody = "<h1>Dope!</h1>";
+            self.items = [
+                { "url": "shoe-1.jpg" },
+                { "url": "shoe-2.jpg" },
+                { "url": "shoe-3.jpg" }
+            ];
+
             return self;
         }]);
 

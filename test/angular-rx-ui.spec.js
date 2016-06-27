@@ -206,31 +206,27 @@ describe("button", function () {
     });
 });
 
-describe("carouselActionPanel", function () {
-    var carouselActionPanelComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.carouselActionPanel");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        carouselActionPanelComponent = $controller("carouselActionPanelComponent", { carouselActionPanelActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<carousel-action-panel></carousel-action-panel>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(carouselActionPanelComponent).toBeDefined();
-    });
-});
+//describe("carouselActionPanel", () => {
+//    var carouselActionPanelComponent;
+//    var $compile;
+//    var $rootScope;
+//    class MockActionCreator { }
+//    beforeEach(() => {
+//        angular.mock.module("app.carouselActionPanel");
+//    });
+//    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
+//        $rootScope = _$rootScope_;
+//        $compile = _$compile_;
+//        carouselActionPanelComponent = $controller("carouselActionPanelComponent", { carouselActionPanelActionCreator: new MockActionCreator() });
+//    }));
+//    it("should compile", () => {
+//        var element = $compile("<carousel-action-panel></carousel-action-panel>")($rootScope);
+//        expect(element).toBeDefined();
+//    });
+//    it("should be defined", () => {
+//        expect(carouselActionPanelComponent).toBeDefined();
+//    });
+//})
 
 describe("categoryListForItem", function () {
     var categoryListForItemComponent;
@@ -345,32 +341,6 @@ describe("counter", function () {
 //    });
 //})
 
-describe("flyout", function () {
-    var flyoutComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.flyout");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        flyoutComponent = $controller("flyoutComponent", { flyoutActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<flyout></flyout>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(flyoutComponent).toBeDefined();
-    });
-});
-
 describe("hamburgerButton", function () {
     var hamburgerButtonComponent;
     var $compile;
@@ -394,6 +364,32 @@ describe("hamburgerButton", function () {
     });
     it("should be defined", function () {
         expect(hamburgerButtonComponent).toBeDefined();
+    });
+});
+
+describe("flyout", function () {
+    var flyoutComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.flyout");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        flyoutComponent = $controller("flyoutComponent", { flyoutActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<flyout></flyout>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(flyoutComponent).toBeDefined();
     });
 });
 

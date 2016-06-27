@@ -1,27 +1,28 @@
-describe("carouselActionPanel", () => {
+//describe("carouselActionPanel", () => {
 
-    var carouselActionPanelComponent;
-    var $compile;
-    var $rootScope;
+//    var carouselActionPanelComponent;
+//    var $compile;
+//    var $rootScope;
 
-    class MockActionCreator { }
+//    class MockActionCreator { }
 
-    beforeEach(() => {
-        angular.mock.module("app.carouselActionPanel");
-    });
+//    beforeEach(() => {
 
-    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        carouselActionPanelComponent = $controller("carouselActionPanelComponent", { carouselActionPanelActionCreator: new MockActionCreator() });
-    }));
+//        angular.mock.module("app.carouselActionPanel");
+//    });
 
-    it("should compile", () => {
-        var element = $compile("<carousel-action-panel></carousel-action-panel>")($rootScope);
-        expect(element).toBeDefined();
-    });
+//    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
+//        $rootScope = _$rootScope_;
+//        $compile = _$compile_;
+//        carouselActionPanelComponent = $controller("carouselActionPanelComponent", { carouselActionPanelActionCreator: new MockActionCreator() });
+//    }));
 
-    it("should be defined", () => {
-        expect(carouselActionPanelComponent).toBeDefined();
-    });
-})
+//    it("should compile", () => {
+//        var element = $compile("<carousel-action-panel></carousel-action-panel>")($rootScope);
+//        expect(element).toBeDefined();
+//    });
+
+//    it("should be defined", () => {
+//        expect(carouselActionPanelComponent).toBeDefined();
+//    });
+//})

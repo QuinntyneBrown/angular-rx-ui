@@ -313,17 +313,17 @@
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\window\demo\index.html" />
-    <None Include="src\assets\sass\normalize.scss" />
+    <None Include="src\assets\scss\normalize.scss" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\assets\sass\breakpoints.scss" />
+    <Content Include="src\assets\scss\breakpoints.scss" />
     <Content Include="src\components\tabs\tabs.component.scss">
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\assets\sass\index.scss" />
+    <Content Include="src\assets\scss\index.scss" />
     <Content Include="src\components\rotator\rotator.component.scss">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
