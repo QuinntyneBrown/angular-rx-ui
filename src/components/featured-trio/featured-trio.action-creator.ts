@@ -1,15 +1,13 @@
 import { IDispatcher, BaseActionCreator, Service } from "../core";
 import { ModalActionCreator } from "../modal/modal.action-creator";
-import { ClickAction } from "./hamburger-button.actions";
 
 @Service({
-    serviceName: "hamburgerButtonActionCreator",
+    serviceName: "featuredTrioActionCreator",
     viewProviders: ["dispatcher", "guid", "invokeAsync","modalActionCreator"]
 })
-export class HamburgerButtonActionCreator {
+export class FeaturedTrioActionCreator {
     constructor(private dispatcher: IDispatcher, private guid, private invokeAsync, private modalActionCreator: ModalActionCreator) { }    
 
-    click = () => this.dispatcher.dispatch(new ClickAction());
 }
 
 

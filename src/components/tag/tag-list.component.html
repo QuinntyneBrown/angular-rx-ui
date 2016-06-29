@@ -1,3 +1,7 @@
 <div class="tag-list">
-
+    <ul>
+        <li data-ng-repeat="tag in vm.tags">
+            <a data-ng-href="{{ ::tag.href }}">{{ ::tag.name}}</a>
+        </li>
+    </ul>
 </div>

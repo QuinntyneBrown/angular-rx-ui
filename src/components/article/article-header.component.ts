@@ -6,9 +6,9 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "article-header",
     changeDetection: ChangeDetectionStrategy.OnPush,
     inputs: [
-        "articleTitle",
-        "articleHref",
-        "articlePublishedDate"
+        "@articleTitle",
+        "@articleHref",
+        "@articlePublishedDate"
     ]
 })
 export class ArticleHeaderComponent {}

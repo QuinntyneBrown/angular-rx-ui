@@ -18,7 +18,7 @@
     </div>
 
     <div>
-        <hamburger-button></hamburger-button>
+        <hamburger-button on-click="vm.onClick()"></hamburger-button>
     </div>
 
     <script src="../../../../lib/fastclick.js"></script>
@@ -36,6 +36,8 @@
         ])
         .controller("mainController", [function mainController() {
             var self = this;
+
+            self.onClick = () => alert("hamburger button clicked!");
 
             return self;
         }]);

@@ -5,6 +5,6 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     styles: [require("./author.component.scss")],
     selector: "author",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    inputs: [ "authorFullName" ]
+    inputs: ["@authorFullName"]
 })
 export class AuthorComponent {}

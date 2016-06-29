@@ -172,6 +172,12 @@
     <Content Include="src\components\error-list\error-list.component.scss">
       <DependentUpon>error-list.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\featured-trio\featured-trio.component.html">
+      <DependentUpon>featured-trio.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\featured-trio\featured-trio.component.scss">
+      <DependentUpon>featured-trio.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\file-explorer\file-explorer.component.html">
       <DependentUpon>file-explorer.component.ts</DependentUpon>
     </Content>
@@ -506,6 +512,9 @@
     <TypeScriptCompile Include="src\components\error-list\error-list.component.spec.ts">
       <DependentUpon>error-list.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.component.spec.ts">
+      <DependentUpon>featured-trio.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card.action-creator.ts" />
@@ -641,11 +650,7 @@
     <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
     <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.service.ts" />
-    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.model.ts" />
     <TypeScriptCompile Include="src\components\hamburger-button\index.ts" />
-    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.actions.ts" />
-    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.reducers.ts" />
     <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.component.ts" />
     <TypeScriptCompile Include="src\components\popover\popover.model.ts" />
     <TypeScriptCompile Include="src\components\popover\index.ts" />
@@ -701,10 +706,17 @@
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.action-creator.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.reducers.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.model.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\index.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.actions.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.reducers.ts" />
+    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
     <Folder Include="src\components\error-list\example\" />
+    <Folder Include="src\components\featured-trio\example\" />
     <Folder Include="src\components\file-explorer\example\" />
     <Folder Include="src\components\ngrx-footer\example\" />
     <Folder Include="src\components\ngrx-header\example\" />

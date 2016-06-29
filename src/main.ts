@@ -15,6 +15,7 @@ var app = angular
         "app.core",
         "app.counter",
         "app.errorList",
+        "app.featuredTrio",
         "app.flipCard",
         "app.flyout",
         "app.hamburgerButton",
