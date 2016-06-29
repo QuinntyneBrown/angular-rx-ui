@@ -3221,7 +3221,8 @@ var ngRxUI =
 	            template: __webpack_require__(95),
 	            styles: [__webpack_require__(96)],
 	            selector: "button",
-	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+	            inputs: ["&onClick", "@caption"]
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], ButtonComponent);
@@ -3234,7 +3235,7 @@ var ngRxUI =
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\r\n    \r\n</div>"
+	module.exports = "<input type=\"button\" class=\"button\" data-ng-click=\"vm.onClick()\" value=\"{{ ::vm.caption }}\"></input>"
 
 /***/ },
 /* 96 */
@@ -3271,7 +3272,7 @@ var ngRxUI =
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".button {\n  min-width: 100px; }\n", ""]);
 
 	// exports
 
@@ -3350,7 +3351,7 @@ var ngRxUI =
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".button, .bold-button {\n  min-width: 100px; }\n\n.bold-button {\n  font-weight: 600; }\n", ""]);
 
 	// exports
 

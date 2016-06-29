@@ -91,7 +91,7 @@
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\ads\demo\index.html" />
-    <Content Include="src\components\article\demo\index.html" />
+    <Content Include="src\components\article\example\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
     </Content>
@@ -136,7 +136,7 @@
     <Content Include="src\components\button\button.component.scss">
       <DependentUpon>button.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\button\demo\index.html" />
+    <Content Include="src\components\button\example\index.html" />
     <Content Include="src\components\carousel-action-panel\carousel-action-panel.component.html">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
     </Content>
@@ -244,8 +244,8 @@
       <DependentUpon>ngrx-header.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\paged-list\demo\index.html" />
-    <Content Include="src\components\panel\demo\index.html" />
-    <Content Include="src\components\panel\demo\shoe-1.jpg" />
+    <Content Include="src\components\panel\example\index.html" />
+    <Content Include="src\components\panel\example\shoe-1.jpg" />
     <Content Include="src\components\panel\panel.component.html">
       <DependentUpon>panel.component.ts</DependentUpon>
     </Content>

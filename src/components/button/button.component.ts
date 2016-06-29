@@ -4,8 +4,7 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     template: require("./button.component.html"),
     styles: [require("./button.component.scss")],
     selector: "button",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: ["&onClick", "@caption"]
 })
-export class ButtonComponent {
-    constructor() { }
-}
+export class ButtonComponent {}

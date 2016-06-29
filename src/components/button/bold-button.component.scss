@@ -1,0 +1,6 @@
+@import "button.component";
+
+.bold-button {
+    @extend .button;
+    font-weight:600;
+}
