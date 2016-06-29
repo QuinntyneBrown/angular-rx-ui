@@ -1,20 +1,14 @@
 ﻿import { ChangeDetectionStrategy } from "./change-detection-strategy";
 import { ViewEncapsulation } from "./view-encapsulation";
 
-export function Component(config: IComponentConfigurationOptions = {}) {
-    return function (cls) {
+export const Component = (config: IComponentConfigurationOptions = {}) =>
+    (cls) => {
         config.component = cls;
         cls.config = config;        
     };
-}
 
-export function CanActivate(fnDefinition: Array<any>) {
-    return function (cls) {
-        cls.prototype.canActivate = () => {
-            return fnDefinition
-        };
-    };
-}
+export const CanActivate = (fnDefinition: Array<any>) =>
+    (cls) => { cls.prototype.canActivate = () => fnDefinition };
 
 export interface IComponentConfigurationOptions {
     componentName?:string,

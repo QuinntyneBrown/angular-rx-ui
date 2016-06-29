@@ -893,22 +893,16 @@ var ngRxUI =
 /***/ function(module, exports) {
 
 	"use strict";
-	function Component(config) {
+	exports.Component = function (config) {
 	    if (config === void 0) { config = {}; }
 	    return function (cls) {
 	        config.component = cls;
 	        cls.config = config;
 	    };
-	}
-	exports.Component = Component;
-	function CanActivate(fnDefinition) {
-	    return function (cls) {
-	        cls.prototype.canActivate = function () {
-	            return fnDefinition;
-	        };
-	    };
-	}
-	exports.CanActivate = CanActivate;
+	};
+	exports.CanActivate = function (fnDefinition) {
+	    return function (cls) { cls.prototype.canActivate = function () { return fnDefinition; }; };
+	};
 
 
 /***/ },

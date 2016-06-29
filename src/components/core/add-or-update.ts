@@ -1,4 +1,4 @@
-﻿export var addOrUpdate  = (options) => {
+﻿export const addOrUpdate  = (options) => {
     var exists = false;
     options.items = options.items || [];
     for (var i = 0; i < options.items.length; i++) {
