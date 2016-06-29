@@ -90,7 +90,7 @@
     <Content Include="src\components\ads\ads.component.scss">
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\ads\demo\index.html" />
+    <Content Include="src\components\ads\example\index.html" />
     <Content Include="src\components\article\example\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
@@ -122,8 +122,8 @@
     <Content Include="src\components\article\article-list.component.scss">
       <DependentUpon>article-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\author\demo\index.html" />
-    <Content Include="src\components\backdrop\demo\index.html" />
+    <Content Include="src\components\author\example\index.html" />
+    <Content Include="src\components\backdrop\example\index.html" />
     <Content Include="src\components\button\bold-button.component.html">
       <DependentUpon>bold-button.component.ts</DependentUpon>
     </Content>
@@ -143,12 +143,12 @@
     <Content Include="src\components\carousel-action-panel\carousel-action-panel.component.scss">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\carousel-action-panel\demo\index.html" />
-    <Content Include="src\components\carousel-action-panel\demo\rotator_button_next.png" />
-    <Content Include="src\components\carousel-action-panel\demo\rotator_button_prev.png" />
-    <Content Include="src\components\carousel-action-panel\demo\shoe-1.jpg" />
-    <Content Include="src\components\carousel-action-panel\demo\shoe-2.jpg" />
-    <Content Include="src\components\carousel-action-panel\demo\shoe-3.jpg" />
+    <Content Include="src\components\carousel-action-panel\example\index.html" />
+    <Content Include="src\components\carousel-action-panel\example\rotator_button_next.png" />
+    <Content Include="src\components\carousel-action-panel\example\rotator_button_prev.png" />
+    <Content Include="src\components\carousel-action-panel\example\shoe-1.jpg" />
+    <Content Include="src\components\carousel-action-panel\example\shoe-2.jpg" />
+    <Content Include="src\components\carousel-action-panel\example\shoe-3.jpg" />
     <Content Include="src\components\category\category-list-for-item.component.html">
       <DependentUpon>category-list-for-item.component.ts</DependentUpon>
     </Content>
@@ -161,11 +161,11 @@
     <Content Include="src\components\category\category-list.component.scss">
       <DependentUpon>category-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\category\demo\index.html" />
+    <Content Include="src\components\category\example\index.html" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\counter\demo\index.html" />
+    <Content Include="src\components\counter\example\index.html" />
     <Content Include="src\components\error-list\error-list.component.html">
       <DependentUpon>error-list.component.ts</DependentUpon>
     </Content>
@@ -178,7 +178,7 @@
     <Content Include="src\components\file-explorer\file-explorer.component.scss">
       <DependentUpon>file-explorer.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\flip-card\demo\index.html" />
+    <Content Include="src\components\flip-card\example\index.html" />
     <Content Include="src\components\flip-card\flip-card-back.component.html">
       <DependentUpon>flip-card-back.component.ts</DependentUpon>
     </Content>
@@ -194,14 +194,14 @@
     <Content Include="src\components\flyout\flyout.component.scss">
       <DependentUpon>flyout.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\hamburger-button\demo\index.html" />
+    <Content Include="src\components\hamburger-button\example\index.html" />
     <Content Include="src\components\hamburger-button\hamburger-button.component.html">
       <DependentUpon>hamburger-button.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\hamburger-button\hamburger-button.component.scss">
       <DependentUpon>hamburger-button.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\modal\demo\index.html" />
+    <Content Include="src\components\modal\example\index.html" />
     <Content Include="src\components\modal\modal-content.component.css">
       <DependentUpon>modal-content.component.ts</DependentUpon>
     </Content>
@@ -220,7 +220,7 @@
     <Content Include="src\components\modal\modal.component.html">
       <DependentUpon>modal.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\nav-menu\demo\index.html" />
+    <Content Include="src\components\nav-menu\example\index.html" />
     <Content Include="src\components\nav-menu\nav-menu.component.html">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </Content>
@@ -243,7 +243,7 @@
     <Content Include="src\components\ngrx-header\ngrx-header.component.scss">
       <DependentUpon>ngrx-header.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\paged-list\demo\index.html" />
+    <Content Include="src\components\paged-list\example\index.html" />
     <Content Include="src\components\panel\example\index.html" />
     <Content Include="src\components\panel\example\shoe-1.jpg" />
     <Content Include="src\components\panel\panel.component.html">
@@ -252,7 +252,7 @@
     <Content Include="src\components\panel\panel.component.scss">
       <DependentUpon>panel.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\picture\demo\index.html" />
+    <Content Include="src\components\picture\example\index.html" />
     <Content Include="src\components\picture\picture-upload.component.html">
       <DependentUpon>picture-upload.component.ts</DependentUpon>
     </Content>
@@ -265,18 +265,18 @@
     <Content Include="src\components\picture\picture.component.scss">
       <DependentUpon>picture.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\popover\demo\index.html" />
-    <Content Include="src\components\popover\demo\template.html" />
-    <Content Include="src\components\rotator\demo\index.html" />
-    <Content Include="src\components\rotator\demo\rotator_button_next.png" />
-    <Content Include="src\components\rotator\demo\rotator_button_prev.png" />
-    <Content Include="src\components\rotator\demo\shoe-1.jpg" />
-    <Content Include="src\components\rotator\demo\shoe-2.jpg" />
-    <Content Include="src\components\rotator\demo\shoe-3.jpg" />
+    <Content Include="src\components\popover\example\index.html" />
+    <Content Include="src\components\popover\example\template.html" />
+    <Content Include="src\components\rotator\example\index.html" />
+    <Content Include="src\components\rotator\example\rotator_button_next.png" />
+    <Content Include="src\components\rotator\example\rotator_button_prev.png" />
+    <Content Include="src\components\rotator\example\shoe-1.jpg" />
+    <Content Include="src\components\rotator\example\shoe-2.jpg" />
+    <Content Include="src\components\rotator\example\shoe-3.jpg" />
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\social-share\demo\index.html" />
+    <Content Include="src\components\social-share\example\index.html" />
     <Content Include="src\components\social-share\social-share-icons.component.html">
       <DependentUpon>social-share-icons.component.ts</DependentUpon>
     </Content>
@@ -289,7 +289,7 @@
     <Content Include="src\components\social-share\social-share.component.scss">
       <DependentUpon>social-share.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\tabs\demo\index.html" />
+    <Content Include="src\components\tabs\example\index.html" />
     <Content Include="src\components\tabs\tab-content.component.scss">
       <DependentUpon>tab-content.component.ts</DependentUpon>
     </Content>
@@ -305,14 +305,14 @@
     <Content Include="src\components\tabs\tabs.component.html">
       <DependentUpon>tabs.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\tag\demo\index.html" />
+    <Content Include="src\components\tag\example\index.html" />
     <Content Include="src\components\tag\tag-list.component.html">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\tag\tag-list.component.scss">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\window\demo\index.html" />
+    <Content Include="src\components\window\example\index.html" />
     <None Include="src\assets\scss\normalize.scss" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
@@ -496,7 +496,7 @@
       <DependentUpon>counter.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\counter\counter.component.ts" />
-    <TypeScriptCompile Include="src\components\counter\demo\app.ts" />
+    <TypeScriptCompile Include="src\components\counter\example\app.ts" />
     <TypeScriptCompile Include="src\components\counter\index.ts" />
     <TypeScriptCompile Include="src\components\counter\counter.reducers.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-config.provider.ts" />
@@ -704,6 +704,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
+    <Folder Include="src\components\error-list\example\" />
+    <Folder Include="src\components\file-explorer\example\" />
+    <Folder Include="src\components\ngrx-footer\example\" />
+    <Folder Include="src\components\ngrx-header\example\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
