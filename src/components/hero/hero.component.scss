@@ -1,0 +1,10 @@
+.hero-content {
+    position:absolute;
+    float:right;
+    width:calc(50% - (30px*2));
+    top:50%;
+    right:30px;
+    padding-left:30px;
+    transform: translateY(-50%)
+}
+

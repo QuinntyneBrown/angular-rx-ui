@@ -419,6 +419,32 @@ describe("hamburgerButton", function () {
     });
 });
 
+describe("hero", function () {
+    var heroComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.hero");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        heroComponent = $controller("heroComponent", { heroActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<hero></hero>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(heroComponent).toBeDefined();
+    });
+});
+
 describe("navMenu", function () {
     var navMenuComponent;
     var $compile;
@@ -497,6 +523,32 @@ describe("ngrxHeader", function () {
     });
 });
 
+describe("fullImagePanel", function () {
+    var fullImagePanelComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.fullImagePanel");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        fullImagePanelComponent = $controller("fullImagePanelComponent", { fullImagePanelActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<full-image-panel></full-image-panel>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(fullImagePanelComponent).toBeDefined();
+    });
+});
+
 describe("panel", function () {
     var panelComponent;
     var $compile;
@@ -548,6 +600,32 @@ describe("picture", function () {
     });
     it("should be defined", function () {
         expect(pictureComponent).toBeDefined();
+    });
+});
+
+describe("river", function () {
+    var riverComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.river");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        riverComponent = $controller("riverComponent", { riverActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<river></river>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(riverComponent).toBeDefined();
     });
 });
 
