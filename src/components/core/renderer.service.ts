@@ -1,5 +1,5 @@
 ﻿import { provide } from "./provide";
-import { Service } from "./service-decorator";
+import { Service } from "./service.decorator";
 
 export enum scopeType {
     isolated = 0,

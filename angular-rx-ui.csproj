@@ -449,8 +449,9 @@
     <TypeScriptCompile Include="src\components\core\append-to-body-async.ts" />
     <TypeScriptCompile Include="src\components\core\auth-interceptor.ts" />
     <TypeScriptCompile Include="src\components\core\base-wrapped-exception.ts" />
+    <TypeScriptCompile Include="src\components\core\cache.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
-    <TypeScriptCompile Include="src\components\core\component-decorators.ts" />
+    <TypeScriptCompile Include="src\components\core\component.decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\convert-unix-timestamp-to-date.ts" />
     <TypeScriptCompile Include="src\components\core\core.d.ts" />
@@ -459,6 +460,7 @@
     <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
     <TypeScriptCompile Include="src\components\core\form-encode.ts" />
+    <TypeScriptCompile Include="src\components\core\function-info.ts" />
     <TypeScriptCompile Include="src\components\core\get-action-type.ts" />
     <TypeScriptCompile Include="src\components\core\get-from-url-sync.ts" />
     <TypeScriptCompile Include="src\components\core\get-html.ts" />
@@ -498,7 +500,7 @@
     <TypeScriptCompile Include="src\components\core\ruler.d.ts" />
     <TypeScriptCompile Include="src\components\core\ruler.service.ts" />
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
-    <TypeScriptCompile Include="src\components\core\service-decorator.ts" />
+    <TypeScriptCompile Include="src\components\core\service.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\service.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\space.d.ts" />
