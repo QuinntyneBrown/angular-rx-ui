@@ -172,12 +172,6 @@
     <Content Include="src\components\error-list\error-list.component.scss">
       <DependentUpon>error-list.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\featured-trio\featured-trio.component.html">
-      <DependentUpon>featured-trio.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\featured-trio\featured-trio.component.scss">
-      <DependentUpon>featured-trio.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\file-explorer\file-explorer.component.html">
       <DependentUpon>file-explorer.component.ts</DependentUpon>
     </Content>
@@ -207,6 +201,7 @@
     <Content Include="src\components\hamburger-button\hamburger-button.component.scss">
       <DependentUpon>hamburger-button.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\hero\example\index.html" />
     <Content Include="src\components\hero\hero.component.html">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
@@ -257,14 +252,8 @@
     </Content>
     <Content Include="src\components\paged-list\example\index.html" />
     <Content Include="src\components\panel\example\index.html" />
-    <Content Include="src\components\panel\example\Kim.jpg" />
+    <Content Include="src\components\hero\example\kim.jpg" />
     <Content Include="src\components\panel\example\shoe-1.jpg" />
-    <Content Include="src\components\panel\full-image-panel.component.html">
-      <DependentUpon>full-image-panel.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\panel\full-image-panel.component.scss">
-      <DependentUpon>full-image-panel.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\panel\panel.component.html">
       <DependentUpon>panel.component.ts</DependentUpon>
     </Content>
@@ -456,6 +445,7 @@
     <TypeScriptCompile Include="src\components\core\convert-unix-timestamp-to-date.ts" />
     <TypeScriptCompile Include="src\components\core\core.d.ts" />
     <TypeScriptCompile Include="src\components\core\debounce.ts" />
+    <TypeScriptCompile Include="src\components\core\ends-with.ts" />
     <TypeScriptCompile Include="src\components\core\exception-handler.ts" />
     <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />
     <TypeScriptCompile Include="src\components\core\fetch.ts" />
@@ -533,9 +523,6 @@
     <TypeScriptCompile Include="src\components\error-list\error-list.component.spec.ts">
       <DependentUpon>error-list.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.component.spec.ts">
-      <DependentUpon>featured-trio.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\flip-card\flip-card-back.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card-front.component.ts" />
     <TypeScriptCompile Include="src\components\flip-card\flip-card.action-creator.ts" />
@@ -580,9 +567,6 @@
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list-from-in-memory.ts" />
     <TypeScriptCompile Include="src\components\paged-list\to-paged-list.ts" />
     <TypeScriptCompile Include="src\components\paged-list\validate-page-properties-and-get-skip-count.ts" />
-    <TypeScriptCompile Include="src\components\panel\full-image-panel.component.spec.ts">
-      <DependentUpon>full-image-panel.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\panel\panel.component.spec.ts">
       <DependentUpon>panel.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -736,13 +720,6 @@
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.action-creator.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.reducers.ts" />
     <TypeScriptCompile Include="src\components\file-explorer\file-explorer.component.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.model.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\index.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.actions.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.reducers.ts" />
-    <TypeScriptCompile Include="src\components\featured-trio\featured-trio.component.ts" />
-    <TypeScriptCompile Include="src\components\panel\full-image-panel.component.ts" />
     <TypeScriptCompile Include="src\components\hero\index.ts" />
     <TypeScriptCompile Include="src\components\hero\hero.component.ts" />
     <TypeScriptCompile Include="src\components\river\index.ts" />
@@ -751,7 +728,6 @@
   <ItemGroup>
     <Folder Include="dist\" />
     <Folder Include="src\components\error-list\example\" />
-    <Folder Include="src\components\featured-trio\example\" />
     <Folder Include="src\components\file-explorer\example\" />
     <Folder Include="src\components\ngrx-footer\example\" />
     <Folder Include="src\components\ngrx-header\example\" />

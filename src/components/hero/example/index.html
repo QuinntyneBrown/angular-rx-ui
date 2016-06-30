@@ -18,7 +18,7 @@
     </div>
 
     <div>
-        <panel headline="vm.headline" image-url="vm.imageUrl" html-body="vm.htmlBody" ></panel>
+        <hero hero-image-url="{{ vm.heroImageUrl }}" width="100%"></hero>
     </div>
 
     <script src="../../../../lib/fastclick.js"></script>
@@ -36,13 +36,7 @@
         ])
         .controller("mainController", [function mainController() {
             var self = this;
-            self.imageUrl = "shoe-1.jpg";
-            self.headline = "Penny";
-            self.htmlBody = "<h1>Dope!</h1>";
-
-            self.kim = "Kim.jpg";
-            self.headline1 = "Inside Kim Kardashian";
-            self.headline2 = "Celebrity";
+            self.heroImageUrl = "kim.jpg";
             return self;
         }]);
 

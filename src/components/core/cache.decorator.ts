@@ -1,4 +1,5 @@
-﻿import {FunctionInfo} from './function-info';
+﻿import { FunctionInfo } from './function-info';
+import { endsWith } from "./ends-with";
 
 let cachedData: { [key: string]: { date?: Date, observable: Rx.Observable<any>, data?: any } } = {};
 /**
@@ -62,7 +63,7 @@ export function ClearAllFunctionCache(functionInfo: FunctionInfo) {
         let normalizedKey = e.toLocaleLowerCase();
         let normalizedFunctionName = functionInfo.name.toLocaleLowerCase();
         if (normalizedKey.indexOf(`/${normalizedFunctionName}/`) !== -1 ||
-            //normalizedKey.endsWith(normalizedFunctionName) ||
+            endsWith(normalizedKey,normalizedFunctionName) ||
             normalizedKey.indexOf(`/${normalizedFunctionName}.`) !== -1) {
             delete cachedData[e];
         }

@@ -8,7 +8,6 @@ require("./category");
 require("./carousel-action-panel");
 require("./counter");
 require("./error-list");
-require("./featured-trio");
 require("./flip-card");
 require("./flyout");
 require("./hamburger-button");

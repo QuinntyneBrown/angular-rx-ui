@@ -15,7 +15,6 @@ var app = angular
         "app.core",
         "app.counter",
         "app.errorList",
-        "app.featuredTrio",
         "app.flipCard",
         "app.flyout",
         "app.hamburgerButton",
@@ -40,6 +39,9 @@ app.config([() => {
     FastClick.attach(document.body);
 }]);
 
-import * as _core from "./components/core";
 
-export var core = _core;
+import * as _core from "./components/core";
+import * as _modal from "./components/modal";
+
+export const core = _core;
+export const modal = _modal;
