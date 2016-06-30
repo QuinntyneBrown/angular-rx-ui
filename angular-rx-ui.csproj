@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\gulpfile.config.js" />
+    <Content Include="dist\angular-rx-ui.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
     <Content Include="config\karma.conf.js" />
@@ -492,6 +493,7 @@
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\service.ts" />
+    <TypeScriptCompile Include="src\components\core\set-element-dimension.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\space.d.ts" />
     <TypeScriptCompile Include="src\components\core\space.service.ts" />
@@ -726,7 +728,6 @@
     <TypeScriptCompile Include="src\components\river\river.component.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dist\" />
     <Folder Include="src\components\error-list\example\" />
     <Folder Include="src\components\file-explorer\example\" />
     <Folder Include="src\components\ngrx-footer\example\" />
