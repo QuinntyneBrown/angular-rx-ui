@@ -1,11 +1,13 @@
 import { UI } from "./ui.model";
 import { Property } from "./property.model";
-import { Store } from "../core";
+import { Store, Service } from "../core";
 
-export class App {
-    constructor(public store: Store<any>) {
-        store.subscribe(this.storeOnChange);
-    }
+@Service({
+    serviceName: "appService",
+    viewProviders:["store"]
+})
+export class AppService {
+    constructor(public store: Store<any>) { store.subscribe(this.storeOnChange); }
 
     storeOnChange = state => {
 
@@ -13,6 +15,7 @@ export class App {
 
     properties: Array<Property> = [];
     uis: Array<UI> = [];
+
     getProperty = <T>(name: string): T => {
         let result;
         for (let i = 0; i < this.properties.length; i++) {
