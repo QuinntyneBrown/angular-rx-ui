@@ -92,6 +92,30 @@
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\ads\example\index.html" />
+    <Content Include="src\components\app\app.component.html">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\app.component.scss">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\property.component.html">
+      <DependentUpon>property.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\property.component.scss">
+      <DependentUpon>property.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\section.component.html">
+      <DependentUpon>section.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\section.component.scss">
+      <DependentUpon>section.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\ui.component.html">
+      <DependentUpon>ui.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\app\ui.component.scss">
+      <DependentUpon>ui.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\article\example\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
@@ -350,6 +374,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\components\ui\uis-container.component.css" />
+    <Content Include="src\components\ui\uis-container.component.html" />
+    <Content Include="src\components\ui\ui.component.scss" />
+    <Content Include="src\components\ui\ui.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -398,9 +426,25 @@
   -->
   <ItemGroup>
     <Content Include="config\webpack.config.js" />
+    <TypeScriptCompile Include="dist\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
       <DependentUpon>ads.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\app\app.component.spec.ts">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\app\property.component.spec.ts">
+      <DependentUpon>property.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\app\property.model.ts" />
+    <TypeScriptCompile Include="src\components\app\section.component.spec.ts">
+      <DependentUpon>section.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\app\section.model.ts" />
+    <TypeScriptCompile Include="src\components\app\ui.component.spec.ts">
+      <DependentUpon>ui.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\app\ui.model.ts" />
     <TypeScriptCompile Include="src\components\author\author.component.spec.ts">
       <DependentUpon>author.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -730,6 +774,23 @@
     <TypeScriptCompile Include="src\components\river\index.ts" />
     <TypeScriptCompile Include="src\components\river\river.component.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.ts" />
+    <TypeScriptCompile Include="src\components\app\app.model.ts" />
+    <TypeScriptCompile Include="src\components\app\index.ts" />
+    <TypeScriptCompile Include="src\components\app\app.actions.ts" />
+    <TypeScriptCompile Include="src\components\app\app.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\app\app.reducers.ts" />
+    <TypeScriptCompile Include="src\components\app\app.component.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.model.ts" />
+    <TypeScriptCompile Include="src\components\ui\index.ts" />
+    <TypeScriptCompile Include="src\components\ui\uis-container.component.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.actions.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.reducers.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.component.ts" />
+    <TypeScriptCompile Include="src\components\ui\ui.component.spec.ts" />
+    <TypeScriptCompile Include="src\components\app\ui.component.ts" />
+    <TypeScriptCompile Include="src\components\app\section.component.ts" />
+    <TypeScriptCompile Include="src\components\app\property.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />

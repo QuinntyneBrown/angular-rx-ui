@@ -1,4 +1,4 @@
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import { ChangeDetectionStrategy, Component } from "../core";
 
 @Component({
     template: require("./social-share-item.component.html"),
@@ -10,17 +10,11 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 })
 export class SocialShareItemComponent {
     constructor(private $element: angular.IAugmentedJQuery, private $window: angular.IWindowService, private setElementBackgroundImage) { }
-    ngOnInit = () => {
-        this.setElementBackgroundImage(this.$element.find(".social-share-item-icon"), this.src);
-    }
+    ngOnInit = () => this.setElementBackgroundImage(this.$socialShareIconAugmentedJQuery, this.src);    
     public onClick = () => this.$window.open(this.url, "_blank");
-    public onMouseover = () => {
-        if (this.srcHover)
-            this.setElementBackgroundImage(this.$element.find(".social-share-item-icon"), this.srcHover);
-    };
-
-    public onMouseleave = () => this.setElementBackgroundImage(this.$element.find(".social-share-item-icon"), this.src);
-
+    public onMouseover = () => this.setElementBackgroundImage(this.$socialShareIconAugmentedJQuery, this.srcHover);
+    public onMouseleave = () => this.setElementBackgroundImage(this.$socialShareIconAugmentedJQuery, this.src);
+    public get $socialShareIconAugmentedJQuery() { return this.$element.find(".social-share-item-icon"); } 
     public url: string;
     public src: string;
     public srcHover: string;
