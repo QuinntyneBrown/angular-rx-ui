@@ -291,12 +291,14 @@
     <Content Include="src\components\rotator\rotator.component.html">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\social-share\example\icon-facebook.svg" />
+    <Content Include="src\components\social-share\example\icon-twitter.svg" />
     <Content Include="src\components\social-share\example\index.html" />
-    <Content Include="src\components\social-share\social-share-icons.component.html">
-      <DependentUpon>social-share-icons.component.ts</DependentUpon>
+    <Content Include="src\components\social-share\social-share-item.component.html">
+      <DependentUpon>social-share-item.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\social-share\social-share-icons.component.scss">
-      <DependentUpon>social-share-icons.component.ts</DependentUpon>
+    <Content Include="src\components\social-share\social-share-item.component.scss">
+      <DependentUpon>social-share-item.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\social-share\social-share.component.html">
       <DependentUpon>social-share.component.ts</DependentUpon>
@@ -493,6 +495,7 @@
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\service.ts" />
+    <TypeScriptCompile Include="src\components\core\set-element-background-image.ts" />
     <TypeScriptCompile Include="src\components\core\set-element-dimensions.ts" />
     <TypeScriptCompile Include="src\components\core\set-element-dimension.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
@@ -594,8 +597,8 @@
     <TypeScriptCompile Include="src\components\rotator\index.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\social-share\social-share-icons.component.spec.ts">
-      <DependentUpon>social-share-icons.component.ts</DependentUpon>
+    <TypeScriptCompile Include="src\components\social-share\social-share-item.component.spec.ts">
+      <DependentUpon>social-share-item.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\social-share\social-share.component.spec.ts">
       <DependentUpon>social-share.component.ts</DependentUpon>
@@ -663,7 +666,6 @@
     <TypeScriptCompile Include="src\components\article\article.actions.ts" />
     <TypeScriptCompile Include="src\components\article\article.action-creator.ts" />
     <TypeScriptCompile Include="src\components\article\article.reducers.ts" />
-    <TypeScriptCompile Include="src\components\social-share\social-share-icons.component.ts" />
     <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
     <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.service.ts" />
@@ -727,6 +729,7 @@
     <TypeScriptCompile Include="src\components\hero\hero.component.ts" />
     <TypeScriptCompile Include="src\components\river\index.ts" />
     <TypeScriptCompile Include="src\components\river\river.component.ts" />
+    <TypeScriptCompile Include="src\components\social-share\social-share-item.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />

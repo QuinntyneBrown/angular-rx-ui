@@ -6,13 +6,13 @@ import { ChangeDetectionStrategy, Component } from "../core";
     selector: "hero",
     inputs: ["@heroImageUrl","@height","@width"],
     transclude: true,
-    viewProviders: ["$element","setElementDimensions"],
+    viewProviders: ["$element","setElementBackgroundImage","setElementDimensions"],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroComponent {
-    constructor(private $element: angular.IAugmentedJQuery, private setElementDimensions:any) { }
+    constructor(private $element: angular.IAugmentedJQuery, private setElementBackgroundImage, private setElementDimensions:any) { }
     ngOnInit = () => {
-        this.$element[0].style.backgroundImage = `url('${this.heroImageUrl}')`;
+        this.setElementBackgroundImage(this.$element, this.heroImageUrl);
         this.setElementDimensions(this.$element, this.height, this.width);
     };    
     public heroImageUrl: string;

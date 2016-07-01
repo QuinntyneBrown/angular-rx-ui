@@ -30,6 +30,7 @@ export * from "./position.d";
 export * from "./renderer.service";
 export * from "./rectangle-instance-options.d";
 export * from "./ruler.d";
+export * from "./set-element-background-image";
 export * from "./set-element-dimension";
 export * from "./set-element-dimensions";
 export * from "./space.d";
@@ -88,6 +89,7 @@ require("./rectangle.service");
 require("./renderer.service");
 require("./ruler.service");
 require("./safe-digest");
+require("./set-element-background-image");
 require("./set-element-dimension");
 require("./set-element-dimensions");
 require("./set-opacity-async");
@@ -124,6 +126,7 @@ let coreApp = (<any>angular.module("app.core", [
     "renderer",
     "ruler",
     "safeDigest",
+    "setElementBackgroundImage",
     "setElementDimension",
     "setElementDimensions",
     "setOpacityAsync",

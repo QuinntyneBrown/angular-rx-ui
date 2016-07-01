@@ -577,8 +577,8 @@ describe("river", function () {
     });
 });
 
-describe("socialShareIcons", function () {
-    var socialShareIconsComponent;
+describe("socialShareItem", function () {
+    var socialShareItemComponent;
     var $compile;
     var $rootScope;
     var MockActionCreator = (function () {
@@ -592,14 +592,14 @@ describe("socialShareIcons", function () {
     beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        socialShareIconsComponent = $controller("socialShareIconsComponent", { socialShareIconsActionCreator: new MockActionCreator() });
+        socialShareItemComponent = $controller("socialShareItemComponent", { socialShareItemActionCreator: new MockActionCreator() });
     }));
     it("should compile", function () {
-        var element = $compile("<social-share-icons></social-share-icons>")($rootScope);
+        var element = $compile("<social-share-item></social-share-item>")($rootScope);
         expect(element).toBeDefined();
     });
     it("should be defined", function () {
-        expect(socialShareIconsComponent).toBeDefined();
+        expect(socialShareItemComponent).toBeDefined();
     });
 });
 

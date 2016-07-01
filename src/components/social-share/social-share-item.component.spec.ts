@@ -1,6 +1,6 @@
-describe("socialShareIcons", () => {
+describe("socialShareItem", () => {
 
-    var socialShareIconsComponent;
+    var socialShareItemComponent;
     var $compile;
     var $rootScope;
 
@@ -13,15 +13,15 @@ describe("socialShareIcons", () => {
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        socialShareIconsComponent = $controller("socialShareIconsComponent", { socialShareIconsActionCreator: new MockActionCreator() });
+        socialShareItemComponent = $controller("socialShareItemComponent", { socialShareItemActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<social-share-icons></social-share-icons>")($rootScope);
+        var element = $compile("<social-share-item></social-share-item>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(socialShareIconsComponent).toBeDefined();
+        expect(socialShareItemComponent).toBeDefined();
     });
 })

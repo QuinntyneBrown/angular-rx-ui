@@ -1,0 +1,25 @@
+.social-share-item {
+    height:40px;
+    width:40px;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor:pointer;
+
+    a {
+        display: block;
+        height: 100%;
+        text-align: center;
+        width: 100%;
+    } 
+}
+
+.social-share-item-label {
+    display:none;
+}
+
+.social-share-item-icon {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    margin: 12px 0 0 0;
+}
