@@ -13,7 +13,7 @@ describe("hero", () => {
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        heroComponent = $controller("heroComponent", { heroActionCreator: new MockActionCreator() });
+        heroComponent = $controller("heroComponent", { $element: $compile("<hero></hero>")($rootScope) });
     }));
 
     it("should compile", () => {

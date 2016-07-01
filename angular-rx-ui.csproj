@@ -493,6 +493,7 @@
     <TypeScriptCompile Include="src\components\core\safe-digest.ts" />
     <TypeScriptCompile Include="src\components\core\service.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\service.ts" />
+    <TypeScriptCompile Include="src\components\core\set-element-dimensions.ts" />
     <TypeScriptCompile Include="src\components\core\set-element-dimension.ts" />
     <TypeScriptCompile Include="src\components\core\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\components\core\space.d.ts" />
