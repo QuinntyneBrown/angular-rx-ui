@@ -1,8 +1,8 @@
 ﻿import { IAppState, IStore } from "./store";
 
 angular.module("invokeAsync", []).value("invokeAsync", options => {
-    let store: IStore = angular.element(document.body).injector().get("store");
-    let $q: angular.IQService = angular.element(document.body).injector().get("$q");    
+    let store: IStore = angular.element(document.body).injector().get("store") as IStore;
+    let $q: angular.IQService = angular.element(document.body).injector().get("$q") as angular.IQService;    
     if (angular.isFunction(options)) { options = { action: options } };
     let deferred = $q.defer();
     let actionId = options.params ? options.action(options.params) : options.action();

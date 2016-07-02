@@ -12,6 +12,7 @@ require("./flip-card");
 require("./flyout");
 require("./hamburger-button");
 require("./hero");
+require("./login");
 require("./modal");
 require("./nav-menu");
 require("./paged-list");

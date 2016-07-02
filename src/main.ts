@@ -19,6 +19,7 @@ var app = angular
         "app.flyout",
         "app.hamburgerButton",
         "app.hero",
+        "app.login",
         "app.modal",
         "app.navMenu",
         "app.pagedList",

@@ -81,8 +81,8 @@ angular.module = function () {
 
                     if (document.body && angular.element(document.body.childNodes[0]) && angular.element(document.body.childNodes[0]).injector()) {
                         var $injector = angular.element(document.body.childNodes[0]).injector();
-                        var store = $injector.get("store");
-                        var safeDigest = $injector.get("safeDigest");
+                        var store = $injector.get("store") as any;
+                        var safeDigest = $injector.get("safeDigest") as any;
 
                         if (scope.vm && scope.vm.storeOnChange) {
                             var subscription = store.subscribe(state => {

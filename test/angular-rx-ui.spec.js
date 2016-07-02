@@ -24,32 +24,6 @@ describe("ads", function () {
     });
 });
 
-describe("author", function () {
-    var authorComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.author");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        authorComponent = $controller("authorComponent", { authorActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<author></author>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(authorComponent).toBeDefined();
-    });
-});
-
 describe("articleDetail", function () {
     var articleDetailComponent;
     var $compile;
@@ -76,31 +50,27 @@ describe("articleDetail", function () {
     });
 });
 
-describe("articleEditorContainer", function () {
-    var articleEditorContainerComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.article");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        articleEditorContainerComponent = $controller("articleEditorContainerComponent", { articleEditorContainerActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<article-editor-container></article-editor-container>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(articleEditorContainerComponent).toBeDefined();
-    });
-});
+//describe("articleEditorContainer", () => {
+//    var articleEditorContainerComponent;
+//    var $compile;
+//    var $rootScope;
+//    class MockActionCreator { }
+//    beforeEach(() => {
+//        angular.mock.module("app.article");
+//    });
+//    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
+//        $rootScope = _$rootScope_;
+//        $compile = _$compile_;
+//        articleEditorContainerComponent = $controller("articleEditorContainerComponent", { articleEditorContainerActionCreator: new MockActionCreator() });
+//    }));
+//    it("should compile", () => {
+//        var element = $compile("<article-editor-container></article-editor-container>")($rootScope);
+//        expect(element).toBeDefined();
+//    });
+//    it("should be defined", () => {
+//        expect(articleEditorContainerComponent).toBeDefined();
+//    });
+//})
 
 describe("articleHeader", function () {
     var articleHeaderComponent;
@@ -177,6 +147,32 @@ describe("articleList", function () {
     });
     it("should be defined", function () {
         expect(articleListComponent).toBeDefined();
+    });
+});
+
+describe("author", function () {
+    var authorComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.author");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        authorComponent = $controller("authorComponent", { authorActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<author></author>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(authorComponent).toBeDefined();
     });
 });
 
@@ -551,57 +547,49 @@ describe("river", function () {
     });
 });
 
-describe("socialShareItem", function () {
-    var socialShareItemComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.socialShare");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        socialShareItemComponent = $controller("socialShareItemComponent", { socialShareItemActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<social-share-item></social-share-item>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(socialShareItemComponent).toBeDefined();
-    });
-});
+//describe("socialShareItem", () => {
+//    var socialShareItemComponent;
+//    var $compile;
+//    var $rootScope;
+//    class MockActionCreator { }
+//    beforeEach(() => {
+//        angular.mock.module("app.socialShare");
+//    });
+//    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
+//        $rootScope = _$rootScope_;
+//        $compile = _$compile_;
+//        socialShareItemComponent = $controller("socialShareItemComponent", { socialShareItemActionCreator: new MockActionCreator() });
+//    }));
+//    it("should compile", () => {
+//        var element = $compile("<social-share-item></social-share-item>")($rootScope);
+//        expect(element).toBeDefined();
+//    });
+//    it("should be defined", () => {
+//        expect(socialShareItemComponent).toBeDefined();
+//    });
+//})
 
-describe("socialShare", function () {
-    var socialShareComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.socialShare");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        socialShareComponent = $controller("socialShareComponent", { socialShareActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<social-share></social-share>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(socialShareComponent).toBeDefined();
-    });
-});
+//describe("socialShare", () => {
+//    var socialShareComponent;
+//    var $compile;
+//    var $rootScope;
+//    class MockActionCreator { }
+//    beforeEach(() => {
+//        angular.mock.module("app.socialShare");
+//    });
+//    beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
+//        $rootScope = _$rootScope_;
+//        $compile = _$compile_;
+//        socialShareComponent = $controller("socialShareComponent", { socialShareActionCreator: new MockActionCreator() });
+//    }));
+//    it("should compile", () => {
+//        var element = $compile("<social-share></social-share>")($rootScope);
+//        expect(element).toBeDefined();
+//    });
+//    it("should be defined", () => {
+//        expect(socialShareComponent).toBeDefined();
+//    });
+//})
 
 describe("tagList", function () {
     var tagListComponent;

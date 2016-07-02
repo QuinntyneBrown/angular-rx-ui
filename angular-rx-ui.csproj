@@ -215,6 +215,13 @@
     <Content Include="src\components\hero\hero.component.scss">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\login\example\index.html" />
+    <Content Include="src\components\login\login-container.component.html">
+      <DependentUpon>login-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\login\login.component.html">
+      <DependentUpon>login.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\modal\example\index.html" />
     <Content Include="src\components\modal\modal-content.component.css">
       <DependentUpon>modal-content.component.ts</DependentUpon>
@@ -243,6 +250,12 @@
     </Content>
     <Content Include="src\components\flip-card\flip-card.component.scss">
       <DependentUpon>flip-card.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\login\login-container.component.scss">
+      <DependentUpon>login-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\login\login.component.scss">
+      <DependentUpon>login.component.ts</DependentUpon>
     </Content>
     <None Include="src\components\paged-list\paged-list.scss" />
     <Content Include="src\components\paged-list\example\index.html" />
@@ -393,6 +406,7 @@
   <ItemGroup>
     <Content Include="config\webpack.config.js" />
     <TypeScriptCompile Include="dist\angular-rx-ui.d.ts" />
+    <TypeScriptCompile Include="lib\index.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
       <DependentUpon>ads.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -546,6 +560,13 @@
       <DependentUpon>hero.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\index.ts" />
+    <TypeScriptCompile Include="src\components\login\login-container.component.ts" />
+    <TypeScriptCompile Include="src\components\login\login.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\login\login.actions.ts" />
+    <TypeScriptCompile Include="src\components\login\login.component.ts" />
+    <TypeScriptCompile Include="src\components\login\index.ts" />
+    <TypeScriptCompile Include="src\components\login\login.reducers.ts" />
+    <TypeScriptCompile Include="src\components\login\login.service.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-content.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal-title.component.ts" />
     <TypeScriptCompile Include="src\components\modal\modal.action-creator.ts" />
@@ -720,7 +741,6 @@
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
     <Folder Include="src\components\file-explorer\example\" />
-    <Folder Include="src\components\login\" />
     <Folder Include="src\components\user\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
