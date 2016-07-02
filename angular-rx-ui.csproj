@@ -658,7 +658,7 @@
     <TypeScriptCompile Include="src\components\picture\picture.component.ts" />
     <TypeScriptCompile Include="src\components\article\article-list.component.ts" />
     <TypeScriptCompile Include="src\components\article\article-list-item.component.ts" />
-    <TypeScriptCompile Include="src\components\social-share\social-share.model.ts" />
+    <TypeScriptCompile Include="src\components\social-share\social-share-item.model.ts" />
     <TypeScriptCompile Include="src\components\social-share\index.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.actions.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.action-creator.ts" />
@@ -740,7 +740,6 @@
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.ts" />
     <TypeScriptCompile Include="src\components\app\app.service.ts" />
     <TypeScriptCompile Include="src\components\app\index.ts" />
-    <TypeScriptCompile Include="src\components\app\app.actions.ts" />
     <TypeScriptCompile Include="src\components\ui\ui.model.ts" />
     <TypeScriptCompile Include="src\components\ui\index.ts" />
     <TypeScriptCompile Include="src\components\ui\uis-container.component.ts" />

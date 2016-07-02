@@ -1196,7 +1196,6 @@ var ngRxUI =
 	        this.$http = $http;
 	        this.$q = $q;
 	        this.localStorageManager = localStorageManager;
-	        this.inMemoryCache = {};
 	        this.fromService = function (options) {
 	            var deferred = _this.$q.defer();
 	            _this.$http({ method: options.method, url: options.url, data: options.data, params: options.params, headers: options.headers }).then(function (results) {
@@ -1221,14 +1220,16 @@ var ngRxUI =
 	            }
 	            return deferred.promise;
 	        };
+	        this.fromService$ = function (options) {
+	            var deferred = _this.$q.defer();
+	            _this.$http({ method: options.method, url: options.url, data: options.data, params: options.params, headers: options.headers }).then(function (results) {
+	                deferred.resolve(results);
+	            }).catch(function (error) {
+	                deferred.reject(error);
+	            });
+	            return deferred.promise;
+	        };
 	    }
-	    Object.defineProperty(Fetch.prototype, "bodyNativeElement", {
-	        get: function () {
-	            return document.getElementsByTagName("body")[0];
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
 	    return Fetch;
 	}());
 	exports.Fetch = Fetch;
@@ -1474,7 +1475,8 @@ var ngRxUI =
 
 	"use strict";
 	exports.setElementBackgroundImage = function (augmentedJQuery, backgroundImageUrl) {
-	    return augmentedJQuery[0].style.backgroundImage = "url('" + backgroundImageUrl + "')";
+	    if (backgroundImageUrl)
+	        augmentedJQuery[0].style.backgroundImage = "url('" + backgroundImageUrl + "')";
 	};
 	angular.module("setElementBackgroundImage", [])
 	    .value("setElementBackgroundImage", exports.setElementBackgroundImage);
@@ -7732,16 +7734,16 @@ var ngRxUI =
 	        this.$element = $element;
 	        this.$window = $window;
 	        this.setElementBackgroundImage = setElementBackgroundImage;
-	        this.ngOnInit = function () {
-	            _this.setElementBackgroundImage(_this.$element.find(".social-share-item-icon"), _this.src);
-	        };
+	        this.ngOnInit = function () { return _this.setElementBackgroundImage(_this.$socialShareIconAugmentedJQuery, _this.src); };
 	        this.onClick = function () { return _this.$window.open(_this.url, "_blank"); };
-	        this.onMouseover = function () {
-	            if (_this.srcHover)
-	                _this.setElementBackgroundImage(_this.$element.find(".social-share-item-icon"), _this.srcHover);
-	        };
-	        this.onMouseleave = function () { return _this.setElementBackgroundImage(_this.$element.find(".social-share-item-icon"), _this.src); };
+	        this.onMouseover = function () { return _this.setElementBackgroundImage(_this.$socialShareIconAugmentedJQuery, _this.srcHover); };
+	        this.onMouseleave = function () { return _this.setElementBackgroundImage(_this.$socialShareIconAugmentedJQuery, _this.src); };
 	    }
+	    Object.defineProperty(SocialShareItemComponent.prototype, "$socialShareIconAugmentedJQuery", {
+	        get: function () { return this.$element.find(".social-share-item-icon"); },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    SocialShareItemComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(274),

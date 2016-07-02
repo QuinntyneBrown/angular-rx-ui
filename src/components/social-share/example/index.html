@@ -20,6 +20,8 @@
     <social-share-item url="http://www.facebook.com" label="Facbook" src="icon-facebook.svg"></social-share-item>
     <social-share-item url="http://www.twitter.com" label="Twitter" src="icon-twitter.svg"></social-share-item>
 
+    <social-share social-share-items="vm.socialShareItems"></social-share>
+
     <script src="../../../../lib/fastclick.js"></script>
     <script src="../../../../lib/rx.all.compat.js"></script>
     <script src="../../../../lib/jquery.js"></script>
@@ -35,6 +37,23 @@
         ])
         .controller("mainController", [function mainController() {
             var self = this;
+            
+            
+            self.socialShareItems = [{
+                "url": "http://www.facebook.com",
+                "label": "Facebook",
+                "src": "icon-facebook.svg"
+            }, {
+                "url": "http://www.facebook.com",
+                "label": "Facebook",
+                "src": "icon-facebook.svg",
+                "srcHover": "icon-twitter.svg"
+            }, {
+                "url": "http://www.facebook.com",
+                "label": "Facebook",
+                "src": "icon-facebook.svg",
+                "srcHover": "icon-twitter.svg"
+            }];
 
             return self;
         }]);

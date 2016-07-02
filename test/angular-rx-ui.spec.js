@@ -471,32 +471,6 @@ describe("ngrxFooter", function () {
     });
 });
 
-describe("ngrxHeader", function () {
-    var ngrxHeaderComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.ngrxHeader");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        ngrxHeaderComponent = $controller("ngrxHeaderComponent", { ngrxHeaderActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<ngrx-header></ngrx-header>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(ngrxHeaderComponent).toBeDefined();
-    });
-});
-
 describe("panel", function () {
     var panelComponent;
     var $compile;
@@ -520,6 +494,32 @@ describe("panel", function () {
     });
     it("should be defined", function () {
         expect(panelComponent).toBeDefined();
+    });
+});
+
+describe("ngrxHeader", function () {
+    var ngrxHeaderComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.ngrxHeader");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        ngrxHeaderComponent = $controller("ngrxHeaderComponent", { ngrxHeaderActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<ngrx-header></ngrx-header>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(ngrxHeaderComponent).toBeDefined();
     });
 });
 
@@ -652,5 +652,31 @@ describe("tagList", function () {
     });
     it("should be defined", function () {
         expect(tagListComponent).toBeDefined();
+    });
+});
+
+describe("ui", function () {
+    var uiComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.ui");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        uiComponent = $controller("uiComponent", { uiActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<ui></ui>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(uiComponent).toBeDefined();
     });
 });
