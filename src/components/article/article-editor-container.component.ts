@@ -7,7 +7,7 @@ import { AddOrUpdateAuthorAction, SelectAuthorAction } from "../author/author.ac
 
 @Component({
     template: require("./article-editor-container.component.html"),
-    styles: [require("./article-editor-container.component.css")],
+    styles: [require("./article-editor-container.component.scss")],
     selector: "article-editor-container",
     viewProviders: ["$location", "$routeParams", "articleActionCreator"],
     changeDetection: ChangeDetectionStrategy.OnPush

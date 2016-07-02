@@ -24,4 +24,5 @@ require("./rotator");
 require("./social-share");
 require("./tabs");
 require("./tag");
+require("./user");
 require("./window");

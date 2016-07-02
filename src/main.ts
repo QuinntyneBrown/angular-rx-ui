@@ -31,6 +31,7 @@ var app = angular
         "app.socialShare",
         "app.tabs",
         "app.tag",
+        "app.user",
         "app.window"                        
     ]);
 

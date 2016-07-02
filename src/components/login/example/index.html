@@ -34,6 +34,17 @@
         var module = angular.module("app", [
             "components"
         ])
+        .service("loginService", ["$q", function ($q) {
+            var self = this;
+
+            self.tryToLogin = function (options) {
+
+                alert(JSON.stringify(options));
+
+                return $q.resolve(true);
+            }
+            return self;
+        }])
         .controller("mainController", [function mainController() {
             var self = this;
 

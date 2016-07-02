@@ -1,0 +1,106 @@
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(require("./service"));
+__export(require("./injectable"));
+__export(require("./inject"));
+__export(require("./store"));
+__export(require("./action-decorator"));
+__export(require("./pluck-out"));
+__export(require("./change-detection-strategy"));
+__export(require("./component.decorators"));
+__export(require("./convert-unix-timestamp-to-date"));
+__export(require("./service.decorator"));
+__export(require("./cache.decorator"));
+__export(require("./add-or-update"));
+__export(require("./action-creator"));
+__export(require("./pluck"));
+__export(require("./view-encapsulation"));
+__export(require("./fetch"));
+__export(require("./login-redirect-provider"));
+__export(require("./provide"));
+__export(require("./provide-action"));
+__export(require("./provide-route-promise"));
+__export(require("./get-x"));
+__export(require("./is-between"));
+__export(require("./translate-x"));
+__export(require("./translate-x-y"));
+__export(require("./get-html"));
+__export(require("./renderer.service"));
+__export(require("./set-element-background-image"));
+__export(require("./set-element-dimension"));
+__export(require("./set-element-dimensions"));
+exports.Observable = Rx.Observable;
+require("./api-endpoint-provider");
+require("./local-storage-manager-provider");
+require("./login-redirect-provider");
+require("./store");
+require("./add-or-update");
+require("./append-to-body-async");
+require("./auth-interceptor");
+require("./convert-unix-timestamp-to-date");
+require("./debounce");
+require("./extend-css-async");
+require("./get-from-url-sync");
+require("./get-html");
+require("./fetch");
+require("./get-x");
+require("./invoke-async");
+require("./component-extension");
+require("./position.service");
+require("./remove-element");
+require("./route-resolver");
+require("./route-when-extension");
+require("./rectangle.service");
+require("./renderer.service");
+require("./ruler.service");
+require("./safe-digest");
+require("./set-element-background-image");
+require("./set-element-dimension");
+require("./set-element-dimensions");
+require("./set-opacity-async");
+require("./space.service");
+require("./translate-x");
+require("./translate-x-y");
+require("./translate-x-async");
+require("./template.service");
+require("./form-encode");
+var coreApp = angular.module("app.core", [
+    "ngSanitize",
+    "apiEndpoint",
+    "authInterceptor",
+    "localStorageManager",
+    "store",
+    "addOrUpdate",
+    "appendToBodyAsync",
+    "convertUnixTimestampToDate",
+    "debounce",
+    "extendCssAsync",
+    "getFromUrlSync",
+    "getHtml",
+    "getX",
+    "invokeAsync",
+    "fetch",
+    "formEncode",
+    "loginRedirect",
+    "position",
+    "removeElement",
+    "routeResolver",
+    "routeWhenExtension",
+    "rectangle",
+    "renderer",
+    "ruler",
+    "safeDigest",
+    "setElementBackgroundImage",
+    "setElementDimension",
+    "setElementDimensions",
+    "setOpacityAsync",
+    "space",
+    "rectangle",
+    "translateX",
+    "translateXY",
+    "translateXAsync",
+    "template"
+]);
+//# sourceMappingURL=index.js.map

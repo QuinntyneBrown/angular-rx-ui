@@ -1,0 +1,64 @@
+<div class="article-editor">
+
+    <h1 data-ng-if="!vm.entity.id">Create Article <span data-ng-if="vm.entity.title.length > 0">: {{ vm.entity.title }}</span></h1>
+
+    <h1 data-ng-if="vm.entity.id">Edit Article: {{ vm.entity.title }}</h1>
+
+    <div>
+        <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="'Save'"></calypso-button>
+
+        <calypso-button on-click="vm.create()" caption="'Create'"></calypso-button>
+    </div>
+
+    <tabs tabs-name="article-editor">
+
+        <tab-title>General</tab-title>
+
+        <tab-content>
+            <div>
+                <input class="inputField article-editor-title" type="text" placeholder="Title" data-ng-model="vm.entity.title" />
+            </div>
+
+            <div>
+                <textarea ui-tinymce ng-model="vm.entity.body"></textarea>
+            </div>
+        </tab-content>
+
+        <tab-title>Author</tab-title>
+
+        <tab-content>
+
+            <div style="line-height:3em;">
+                <span style="line-height:2em; cursor:pointer;" data-ng-click="vm.selectAuthor()">Select Author</span>
+            </div>
+
+            <h1 data-ng-if="vm.entity.author"> {{ vm.entity.author.firstName }} {{ vm.entity.author.lastName }}</h1>
+
+        </tab-content>
+
+        <tab-title>Catgory</tab-title>
+
+        <tab-content>
+
+        </tab-content>
+
+        <tab-title>Tags</tab-title>
+
+        <tab-content>
+
+        </tab-content>
+
+        <tab-title>Related Articles</tab-title>
+
+        <tab-content>
+
+        </tab-content>
+
+    </tabs>
+
+    <div>
+        <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="'Save'"></calypso-button>
+
+        <calypso-button on-click="vm.create()" caption="'Create'"></calypso-button>
+    </div>
+</div>

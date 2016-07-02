@@ -6,8 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,8 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -336,6 +334,24 @@
     <Content Include="src\components\tag\tag-list.component.scss">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\user\user-editor.component.scss">
+      <DependentUpon>user-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\user-editor.component.html">
+      <DependentUpon>user-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\user-list.component.scss">
+      <DependentUpon>user-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\user-list.component.html">
+      <DependentUpon>user-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\user.component.html">
+      <DependentUpon>user.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\users-container.component.html">
+      <DependentUpon>users-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\window\example\index.html" />
     <None Include="src\assets\scss\normalize.scss" />
     <Content Include="tsconfig.json" />
@@ -351,12 +367,20 @@
     <Content Include="src\components\rotator\rotator.component.scss">
       <DependentUpon>rotator.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\user\users-container.component.scss">
+      <DependentUpon>users-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\user\user.component.scss">
+      <DependentUpon>user.component.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="src\components\article\article-editor.component.scss" />
+    <Content Include="src\components\article\article-editor.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -382,8 +406,7 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -630,6 +653,15 @@
     <TypeScriptCompile Include="src\components\tag\tag-list.component.spec.ts">
       <DependentUpon>tag-list.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\user\user-editor.component.ts" />
+    <TypeScriptCompile Include="src\components\user\user-list.component.ts" />
+    <TypeScriptCompile Include="src\components\user\user.actions.ts" />
+    <TypeScriptCompile Include="src\components\user\user.component.ts" />
+    <TypeScriptCompile Include="src\components\user\user.model.ts" />
+    <TypeScriptCompile Include="src\components\user\index.ts" />
+    <TypeScriptCompile Include="src\components\user\user.reducers.ts" />
+    <TypeScriptCompile Include="src\components\user\user.service.ts" />
+    <TypeScriptCompile Include="src\components\user\users-container.component.ts" />
     <TypeScriptCompile Include="src\components\window\window.action-creator.ts" />
     <TypeScriptCompile Include="src\components\window\window.actions.ts" />
     <TypeScriptCompile Include="src\components\window\index.ts" />
@@ -737,11 +769,12 @@
     <TypeScriptCompile Include="src\components\app\app.service.ts" />
     <TypeScriptCompile Include="src\components\app\index.ts" />
     <TypeScriptCompile Include="src\components\article\article-editor-container.component.ts" />
+    <TypeScriptCompile Include="src\components\article\article-editor.component.ts" />
+    <TypeScriptCompile Include="src\components\article\article-editor.component.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
     <Folder Include="src\components\file-explorer\example\" />
-    <Folder Include="src\components\user\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
