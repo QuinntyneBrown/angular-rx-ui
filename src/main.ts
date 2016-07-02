@@ -21,8 +21,6 @@ var app = angular
         "app.hero",
         "app.modal",
         "app.navMenu",
-        "app.ngrxHeader",
-        "app.ngrxFooter",
         "app.pagedList",
         "app.panel",
         "app.popover",

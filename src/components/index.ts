@@ -14,8 +14,6 @@ require("./hamburger-button");
 require("./hero");
 require("./modal");
 require("./nav-menu");
-require("./ngrx-footer");
-require("./ngrx-header");
 require("./paged-list");
 require("./panel");
 require("./picture");

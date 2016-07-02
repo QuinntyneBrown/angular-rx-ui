@@ -24,6 +24,32 @@ describe("ads", function () {
     });
 });
 
+describe("author", function () {
+    var authorComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.author");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        authorComponent = $controller("authorComponent", { authorActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<author></author>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(authorComponent).toBeDefined();
+    });
+});
+
 describe("articleDetail", function () {
     var articleDetailComponent;
     var $compile;
@@ -47,6 +73,32 @@ describe("articleDetail", function () {
     });
     it("should be defined", function () {
         expect(articleDetailComponent).toBeDefined();
+    });
+});
+
+describe("articleEditorContainer", function () {
+    var articleEditorContainerComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.article");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        articleEditorContainerComponent = $controller("articleEditorContainerComponent", { articleEditorContainerActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<article-editor-container></article-editor-container>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(articleEditorContainerComponent).toBeDefined();
     });
 });
 
@@ -125,32 +177,6 @@ describe("articleList", function () {
     });
     it("should be defined", function () {
         expect(articleListComponent).toBeDefined();
-    });
-});
-
-describe("author", function () {
-    var authorComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.author");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        authorComponent = $controller("authorComponent", { authorActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<author></author>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(authorComponent).toBeDefined();
     });
 });
 
@@ -445,32 +471,6 @@ describe("navMenu", function () {
     });
 });
 
-describe("ngrxFooter", function () {
-    var ngrxFooterComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.ngrxFooter");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        ngrxFooterComponent = $controller("ngrxFooterComponent", { ngrxFooterActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<ngrx-footer></ngrx-footer>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(ngrxFooterComponent).toBeDefined();
-    });
-});
-
 describe("panel", function () {
     var panelComponent;
     var $compile;
@@ -494,32 +494,6 @@ describe("panel", function () {
     });
     it("should be defined", function () {
         expect(panelComponent).toBeDefined();
-    });
-});
-
-describe("ngrxHeader", function () {
-    var ngrxHeaderComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.ngrxHeader");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        ngrxHeaderComponent = $controller("ngrxHeaderComponent", { ngrxHeaderActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<ngrx-header></ngrx-header>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(ngrxHeaderComponent).toBeDefined();
     });
 });
 
@@ -652,31 +626,5 @@ describe("tagList", function () {
     });
     it("should be defined", function () {
         expect(tagListComponent).toBeDefined();
-    });
-});
-
-describe("ui", function () {
-    var uiComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.ui");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        uiComponent = $controller("uiComponent", { uiActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<ui></ui>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(uiComponent).toBeDefined();
     });
 });

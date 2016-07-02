@@ -92,6 +92,12 @@
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\ads\example\index.html" />
+    <Content Include="src\components\article\article-editor-container.component.html">
+      <DependentUpon>article-editor-container.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-editor-container.component.scss">
+      <DependentUpon>article-editor-container.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\article\example\index.html" />
     <Content Include="src\components\author\author.component.html">
       <DependentUpon>author.component.ts</DependentUpon>
@@ -239,18 +245,6 @@
       <DependentUpon>flip-card.component.ts</DependentUpon>
     </Content>
     <None Include="src\components\paged-list\paged-list.scss" />
-    <Content Include="src\components\ngrx-footer\ngrx-footer.component.html">
-      <DependentUpon>ngrx-footer.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\ngrx-footer\ngrx-footer.component.scss">
-      <DependentUpon>ngrx-footer.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\ngrx-header\ngrx-header.component.html">
-      <DependentUpon>ngrx-header.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\ngrx-header\ngrx-header.component.scss">
-      <DependentUpon>ngrx-header.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\paged-list\example\index.html" />
     <Content Include="src\components\panel\example\index.html" />
     <Content Include="src\components\hero\example\kim.jpg" />
@@ -350,10 +344,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\components\ui\uis-container.component.css" />
-    <Content Include="src\components\ui\uis-container.component.html" />
-    <Content Include="src\components\ui\ui.component.scss" />
-    <Content Include="src\components\ui\ui.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -409,6 +399,9 @@
     <TypeScriptCompile Include="src\components\app\property.model.ts" />
     <TypeScriptCompile Include="src\components\app\section.model.ts" />
     <TypeScriptCompile Include="src\components\app\ui.model.ts" />
+    <TypeScriptCompile Include="src\components\article\article-editor-container.component.spec.ts">
+      <DependentUpon>article-editor-container.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\author\author.component.spec.ts">
       <DependentUpon>author.component.ts</DependentUpon>
     </TypeScriptCompile>
@@ -565,12 +558,6 @@
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.spec.ts">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.component.spec.ts">
-      <DependentUpon>ngrx-footer.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.component.spec.ts">
-      <DependentUpon>ngrx-header.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\paged-list\ipaged-list.d.ts" />
     <TypeScriptCompile Include="src\components\paged-list\paged-list.actions.ts" />
     <TypeScriptCompile Include="src\components\paged-list\paged-list.model.ts" />
@@ -709,18 +696,6 @@
     <TypeScriptCompile Include="src\components\button\button.action-creator.ts" />
     <TypeScriptCompile Include="src\components\button\button.reducers.ts" />
     <TypeScriptCompile Include="src\components\button\button.component.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.model.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\index.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.actions.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.reducers.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-footer\ngrx-footer.component.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.model.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\index.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.actions.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.reducers.ts" />
-    <TypeScriptCompile Include="src\components\ngrx-header\ngrx-header.component.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-list.model.ts" />
     <TypeScriptCompile Include="src\components\error-list\index.ts" />
     <TypeScriptCompile Include="src\components\error-list\error-list.actions.ts" />
@@ -740,20 +715,13 @@
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.ts" />
     <TypeScriptCompile Include="src\components\app\app.service.ts" />
     <TypeScriptCompile Include="src\components\app\index.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.model.ts" />
-    <TypeScriptCompile Include="src\components\ui\index.ts" />
-    <TypeScriptCompile Include="src\components\ui\uis-container.component.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.actions.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.reducers.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.component.ts" />
-    <TypeScriptCompile Include="src\components\ui\ui.component.spec.ts" />
+    <TypeScriptCompile Include="src\components\article\article-editor-container.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
     <Folder Include="src\components\file-explorer\example\" />
-    <Folder Include="src\components\ngrx-footer\example\" />
-    <Folder Include="src\components\ngrx-header\example\" />
+    <Folder Include="src\components\login\" />
+    <Folder Include="src\components\user\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
