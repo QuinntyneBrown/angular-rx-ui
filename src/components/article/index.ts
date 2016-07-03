@@ -26,7 +26,8 @@ var app = (<any>angular.module("app.article", [
     "app.category",
     "app.socialShare",
     "app.tabs",
-    "app.tag"
+    "app.tag",
+    "ui.tinymce"
 ]));
 
 provide(app,ArticleActionCreator);

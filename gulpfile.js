@@ -19,6 +19,7 @@ var webpackConfig = new WebpackConfig();
 
 var paths = {
     npm: './node_modules/',
+    bower:'./bower_components',
     lib: './lib/'
 };
 
@@ -30,7 +31,8 @@ var libs = [
     paths.npm + 'jquery/dist/jquery.js',
     paths.npm + 'rx/dist/rx.all.compat.js',
     paths.npm + 'fastclick/lib/fastclick.js',
-    paths.npm + 'moment/moment.js'
+    paths.npm + 'moment/moment.js',
+    paths.bower + 'angular-ui-tinymce/src/tinymce.js'
 ];
 
 
@@ -68,6 +70,8 @@ gulp.task('run-unit-tests', ['compile-ts-tests'], function () {
         './lib/angular-route.js',
         './lib/angular-sanitize.js',
         './lib/angular-touch.js',
+        './bower_components/tinymce-dist/tinymce.js',
+        './bower_components/angular-ui-tinymce/src/tinymce.js',
         './node_modules/angular-mocks/angular-mocks.js',
         './dist/angular-rx-ui.js',
         './test/angular-rx-ui.spec.js'

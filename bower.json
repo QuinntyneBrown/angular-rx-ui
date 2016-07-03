@@ -1,0 +1,22 @@
+{
+  "name": "angular-rx-ui",
+  "description": "angular-rx-ui",
+  "main": "index.html",
+  "authors": [
+    "Quinntyne Brown <quinntynebrown@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/QuinntyneBrown/angular-rx-ui",
+  "moduleType": [ ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-tinymce": "^0.0.14"
+  }
+}

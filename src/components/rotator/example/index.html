@@ -21,23 +21,25 @@
         <rotator id="featured"
                 items="vm.photos"
                 rotator-for-name="photo"
-                next-button-image-url="'rotator_button_next.png'"
-                previous-button-image-url="'rotator_button_prev.png'"
-                width="'500'"
-                height="'500'">
+                next-button-image-url="rotator_button_next.png"
+                previous-button-image-url="rotator_button_prev.png"
+                width="'500"
+                height="500">
             <div>
                 <img data-ng-src="{{ photo.url }}" />
             </div>
         </rotator>
     </div>
 
+    <script src="../../../../bower_components/tinymce-dist/tinymce.js"></script>
     <script src="../../../../lib/fastclick.js"></script>
     <script src="../../../../lib/rx.all.compat.js"></script>
     <script src="../../../../lib/jquery.js"></script>
     <script src="../../../../lib/angular.js"></script>
     <script src="../../../../lib/angular-sanitize.js"></script>
-    <script src="../../../../lib/angular-route.js"></script>
     <script src="../../../../lib/angular-touch.js"></script>
+    <script src="../../../../lib/angular-route.js"></script>
+    <script src="../../../../bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="../../../../dist/angular-rx-ui.js"></script>
 
     <script type="text/javascript">

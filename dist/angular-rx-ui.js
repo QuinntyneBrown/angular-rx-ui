@@ -2680,7 +2680,8 @@ var ngRxUI =
 	    "app.category",
 	    "app.socialShare",
 	    "app.tabs",
-	    "app.tag"
+	    "app.tag",
+	    "ui.tinymce"
 	]);
 	core_1.provide(app, article_action_creator_1.ArticleActionCreator);
 	core_1.provide(app, article_service_1.ArticleService);
@@ -4969,7 +4970,7 @@ var ngRxUI =
 /* 162 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"article-editor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Article <span data-ng-if=\"vm.entity.title.length > 0\">: {{ vm.entity.title }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Article: {{ vm.entity.title }}</h1>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n\r\n    <tabs tabs-name=\"article-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField article-editor-title\" type=\"text\" placeholder=\"Title\" data-ng-model=\"vm.entity.title\" />\r\n            </div>\r\n\r\n            <div>\r\n                <textarea ui-tinymce ng-model=\"vm.entity.body\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n        <tab-title>Author</tab-title>\r\n\r\n        <tab-content>\r\n\r\n            <div style=\"line-height:3em;\">\r\n                <span style=\"line-height:2em; cursor:pointer;\" data-ng-click=\"vm.selectAuthor()\">Select Author</span>\r\n            </div>\r\n\r\n            <h1 data-ng-if=\"vm.entity.author\"> {{ vm.entity.author.firstName }} {{ vm.entity.author.lastName }}</h1>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Catgory</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Tags</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Related Articles</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"article-editor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Article <span data-ng-if=\"vm.entity.title.length > 0\">: {{ vm.entity.title }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Article: {{ vm.entity.title }}</h1>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n\r\n    <tabs tabs-name=\"article-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField article-editor-title\" type=\"text\" placeholder=\"Title\" data-ng-model=\"vm.entity.title\" />\r\n            </div>\r\n\r\n            <div>\r\n                <textarea ui-tinymce ng-model=\"vm.entity.body\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n        <tab-title>Author</tab-title>\r\n\r\n        <tab-content>\r\n\r\n            <div style=\"line-height:3em;\">\r\n                <span style=\"line-height:2em; cursor:pointer;\" data-ng-click=\"vm.selectAuthor()\">Select Author</span>\r\n            </div>\r\n\r\n            <h1 data-ng-if=\"vm.entity.author\"> {{ vm.entity.author.firstName }} {{ vm.entity.author.lastName }}</h1>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Catgory</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Tags</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Related Articles</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"Create\"></button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 163 */
@@ -9078,11 +9079,11 @@ var ngRxUI =
 	            selector: "rotator",
 	            transclude: "element",
 	            inputs: [
-	                "height",
+	                "@height",
 	                "items",
-	                "nextButtonImageUrl",
-	                "previousButtonImageUrl",
-	                "width"
+	                "@nextButtonImageUrl",
+	                "@previousButtonImageUrl",
+	                "@width"
 	            ],
 	            viewProviders: ["$attrs",
 	                "$compile",

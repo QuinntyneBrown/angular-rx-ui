@@ -293,6 +293,7 @@
     <Content Include="src\components\author\author.component.scss">
       <DependentUpon>author.component.ts</DependentUpon>
     </Content>
+    <Content Include="bower.json" />
     <None Include="src\components\paged-list\paged-list.scss" />
     <Content Include="src\components\paged-list\example\index.html" />
     <Content Include="src\components\panel\example\index.html" />
@@ -465,7 +466,6 @@
   -->
   <ItemGroup>
     <Content Include="config\webpack.config.js" />
-    <TypeScriptCompile Include="dist\angular-rx-ui.d.ts" />
     <TypeScriptCompile Include="lib\index.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.component.spec.ts">
       <DependentUpon>ads.component.ts</DependentUpon>

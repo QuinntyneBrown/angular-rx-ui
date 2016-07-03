@@ -9,11 +9,11 @@ import { KeyDownAction, ResizeAction } from "../window/window.actions";
     selector: "rotator",
     transclude: "element",
     inputs: [
-        "height",
+        "@height",
         "items",
-        "nextButtonImageUrl",
-        "previousButtonImageUrl",
-        "width"
+        "@nextButtonImageUrl",
+        "@previousButtonImageUrl",
+        "@width"
     ],
     viewProviders: ["$attrs",
         "$compile",
