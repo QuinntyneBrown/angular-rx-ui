@@ -5,15 +5,13 @@ import { TabTitleComponent } from "./tab-title.component";
 import { TabsComponent } from "./tabs.component";
 import { TabsActionCreator } from "./tabs.action-creator";
 import * as reducers from "./tabs.reducers";
-import { provide } from "../core";
+import { provide, } from "../core";
 
 var app = (<any>angular.module("app.tabs", [
     "app.core"
 ]));
 
 provide(app, TabsActionCreator);
-
-app.service("tabsActionCreator",["$location","dispatcher","tabsService","guid",TabsActionCreator]);
 
 app.component(TabContentComponent);
 app.component(TabTitleComponent);

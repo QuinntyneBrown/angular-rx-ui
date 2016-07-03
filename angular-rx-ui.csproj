@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -96,13 +98,13 @@
     <Content Include="src\components\article\article-editor-container.component.scss">
       <DependentUpon>article-editor-container.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\article\article-editor.component.html">
+      <DependentUpon>article-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\article\article-editor.component.scss">
+      <DependentUpon>article-editor.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\article\example\index.html" />
-    <Content Include="src\components\author\author.component.html">
-      <DependentUpon>author.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author.component.scss">
-      <DependentUpon>author.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\article\article-detail.component.html">
       <DependentUpon>article-detail.component.ts</DependentUpon>
     </Content>
@@ -126,6 +128,39 @@
     </Content>
     <Content Include="src\components\article\article-list.component.scss">
       <DependentUpon>article-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-create-modal.component.scss">
+      <DependentUpon>author-create-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-editor.component.scss">
+      <DependentUpon>author-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-create-modal.component.html">
+      <DependentUpon>author-create-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-editor.component.html">
+      <DependentUpon>author-editor.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-list.component.html">
+      <DependentUpon>author-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-list.component.scss">
+      <DependentUpon>author-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-paged-list.component.scss">
+      <DependentUpon>author-paged-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-paged-list.component.html">
+      <DependentUpon>author-paged-list.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-picker-modal.component.scss">
+      <DependentUpon>author-picker-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author-picker-modal.component.html">
+      <DependentUpon>author-picker-modal.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\author\author.component.html">
+      <DependentUpon>author.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\author\example\index.html" />
     <Content Include="src\components\backdrop\example\index.html" />
@@ -255,6 +290,9 @@
     <Content Include="src\components\login\login.component.scss">
       <DependentUpon>login.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\author\author.component.scss">
+      <DependentUpon>author.component.ts</DependentUpon>
+    </Content>
     <None Include="src\components\paged-list\paged-list.scss" />
     <Content Include="src\components\paged-list\example\index.html" />
     <Content Include="src\components\panel\example\index.html" />
@@ -379,8 +417,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\components\article\article-editor.component.scss" />
-    <Content Include="src\components\article\article-editor.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -406,7 +442,8 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -439,9 +476,21 @@
     <TypeScriptCompile Include="src\components\article\article-editor-container.component.spec.ts">
       <DependentUpon>article-editor-container.component.ts</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\author\author.component.spec.ts">
-      <DependentUpon>author.component.ts</DependentUpon>
+    <TypeScriptCompile Include="src\components\article\article-editor.component.spec.ts">
+      <DependentUpon>article-editor.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\author\author-create-modal.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author-editor.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author-list.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author-paged-list.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author-picker-modal.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\author\author.actions.ts" />
+    <TypeScriptCompile Include="src\components\author\author.component.ts" />
+    <TypeScriptCompile Include="src\components\author\author.model.ts" />
+    <TypeScriptCompile Include="src\components\author\index.ts" />
+    <TypeScriptCompile Include="src\components\author\author.reducers.ts" />
+    <TypeScriptCompile Include="src\components\author\author.service.ts" />
     <TypeScriptCompile Include="src\components\backdrop\index.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
     <TypeScriptCompile Include="src\components\article\article-detail.component.spec.ts">
@@ -678,12 +727,6 @@
     <TypeScriptCompile Include="src\components\tag\tag.action-creator.ts" />
     <TypeScriptCompile Include="src\components\tag\tag.reducers.ts" />
     <TypeScriptCompile Include="src\components\tag\tag-list.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author.model.ts" />
-    <TypeScriptCompile Include="src\components\author\index.ts" />
-    <TypeScriptCompile Include="src\components\author\author.actions.ts" />
-    <TypeScriptCompile Include="src\components\author\author.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\author\author.reducers.ts" />
-    <TypeScriptCompile Include="src\components\author\author.component.ts" />
     <TypeScriptCompile Include="src\components\category\category.model.ts" />
     <TypeScriptCompile Include="src\components\category\index.ts" />
     <TypeScriptCompile Include="src\components\category\category.actions.ts" />
@@ -770,9 +813,7 @@
     <TypeScriptCompile Include="src\components\app\index.ts" />
     <TypeScriptCompile Include="src\components\article\article-editor-container.component.ts" />
     <TypeScriptCompile Include="src\components\article\article-editor.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article-editor.component.spec.ts" />
     <TypeScriptCompile Include="src\components\article\article.service.ts" />
-    <TypeScriptCompile Include="src\components\author\author.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />

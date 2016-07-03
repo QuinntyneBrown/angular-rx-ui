@@ -1,0 +1,18 @@
+﻿<div class="author-picker-modal">
+    <modal>
+
+        <modal-title>Author Picker Modal</modal-title>
+
+        <modal-content>
+
+            <h1>Select Author</h1>
+
+            <div data-ng-repeat="entity in vm.entities" data-ng-click="vm.select(entity)">
+                <h1>{{ ::entity.firstName }} {{ ::entity.lastName }}</h1>
+            </div>
+
+        </modal-content>
+
+    </modal>
+
+</div>

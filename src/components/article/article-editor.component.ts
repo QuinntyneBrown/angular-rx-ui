@@ -8,10 +8,7 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleEditorComponent {
-    constructor() {
-        alert("works?");
-    }
-
+    constructor() { }
 }
 
 

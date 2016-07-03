@@ -1,0 +1,21 @@
+.authorList-name,
+.authorList-actions {
+    position:relative;
+    float:left;
+}
+
+.authorList-name {
+    min-width:200px;
+}
+
+.authorList-item {
+    height:50px;
+}
+
+.authorList-actions {
+    text-transform: uppercase;
+}
+   
+.authorList-actions span {
+    cursor:pointer;
+}

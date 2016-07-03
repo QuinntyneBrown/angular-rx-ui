@@ -10,8 +10,7 @@ export const setCurrentTabReducer = (state, action) => {
 }
 
 export const tabChildLoadedReducer = (state, action) => {
-    if (action instanceof TabChildLoadedAction) {
-        state.lastTriggeredByAction = TabChildLoadedAction;
-    }
+    if (action instanceof TabChildLoadedAction)
+        state.lastTriggeredByAction = TabChildLoadedAction;    
     return state;
 }

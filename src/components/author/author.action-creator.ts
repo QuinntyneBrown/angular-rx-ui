@@ -1,6 +1,7 @@
-import { IDispatcher, Service, BaseActionCreator } from "../core";
+﻿import { IDispatcher, Service } from "../core";
+import { BaseActionCreator } from "../core/action-creator";
 import { ModalActionCreator } from "../modal/modal.action-creator";
-import { AddOrUpdateAuthorAction, AddOrUpdateAuthorSuccessAction, AllAuthorsAction, AuthorsFilterAction, CurrentAuthorRemovedAction, RemoveAuthorAction, SelectAuthorAction, SetCurrentAuthorAction } from "./author.actions";
+import { SelectAuthorAction, AddOrUpdateAuthorAction, AllAuthorsAction, RemoveAuthorAction, SetCurrentAuthorAction, CurrentAuthorRemovedAction, AddOrUpdateAuthorSuccessAction } from "./author.actions";
 
 @Service({
     serviceName: "authorActionCreator",
