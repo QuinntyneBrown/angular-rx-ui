@@ -13,6 +13,7 @@ import { ArticleListComponent } from "./article-list.component";
 import { ArticleListItemComponent } from "./article-list-item.component";
 import { ArticleEditorContainerComponent } from "./article-editor-container.component";
 import { ArticleEditorComponent } from "./article-editor.component";
+import { ArticleService } from "./article.service";
 
 import { ArticleActionCreator } from "./article.action-creator";
 import * as reducers from "./article.reducers";
@@ -29,6 +30,7 @@ var app = (<any>angular.module("app.article", [
 ]));
 
 provide(app,ArticleActionCreator);
+provide(app, ArticleService);
 
 app.component(ArticleDetailComponent);
 app.component(ArticleHeaderComponent);

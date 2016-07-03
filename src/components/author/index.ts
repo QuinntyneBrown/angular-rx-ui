@@ -3,6 +3,8 @@ require("../core");
 import { provide, provideAction } from "../core";
 import { AuthorComponent } from "./author.component";
 import { AuthorActionCreator } from "./author.action-creator";
+import { AuthorService } from "./author.service";
+
 import *  as reducers from "./author.reducers";
 import *  as actions from "./author.actions";
 
@@ -11,6 +13,7 @@ var app = (<any>angular.module("app.author", [
 ]));
 
 provide(app,AuthorActionCreator);
+provide(app, AuthorService);
 
 app.component(AuthorComponent);
 
