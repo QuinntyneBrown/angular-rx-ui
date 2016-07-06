@@ -16,7 +16,9 @@ export class ArticleActionCreator extends BaseActionCreator {
 
     currentArticleRemoved = () => this.dispatcher.dispatch(new CurrentArticleRemovedAction());
 
-    openAuthorPickerModal = () => this.authorActionCreator.openAuthorPickerModal();
+    openAuthorPickerModal = () => {
+        this.authorActionCreator.openAuthorPickerModal();
+    };
 
     openAllArticlesModal = () => {
         this.invokeAsync(this.all).then(results => {

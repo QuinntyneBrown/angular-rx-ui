@@ -2768,7 +2768,7 @@ var ngRxUI =
 /* 71 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"authorEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Author <span data-ng-if=\"vm.entity.firstName.length > 0 || vm.entity.lastName.length > 0\">: {{ vm.entity.firstname }} {{ vm.entity.lastname }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Author: {{ vm.entity.firstName }} {{ vm.entity.lastName }}</h1>\r\n\r\n    <tabs tabs-name=\"author-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Author First Name\" data-ng-model=\"vm.entity.firstName\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Author Last Name\" data-ng-model=\"vm.entity.lastName\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"authorEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create Author <span data-ng-if=\"vm.entity.firstName.length > 0 || vm.entity.lastName.length > 0\">: {{ vm.entity.firstname }} {{ vm.entity.lastname }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Author: {{ vm.entity.firstName }} {{ vm.entity.lastName }}</h1>\r\n\r\n    <tabs tabs-name=\"author-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Author First Name\" data-ng-model=\"vm.entity.firstName\" />\r\n            </div>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"Author Last Name\" data-ng-model=\"vm.entity.lastName\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"Create\"></button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 72 */
@@ -3203,7 +3203,7 @@ var ngRxUI =
 	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
 	    Object.defineProperty(AuthorService.prototype, "baseUri", {
-	        get: function () { return this.apiEndpoint.getBaseUrl() + "/v1/author"; },
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/author"; },
 	        enumerable: true,
 	        configurable: true
 	    });
@@ -4853,7 +4853,9 @@ var ngRxUI =
 	        this.modalActionCreator = modalActionCreator;
 	        this.addOrUpdateSuccess = function (options) { return _this.dispatcher.dispatch(new article_actions_1.AddOrUpdateArticleSuccessAction(options.entity)); };
 	        this.currentArticleRemoved = function () { return _this.dispatcher.dispatch(new article_actions_1.CurrentArticleRemovedAction()); };
-	        this.openAuthorPickerModal = function () { return _this.authorActionCreator.openAuthorPickerModal(); };
+	        this.openAuthorPickerModal = function () {
+	            _this.authorActionCreator.openAuthorPickerModal();
+	        };
 	        this.openAllArticlesModal = function () {
 	            _this.invokeAsync(_this.all).then(function (results) {
 	                _this.modalActionCreator.open({ html: "<all-articles-modal></all-articles-modal>" });
@@ -4970,7 +4972,7 @@ var ngRxUI =
 /* 162 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"article-editor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Article <span data-ng-if=\"vm.entity.title.length > 0\">: {{ vm.entity.title }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Article: {{ vm.entity.title }}</h1>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n\r\n    <tabs tabs-name=\"article-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField article-editor-title\" type=\"text\" placeholder=\"Title\" data-ng-model=\"vm.entity.title\" />\r\n            </div>\r\n\r\n            <div>\r\n                <textarea ui-tinymce ng-model=\"vm.entity.body\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n        <tab-title>Author</tab-title>\r\n\r\n        <tab-content>\r\n\r\n            <div style=\"line-height:3em;\">\r\n                <span style=\"line-height:2em; cursor:pointer;\" data-ng-click=\"vm.selectAuthor()\">Select Author</span>\r\n            </div>\r\n\r\n            <h1 data-ng-if=\"vm.entity.author\"> {{ vm.entity.author.firstName }} {{ vm.entity.author.lastName }}</h1>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Catgory</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Tags</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Related Articles</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"Create\"></button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"article-editor\">\r\n\r\n    <h1 data-ng-if=\"!vm.entity.id\">Create Article <span data-ng-if=\"vm.entity.title.length > 0\">: {{ vm.entity.title }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit Article: {{ vm.entity.title }}</h1>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"Create\"></button>\r\n    </div>\r\n\r\n    <tabs tabs-name=\"article-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField article-editor-title\" type=\"text\" placeholder=\"Title\" data-ng-model=\"vm.entity.title\" />\r\n            </div>\r\n\r\n            <div>\r\n                <textarea ui-tinymce ng-model=\"vm.entity.body\"></textarea>\r\n            </div>\r\n        </tab-content>\r\n\r\n        <tab-title>Author</tab-title>\r\n\r\n        <tab-content>\r\n\r\n            <div style=\"line-height:3em;\">\r\n                <span style=\"line-height:2em; cursor:pointer;\" data-ng-click=\"vm.selectAuthor()\">Select Author</span>\r\n            </div>\r\n\r\n            <h1 data-ng-if=\"vm.entity.author\"> {{ vm.entity.author.firstName }} {{ vm.entity.author.lastName }}</h1>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Category</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Tags</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n        <tab-title>Related Articles</tab-title>\r\n\r\n        <tab-content>\r\n\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"Save\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"Create\"></button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 163 */
@@ -5017,6 +5019,11 @@ var ngRxUI =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5027,19 +5034,26 @@ var ngRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var ArticleService = (function () {
-	    function ArticleService() {
+	var ArticleService = (function (_super) {
+	    __extends(ArticleService, _super);
+	    function ArticleService($q, apiEndpoint, fetch) {
+	        _super.call(this, $q, apiEndpoint, fetch);
 	    }
+	    Object.defineProperty(ArticleService.prototype, "baseUri", {
+	        get: function () { return this.apiEndpoint.getBaseUrl() + "/article"; },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    ArticleService = __decorate([
 	        core_1.Injectable(),
 	        core_1.Service({
 	            serviceName: "articleService",
-	            viewProviders: []
+	            viewProviders: ["$q", "apiEndpoint", "fetch"]
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [Function, Object, Object])
 	    ], ArticleService);
 	    return ArticleService;
-	}());
+	}(core_1.BaseService));
 	exports.ArticleService = ArticleService;
 
 
@@ -9346,7 +9360,7 @@ var ngRxUI =
 /* 326 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"userEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create User <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit User: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"user-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"User Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <calypso-button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></calypso-button>\r\n\r\n        <calypso-button on-click=\"vm.create()\" caption=\"'Create'\"></calypso-button>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class=\"userEditor\">\r\n\r\n    <h1  data-ng-if=\"!vm.entity.id\">Create User <span data-ng-if=\"vm.entity.name.length > 0\">: {{ vm.entity.name }}</span></h1>\r\n\r\n    <h1 data-ng-if=\"vm.entity.id\">Edit User: {{ vm.entity.name }}</h1>\r\n\r\n    <tabs tabs-name=\"user-editor\">\r\n\r\n        <tab-title>General</tab-title>\r\n\r\n        <tab-content>\r\n            <div>\r\n                <input class=\"inputField\" type=\"text\" placeholder=\"User Name\" data-ng-model=\"vm.entity.name\" />\r\n            </div>\r\n        </tab-content>\r\n\r\n    </tabs>\r\n\r\n    <div>\r\n        <button on-click=\"vm.addOrUpdate({ data: vm.entity })\" caption=\"'Save'\"></button>\r\n\r\n        <button on-click=\"vm.create()\" caption=\"'Create'\"></button>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 327 */

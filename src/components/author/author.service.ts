@@ -10,5 +10,5 @@ export class AuthorService extends BaseService {
         super($q, apiEndpoint, fetch)
     }
 
-    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/author"; }
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/author"; }
 }

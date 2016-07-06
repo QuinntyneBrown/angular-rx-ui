@@ -6,7 +6,7 @@ import { Service } from "../core";
 })
 export class Backdrop {
     constructor(
-        private $q,
+        private $q: angular.IQService,
         private appendToBodyAsync: any,
         private extendCssAsync: any,
         private removeElement: any,
@@ -18,21 +18,16 @@ export class Backdrop {
     }
 
     public openAsync = () => {
-        var deferred = this.$q.defer();
-
+        let deferred = this.$q.defer();
         this.initializeAsync()
             .then(this.appendBackDropToBodyAsync)
             .then(this.showAsync)
-            .then(() => {
-                this.isOpen = true;
-                deferred.resolve();
-            });
-
+            .then(() => deferred.resolve(this.isOpen = true));
         return deferred.promise;
     }
 
     public closeAsync = () => {
-        var deferred = this.$q.defer();
+        let deferred = this.$q.defer();
         this.hideAsync().then((results) => {
             this.dispose();
             this.isOpen = false;
@@ -42,10 +37,8 @@ export class Backdrop {
     }
     
     public initializeAsync = () => {
-        var deferred = this.$q.defer();
-
+        let deferred = this.$q.defer();
         this.augmentedJQuery = angular.element("<div></div>");
-
         this.extendCssAsync({
             nativeHTMLElement: this.nativeHTMLElement,
             cssObject: {
@@ -61,25 +54,16 @@ export class Backdrop {
                 "background-color": "rgba(0, 0, 0, .25)",
                 "display": "block"
             }
-        }).then(() => {
-            deferred.resolve();
-        });
-
+        }).then(() => deferred.resolve());
         return deferred.promise;
     }
 
-    public showAsync = () => {
-        return this.setOpacityAsync({ nativeHtmlElement: this.nativeHTMLElement, opacity: 25 });
-    }
-
-    public appendBackDropToBodyAsync = () => {
-        return this.appendToBodyAsync({ nativeElement: this.nativeHTMLElement });
-    }
-
-    public hideAsync = () => {
-        return this.setOpacityAsync({ nativeHtmlElement: this.nativeHTMLElement, opacity: 0 });
-    }
-
+    public showAsync = () => this.setOpacityAsync({ nativeHtmlElement: this.nativeHTMLElement, opacity: 25 });
+    
+    public appendBackDropToBodyAsync = () => this.appendToBodyAsync({ nativeElement: this.nativeHTMLElement });
+    
+    public hideAsync = () => this.setOpacityAsync({ nativeHtmlElement: this.nativeHTMLElement, opacity: 0 });
+    
     public dispose = () => {
         this.removeElement({ nativeHTMLElement: this.nativeHTMLElement });
         this.augmentedJQuery = null;

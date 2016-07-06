@@ -1,4 +1,4 @@
-﻿/// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
+﻿/// <reference path="rx/ts/rx.all.d.ts" />
 
 require("./assets/scss");
 require("./components");

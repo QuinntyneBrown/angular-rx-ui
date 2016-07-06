@@ -7,8 +7,6 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     inputs: ['entity', 'addOrUpdate', 'remove', 'create', 'selectAuthor'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleEditorComponent {
-    constructor() { }
-}
+export class ArticleEditorComponent {}
 
 
