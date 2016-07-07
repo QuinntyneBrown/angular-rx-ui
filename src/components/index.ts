@@ -26,3 +26,4 @@ require("./tabs");
 require("./tag");
 require("./user");
 require("./window");
+require("./work-spinner");

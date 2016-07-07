@@ -30,7 +30,8 @@ var app = angular
         "app.tabs",
         "app.tag",
         "app.user",
-        "app.window"                        
+        "app.window",
+        "app.workSpinner"                        
     ]);
 
 app.config([() => {

@@ -77,7 +77,8 @@ var ngRxUI =
 	    "app.tabs",
 	    "app.tag",
 	    "app.user",
-	    "app.window"
+	    "app.window",
+	    "app.workSpinner"
 	]);
 	app.config([function () {
 	        FastClick.attach(document.body);
@@ -468,6 +469,7 @@ var ngRxUI =
 	__webpack_require__(131);
 	__webpack_require__(325);
 	__webpack_require__(346);
+	__webpack_require__(349);
 
 
 /***/ },
@@ -10008,6 +10010,185 @@ var ngRxUI =
 	    }
 	    return state;
 	};
+
+
+/***/ },
+/* 349 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	__webpack_require__(6);
+	var core_1 = __webpack_require__(6);
+	var work_spinner_component_1 = __webpack_require__(350);
+	var work_spinner_action_creator_1 = __webpack_require__(354);
+	var reducers = __webpack_require__(355);
+	var actions = __webpack_require__(356);
+	var app = angular.module("app.workSpinner", [
+	    "app.core"
+	]);
+	core_1.provide(app, work_spinner_action_creator_1.WorkSpinnerActionCreator);
+	app.component(work_spinner_component_1.WorkSpinnerComponent);
+	app.config(["reducersProvider", function (reducersProvider) {
+	        for (var reducer in reducers) {
+	            reducersProvider.configure(reducers[reducer]);
+	        }
+	    }]);
+	for (var action in actions) {
+	    core_1.provideAction(app, actions[action]);
+	}
+
+
+/***/ },
+/* 350 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(6);
+	var WorkSpinnerComponent = (function () {
+	    function WorkSpinnerComponent($element) {
+	        var _this = this;
+	        this.$element = $element;
+	        this.storeOnChange = function (state) { return _this.isBusy = state.isBusy; };
+	    }
+	    Object.defineProperty(WorkSpinnerComponent.prototype, "isBusy", {
+	        get: function () {
+	            return this._isBusy;
+	        },
+	        set: function (value) {
+	            if (!this._isBusy && value)
+	                this.$element.addClass("active");
+	            if (this._isBusy && !value) {
+	                this.$element.removeClass("active");
+	                this._isBusy = value;
+	            }
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    WorkSpinnerComponent = __decorate([
+	        core_1.Component({
+	            template: __webpack_require__(351),
+	            styles: [__webpack_require__(352)],
+	            selector: "work-spinner",
+	            inputs: ["src"],
+	            viewProviders: ["$element"],
+	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	        }), 
+	        __metadata('design:paramtypes', [Object])
+	    ], WorkSpinnerComponent);
+	    return WorkSpinnerComponent;
+	}());
+	exports.WorkSpinnerComponent = WorkSpinnerComponent;
+
+
+/***/ },
+/* 351 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"work-spinner\">\r\n    <div class=\"work-spinner-inner\">\r\n        <div>\r\n            <img data-ng-src=\"vm.src\" />\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 352 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(353);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./work-spinner.component.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./work-spinner.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".work-spinner {\n  display: none; }\n  .work-spinner .active {\n    width: 100%;\n    height: 510px;\n    display: table; }\n\n.work-spinner-inner {\n  display: table-cell;\n  width: 100%;\n  height: 100%;\n  width: auto;\n  height: auto;\n  margin: 0 auto;\n  vertical-align: middle;\n  text-align: center; }\n\n.work-spinner-inner img {\n  border: 0 solid; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 354 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(6);
+	var modal_action_creator_1 = __webpack_require__(65);
+	var WorkSpinnerActionCreator = (function () {
+	    function WorkSpinnerActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	        this.dispatcher = dispatcher;
+	        this.guid = guid;
+	        this.invokeAsync = invokeAsync;
+	        this.modalActionCreator = modalActionCreator;
+	    }
+	    WorkSpinnerActionCreator = __decorate([
+	        core_1.Service({
+	            serviceName: "workSpinnerActionCreator",
+	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	        }), 
+	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	    ], WorkSpinnerActionCreator);
+	    return WorkSpinnerActionCreator;
+	}());
+	exports.WorkSpinnerActionCreator = WorkSpinnerActionCreator;
+
+
+/***/ },
+/* 355 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+
+/***/ },
+/* 356 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var Default = (function () {
+	    function Default() {
+	    }
+	    return Default;
+	}());
+	exports.Default = Default;
 
 
 /***/ }
