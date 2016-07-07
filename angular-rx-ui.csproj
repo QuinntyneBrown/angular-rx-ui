@@ -539,12 +539,12 @@
     <TypeScriptCompile Include="src\components\core\append-to-body-async.ts" />
     <TypeScriptCompile Include="src\components\core\auth-interceptor.ts" />
     <TypeScriptCompile Include="src\components\core\base-wrapped-exception.ts" />
+    <TypeScriptCompile Include="src\components\core\bootstrap.ts" />
     <TypeScriptCompile Include="src\components\core\cache.decorator.ts" />
     <TypeScriptCompile Include="src\components\core\change-detection-strategy.ts" />
     <TypeScriptCompile Include="src\components\core\component.decorators.ts" />
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\convert-unix-timestamp-to-date.ts" />
-    <TypeScriptCompile Include="src\components\core\core.d.ts" />
     <TypeScriptCompile Include="src\components\core\debounce.ts" />
     <TypeScriptCompile Include="src\components\core\ends-with.ts" />
     <TypeScriptCompile Include="src\components\core\exception-handler.ts" />
@@ -696,6 +696,7 @@
     <TypeScriptCompile Include="src\components\rotator\index.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\routing\authorization-guard.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.spec.ts">
       <DependentUpon>social-share-item.component.ts</DependentUpon>
     </TypeScriptCompile>

@@ -1,4 +1,6 @@
-﻿@ngRxUI.core.Component({
+﻿import { Component } from "../../core";
+
+@Component({
     selector: "app",
     template: "<div><counter headline='counter'></counter></div>"
 })
