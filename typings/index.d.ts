@@ -9,3 +9,4 @@
 /// <reference path="globals/moment/index.d.ts" />
 /// <reference path="globals/require/index.d.ts" />
 /// <reference path="globals/slick-carousel/index.d.ts" />
+/// <reference path="globals/rx/rx.all.d.ts" />

@@ -1,7 +1,6 @@
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import { CanActivate, ChangeDetectionStrategy, Component, pluck } from "../core";
 import * as actions from "./article.actions";
 import { ArticleActionCreator } from "./article.action-creator";
-import { pluck } from "../core/pluck";
 import { Article } from "./article.model";
 import { AddOrUpdateAuthorAction, SelectAuthorAction } from "../author/author.actions";
 

@@ -1,6 +1,4 @@
-﻿/// <reference path="rx/ts/rx.all.d.ts" />
-
-require("./assets/scss");
+﻿require("./assets/scss");
 require("./components");
 
 var app = angular
