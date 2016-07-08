@@ -6,6 +6,9 @@ import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
     selector: "spinner",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SpinnerComponent {
-    constructor() { }
+export class SpinnerComponent {    
+    storeOnChange = (state) => this.visible = state.spinnerVisible;
+    private _visible: boolean;
+    public get visible() { return this._visible; }
+    public set visible(value: boolean) { this._visible = value; }
 }

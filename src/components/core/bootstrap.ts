@@ -7,7 +7,9 @@ export interface IBootstrapOptions {
     api: string;
     loginRedirectUrl:string;
     html5Mode: boolean;
-    routes: Array<IRouteConfig>;
+    routes?: Array<IRouteConfig>;
+    run?: Array<any>;
+    guards?: Array<any>;
 }
 
 export const bootstrap = (app: angular.IModule, options: IBootstrapOptions) => {

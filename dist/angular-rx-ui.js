@@ -78,8 +78,7 @@ var ngRxUI =
 	    "app.tabs",
 	    "app.tag",
 	    "app.user",
-	    "app.window",
-	    "app.workSpinner"
+	    "app.window"
 	]);
 	app.config([function () {
 	        FastClick.attach(document.body);
@@ -602,7 +601,7 @@ var ngRxUI =
 	        }]);
 	    app.config(["$routeProvider", function ($routeProvider) {
 	            for (var i = 0; i < options.routes.length; i++) {
-	                var path = options.routes[i].component.prototype.constructor.config.path;
+	                var path = options.routes[i].path;
 	                var selector = options.routes[i].component.prototype.constructor.config.selector;
 	                var template = "<" + selector + "></" + selector + ">";
 	                var authorizationRequired = options.routes[i].component.prototype.constructor.config.authorizationRequired;
@@ -9320,8 +9319,8 @@ var ngRxUI =
 	var core_1 = __webpack_require__(6);
 	var spinner_component_1 = __webpack_require__(326);
 	var spinner_action_creator_1 = __webpack_require__(330);
-	var reducers = __webpack_require__(331);
-	var actions = __webpack_require__(332);
+	var reducers = __webpack_require__(332);
+	var actions = __webpack_require__(331);
 	var app = angular.module("app.spinner", [
 	    "app.core"
 	]);
@@ -9354,7 +9353,15 @@ var ngRxUI =
 	var core_1 = __webpack_require__(6);
 	var SpinnerComponent = (function () {
 	    function SpinnerComponent() {
+	        var _this = this;
+	        this.storeOnChange = function (state) { return _this.visible = state.spinnerVisible; };
 	    }
+	    Object.defineProperty(SpinnerComponent.prototype, "visible", {
+	        get: function () { return this._visible; },
+	        set: function (value) { this._visible = value; },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    SpinnerComponent = __decorate([
 	        core_1.Component({
 	            template: __webpack_require__(327),
@@ -9430,20 +9437,22 @@ var ngRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
-	var modal_action_creator_1 = __webpack_require__(65);
+	var spinner_actions_1 = __webpack_require__(331);
 	var SpinnerActionCreator = (function () {
-	    function SpinnerActionCreator(dispatcher, guid, invokeAsync, modalActionCreator) {
+	    function SpinnerActionCreator(dispatcher, guid, invokeAsync) {
+	        var _this = this;
 	        this.dispatcher = dispatcher;
 	        this.guid = guid;
 	        this.invokeAsync = invokeAsync;
-	        this.modalActionCreator = modalActionCreator;
+	        this.show = function () { return _this.dispatcher.dispatch(new spinner_actions_1.ShowSpinnerAction()); };
+	        this.hide = function () { return _this.dispatcher.dispatch(new spinner_actions_1.HideSpinnerAction()); };
 	    }
 	    SpinnerActionCreator = __decorate([
 	        core_1.Service({
 	            serviceName: "spinnerActionCreator",
-	            viewProviders: ["dispatcher", "guid", "invokeAsync", "modalActionCreator"]
+	            viewProviders: ["dispatcher", "guid", "invokeAsync"]
 	        }), 
-	        __metadata('design:paramtypes', [Object, Object, Object, modal_action_creator_1.ModalActionCreator])
+	        __metadata('design:paramtypes', [Object, Object, Object])
 	    ], SpinnerActionCreator);
 	    return SpinnerActionCreator;
 	}());
@@ -9452,22 +9461,58 @@ var ngRxUI =
 
 /***/ },
 /* 331 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(6);
+	var ShowSpinnerAction = (function () {
+	    function ShowSpinnerAction() {
+	    }
+	    ShowSpinnerAction = __decorate([
+	        core_1.Action({
+	            type: "showSpinnerAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], ShowSpinnerAction);
+	    return ShowSpinnerAction;
+	}());
+	exports.ShowSpinnerAction = ShowSpinnerAction;
+	var HideSpinnerAction = (function () {
+	    function HideSpinnerAction() {
+	    }
+	    HideSpinnerAction = __decorate([
+	        core_1.Action({
+	            type: "hideSpinnerAction"
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], HideSpinnerAction);
+	    return HideSpinnerAction;
+	}());
+	exports.HideSpinnerAction = HideSpinnerAction;
 
 
 /***/ },
 /* 332 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Default = (function () {
-	    function Default() {
-	    }
-	    return Default;
-	}());
-	exports.Default = Default;
+	var actions = __webpack_require__(331);
+	exports.spinnerReducer = function (state, action) {
+	    if (action instanceof actions.ShowSpinnerAction)
+	        state.spinnerVisible = true;
+	    if (action instanceof actions.HideSpinnerAction)
+	        state.spinnerVisible = false;
+	    return state;
+	};
 
 
 /***/ },

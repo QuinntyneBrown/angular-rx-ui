@@ -1,13 +1,16 @@
 import { IDispatcher, BaseActionCreator, Service } from "../core";
-import { ModalActionCreator } from "../modal/modal.action-creator";
+import { ShowSpinnerAction, HideSpinnerAction } from "./spinner.actions";
 
 @Service({
     serviceName: "spinnerActionCreator",
-    viewProviders: ["dispatcher", "guid", "invokeAsync","modalActionCreator"]
+    viewProviders: ["dispatcher", "guid", "invokeAsync"]
 })
 export class SpinnerActionCreator {
-    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync, private modalActionCreator: ModalActionCreator) { }    
+    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync) { }    
 
+    public show = () => this.dispatcher.dispatch(new ShowSpinnerAction());
+
+    public hide = () => this.dispatcher.dispatch(new HideSpinnerAction());
 }
 
 
