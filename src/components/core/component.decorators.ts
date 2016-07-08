@@ -28,5 +28,6 @@ export interface IComponentConfigurationOptions {
     changeDetection?: ChangeDetectionStrategy,
     moduleId?: string,
     encapsulation?: ViewEncapsulation,
-    restrict?: string
+    restrict?: string,
+    authorizationRequired?: boolean
 }

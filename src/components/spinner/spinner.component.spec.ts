@@ -1,27 +1,27 @@
-describe("workSpinner", () => {
+describe("spinner", () => {
 
-    var workSpinnerComponent;
+    var spinnerComponent;
     var $compile;
     var $rootScope;
 
     class MockActionCreator { }
 
     beforeEach(() => {
-        angular.mock.module("app.workSpinner");
+        angular.mock.module("app.spinner");
     });
 
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        workSpinnerComponent = $controller("workSpinnerComponent", { $element: {}});
+        spinnerComponent = $controller("spinnerComponent", { spinnerActionCreator: new MockActionCreator() });
     }));
 
     it("should compile", () => {
-        var element = $compile("<work-spinner></work-spinner>")($rootScope);
+        var element = $compile("<spinner></spinner>")($rootScope);
         expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
-        expect(workSpinnerComponent).toBeDefined();
+        expect(spinnerComponent).toBeDefined();
     });
 })

@@ -350,6 +350,12 @@
     <Content Include="src\components\social-share\social-share.component.scss">
       <DependentUpon>social-share.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\spinner\spinner.component.html">
+      <DependentUpon>spinner.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\spinner\spinner.component.scss">
+      <DependentUpon>spinner.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\tabs\example\index.html" />
     <Content Include="src\components\tabs\tab-content.component.scss">
       <DependentUpon>tab-content.component.ts</DependentUpon>
@@ -393,13 +399,6 @@
     </Content>
     <Content Include="src\components\window\example\index.html" />
     <None Include="src\assets\scss\normalize.scss" />
-    <Content Include="src\components\work-spinner\example\index.html" />
-    <Content Include="src\components\work-spinner\work-spinner.component.html">
-      <DependentUpon>work-spinner.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\work-spinner\work-spinner.component.scss">
-      <DependentUpon>work-spinner.component.ts</DependentUpon>
-    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -710,6 +709,9 @@
     <TypeScriptCompile Include="src\components\social-share\social-share.component.spec.ts">
       <DependentUpon>social-share.component.ts</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\spinner\spinner.component.spec.ts">
+      <DependentUpon>spinner.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\tabs\tab-content.component.ts" />
     <TypeScriptCompile Include="src\components\tabs\tab-title.component.ts" />
     <TypeScriptCompile Include="src\components\tabs\tabs.action-creator.ts" />
@@ -734,9 +736,6 @@
     <TypeScriptCompile Include="src\components\window\window.actions.ts" />
     <TypeScriptCompile Include="src\components\window\index.ts" />
     <TypeScriptCompile Include="src\components\window\window.reducers.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.component.spec.ts">
-      <DependentUpon>work-spinner.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\index.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.actions.ts" />
@@ -851,12 +850,12 @@
     <TypeScriptCompile Include="typings\index.d.ts" />
     <TypeScriptCompile Include="src\components\routing\index.ts" />
     <TypeScriptCompile Include="src\components\user-profile\index.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.model.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\index.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.actions.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.reducers.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.component.ts" />
+    <TypeScriptCompile Include="src\components\spinner\spinner.model.ts" />
+    <TypeScriptCompile Include="src\components\spinner\index.ts" />
+    <TypeScriptCompile Include="src\components\spinner\spinner.actions.ts" />
+    <TypeScriptCompile Include="src\components\spinner\spinner.action-creator.ts" />
+    <TypeScriptCompile Include="src\components\spinner\spinner.reducers.ts" />
+    <TypeScriptCompile Include="src\components\spinner\spinner.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />

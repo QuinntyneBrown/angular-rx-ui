@@ -27,6 +27,7 @@ var app = angular
         "app.river",
         "app.rotator",   
         "app.socialShare",
+        "app.spinner",
         "app.tabs",
         "app.tag",
         "app.user",

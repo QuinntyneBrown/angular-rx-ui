@@ -547,32 +547,6 @@ describe("river", function () {
     });
 });
 
-describe("tagList", function () {
-    var tagListComponent;
-    var $compile;
-    var $rootScope;
-    var MockActionCreator = (function () {
-        function MockActionCreator() {
-        }
-        return MockActionCreator;
-    }());
-    beforeEach(function () {
-        angular.mock.module("app.tag");
-    });
-    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
-        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
-    }));
-    it("should compile", function () {
-        var element = $compile("<tag-list></tag-list>")($rootScope);
-        expect(element).toBeDefined();
-    });
-    it("should be defined", function () {
-        expect(tagListComponent).toBeDefined();
-    });
-});
-
 //describe("socialShareItem", () => {
 //    var socialShareItemComponent;
 //    var $compile;
@@ -617,8 +591,8 @@ describe("tagList", function () {
 //    });
 //})
 
-describe("workSpinner", function () {
-    var workSpinnerComponent;
+describe("spinner", function () {
+    var spinnerComponent;
     var $compile;
     var $rootScope;
     var MockActionCreator = (function () {
@@ -627,18 +601,44 @@ describe("workSpinner", function () {
         return MockActionCreator;
     }());
     beforeEach(function () {
-        angular.mock.module("app.workSpinner");
+        angular.mock.module("app.spinner");
     });
     beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        workSpinnerComponent = $controller("workSpinnerComponent", { $element: {} });
+        spinnerComponent = $controller("spinnerComponent", { spinnerActionCreator: new MockActionCreator() });
     }));
     it("should compile", function () {
-        var element = $compile("<work-spinner></work-spinner>")($rootScope);
+        var element = $compile("<spinner></spinner>")($rootScope);
         expect(element).toBeDefined();
     });
     it("should be defined", function () {
-        expect(workSpinnerComponent).toBeDefined();
+        expect(spinnerComponent).toBeDefined();
+    });
+});
+
+describe("tagList", function () {
+    var tagListComponent;
+    var $compile;
+    var $rootScope;
+    var MockActionCreator = (function () {
+        function MockActionCreator() {
+        }
+        return MockActionCreator;
+    }());
+    beforeEach(function () {
+        angular.mock.module("app.tag");
+    });
+    beforeEach(inject(function ($controller, _$compile_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $compile = _$compile_;
+        tagListComponent = $controller("tagListComponent", { tagListActionCreator: new MockActionCreator() });
+    }));
+    it("should compile", function () {
+        var element = $compile("<tag-list></tag-list>")($rootScope);
+        expect(element).toBeDefined();
+    });
+    it("should be defined", function () {
+        expect(tagListComponent).toBeDefined();
     });
 });
