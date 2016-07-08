@@ -25,7 +25,7 @@ export const bootstrap = (app: angular.IModule, options: IBootstrapOptions) => {
 
     app.config(["$routeProvider", ($routeProvider: angular.route.IRouteProvider) => {
         for (let i = 0; i < options.routes.length; i++) {
-            let path = options.routes[i].component.prototype.constructor.config.path;
+            let path = options.routes[i].path;
             let selector = options.routes[i].component.prototype.constructor.config.selector;
             let template = `<${selector}></${selector}>`; 
             let authorizationRequired = options.routes[i].component.prototype.constructor.config.authorizationRequired; 
