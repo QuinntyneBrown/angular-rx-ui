@@ -1,1 +1,1 @@
-export class Default { }
+export class IsBusyAction { }

@@ -10185,12 +10185,12 @@ var ngRxUI =
 /***/ function(module, exports) {
 
 	"use strict";
-	var Default = (function () {
-	    function Default() {
+	var IsBusyAction = (function () {
+	    function IsBusyAction() {
 	    }
-	    return Default;
+	    return IsBusyAction;
 	}());
-	exports.Default = Default;
+	exports.IsBusyAction = IsBusyAction;
 
 
 /***/ }
