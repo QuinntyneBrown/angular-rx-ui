@@ -10053,10 +10053,12 @@ var ngRxUI =
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(6);
+	var backdrop_service_1 = __webpack_require__(169);
 	var WorkSpinnerComponent = (function () {
-	    function WorkSpinnerComponent($element) {
+	    function WorkSpinnerComponent($element, backdropService) {
 	        var _this = this;
 	        this.$element = $element;
+	        this.backdropService = backdropService;
 	        this.storeOnChange = function (state) { return _this.isBusy = state.isBusy; };
 	    }
 	    Object.defineProperty(WorkSpinnerComponent.prototype, "isBusy", {
@@ -10064,12 +10066,12 @@ var ngRxUI =
 	            return this._isBusy;
 	        },
 	        set: function (value) {
+	            var _this = this;
 	            if (!this._isBusy && value)
-	                this.$element.addClass("active");
-	            if (this._isBusy && !value) {
-	                this.$element.removeClass("active");
-	                this._isBusy = value;
-	            }
+	                this.backdropService.openAsync().then(function () { return _this.$element.addClass("active"); });
+	            if (this._isBusy && !value)
+	                this.backdropService.closeAsync().then(function () { return _this.$element.removeClass("active"); });
+	            this._isBusy = value;
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -10080,10 +10082,10 @@ var ngRxUI =
 	            styles: [__webpack_require__(352)],
 	            selector: "work-spinner",
 	            inputs: ["src"],
-	            viewProviders: ["$element"],
+	            viewProviders: ["$element", "backdropService"],
 	            changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	        }), 
-	        __metadata('design:paramtypes', [Object])
+	        __metadata('design:paramtypes', [Object, backdrop_service_1.Backdrop])
 	    ], WorkSpinnerComponent);
 	    return WorkSpinnerComponent;
 	}());

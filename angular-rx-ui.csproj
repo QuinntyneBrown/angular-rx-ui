@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -391,6 +393,13 @@
     </Content>
     <Content Include="src\components\window\example\index.html" />
     <None Include="src\assets\scss\normalize.scss" />
+    <Content Include="src\components\work-spinner\example\index.html" />
+    <Content Include="src\components\work-spinner\work-spinner.component.html">
+      <DependentUpon>work-spinner.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\work-spinner\work-spinner.component.scss">
+      <DependentUpon>work-spinner.component.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="src\components\counter\counter.component.scss">
@@ -427,10 +436,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\components\work-spinner\work-spinners-container.component.css" />
-    <Content Include="src\components\work-spinner\work-spinners-container.component.html" />
-    <Content Include="src\components\work-spinner\work-spinner.component.scss" />
-    <Content Include="src\components\work-spinner\work-spinner.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -456,7 +461,8 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -728,6 +734,9 @@
     <TypeScriptCompile Include="src\components\window\window.actions.ts" />
     <TypeScriptCompile Include="src\components\window\index.ts" />
     <TypeScriptCompile Include="src\components\window\window.reducers.ts" />
+    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.component.spec.ts">
+      <DependentUpon>work-spinner.component.ts</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\index.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.actions.ts" />
@@ -844,12 +853,10 @@
     <TypeScriptCompile Include="src\components\user-profile\index.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\work-spinner.model.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\index.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinners-container.component.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\work-spinner.actions.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\work-spinner.action-creator.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\work-spinner.reducers.ts" />
     <TypeScriptCompile Include="src\components\work-spinner\work-spinner.component.ts" />
-    <TypeScriptCompile Include="src\components\work-spinner\work-spinner.component.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
