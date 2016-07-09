@@ -1,4 +1,4 @@
-﻿import { provide, provideAction } from "../core";
+﻿import { provide, provideAction, provideRoutePromise } from "../core";
 
 export interface IRouteConfig {
     path: string;
@@ -49,6 +49,16 @@ export const bootstrap = (app: angular.IModule, options: IBootstrapOptions) => {
             (app as any).component(options.components[i]);
         }
     }
+
+    if (options.guards)
+        for (var i = 0; i < options.guards.length; i++) {
+            provideRoutePromise(app, options.guards[i]);
+        }
+
+    if (options.run)
+        for (var i = 0; i < options.run.length; i++) {
+            app.run(options.run[i]);
+        }
 
     if (options.providers) {
         for (var i = 0; i < options.providers.length; i++) {
