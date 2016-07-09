@@ -1,12 +1,16 @@
 require("../core");
 
-import { provide } from "../core";
-import { AppService } from "./app.service";
+import { provide, bootstrap } from "../core";
+
+import { PropertyHelper } from "./property-helper.service";
 
 var app = (<any>angular.module("app.app", [
     "app.core"    
 ]));
 
-provide(app, AppService);
+provide(app, PropertyHelper);
+
+
+export * from "./property-helper.service";
 
 
