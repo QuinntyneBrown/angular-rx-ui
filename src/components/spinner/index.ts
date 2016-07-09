@@ -3,8 +3,8 @@ require("../core");
 import { provide, provideAction } from "../core";
 import { SpinnerComponent } from "./spinner.component";
 import { SpinnerActionCreator } from "./spinner.action-creator";
-import *  as reducers from "./spinner.reducers";
-import *  as actions from "./spinner.actions";
+import * as reducers from "./spinner.reducers";
+import * as actions from "./spinner.actions";
 
 var app = (<any>angular.module("app.spinner", [
     "app.core"    

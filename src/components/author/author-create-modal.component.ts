@@ -3,7 +3,6 @@ import { AuthorActionCreator } from "./author.action-creator";
 import { ModalActionCreator } from "../modal/modal.action-creator";
 import { Author } from "./author.model";
 
-
 @Component({
     template: require("./author-create-modal.component.html"),
     styles: require("./author-create-modal.component.scss"),

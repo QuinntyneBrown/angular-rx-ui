@@ -45,3 +45,10 @@ app.config(["reducersProvider", reducersProvider => {
 }]);
 
 for (var action in actions) { provideAction(app, actions[action]); }
+
+export * from "./article-detail.component";
+export * from "./article-header.component";
+export * from "./article-list.component";
+export * from "./article-list-item.component";
+export * from "./article-editor-container.component";
+export * from "./article-editor.component";

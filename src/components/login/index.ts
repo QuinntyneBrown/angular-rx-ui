@@ -21,3 +21,6 @@ app.component(LoginContainerComponent);
 app.config(["reducersProvider", reducersProvider => {	
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);
+
+export * from "./login-container.component";
+export * from "./login.component";
