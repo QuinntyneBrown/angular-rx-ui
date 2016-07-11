@@ -1,4 +1,4 @@
-﻿import { pluck, Store } from "../core";
+﻿import { pluck, Store, Service } from "../core";
 import { Section } from "./section.model";
 import { Property } from "./property.model";
 import { UI } from "./ui.model";
@@ -9,6 +9,10 @@ interface IAppState {
     app: App
 }
 
+@Service({
+    serviceName: "propertyHelper",
+    viewProviders:["store"]
+})
 export class PropertyHelper {
     constructor(private store: Store<IAppState>) { }
 
@@ -64,5 +68,5 @@ export class PropertyHelper {
             return JSON.parse(property.value) as T;
 
         return property.value as any;
-    }
+    }    
 }

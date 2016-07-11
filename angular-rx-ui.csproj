@@ -705,6 +705,7 @@
     <TypeScriptCompile Include="src\components\rotator\rotator.reducers.ts" />
     <TypeScriptCompile Include="src\components\rotator\rotator.action-creator.ts" />
     <TypeScriptCompile Include="src\components\routing\authorization-guard.ts" />
+    <TypeScriptCompile Include="src\components\routing\route-change-success-is-admin.reducer.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.spec.ts">
       <DependentUpon>social-share-item.component.ts</DependentUpon>
     </TypeScriptCompile>
