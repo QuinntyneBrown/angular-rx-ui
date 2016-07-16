@@ -36,10 +36,19 @@ export const bootstrap = (app: angular.IModule, options: IBootstrapOptions) => {
             $locationProvider.html5Mode(options.html5Mode);
         }]);
 
-    if (options.reducers)
+    if (options.reducers && !angular.isArray(options.reducers)) {
         app.config(["reducersProvider", reducersProvider => {
             for (var reducer in options.reducers) { reducersProvider.configure(options.reducers[reducer]); }
         }]);
+    }
+
+    if (options.reducers && angular.isArray(options.reducers)) {
+        (options.reducers as Array<any>).forEach(x => {
+            app.config(["reducersProvider", reducersProvider => {
+                for (var reducer in x) { reducersProvider.configure(x[reducer]); }
+            }]);
+        });
+    }
 
     if (options.actions)
         for (var action in options.actions) { provideAction(app, options.actions[action]); }
