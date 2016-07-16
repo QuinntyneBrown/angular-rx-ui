@@ -554,6 +554,7 @@
     <TypeScriptCompile Include="src\components\core\component-extension.ts" />
     <TypeScriptCompile Include="src\components\core\convert-unix-timestamp-to-date.ts" />
     <TypeScriptCompile Include="src\components\core\debounce.ts" />
+    <TypeScriptCompile Include="src\components\core\encode-decorator.ts" />
     <TypeScriptCompile Include="src\components\core\ends-with.ts" />
     <TypeScriptCompile Include="src\components\core\exception-handler.ts" />
     <TypeScriptCompile Include="src\components\core\extend-css-async.ts" />

@@ -1,5 +1,4 @@
-﻿
-export * from "./bootstrap";
+﻿export * from "./bootstrap";
 export * from "./service";
 export * from "./injectable";
 export * from "./inject";

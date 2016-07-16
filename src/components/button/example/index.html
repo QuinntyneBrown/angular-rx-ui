@@ -18,31 +18,25 @@
     </div>
 
     <div>
-        <h2>Component: Button</h2>
-
-        <div>
-            <button></button>
-        </div>
-
-    </div>
-
-    <div>
         <h2>Component: Bold Button</h2>
 
         <div>
-            <bold-button></bold-button>
+            <bold-button caption="SOmething" on-click="vm.onClick()"></bold-button>
         </div>
         
     </div>
 
+    <script src="../../../../bower_components/tinymce-dist/tinymce.js"></script>
     <script src="../../../../lib/fastclick.js"></script>
     <script src="../../../../lib/rx.all.compat.js"></script>
     <script src="../../../../lib/jquery.js"></script>
     <script src="../../../../lib/angular.js"></script>
     <script src="../../../../lib/angular-sanitize.js"></script>
     <script src="../../../../lib/angular-touch.js"></script>
-    <script src="../../../../lib/angular-route.js"></script>  
+    <script src="../../../../lib/angular-route.js"></script>
+    <script src="../../../../bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="../../../../dist/angular-rx-ui.js"></script>
+
     <script type="text/javascript">
 
         var module = angular.module("app", [
@@ -50,7 +44,9 @@
         ])
         .controller("mainController", [function mainController() {
             var self = this;
-
+            self.onClick = function () {
+                alert("h");
+            }
             return self;
         }]);
 

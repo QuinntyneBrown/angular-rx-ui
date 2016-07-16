@@ -77,5 +77,4 @@ export const bootstrap = (app: angular.IModule, options: IBootstrapOptions) => {
             }
         }]);
     }
-
 }
