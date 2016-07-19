@@ -6,7 +6,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B6775DBF-C3B9-4503-BF81-113D048C2C95}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -21,7 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -168,6 +170,12 @@
     <Content Include="src\components\button\bold-button.component.scss">
       <DependentUpon>bold-button.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\components\button\button.component.html">
+      <DependentUpon>button.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\button\button.component.scss">
+      <DependentUpon>button.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\components\button\example\index.html" />
     <Content Include="src\components\carousel-action-panel\carousel-action-panel.component.html">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
@@ -239,6 +247,13 @@
     </Content>
     <Content Include="src\components\hero\hero.component.scss">
       <DependentUpon>hero.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\infinite-scroll\example\index.html" />
+    <Content Include="src\components\infinite-scroll\infinite-scroll.component.html">
+      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\components\infinite-scroll\infinite-scroll.component.scss">
+      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\login\example\index.html" />
     <Content Include="src\components\login\login-container.component.html">
@@ -427,8 +442,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="src\components\button\button.component.scss" />
-    <Content Include="src\components\button\button.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -454,7 +467,8 @@
           <IISUrl>http://localhost:57281/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -642,6 +656,11 @@
       <DependentUpon>hero.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\index.ts" />
+    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroll.component.spec.ts">
+      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroller-source.ts" />
+    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroller.ts" />
     <TypeScriptCompile Include="src\components\login\login-container.component.ts" />
     <TypeScriptCompile Include="src\components\login\login.action-creator.ts" />
     <TypeScriptCompile Include="src\components\login\login.actions.ts" />
@@ -849,7 +868,7 @@
     <TypeScriptCompile Include="src\components\spinner\spinner.reducers.ts" />
     <TypeScriptCompile Include="src\components\spinner\spinner.component.ts" />
     <TypeScriptCompile Include="src\components\button\button.component.ts" />
-    <TypeScriptCompile Include="src\components\button\button.component.spec.ts" />
+    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroll.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
