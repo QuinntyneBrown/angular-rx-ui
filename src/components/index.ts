@@ -1,10 +1,7 @@
 ﻿require("./core");
 require("./ads");
-require("./article");
-require("./author");
 require("./backdrop");
 require("./button");
-require("./category");
 require("./carousel-action-panel");
 require("./counter");
 require("./error-list");
@@ -24,6 +21,5 @@ require("./rotator");
 require("./social-share");
 require("./spinner");
 require("./tabs");
-require("./tag");
 require("./user");
 require("./window");

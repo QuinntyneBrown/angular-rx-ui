@@ -4,12 +4,9 @@ require("./components");
 var app = angular
     .module("components", [
         "app.ads",
-        "app.article",
-        "app.author",
         "app.backdrop",
         "app.button",
         "app.carouselActionPanel",
-        "app.category",
         "app.core",
         "app.counter",
         "app.errorList",
@@ -29,7 +26,6 @@ var app = angular
         "app.socialShare",
         "app.spinner",
         "app.tabs",
-        "app.tag",
         "app.user",
         "app.window"                     
     ]);

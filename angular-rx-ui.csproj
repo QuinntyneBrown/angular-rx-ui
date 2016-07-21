@@ -92,77 +92,6 @@
       <DependentUpon>ads.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\ads\example\index.html" />
-    <Content Include="src\components\article\article-editor-container.component.html">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-editor-container.component.scss">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-editor.component.html">
-      <DependentUpon>article-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-editor.component.scss">
-      <DependentUpon>article-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\example\index.html" />
-    <Content Include="src\components\article\article-detail.component.html">
-      <DependentUpon>article-detail.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-detail.component.scss">
-      <DependentUpon>article-detail.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-header.component.html">
-      <DependentUpon>article-header.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-header.component.scss">
-      <DependentUpon>article-header.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-list-item.component.html">
-      <DependentUpon>article-list-item.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-list-item.component.scss">
-      <DependentUpon>article-list-item.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-list.component.html">
-      <DependentUpon>article-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\article\article-list.component.scss">
-      <DependentUpon>article-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-create-modal.component.scss">
-      <DependentUpon>author-create-modal.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-editor.component.scss">
-      <DependentUpon>author-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-create-modal.component.html">
-      <DependentUpon>author-create-modal.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-editor.component.html">
-      <DependentUpon>author-editor.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-list.component.html">
-      <DependentUpon>author-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-list.component.scss">
-      <DependentUpon>author-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-paged-list.component.scss">
-      <DependentUpon>author-paged-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-paged-list.component.html">
-      <DependentUpon>author-paged-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-picker-modal.component.scss">
-      <DependentUpon>author-picker-modal.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author-picker-modal.component.html">
-      <DependentUpon>author-picker-modal.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author.component.html">
-      <DependentUpon>author.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\example\index.html" />
     <Content Include="src\components\backdrop\example\index.html" />
     <Content Include="src\components\button\bold-button.component.html">
       <DependentUpon>bold-button.component.ts</DependentUpon>
@@ -189,19 +118,6 @@
     <Content Include="src\components\carousel-action-panel\example\shoe-1.jpg" />
     <Content Include="src\components\carousel-action-panel\example\shoe-2.jpg" />
     <Content Include="src\components\carousel-action-panel\example\shoe-3.jpg" />
-    <Content Include="src\components\category\category-list-for-item.component.html">
-      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\category\category-list-for-item.component.scss">
-      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\category\category-list.component.html">
-      <DependentUpon>category-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\category\category-list.component.scss">
-      <DependentUpon>category-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\category\example\index.html" />
     <Content Include="src\components\counter\counter.component.html">
       <DependentUpon>counter.component.ts</DependentUpon>
     </Content>
@@ -248,13 +164,6 @@
     <Content Include="src\components\hero\hero.component.scss">
       <DependentUpon>hero.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\components\infinite-scroll\example\index.html" />
-    <Content Include="src\components\infinite-scroll\infinite-scroll.component.html">
-      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\infinite-scroll\infinite-scroll.component.scss">
-      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\components\login\example\index.html" />
     <Content Include="src\components\login\login-container.component.html">
       <DependentUpon>login-container.component.ts</DependentUpon>
@@ -296,9 +205,6 @@
     </Content>
     <Content Include="src\components\login\login.component.scss">
       <DependentUpon>login.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\author\author.component.scss">
-      <DependentUpon>author.component.ts</DependentUpon>
     </Content>
     <Content Include="bower.json" />
     <None Include="src\components\paged-list\paged-list.scss" />
@@ -378,13 +284,6 @@
     </Content>
     <Content Include="src\components\tabs\tabs.component.html">
       <DependentUpon>tabs.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\tag\example\index.html" />
-    <Content Include="src\components\tag\tag-list.component.html">
-      <DependentUpon>tag-list.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\components\tag\tag-list.component.scss">
-      <DependentUpon>tag-list.component.ts</DependentUpon>
     </Content>
     <Content Include="src\components\user\user-editor.component.scss">
       <DependentUpon>user-editor.component.ts</DependentUpon>
@@ -499,50 +398,13 @@
     <TypeScriptCompile Include="src\components\app\property.model.ts" />
     <TypeScriptCompile Include="src\components\app\section.model.ts" />
     <TypeScriptCompile Include="src\components\app\ui.model.ts" />
-    <TypeScriptCompile Include="src\components\article\article-editor-container.component.spec.ts">
-      <DependentUpon>article-editor-container.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\article\article-editor.component.spec.ts">
-      <DependentUpon>article-editor.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\author\author-create-modal.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author-editor.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author-list.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author-paged-list.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author-picker-modal.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\author\author.actions.ts" />
-    <TypeScriptCompile Include="src\components\author\author.component.ts" />
-    <TypeScriptCompile Include="src\components\author\author.model.ts" />
-    <TypeScriptCompile Include="src\components\author\index.ts" />
-    <TypeScriptCompile Include="src\components\author\author.reducers.ts" />
-    <TypeScriptCompile Include="src\components\author\author.service.ts" />
     <TypeScriptCompile Include="src\components\backdrop\index.ts" />
     <TypeScriptCompile Include="src\components\backdrop\backdrop.service.ts" />
-    <TypeScriptCompile Include="src\components\article\article-detail.component.spec.ts">
-      <DependentUpon>article-detail.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\article\article-header.component.spec.ts">
-      <DependentUpon>article-header.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\article\article-list-item.component.spec.ts">
-      <DependentUpon>article-list-item.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\article\article-list.component.spec.ts">
-      <DependentUpon>article-list.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\article\article.model.ts" />
     <TypeScriptCompile Include="src\components\button\bold-button.component.spec.ts">
       <DependentUpon>bold-button.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\carousel-action-panel\carousel-action-panel.component.spec.ts">
       <DependentUpon>carousel-action-panel.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\category\category-list-for-item.component.spec.ts">
-      <DependentUpon>category-list-for-item.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\category\category-list.component.spec.ts">
-      <DependentUpon>category-list.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\core\action-creator.ts" />
     <TypeScriptCompile Include="src\components\core\action-decorator.ts" />
@@ -656,11 +518,6 @@
       <DependentUpon>hero.component.ts</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\index.ts" />
-    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroll.component.spec.ts">
-      <DependentUpon>infinite-scroll.component.ts</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroller-source.ts" />
-    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroller.ts" />
     <TypeScriptCompile Include="src\components\login\login-container.component.ts" />
     <TypeScriptCompile Include="src\components\login\login.action-creator.ts" />
     <TypeScriptCompile Include="src\components\login\login.actions.ts" />
@@ -732,10 +589,6 @@
     <TypeScriptCompile Include="src\components\tabs\tabs.component.ts" />
     <TypeScriptCompile Include="src\components\tabs\index.ts" />
     <TypeScriptCompile Include="src\components\tabs\tabs.reducers.ts" />
-    <TypeScriptCompile Include="src\components\tag\index.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag-list.component.spec.ts">
-      <DependentUpon>tag-list.component.ts</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="src\components\user\user-editor.component.ts" />
     <TypeScriptCompile Include="src\components\user\user-list.component.ts" />
     <TypeScriptCompile Include="src\components\user\user.actions.ts" />
@@ -755,44 +608,24 @@
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.action-creator.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.reducers.ts" />
     <TypeScriptCompile Include="src\components\nav-menu\nav-menu.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article-header.component.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag.model.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag.actions.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag.reducers.ts" />
-    <TypeScriptCompile Include="src\components\tag\tag-list.component.ts" />
-    <TypeScriptCompile Include="src\components\category\category.model.ts" />
-    <TypeScriptCompile Include="src\components\category\index.ts" />
-    <TypeScriptCompile Include="src\components\category\category.actions.ts" />
-    <TypeScriptCompile Include="src\components\category\category.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\category\category.reducers.ts" />
-    <TypeScriptCompile Include="src\components\article\article-detail.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.model.ts" />
     <TypeScriptCompile Include="src\components\picture\index.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.actions.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.action-creator.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.reducers.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article-list.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article-list-item.component.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-item.model.ts" />
     <TypeScriptCompile Include="src\components\social-share\index.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.actions.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.action-creator.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.reducers.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share.component.ts" />
-    <TypeScriptCompile Include="src\components\article\index.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.model.ts" />
     <TypeScriptCompile Include="src\components\ads\index.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.actions.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.action-creator.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.reducers.ts" />
     <TypeScriptCompile Include="src\components\ads\ads.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article.actions.ts" />
-    <TypeScriptCompile Include="src\components\article\article.action-creator.ts" />
-    <TypeScriptCompile Include="src\components\article\article.reducers.ts" />
-    <TypeScriptCompile Include="src\components\category\category-list-for-item.component.ts" />
-    <TypeScriptCompile Include="src\components\category\category-list.component.ts" />
     <TypeScriptCompile Include="src\components\picture\picture.service.ts" />
     <TypeScriptCompile Include="src\components\hamburger-button\index.ts" />
     <TypeScriptCompile Include="src\components\hamburger-button\hamburger-button.component.ts" />
@@ -843,9 +676,6 @@
     <TypeScriptCompile Include="src\components\river\river.component.ts" />
     <TypeScriptCompile Include="src\components\social-share\social-share-item.component.ts" />
     <TypeScriptCompile Include="src\components\app\index.ts" />
-    <TypeScriptCompile Include="src\components\article\article-editor-container.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article-editor.component.ts" />
-    <TypeScriptCompile Include="src\components\article\article.service.ts" />
     <TypeScriptCompile Include="typings\globals\angular-mocks\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-sanitize\index.d.ts" />
@@ -868,7 +698,6 @@
     <TypeScriptCompile Include="src\components\spinner\spinner.reducers.ts" />
     <TypeScriptCompile Include="src\components\spinner\spinner.component.ts" />
     <TypeScriptCompile Include="src\components\button\button.component.ts" />
-    <TypeScriptCompile Include="src\components\infinite-scroll\infinite-scroll.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\error-list\example\" />
